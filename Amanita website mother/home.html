@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Home</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Styles.css">
+</head>
+<body>
+    <a href="index.html">
+    <img class="placeholder-img" src="https://storage.googleapis.com/amanita/03_LOGOTYPE_BLACK%20copy.png" alt="Placeholder Image">
+    </a>
+    <div class="content">
+      <img src="./assets/burger-menu-svgrepo-com.svg" alt="hamburger icon" width="40px" onclick="toggleNavbar()" style="display: block;" />
+      <!-- hamburger menu -->
+      <nav class="hamburger-menu" id="hamburgerMenu">
+        <div class="cross-wrapper">
+          <svg onclick="toggleNavbar()" style="width: 20px;" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" fill="#fff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>cross</title> <desc>Created with Sketch Beta.</desc> <defs> </defs> <g id="Page-1" stroke="none" stroke-width="1" fill="white" fill-rule="evenodd" sketch:type="MSPage"> <g id="Icon-Set" sketch:type="MSLayerGroup" transform="translate(-467.000000, -1039.000000)" fill="#fff"> <path d="M489.396,1061.4 C488.614,1062.18 487.347,1062.18 486.564,1061.4 L479.484,1054.32 L472.404,1061.4 C471.622,1062.18 470.354,1062.18 469.572,1061.4 C468.79,1060.61 468.79,1059.35 469.572,1058.56 L476.652,1051.48 L469.572,1044.4 C468.79,1043.62 468.79,1042.35 469.572,1041.57 C470.354,1040.79 471.622,1040.79 472.404,1041.57 L479.484,1048.65 L486.564,1041.57 C487.347,1040.79 488.614,1040.79 489.396,1041.57 C490.179,1042.35 490.179,1043.62 489.396,1044.4 L482.316,1051.48 L489.396,1058.56 C490.179,1059.35 490.179,1060.61 489.396,1061.4 L489.396,1061.4 Z M485.148,1051.48 L490.813,1045.82 C492.376,1044.26 492.376,1041.72 490.813,1040.16 C489.248,1038.59 486.712,1038.59 485.148,1040.16 L479.484,1045.82 L473.82,1040.16 C472.257,1038.59 469.721,1038.59 468.156,1040.16 C466.593,1041.72 466.593,1044.26 468.156,1045.82 L473.82,1051.48 L468.156,1057.15 C466.593,1058.71 466.593,1061.25 468.156,1062.81 C469.721,1064.38 472.257,1064.38 473.82,1062.81 L479.484,1057.15 L485.148,1062.81 C486.712,1064.38 489.248,1064.38 490.813,1062.81 C492.376,1061.25 492.376,1058.71 490.813,1057.15 L485.148,1051.48 L485.148,1051.48 Z" id="cross" sketch:type="MSShapeGroup"> </path> </g> </g> </g></svg>
+        </div>
+        <a href="/artists.html">ARTISTS</a>
+        <a href="/exhibitions.html">EXHIBITIONS</a>
+        <a href="">PRESS</a>
+        <a href="">CONTACT</a>
+      </nav>
+      <div>
+        <p style="margin-bottom: 150px;margin-top: 70px;" class="main-content-wrapper"> Amanita <br>
+          313 Bowery <br>
+          New York, NY <br>
+          10003 <br>
+          <a href="mailto:info@spazioamanita.com">info@spazioamanita.com</a>
+        </p>
+      </div>
+      <div class="keepinline-wrapper">
+        <div class="keepinline"> 
+          <a class="keepinline-label" href="Artists.html">Artists</a>
+          <form id="artistsForm" class="form-container filter-forms">
+            <select id="myDropdown">
+              <optgroup class="custom-typography" label="Select an artist">
+                <option value="" disabled selected hidden>Select an artist</option>
+                <option value="Artists/EvaBeresin">Eva Beresin</option>
+                <option value="Artists/FrancescoCima">Francesco Cima</option>
+                <option value="Artists/LeonardoMeoni">Leonardo Meoni</option>
+                <option value="Artists/AndrewPiedilato">Andrew Piedilato</option>
+                <option value="Artists/MarcoScarpi">Marco Scarpi</option>
+                <option value="Artists/AdrianSchachter">Adrian Schachter</option>
+                <option value="Artists/AriannaTosi">Arianna Tosi</option>
+                <option value="Artists/BenWerther">Ben Werther</option>
+              </optgroup>
+              <input  class="inputbutton" type="submit" value="Submit">
+            </select>
+          </form>
+        </div>
+        <div class="keepinline"> 
+          <p>
+            <a class="keepinline-label" href="exhibitions.html">Exhibitions</a>
+          </p>
+          <form id="exhibitionForm" class="form-container filter-forms">
+            <select id="exhibitionDropdown">
+              <optgroup class="custom-typography" label="Select an exhibition">
+                <option value="" disabled selected hidden>Select an exhibition</option>
+                <optgroup label="Current exhibitions">
+                  <option value="Exhibitions/WakingLife">New York: Waking Life</option>
+                  <option value="Exhibitions/TheBeginning">New York: The Beginning</option>
+                </optgroup>
+                <optgroup label="Past Exhibitions">
+                    <optgroup label="2023">
+                      <option value="Exhibitions/Artissima2023">Turin: Artissima 2023</option>
+                      <option value="Exhibitions/musicaparaunmurcielago">New York: Música para un murciélago</option>
+                      <option value="Exhibitions/ChiSeminaVento">Florence: Chi Semina Vento</option>
+                      <option value="Abrushwithfantasy">New York: A Brush With Fantasy</option>
+                      <option value="CharacterStudy">New York: Character Study</option>
+                      <option value="Blueprint">New York: Blueprint</option>
+                      <option value="Palai2023">Lecce: Palai 2023</option>
+                      <option value="IrisNava">Fondazione Iris: Robert Nava</option>
+                      <option value="Tutto">Florence: Tutto</option>
+                      <option value="WorksonPaper">New York: Works on Paper: 100 Years</option>
+                      <option value="StradeComode">Florence: Strade Comode ed Evidenti</option>
+                      <option value="RecordingArtists">New York: Recording Artists</option>
+                      <option value="LadraTerra">Los Angeles: Ladra Terra</option>
+                      <option value="EveryoneisaGenius">New York: Everyone is a Genius</option>
+                    </optgroup>
+                    <optgroup label="2022">
+                      <option value="NinePaintings">New York: Nine Paintings (2009 - 2022)</option>
+                      <option value="FormandFormlessness">Miami: Form and Formlessness</option>
+                      <option value="Aktenkundig">New York: Aktenkundig (On Record)</option>
+                      <option value="PlaceHolder">New York: Place Holder</option>
+                      <option value="SplitEnds">Florence: Split Ends</option>
+                      <option value="IlTempoSeMagnaTutto">Florence: Il Tempo Se Magna Tutto</option>
+                      <option value="PunkTyrol">S-Chanf: Punk Tyröl</option>
+                      <option value="Idomyownstunts">Los Angeles: I do my own stunts</option>
+                    </optgroup>
+                    <optgroup label="2021">
+                      <option value="CancellareSenzaPermesso">Florence: Cancellare Senza Permesso</option>
+                      <option value="Will-O-Wisp">Milano: Will-O-Wisp</option>
+                      <option value="TheLoneliestSport">New York: The Loneliest Sport</option>
+                      <option value="PostFataResurgo">Florence: Post Fata Resurgo</option>
+                      <option value="SweetScience">Florence: Sweet Science</option>
+                      <option value="Sprezzatura">Florence: Sprezzatura</option>
+                    </optgroup>
+                    <!-- Add more optgroup labels for other years -->
+                </optgroup>
+              </optgroup>
+            </select>
+            <input class="inputbutton" type="submit" value="Submit">
+          </form>
+        </div>
+        <p class="keepinline">
+          <a href="Press.html">Press</a>
+        </p> 
+        <div class="seperator"></div> 
+        <p class="keepinline">
+          <a href="About.html">About</a>
+        </p>
+        <div class="keepinline"> 
+          <p class="keepinline-label">Newsletter</p>
+          <form class="newsletter-form filter-forms">
+            <input id="newsletterform" type="email" class="newsletter-input" placeholder="Enter your email">
+            <button type="submit" class="inputbutton newsletter-submit">Subscribe</button>
+            <p id="thankYouMessage" class="hidden"> Thank you. You will receive a confirmation email shortly. </p>
+          </form>
+        </div>
+      </div>
+
+  <script src="Script.js"></script>
+  <!-- for navbar -->
+  <script>
+    function toggleNavbar() {
+      var navbar = document.getElementById("hamburgerMenu");
+      navbar.classList.toggle("responsive");
+    }
+  </script>
+</div>
+</body>
+</html>
