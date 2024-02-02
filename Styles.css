@@ -91,6 +91,8 @@ select {
 }
 .keepinline-label {
         margin-right: 8px;
+        font-size: inherit;
+        line-height: 3;
 }
 .inputbutton {
     -webkit-border-radius: 3px;
