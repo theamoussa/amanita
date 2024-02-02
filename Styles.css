@@ -347,7 +347,8 @@ select {
   }
 
   .keepinline-label, .keepinline a {
-    font-weight: bold;
+    font-weight: normal;
+    font-size: medium;
   }
 
   .keepinline a {
