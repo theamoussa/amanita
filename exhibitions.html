@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Exhibitions</title>
+    
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+        
+        <link rel="stylesheet" href="Styles.css">
+
+        <!-- Bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    </head>
+    <body> 
+        <a href="home.html">
+            <img class="placeholder-img" src="https://storage.googleapis.com/amanita/03_LOGOTYPE_BLACK%20copy.png" alt="Placeholder Image">
+        </a>
+
+        <img src="../assets/burger-menu-svgrepo-com.svg" alt="hamburger icon" width="40px" onclick="toggleNavbar()" style="display: block;cursor: pointer;" />
+        <!-- hamburger menu -->
+        <nav class="hamburger-menu" id="hamburgerMenu">
+            <div class="cross-wrapper">
+                <svg onclick="toggleNavbar()" style="width: 20px;" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" fill="#fff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>cross</title> <desc>Created with Sketch Beta.</desc> <defs> </defs> <g id="Page-1" stroke="none" stroke-width="1" fill="white" fill-rule="evenodd" sketch:type="MSPage"> <g id="Icon-Set" sketch:type="MSLayerGroup" transform="translate(-467.000000, -1039.000000)" fill="#fff"> <path d="M489.396,1061.4 C488.614,1062.18 487.347,1062.18 486.564,1061.4 L479.484,1054.32 L472.404,1061.4 C471.622,1062.18 470.354,1062.18 469.572,1061.4 C468.79,1060.61 468.79,1059.35 469.572,1058.56 L476.652,1051.48 L469.572,1044.4 C468.79,1043.62 468.79,1042.35 469.572,1041.57 C470.354,1040.79 471.622,1040.79 472.404,1041.57 L479.484,1048.65 L486.564,1041.57 C487.347,1040.79 488.614,1040.79 489.396,1041.57 C490.179,1042.35 490.179,1043.62 489.396,1044.4 L482.316,1051.48 L489.396,1058.56 C490.179,1059.35 490.179,1060.61 489.396,1061.4 L489.396,1061.4 Z M485.148,1051.48 L490.813,1045.82 C492.376,1044.26 492.376,1041.72 490.813,1040.16 C489.248,1038.59 486.712,1038.59 485.148,1040.16 L479.484,1045.82 L473.82,1040.16 C472.257,1038.59 469.721,1038.59 468.156,1040.16 C466.593,1041.72 466.593,1044.26 468.156,1045.82 L473.82,1051.48 L468.156,1057.15 C466.593,1058.71 466.593,1061.25 468.156,1062.81 C469.721,1064.38 472.257,1064.38 473.82,1062.81 L479.484,1057.15 L485.148,1062.81 C486.712,1064.38 489.248,1064.38 490.813,1062.81 C492.376,1061.25 492.376,1058.71 490.813,1057.15 L485.148,1051.48 L485.148,1051.48 Z" id="cross" sketch:type="MSShapeGroup"> </path> </g> </g> </g></svg>
+            </div>
+            <a href="/artists.html">ARTISTS</a>
+            <a href="/exhibitions.html">EXHIBITIONS</a>
+            <a href="/press.html">PRESS</a>
+            <a href="/about.html">ABOUT</a>
+        </nav>
+        
+        <!-- Content -->
+        <div class="content">
+            <div class="row mt-5">
+                <div class="col-12 col-md-2">
+                    <h1 style="font-weight:bold;font-size: 20px;">EXHIBITIONS</h1>
+                    <div class="mt-5">
+                        <p class="tabs tab-selected" onclick="showTab('current')">CURRENT</p>
+                        <p class="hidden" class="tabs" onclick="showTab('upcoming')">UPCOMING</p>
+                        <p class="tabs" onclick="showTab('past')">PAST</p>
+                    </div>
+                </div>
+                <div class="col-10">
+                    <div class="current-exhibition">
+                        <div class="row">
+                            <div class="col-12 col-md-6">
+                                    <img 
+                                        src="https://artlogic-res.cloudinary.com/w_1200,c_limit,f_auto,fl_lossy,q_auto/ws-artlogicwebsite0919/usr/images/exhibitions/main_image_override/38/dscf5845-edit.jpg"
+                                        width="100%"
+                                        alt=""
+                                    />
+                                <div>
+                                    <h3 class="exhibition-title">THE BEGINNINGS</h3>
+                                    <p class="press-card-date">TAEZOO PARK <br /> 16 NOV, 2023</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="upcoming-exhibition">
+                        <div class="row">
+                        <div class="col-12 col-md-4">
+                            <img 
+                                src="https://artlogic-res.cloudinary.com/w_1200,c_limit,f_auto,fl_lossy,q_auto/ws-artlogicwebsite0919/usr/images/exhibitions/main_image_override/38/dscf5845-edit.jpg"
+                                width="100%"
+                                alt=""
+                            />
+                            <div>
+                                <h3 class="exhibition-title">THE BEGINNINGS</h3>
+                                <p class="press-card-date">TAEZOO PARK <br /> 16 NOV, 2023</p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <img 
+                                src="https://artlogic-res.cloudinary.com/w_1200,c_limit,f_auto,fl_lossy,q_auto/ws-artlogicwebsite0919/usr/images/exhibitions/main_image_override/38/dscf5845-edit.jpg"
+                                width="100%"
+                                alt=""
+                            />
+                            <div>
+                                <h3 class="exhibition-title">THE BEGINNINGS</h3>
+                                <p class="press-card-date">TAEZOO PARK <br /> 16 NOV, 2023</p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <img 
+                                src="https://artlogic-res.cloudinary.com/w_1200,c_limit,f_auto,fl_lossy,q_auto/ws-artlogicwebsite0919/usr/images/exhibitions/main_image_override/38/dscf5845-edit.jpg"
+                                width="100%"
+                                alt=""
+                            />
+                            <div>
+                                <h3 class="exhibition-title">THE BEGINNINGS</h3>
+                                <p class="press-card-date">TAEZOO PARK <br /> 16 NOV, 2023</p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <img 
+                                src="https://artlogic-res.cloudinary.com/w_1200,c_limit,f_auto,fl_lossy,q_auto/ws-artlogicwebsite0919/usr/images/exhibitions/main_image_override/38/dscf5845-edit.jpg"
+                                width="100%"
+                                alt=""
+                            />
+                            <div>
+                                <h3 class="exhibition-title">THE BEGINNINGS</h3>
+                                <p class="press-card-date">TAEZOO PARK <br /> 16 NOV, 2023</p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <img 
+                                src="https://artlogic-res.cloudinary.com/w_1200,c_limit,f_auto,fl_lossy,q_auto/ws-artlogicwebsite0919/usr/images/exhibitions/main_image_override/38/dscf5845-edit.jpg"
+                                width="100%"
+                                alt=""
+                            />
+                            <div>
+                                <h3 class="exhibition-title">THE BEGINNINGS</h3>
+                                <p class="press-card-date">TAEZOO PARK <br /> 16 NOV, 2023</p>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <!--PAST EXHIBITIONS-->  
+                    <div class="past-exhibition">
+                        <div class="row">
+                            <div class="col-12 col-md-4">
+                                <a href="/Exhibitions/WakingLife.html"><img 
+                                    src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/32.%20December%202023%20-%20Group%20Show/Images/231211_EHM_AMANITA_WakingLife_4915_LR.png"
+                                    width="100%"
+                                    alt="Waking Life installation view" 
+                                /> </a>
+                                <div>
+                                </br>
+                                    <h3><a href="/Exhibitions/WakingLife.html" class="exhibition-title" >WAKING LIFE</a></h3>
+                                    <p class="press-card-date"> 14 DEC, 2023 - 25 JAN, 2024</p>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <a href="/Exhibitions/TheBeginning.html"> <img 
+                                    src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/33.%20Taezoo%20Park/Images/DSCF5845-Edit.jpg"
+                                    width="100%"
+                                    alt="The Beginning installation view"
+                                /> </a>
+                                <div>
+                                </br>
+                                    <h3><a href="/Exhibitions/TheBeginning.html"class="exhibition-title">THE BEGINNING </a></h3>
+                                    <p class="press-card-date">TAEZOO PARK <br /> 16 NOV, 2023 - 25 JAN, 2024</p>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <a href="/Exhibitions/Artissima2023.html"> <img 
+                                    src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/31.%20Artissima%202023/Artissima%20Images/_DSC7267.jpg"
+                                    width="100%"
+                                    alt="Artissima 2023 installation view"
+                                /> </a>
+                                <div>
+                                </br>
+                                    <h3><a href="/Exhibitions/Artissima2023.html"class="exhibition-title">ARTISSIMA 2023</a></h3>
+                                    <p class="press-card-date">LEONARDO MEONI <br /> 2 - 5 NOV, 2023</p>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <a href="/Exhibitions/musicaparaunmurcielago.html"> <img 
+                                    src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/30.%20Christina%20Llama/Images/231026_EHM_AMANITA_ChristinaLama/Web%20Ready/231026_EHM_AMANITA_ChristinaLama_Musica_4635%20LR.jpg"
+                                    width="100%"
+                                    alt="Artissima 2023 installation view"
+                                /> </a>
+                                <div>
+                                </br>
+                                    <h3><a href="/Exhibitions/musicaparaunmurcielago.html"class="exhibition-title">MÚSICA PARA UN MURCIÉLAGO</a></h3>
+                                    <p class="press-card-date"> CRISTINA LAMA <br/>26 OCT, 2023 - 3 DEC, 2023</p>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <a href="/Exhibitions/ChiSeminaVento.html"> <img 
+                                    src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/29.%20%20Chi%20Semina%20Vento/Images/094-spazio-amanita-francesco-cima-ph-stefano-casati-09331.jpg"
+                                    width="100%"
+                                    alt="Artissima 2023 installation view"
+                                /> </a>
+                                <div>
+                                </br>
+                                    <h3><a href="/Exhibitions/ChiSeminaVento.html"class="exhibition-title">CHI SEMINA VENTO</a></h3>
+                                    <p class="press-card-date"> FRANCESCO CIMA <br/>13 OCT, 2023 - 14 NOV, 2023</p>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <a href="/Exhibitions/Abrushwithfantasy.html"> <img 
+                                    src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/28.%20Anthony%20Coleman%20and%20Jimmy%20Connelly/Installation/dscf5020.webp"
+                                    width="100%"
+                                    alt="Artissima 2023 installation view"
+                                /> </a>
+                                <div>
+                                </br>
+                                    <h3><a href="/Exhibitions/Abrushwithfantasy.html"class="exhibition-title">A BRUSH WITH FANTASY</a></h3>
+                                    <p class="press-card-date"> JIMMY CONNELLY <br/>14 SEP, 2023 - 15 OCT, 2023</p>
+                                </div>
+                            </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+         <!-- Bootstrap -->
+         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+ 
+         <script>
+            function toggleNavbar() {
+               var navbar = document.getElementById("hamburgerMenu");
+               navbar.classList.toggle("responsive");
+            }
+        </script>
+        <script>
+            function showTab(tabName) {
+            // Toggle visibility of exhibition divs based on the clicked tab
+            document.querySelectorAll('.current-exhibition, .upcoming-exhibition, .past-exhibition').forEach(div => div.style.display = 'none');
+            
+            // Set the selected tab and show the corresponding exhibition div
+            document.querySelector(`.${tabName}-exhibition`).style.display = 'block';
+            document.querySelectorAll('.tabs').forEach(tab => tab.classList.remove('tab-selected'));
+            event.currentTarget.classList.add('tab-selected');
+        }
+        </script>
+    </body>
+</html>
