@@ -26,6 +26,7 @@ h2 {
     line-height: 1.5;
 }
 
+
 body {
     font-family: "helvetica", sans-serif;
     background-color: rgb(251, 249, 249);
@@ -342,6 +343,13 @@ select {
 @media screen and (max-width: 600px) {
   .filter-forms {
     display: none;
+  }
+
+.placeholder-img{
+    max-width: 25px;
+    transform: rotate(90deg);
+    margin-right: 50px;
+    margin-top: -50px;
   }
 
   .seperator {
