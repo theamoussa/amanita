@@ -78,7 +78,7 @@ select, .newsletter-input {
 }
 
 .placeholder-img {
-  position:block;
+  position:absolute;
   top: 40px;
   right: 30px;
   width: 150px;
@@ -218,7 +218,7 @@ hr {
   iframe {
     width: 100% !important;
   }
-}
-.placeholder-img{
-  max-width: 100px;;
+  .placeholder-img{
+    max-width: 100px;;
+  }
 }
