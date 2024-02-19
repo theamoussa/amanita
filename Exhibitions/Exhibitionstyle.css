@@ -299,11 +299,11 @@ ul {
   .caption {
     font-size: 10px;
   }
-}
-.placeholder-img{
-  max-width: 100px;
-  top: 40px;
-  position: absolute;
+  .placeholder-img{
+    max-width: 100px;
+    top: 40px;
+    position: absolute;
+  }
 }
 
 @keyframes slideIn {
