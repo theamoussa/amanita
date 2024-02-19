@@ -78,11 +78,12 @@ select, .newsletter-input {
 }
 
 .placeholder-img {
-    position:fixed;
-    top: 20px;
-    right: 30px;
-    width: 42px;
+  position:block;
+  top: 40px;
+  right: 30px;
+  width: 150px;
 }
+
 .hidden {
     display: none;
 }
@@ -217,4 +218,7 @@ hr {
   iframe {
     width: 100% !important;
   }
+}
+.placeholder-img{
+  max-width: 100px;;
 }

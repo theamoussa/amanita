@@ -116,10 +116,10 @@ select {
     font-family: Montserrat, sans-serif;
 }
 .placeholder-img {
-    position:fixed;
-    top: 20px;
-    right: 20px;
-    width: 42px;
+  position: absolute;
+  top: 40px;
+  right: 30px;
+  width: 150px;
 }
 .hidden {
     display: none;
@@ -323,7 +323,13 @@ select {
     width: auto;
     height: auto;
   }
+  .placeholder-img{
+    position: absolute;
+    top: 30px;
+    max-width: 100px;;
+  }
 }
+  
 
 @keyframes slideIn {
   from {

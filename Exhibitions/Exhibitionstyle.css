@@ -91,14 +91,13 @@ select {
 
 
 .placeholder-img {
-  position:fixed;
-  top: 20px;
-  right: 20px;
-  width: 42px;
+  position: absolute;
+  top: 40px;
+  right: 30px;
+  width: 150px;
 }
-.hidden {
-  display: none;
-}
+
+
 
  /* Styles for slideshow container */
  .slideshow-container {
@@ -300,6 +299,11 @@ ul {
   .caption {
     font-size: 10px;
   }
+}
+.placeholder-img{
+  max-width: 100px;
+  top: 40px;
+  position: absolute;
 }
 
 @keyframes slideIn {

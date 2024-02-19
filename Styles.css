@@ -114,10 +114,10 @@ select {
     font-family: Montserrat, sans-serif;
 }
 .placeholder-img {
-    position:fixed;
-    top: 20px;
+    position:absolute;
+    top: 40px;
     right: 30px;
-    width: 42px;
+    width: 150px;
 }
 .hidden {
     display: none;
@@ -346,10 +346,8 @@ select {
   }
 
 .placeholder-img{
-    max-width: 25px;
-    transform: rotate(90deg);
-    margin-right: 50px;
-    margin-top: -40px;
+    max-width: 100px;
+    position: absolute;
   }
 
   .seperator {

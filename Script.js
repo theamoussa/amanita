@@ -52,3 +52,15 @@ document.getElementById('exhibitionForm').addEventListener('submit', function(ev
       window.location.href = selectedValue + ".html"; // Redirect to the selected path
     }
   });
+
+  window.addEventListener('scroll', function() {
+    var image = document.getElementById('.placeholder-img');
+    var content = document.querySelector('.content');
+    var threshold = content.getBoundingClientRect().bottom;
+    
+    if (window.scrollY > threshold) {
+      image.classList.add('hidden');
+    } else {
+      image.classList.remove('hidden');
+    }
+  });

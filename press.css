@@ -81,10 +81,10 @@
 }
 
 .placeholder-img {
-    position:fixed;
-    top: 20px;
-    right: 30px;
-    width: 42px;
+  position:absolute;
+  top: 40px;
+  right: 30px;
+  width: 150px;
 }
 
 /* Set default typography styles */
@@ -200,4 +200,8 @@
     width: auto;
     height: auto;
   }
+  .placeholder-img{
+    max-width: 100px;;
+  }
 }
+
