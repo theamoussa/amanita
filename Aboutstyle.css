@@ -112,6 +112,12 @@ hr {
 }
 
 @media screen and (max-width: 600px) {
+  .navbar a:not(:first-child) {display: none;}
+  .navbar a.icon {
+    float: right;
+    display: block;
+  }
+
   .hamburger-menu {
     padding-left: 0;
     padding-right: 0;
@@ -123,8 +129,7 @@ hr {
     font-size: 20px;
     width: auto;
     height: auto;
-  }
-}
+  }}
 
 /* Navbar */
 .hamburger-menu {
