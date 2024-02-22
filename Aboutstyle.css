@@ -134,7 +134,7 @@ hr {
 
 /* Navbar */
 .hamburger-menu {
-  background-color: #191919;
+  background-color: rgba(0, 0, 0, 0.9);
   position: fixed;
   width: 100%;
   left: 0;

@@ -26,7 +26,7 @@
 
 /* Navbar */
 .hamburger-menu {
-    background-color: #191919;
+    background-color: rgba(0, 0, 0, 0.9);
     position: fixed;
     width: 100%;
     left: 0;
@@ -188,6 +188,21 @@
 }
 
 @media screen and (max-width: 600px) {
+  .navbar a:not(:first-child) {display: none;}
+  .navbar a.icon {
+    float: right;
+    display: block;
+  }
+
+  #slideshow-image, #slideshow-image2 {
+    width: 100%;
+    height: auto;
+  }
+
+  .element-list {
+    width: 100%;
+  }
+
   .hamburger-menu {
     padding-left: 0;
     padding-right: 0;
@@ -201,7 +216,10 @@
     height: auto;
   }
   .placeholder-img{
+    position: absolute;
+    top: 30px;
     max-width: 100px;;
   }
 }
+  
 
