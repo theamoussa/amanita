@@ -90,9 +90,8 @@ select, .newsletter-input {
 
 
 .frontdoor {
-  /* position:absolute;
+  position: flex;
   top: 60px;
-  right: 150px; */
   height:500px;
 }
 
@@ -102,16 +101,11 @@ select, .newsletter-input {
 
 .text-container2 {
   font-family: "Montserrat", sans-serif;
-  width: 60%; 
+  width: 70%; 
   text-align: justify;
   font-size: 18px;
 }
 
-.frontdoor {
-  display: flex;
-  align-items: flex-start;
-  max-width: 100%;
-}
 
 hr {
   width: 100%;
