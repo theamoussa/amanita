@@ -41,11 +41,11 @@ a {
 }
 
 .seperator {
-    margin:40px;
+    margin:60px;
 }
 
 a:hover {
-    font-weight: bold;
+    text-decoration: underline;
 }
 
 
@@ -91,7 +91,7 @@ select, .newsletter-input {
 
 .frontdoor {
   position: flex;
-  padding-top: 75px;
+  padding-top: 65px;
   top: 60px;
   height:380px;
 }
