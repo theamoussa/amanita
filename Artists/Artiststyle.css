@@ -328,6 +328,22 @@ select {
     top: 30px;
     max-width: 100px;;
   }
+  .next {
+    right: 0;
+  }
+
+  .prev {
+    left: 0;
+  }
+  .slide-img {
+    display: flex;
+    justify-content: center;
+  }
+
+  .slide-img img {
+    width: 75%;
+    height: auto;
+  }
 }
   
 

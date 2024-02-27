@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Andrew Piedilato</title>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Artiststyle.css">
+  
+</head>
+<body>
+  <img src="../assets/burger-menu-svgrepo-com.svg" alt="hamburger icon" width="40px" onclick="toggleNavbar()" style="display: block;cursor: pointer;" />
+  <!-- hamburger menu -->
+  <nav class="hamburger-menu" id="hamburgerMenu">
+    <div class="cross-wrapper">
+      <svg onclick="toggleNavbar()" style="width: 30px;" viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg" fill="#fff">
+        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/>
+      </svg>     </div>
+      <a href="../Artists.html">Artists</a>
+      <a href="../exhibitions.html">Exhibitions</a>
+      <a href="../Press.html">Press</a>
+      <a href="../About.html">About</a>
+  </nav>
+      
+  <div class="content">
+    <a href="javascript:history.back()">
+      <img class="placeholder-img" src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Amanita%20new%20logo.png" alt="Placeholder Image">
+    </a>
+    <h1 style="margin-bottom: 10px;"> Andrew Piedilato </h1>
+    <h2 style="margin-bottom: 10px;"  >Biography </h2>
+  </div>
+
+    <div class="text-container"> 
+    <p>Andrew Piedilato was born in Athens, GA and now lives and works in Brooklyn, NY. He is the recipient of the 2015 Rosenthal Family Foundation Award in Painting. He also received the George Segal Grant in 2005, and was nominated for the Lambent Fellowship in 2006. Andrew received his MFA in Painting from Pratt Institute, NY and has a BFA in Painting from the University of Georgia, GA. Andrew has been in solo and group shows at The American Academy of Arts and Letters, New York; Patrick Painter, Los Angeles; HVCCA, English Kills, and Black & White Gallery, New York. A selection of public collections include Berkeley Art Museum, Fredrick R. Weisman Museum of Art, Flint Institute of Arts, and the Pacific Film Archive</p>
+    <p><a href=https://www.andypiedilato.com/ target="_blank">View artist's website</a>
+
+</div>
+
+    <h2 style="margin-bottom: 10px;"  >Solo Exhibitions </h2>
+
+    <p><a href="../Exhibitions/WakingLife.html">Nine Paintings (2009 - 2022) | New York, 2022</a>
+
+    <h2 style="margin-bottom: 10px;"  >Works </h2>
+    <div class="seperator"></div>
+
+<div class="slideshow-container">
+    <div class="slides">
+      <div class="slide">
+        <div class="slide-img">
+            <img height=600px src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/19.%20Andrew%20Piedilato/Artworks/Spazio%20Amanita-Andrew%20Piedilato-12%2C22_0060.jpg" alt="PIED.32.2013">
+        </div>
+        <div class="caption"><em>Sea Coffin</em>, 2013, Acrylic and Alkyd on Canvas, 117 x 141 1/2 in 297.2 x 359.4 cm</div>
+      </div>
+      <div class="slide">
+        <div class="slide-img">
+            <img height=600px src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/19.%20Andrew%20Piedilato/Artworks/Spazio%20Amanita-Andrew%20Piedilato-12%2C22_0037.jpg" alt="PIED.22.2015">
+        </div>
+        <div class="caption"><em>Wake</em>, 2015, Alkyd and acrylic on canvas, 96 x 109 1/2 in 243.8 x 278.1 cm</div>
+      </div>
+      <div class="slide">
+        <div class="slide-img">
+            <img height=600px src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/19.%20Andrew%20Piedilato/Artworks/Spazio%20Amanita-Andrew%20Piedilato-12%2C22_0053.jpg" alt="PIED.19.2015">
+        </div>
+        <div class="caption"><em>Pillars</em>, 2015, Alkyd and acrylic on canvas, 108 x 126 1/2 in 274.3 x 321.3 cm</div>
+      </div>
+      <div class="slide">
+        <div class="slide-img">
+            <img height=600px src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/19.%20Andrew%20Piedilato/Artworks/Spazio%20Amanita-Andrew%20Piedilato-12%2C22_0011.jpg" alt="PIED.26.2020">
+        </div>
+        <div class="caption"><em>Collapse</em>, 2020, Alkyd and acrylic on canvas, 80 x 92 in 203.2 x 233.7 cm</div>
+      </div>
+      <!-- Add more slides as needed -->
+    </div>
+    <!-- Navigation arrows -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    let slideIndex = 1;
+
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    function showSlides(n) {
+      let i;
+      let slides = document.getElementsByClassName("slide");
+
+      if (n > slides.length) {
+        slideIndex = 1;
+      }
+      if (n < 1) {
+        slideIndex = slides.length;
+      }
+
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+
+      slides[slideIndex - 1].style.display = "block";
+    }
+
+    showSlides(slideIndex);
+  </script>
+  <!-- for navbar -->
+  <script>
+    function toggleNavbar() {
+      var navbar = document.getElementById("hamburgerMenu");
+      navbar.classList.toggle("responsive");
+    }
+  </script>
+  <div class="seperator"></div>
+  <div class="seperator"></div>
+</body>
+</html>
