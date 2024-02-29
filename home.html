@@ -30,14 +30,14 @@
           <a href="About.html">About</a>
       </nav>
       <div>
-        <p style="margin-bottom: 130px;margin-top: 50px;" class="main-content-wrapper"> Amanita <br>
+        <p style="margin-bottom: 10px;margin-top: 50px;" class="main-content-wrapper"> Amanita <br>
           313 Bowery <br>
           New York, NY <br>
           10003 <br>
           <a href="mailto:info@spazioamanita.com">info@spazioamanita.com</a>
         </p>
       </div>
-      <div class="keepinline-wrapper">
+      <div class="keepinline-wrapper" style="margin-top:120px;">
         <div class="keepinline"> 
           <a class="keepinline-label" href="Artists.html">Artists</a>
           <form id="artistsForm" class="form-container filter-forms">
@@ -118,13 +118,35 @@
         <p class="keepinline">
           <a href="About.html">About</a>
         </p>
-        <div class="keepinline"> 
-          <p class="keepinline-label">Newsletter</p>
-          <form class="newsletter-form filter-forms">
-            <input id="newsletterform" type="email" class="newsletter-input" placeholder="Enter your email">
-            <button type="submit" class="inputbutton newsletter-submit">Subscribe</button>
-            <p id="thankYouMessage" class="hidden"> Thank you. You will receive a confirmation email shortly. </p>
-          </form>
+        <div class="seperator"></div> 
+        <p class="keepinline">
+          <a href="#" id="newsletterLink">Newsletter</a>
+        </p>
+        <div id="newsletterModal" class="modal">
+        <div class="modal-content">
+          <!-- Your Mailchimp form code goes here -->
+<div id="mc_embed_shell">
+  <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+    #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; width: px;}
+    /* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
+       We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+</style>
+<div id="mc_embed_signup">
+<form action="https://spazioamanita.us5.list-manage.com/subscribe/post?u=1367afd01085a830c3dffa3cb&amp;id=eec6c38cd6&amp;f_id=003eb7e6f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_self" novalidate="">
+    <div id="mc_embed_signup_scroll"><h3>Sign up to our newsletter</h3>
+        <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+        <div class="mc-field-group"><label for="mce-EMAIL">Email Address <span class="asterisk">*</span></label><input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required="" value=""></div><div class="mc-field-group"><label for="mce-FNAME">First Name </label><input type="text" name="FNAME" class=" text" id="mce-FNAME" value=""></div><div class="mc-field-group"><label for="mce-LNAME">Last Name </label><input type="text" name="LNAME" class=" text" id="mce-LNAME" value=""></div>
+    <div id="mce-responses" class="clear">
+        <div class="response" id="mce-error-response" style="display: none;"></div>
+        <div class="response" id="mce-success-response" style="display: none;"></div>
+    </div><div aria-hidden="true" style="position: absolute; left: -5000px;"><input type="text" name="b_1367afd01085a830c3dffa3cb_eec6c38cd6" tabindex="-1" value=""></div><div class="clear"><input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="Subscribe"></div>
+</div>
+</form>
+</div>
+</div>
+
+        </div>
         </div>
       </div>
 
@@ -136,6 +158,45 @@
       navbar.classList.toggle("responsive");
     }
   </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+    var newsletterLink = document.getElementById("newsletterLink");
+    var modal = document.getElementById("newsletterModal");
+    var subscribeForm = document.getElementById("mc-embedded-subscribe-form");
+
+    newsletterLink.addEventListener("click", function(event) {
+        event.preventDefault();
+        modal.style.display = "block";
+    });
+
+    // Close the modal if the user clicks outside of it or presses the escape key
+    window.addEventListener("click", function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    });
+
+    document.addEventListener("keydown", function(event) {
+        if (event.key === "Escape") {
+            modal.style.display = "none";
+        }
+    });
+
+    // Handle form submission
+    subscribeForm.addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        // Handle the form submission as needed
+        // For example, you can display a custom confirmation message in the modal
+        alert("Thank you for subscribing!");
+
+        // Optionally, close the modal after submission
+        modal.style.display = "none";
+    });
+});
+   
+    </script>
+    
 </div>
 </body>
 </html>
