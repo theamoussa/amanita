@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sweet Science</title>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="Exhibitionstyle.css">
+
+
+</head>
+<body>
+  <img src="../assets/burger-menu-svgrepo-com.svg" alt="hamburger icon" width="40px" onclick="toggleNavbar()" style="display: block;" />
+  <!-- hamburger menu -->
+  <nav class="hamburger-menu" id="hamburgerMenu">
+    <div class="cross-wrapper">
+      <svg onclick="toggleNavbar()" style="width: 30px;" viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg" fill="#fff">
+        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/>
+      </svg>      </div>
+      <a href="../Artists.html">Artists</a>
+      <a href="../exhibitions.html">Exhibitions</a>
+      <a href="../Press.html">Press</a>
+      <a href="../About.html">About</a>
+  </nav>
+
+    <div class="content">
+
+      <a href="../home.html">
+            <img class="placeholder-img" src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Amanita%20new%20logo.png" alt="Placeholder Image">
+          </a>
+
+        <h1 style="margin-bottom: 10px;">Sweet Science</h1>
+        <h3>Marco Scarpi</h3>
+
+        <p>Via dei Sassetti 1, Florence, Italy<br>
+            June 4, 2021 – August 31, 2021 <br>
+        </p>
+    </div>
+
+
+    <div class="seperator"></div>
+    <div class="seperator"></div>
+
+    <div class="slideshow-container">
+        <div class="slides">
+        <div class="slide">
+             <div class="slide-img">
+                 <img height=600px src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/2.%20Sweet%20Science/3.jpg" alt="SCAR.27.2021">
+            </div>
+        <div class="caption">Marco Scarpi, <em>Scazzottata I</em>, 2021, Acrylic and Marble Dust on Canvas, 74 3/4 x 51 1/8 in 190 x 130 cm	</div>
+        </div>
+        <div class="slide">
+            <div class="slide-img">
+                <img height=600px src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/2.%20Sweet%20Science/IMG_9521_1.jpg" alt="SS1">
+            </div>
+            <div class="caption"></div>
+          </div>
+         <div class="slide">
+            <div class="slide-img">
+                 <img height=600px src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/2.%20Sweet%20Science/4.jpg" alt="SCAR.32.2021">
+            </div>
+            <div class="caption">Marco Scarpi, <em>Fuoco in Cairo</em>, 2021, Acrylic and Marble Dust on Canvas, 74 3/4 x 51 1/8 in 190 x 130 cm	</div>
+            </div>
+          <div class="slide">
+            <div class="slide-img">
+                <img height=600px src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/2.%20Sweet%20Science/5.jpg" alt="SCAR.13.2021">
+            </div>
+            <div class="caption">Marco Scarpi, <em>Pedalo'</em>, 2021, Acrylic and Marble Dust on Canvas, 63 x 47 1/4 in 160 x 120 cm</div>
+          </div>
+          <div class="slide">
+            <div class="slide-img">
+                <img height=600px src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/2.%20Sweet%20Science/8.jpg" alt="SCAR.20.2021">
+            </div>
+            <div class="caption">Marco Scarpi, <em>Duello sui pirenei</em>, 2021, Acrylic and Marble Dust on Canvas, 63 x 47 1/4 in 160 x 120 cm	</div>
+          </div>
+            <div class="slide">
+                <div class="slide-img">
+                    <img height=600px src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/2.%20Sweet%20Science/12.jpg" alt="SCAR.19.2021">
+                </div>
+                <div class="caption">Marco Scarpi, <em>Untitled</em>, 2021, Acrylic and Marble Dust on Canvas, 63 x 47 1/4 in 160 x 120 cm</div>
+          </div>
+          <!-- Add more slides as needed -->
+        </div>
+        <!-- Navigation arrows -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+      </div>
+    
+      <script src="script.js"></script>
+      <script>
+        let slideIndex = 1;
+    
+        function plusSlides(n) {
+          showSlides(slideIndex += n);
+        }
+    
+        function showSlides(n) {
+          let i;
+          let slides = document.getElementsByClassName("slide");
+    
+          if (n > slides.length) {
+            slideIndex = 1;
+          }
+          if (n < 1) {
+            slideIndex = slides.length;
+          }
+    
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+          }
+    
+          slides[slideIndex - 1].style.display = "block";
+        }
+    
+        showSlides(slideIndex);
+      </script>
+<div class="seperator"></div>
+<div class="content">
+ <h2>Overview</h2>
+</div>
+    <div class="text-container"> 
+        <p><a href="../Artists/MarcoScarpi.html">Marco Scarpi</a>, born in Venice (1998) began painting in 2018 as he finalized his studies at LCC in London, graduating with a bachelor’s degree in illustration. Although having studied and refined his craft abroad, Scarpi’s most meaningful influence derives from Saverio Barbaro, a known Venetian painter who also held close ties to his family. The “boxer” series on view at Spazio Amanita has a somewhat improbable inception: Marco’s father, once owned a German Shepherd named Tyson, named after the prodigious pugilist from Brownsville, New York. Marco grew up listening to his father’s stories of Tyson, and as an ode to its life began painting boxers whilst simultaneously cultivating love for the “Sweet Science” a term associated with boxing. At first, the paintings closely resembled the physique, posture and mannerisms of Mike Tyson, often depicting the fighter in his trademark black trunks.
+        <br><br>Following much experimentation Marco discovered his medium: a combination of acrylic and marble dust; this revelation propelled the series into another direction and the compositions began to feature vases, flowers, set in arid and mountainous landscapes. With their newfound texture and life, the boxers adopted an arcadian sentiment -- reminiscent of Hellenistic Greece and the monstrously potent physiques painted by Michelangelo in the Sistine Chapel. Combative scenes in At Spazio Amanita in Florence, <em>Sweet Science</em> curated by Caio Twombly is on view throughout the summer of 2021.          
+        </p>
+<div class="seperator"></div>
+  <!-- for navbar -->
+  <script>
+    function toggleNavbar() {
+      var navbar = document.getElementById("hamburgerMenu");
+      navbar.classList.toggle("responsive");
+    }
+  </script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Post Fata Resurgo</title>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="Exhibitionstyle.css">
+
+
+</head>
+<body>
+  <img src="../assets/burger-menu-svgrepo-com.svg" alt="hamburger icon" width="40px" onclick="toggleNavbar()" style="display: block;" />
+  <!-- hamburger menu -->
+  <nav class="hamburger-menu" id="hamburgerMenu">
+    <div class="cross-wrapper">
+      <svg onclick="toggleNavbar()" style="width: 30px;" viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg" fill="#fff">
+        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/>
+      </svg>      </div>
+      <a href="../Artists.html">Artists</a>
+      <a href="../exhibitions.html">Exhibitions</a>
+      <a href="../Press.html">Press</a>
+      <a href="../About.html">About</a>
+  </nav>
+
+    <div class="content">
+
+      <a href="../home.html">
+            <img class="placeholder-img" src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Amanita%20new%20logo.png" alt="Placeholder Image">
+          </a>
+
+        <h1 style="margin-bottom: 10px;">Post Fata Resurgo</h1>
+        <h3></h3>
+
+        <p><br>Via dei Sassetti 1, Florence, Italy<br>
+            September 30, 2021 – November 28, 2021 <br>
+        </p>
+    </div>
+
+
+    <div class="seperator"></div>
+    <div class="seperator"></div>
+
+    <div class="slideshow-container">
+        <div class="slides">
+        <div class="slide">
+             <div class="slide-img">
+                 <img height=600px src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/3.%20Post%20Fata%20Resurgo/4.%20Photos/Photos/QUADRI7.jpg" alt="SAVI.1.2021">
+            </div>
+        <div class="caption">Jenny Saville, <em>Muse on Stool Study II</em>, 2021, Oil, pastel, and charcoal on canvas, 59 1/8 x 47 1/4 in 150 x 120 cm</div>
+        </div>
+        <div class="slide">
+            <div class="slide-img">
+                <img height=600px src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/3.%20Post%20Fata%20Resurgo/4.%20Photos/Exhibition%20Photos/WhatsApp%20Image%202021-10-11%20at%2014.09.56.png" alt="PFR1">
+            </div>
+            <div class="caption"></div>
+          </div>
+         <div class="slide">
+            <div class="slide-img">
+                 <img height=600px src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/3.%20Post%20Fata%20Resurgo/4.%20Photos/Photos/QUADRI12%20copy.jpg" alt="MORE.2.2021">
+            </div>
+            <div class="caption">Pietro Moretti, <em>La voce dell'asino</em>, 2021, Watercolor and Oil on Canvas, 15 3/4 x 23 5/8 in 40 x 60 cm</div>
+            </div>
+          <div class="slide">
+            <div class="slide-img">
+                <img height=600px src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/3.%20Post%20Fata%20Resurgo/4.%20Photos/Photos/IMG_5199.jpg" alt="BERE.3.2021">
+            </div>
+            <div class="caption">Eva Beresin, <em>Gucci Uffizi III</em>, 2021, Oil on Canvas, 63 x 47 1/4 in 160 x 120 cm</div>
+          </div>
+          <div class="slide">
+            <div class="slide-img">
+                <img height=600px src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/3.%20Post%20Fata%20Resurgo/4.%20Photos/Photos/IMG_5200.jpg" alt="BERE.4.2021">
+            </div>
+            <div class="caption">Eva Beresin, <em>Gucci Uffizi IV</em>, 2021, Oil on Canvas, 63 x 47 1/4 in 160 x 120 cm</div>
+          </div>
+            <div class="slide">
+                <div class="slide-img">
+                    <img height=600px src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/3.%20Post%20Fata%20Resurgo/4.%20Photos/Exhibition%20Photos/IMG_3121.jpg" alt="PFR2">
+                </div>
+                <div class="caption"></div>
+          </div>
+          <!-- Add more slides as needed -->
+        </div>
+        <!-- Navigation arrows -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+      </div>
+    
+      <script src="script.js"></script>
+      <script>
+        let slideIndex = 1;
+    
+        function plusSlides(n) {
+          showSlides(slideIndex += n);
+        }
+    
+        function showSlides(n) {
+          let i;
+          let slides = document.getElementsByClassName("slide");
+    
+          if (n > slides.length) {
+            slideIndex = 1;
+          }
+          if (n < 1) {
+            slideIndex = slides.length;
+          }
+    
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+          }
+    
+          slides[slideIndex - 1].style.display = "block";
+        }
+    
+        showSlides(slideIndex);
+      </script>
+<div class="seperator"></div>
+<div class="content">
+ <h2>Overview</h2>
+</div>
+    <div class="text-container"> 
+      <p><em>Post Fata Resurgo</em> is a group show curated by Caio Twombly featuring Jenny Saville and five emerging artists: <a href="../Artists/EvaBeresin.html">Eva Beresin</a>, Anders Lindseth, Pietro Moretti, <a href="../Artists/MarcoScarpi.html">Marco Scarpi</a> and <a href="../Artists/AdrianSchachter.html">Adrian Schachter</a>.
+      <br><br>On the 30th of September 2021, Spazio Amanita presented its third ever show in Florence at Via dei Sassetti n. 1; a multimedia pictorial exhibition entitled "Post Fata Resurgo".
+      <br>The exhibition was born from the gallery's vision of bringing international and national emerging artists to Florence in order to invigorate the world of contemporary art in the city. The show, curated by Caio Twombly, was conceived to coincide with the Jenny Saville’s retrospective at the Museo del Novecento. The great English painter was present with a piece on display along with five emerging artists from the international scene: Eva Beresin, Anders Lindseth, Pietro Moretti, Marco Scarpi and Adrian Schachter. The pictorial works on display were made with a spectrum of different materials, from the classic oil on canvas, to acrylics, watercolors, pastels and marble dust. Differentiated by the different techniques of each artist, these works are connected by their different subjects interpreted with irony and modern humor, which together create a sort of vortex that leads to another dimension in a tragi-comic renaissance.
+      </p>
+        
+<div class="seperator"></div>
+  <!-- for navbar -->
+  <script>
+    function toggleNavbar() {
+      var navbar = document.getElementById("hamburgerMenu");
+      navbar.classList.toggle("responsive");
+    }
+  </script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
