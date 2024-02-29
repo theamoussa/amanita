@@ -440,3 +440,7 @@ select {
   text-decoration: none;
   cursor: pointer;
 }
+
+#alertMessage {
+  font-size: 16px; /* Adjust the font size as needed */
+}
