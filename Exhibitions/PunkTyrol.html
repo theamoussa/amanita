@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Punk Tyröl</title>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="Exhibitionstyle.css">
+
+
+</head>
+<body>
+  <img src="../assets/burger-menu-svgrepo-com.svg" alt="hamburger icon" width="40px" onclick="toggleNavbar()" style="display: block;" />
+  <!-- hamburger menu -->
+  <nav class="hamburger-menu" id="hamburgerMenu">
+    <div class="cross-wrapper">
+      <svg onclick="toggleNavbar()" style="width: 30px;" viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg" fill="#fff">
+        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/>
+      </svg>      </div>
+      <a href="../Artists.html">Artists</a>
+      <a href="../exhibitions.html">Exhibitions</a>
+      <a href="../Press.html">Press</a>
+      <a href="../About.html">About</a>
+  </nav>
+
+    <div class="content">
+
+      <a href="../home.html">
+            <img class="placeholder-img" src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Amanita%20new%20logo.png" alt="Placeholder Image">
+          </a>
+
+        <h1 style="margin-bottom: 10px;">Punk Tyröl</h1>
+        <h3></h3>
+
+        <p>Bügl Suot 104, 7525 S-chanf<br>
+            March 3, 2022 – April 17, 2022 <br>
+        </p>
+    </div>
+
+
+    <div class="seperator"></div>
+    <div class="seperator"></div>
+
+    <div class="slideshow-container">
+        <div class="slides">
+        <div class="slide">
+             <div class="slide-img">
+                 <img height=600px src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/9.%20Punk%20Tyro%CC%88l/5.%20Photos/Installation%20Shots/AF_00989.jpg" alt="PT1">
+            </div>
+        <div class="caption"></div>
+        </div>
+        <div class="slide">
+            <div class="slide-img">
+                <img height=600px src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/9.%20Punk%20Tyro%CC%88l/5.%20Photos/Installation%20Shots/AF_00980.jpg" alt="PT2">
+            </div>
+            <div class="caption"></div>
+          </div>
+         <div class="slide">
+            <div class="slide-img">
+                 <img height=600px src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/9.%20Punk%20Tyro%CC%88l/5.%20Photos/Installation%20Shots/AF_01015.jpg" alt="PT3">
+            </div>
+            <div class="caption"></div>
+            </div>
+          <div class="slide">
+            <div class="slide-img">
+                <img height=600px src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/9.%20Punk%20Tyro%CC%88l/5.%20Photos/Installation%20Shots/DSC04040.jpg" alt="PT4">
+            </div>
+            <div class="caption"></div>
+          </div>
+          <div class="slide">
+            <div class="slide-img">
+                <img height=600px src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/9.%20Punk%20Tyro%CC%88l/5.%20Photos/Installation%20Shots/s-chanf_22.jpg" alt="PT5">
+            </div>
+            <div class="caption"></div>
+          </div>
+          <div class="slide">
+            <div class="slide-img">
+                <img height=600px src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/9.%20Punk%20Tyro%CC%88l/5.%20Photos/Installation%20Shots/AF_01023.jpg" alt="PT6">
+            </div>
+            <div class="caption"></div>
+          </div>
+            <div class="slide">
+                <div class="slide-img">
+                    <img height=600px src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/9.%20Punk%20Tyro%CC%88l/5.%20Photos/Installation%20Shots/s-chanf_23.jpg" alt="PT7">
+                </div>
+                <div class="caption"></div>
+          </div>
+          <!-- Add more slides as needed -->
+        </div>
+        <!-- Navigation arrows -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+      </div>
+    
+      <script src="script.js"></script>
+      <script>
+        let slideIndex = 1;
+    
+        function plusSlides(n) {
+          showSlides(slideIndex += n);
+        }
+    
+        function showSlides(n) {
+          let i;
+          let slides = document.getElementsByClassName("slide");
+    
+          if (n > slides.length) {
+            slideIndex = 1;
+          }
+          if (n < 1) {
+            slideIndex = slides.length;
+          }
+    
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+          }
+    
+          slides[slideIndex - 1].style.display = "block";
+        }
+    
+        showSlides(slideIndex);
+      </script>
+<div class="seperator"></div>
+<div class="content">
+ <h2>Overview</h2>
+</div>
+    <div class="text-container"> 
+      <p style="color: gray;">
+        “Strano come il rombo degli aerei da caccia un tempo
+        <br>Stonasse con il ritmo delle piante al sole sui balconi
+        <br>E poi silenzio e poi, lontano
+        <br>Il tuono dei cannoni a freddo
+        <br>E dalle radio dei segnali in codice
+        <br>Un giorno in cielo, fuochi di Bengala
+        <br>La pace ritornò
+        <br>Ma il re del mondo
+        <br>Ci tiene prigioniero il cuore
+        <br>Nei vestiti bianchi a ruota echi delle danze sufi
+        <br>Nelle metro giapponesi oggi macchine d'ossigeno
+        <br>Più diventa tutto inutile più credi che sia vero
+        <br>E il giorno della fine non ti servirà l'inglese
+        <br>E sulle biciclette verso casa
+        <br>La vita ci sfiorò
+        <br>Ma il re del mondo
+        <br>Ci tiene prigioniero il cuore”
+        <br>© Il Re Del Mondo, Franco Battiato
+      </p>
+        <p>
+        Amanita presents <em>Punk Tyröl</em> opening March 3rd in S-chanf, a group show including works by <b>Eva Beresin, Lula Broglio, Angela Jimenez, Leonardo Meoni, Ilona Rich, Marco Scarpi, Adrian Schachter</b> and <b>Sage Schachter</b>. The show will take place at theStable, Bügl Suot 104, 7525 S-chanf.
+        <br><br>
+        Franco Battiato in his masterful song <em>Il Re del Mondo</em> (The King of the World) – titled after the French intellectual Rene Guenon’s book – once said: “E il giorno della fine non ti servirà l’inglese.” This loosely translates to, “the day of the end you won’t need English.” The song is a sardonic commentary on the state of humanity in a tragicomic world. Battiato describes warfare, destruction and human egocentricity, mocking our obtusity, yet celebrating our abundance of culture and its sacredness. When catastrophic events take place, they seem to dwarf all other hardships one has faced, to the point that all past troubles appear meaningless. As we come into this world we are encouraged to learn English if we wish to live broadly ambitious lives. English is an instrument we use for life exploration – networking, socializing and learning – all columnal components for a complete journey. Battiato claims, the day of the end we won’t need the English we have learnt as we have spent our whole lives in blind pursuit, disregarding primordial instincts and in consequence ignoring our own spirit. The day of the end, we’ll have English, but it still fails to prepare us for the ultimatum. In a punk world, which is unwilling to learn and entirely driven by emancipation, we cast language aside and embrace the absurdity of what is to come.
+         <br><br>
+        “What we call reality is in fact nothing more than a culturally sanctioned and linguistically reinforced hallucination.” Terence McKenna
+        </p>
+        <p><a href="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/9.%20Punk%20Tyro%CC%88l/Punk%20Tyro%CC%88l_Checklist.pdf" target="_blank"><em>Download list of works</em></a></p>
+<div class="seperator"></div>
+  <!-- for navbar -->
+  <script>
+    function toggleNavbar() {
+      var navbar = document.getElementById("hamburgerMenu");
+      navbar.classList.toggle("responsive");
+    }
+  </script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+

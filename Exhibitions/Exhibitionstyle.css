@@ -305,6 +305,9 @@ ul {
     top: 40px;
     position: absolute;
   }
+  .slideshow-container {
+    align-content: center;
+  }
 }
 
 @keyframes slideIn {
