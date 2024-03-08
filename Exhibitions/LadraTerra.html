@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ladra Terra</title>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="Exhibitionstyle.css">
+
+
+</head>
+<body>
+  <img src="../assets/burger-menu-svgrepo-com.svg" alt="hamburger icon" width="40px" onclick="toggleNavbar()" style="display: block;" />
+  <!-- hamburger menu -->
+  <nav class="hamburger-menu" id="hamburgerMenu">
+    <div class="cross-wrapper">
+      <svg onclick="toggleNavbar()" style="width: 30px;" viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg" fill="#fff">
+        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/>
+      </svg>      </div>
+      <a href="../Artists.html">Artists</a>
+      <a href="../exhibitions.html">Exhibitions</a>
+      <a href="../Press.html">Press</a>
+      <a href="../About.html">About</a>
+  </nav>
+
+    <div class="content">
+
+      <a href="../home.html">
+            <img class="placeholder-img" src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Amanita%20new%20logo.png" alt="Placeholder Image">
+          </a>
+
+        <h1 style="margin-bottom: 10px;">Ladra Terra</h1>
+        <h3>Francesco Cima</h3>
+
+        <p>V2712 S. La Cienega Blvd, Los Angeles, CA 90045
+          <br>February 15, 2023 – March 5, 2023
+        </p>
+    </div>
+
+
+    <div class="seperator"></div>
+    <div class="seperator"></div>
+
+    <div class="slideshow-container">
+        <div class="slides">
+        <div class="slide">
+             <div class="slide-img">
+                 <img height=600px src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/23.%20Ladra%20Terra/Images/20230212_%20Amanita_58.jpg" alt="CIMA.16.2022">
+            </div>
+        <div class="caption">Francesco Cima, <em>Ladra Terra</em>, 2022, Oil on Canvas, 94 1/2 x 82 5/8 in 240 x 210 cm</div>
+        </div>
+        <div class="slide">
+            <div class="slide-img">
+                <img height=600px src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/23.%20Ladra%20Terra/Images/20230212_%20Amanita_08.jpg" alt="LT1">
+            </div>
+            <div class="caption"></div>
+          </div>
+         <div class="slide">
+            <div class="slide-img">
+                 <img height=600px src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/23.%20Ladra%20Terra/Images/20230212_%20Amanita_59.jpg" alt="CIMA.10.2022">
+            </div>
+            <div class="caption">Francesco Cima, <em>Eccolo</em>, 2022, Oil on Canvas, 70 7/8 x 55 1/8 in 180 x 140 cm</div>
+            </div>
+          <div class="slide">
+            <div class="slide-img">
+                <img height=600px src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/23.%20Ladra%20Terra/Images/20230212_%20Amanita_14.jpg" alt="CIMA.12.2022">
+            </div>
+            <div class="caption">Francesco Cima, <em>Rosso di Sera</em>, 2022, Oil on Canvas, 70 7/8 x 55 1/8 in 180 x 140 cm</div>
+          </div>
+          <div class="slide">
+            <div class="slide-img">
+                <img height=600px src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/23.%20Ladra%20Terra/Images/20230212_%20Amanita_10.jpg" alt="LT3">
+            </div>
+            <div class="caption"></div>
+          </div>
+            <div class="slide">
+                <div class="slide-img">
+                    <img height=600px src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/23.%20Ladra%20Terra/Images/20230212_%20Amanita_02.jpg" alt="CIMA.14.2022">
+                </div>
+                <div class="caption">Francesco Cima, <em>Guarda Dove Cammini</em>, 2022, Oil on Canvas, 78 3/4 x 39 3/8 in 200 x 100 cm</div>
+          </div>
+          <!-- Add more slides as needed -->
+        </div>
+        <!-- Navigation arrows -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+      </div>
+    
+      <script src="script.js"></script>
+      <script>
+        let slideIndex = 1;
+    
+        function plusSlides(n) {
+          showSlides(slideIndex += n);
+        }
+    
+        function showSlides(n) {
+          let i;
+          let slides = document.getElementsByClassName("slide");
+    
+          if (n > slides.length) {
+            slideIndex = 1;
+          }
+          if (n < 1) {
+            slideIndex = slides.length;
+          }
+    
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+          }
+    
+          slides[slideIndex - 1].style.display = "block";
+        }
+    
+        showSlides(slideIndex);
+      </script>
+<div class="seperator"></div>
+<div class="content">
+ <h2>Overview</h2>
+</div>
+    <div class="text-container"> 
+        <p>Amanita presents <em>Ladra Terra</em>, <a href="../Artists/FrancescoCima.html">Francesco Cima</a>’s first career  solo exhibition. Francesco Cima (b. 1990, Pietrasanta) graduated with a degree in visual arts at the Academy  of Fine Arts in Venice in 2019. He currently lives and works in Venice, Italy.
+            <br> <br>
+           <em>The following is a reflection by Francesco’s partner, Beatrice:</em>
+             <br> <br>
+           All at once, I saw the sea and the mountains together, the most gentle hills, steep cliffs  and in the midst of it all, a house covered in bougainvillea.
+             <br> <br>
+           Within these flowery walls, the story of the painter from Stiava<sup>1</sup> begins in a place so  abundant and fertile that the joys of life and the sense of respect for its beauties are taught through  osmosis. Stiava, a basin that is the epicenter of breathtaking panoramas, so close yet so distant in the imagination, bewilders those who are less accustomed to its sights. Indeed, the  tiny town and its surroundings offer such fertile vistas that it is almost impossible not to be touched  by its magic. One feels compelled to move according to the rhythm of the seasons, adhering to a comfortable routine in which both the sun and the moon, and the rain and the snow are equally celebrated. Nature here, more than anywhere else, seems to take charge of cultivating its inhabitants,  teaching those who grow in its arms to exist symbiotically with its fruitful realm, instilling in each  of them ancient values useful for leading prosperous lives. As much as this kind of  interdependence is felt and revered collectively, some people more than others are affected by a  connection to mother earth and her wonders; this is the case with Francesco Cima, who being an attentive observer, decided to make himself an interpreter of this relationship  by translating the language of the blades of grass and the valleys into a form accessible to all. 
+            <br> <br>
+           For months, I have been trying to grasp the core of his poetry. The answer came to me in  a distant summer dawn as the waves lapped against the rocks below. While the Venice Lido<sup>2</sup> and  its beach lit up at the first light of day, Francesco confided in me that from time to time he  fantasized what was going on inside the most distant houses, dots eaten away by the horizon.  The new day unveiled buildings along the coast all around us, and for a moment I felt myself  participating in his nostalgic imagery painted with words. An illuminated kitchen at  sunset, the glow of a ship waiting to enter the port: these are some of the elements that motivate  Francesco's research, aimed at overcoming distance - a supreme attempt to give form to the  melancholy of hidden things.
+             <br> <br>
+           Venice represents another important chapter for Francesco. Thanks to the stagnant water  and sparse, almost absent vegetation, its inhabitants spend their time living and nurturing the  same dream. Here, compared to Tuscany, the passing of the seasons can be sensed only through  the change in temperatures and the hues of the sky when not stifled by the narrow <em>calli</em><sup> 3</sup>. Even the geographical location creates distance within the real world: we know that the  mainland exists, somewhere, disconnected from our lost paradise of bridges and tourists. It is in  this world of cyclical times that Francesco's canvases find space for reworking the panoramas of  his home, of his heart-thieving land, whose price for countless gifts is nostalgia. 
+             <br> <br>
+           During his Venetian meditation, the panoramas emerge from the shadows, filtered by  memory and become something else: visions which start from a tangible setting and are  transformed into new places. This occurs from the addition of very precise imaginative details,  born from patches of color and lines that are formed through automatic gesture that become defined  pictorial elements only later in the process. It is through these details that a gentle restlessness  intrinsic to the <em>unknown</em> is satiated and healed, mended by an inner vision. Every action respects  a procedure in which composition is favored and balance is pursued, whereby every brushstroke  is intended to achieve formal perfection. As a result, palpable and layered environments are born, so convincing that we are tempted to step forward and explore them not just with our eyes. 
+             <br> <br>
+           The only perceivable movement in the paintings are those of the sun and the wind. Gusts of wind lashing rocks are the quiet manifestations of a finished product, which conceal within it as many decisions as the layers of paint beneath. Indeed there is another kind of movement: that of the creative process. The different phases that make up the process are  repeated several times and each step is characterized by a choice, selecting the elements that  will be sacrificed and those that instead, passing the test of grace, will surface above the soft  ground of color. <em>Terra Ladra</em>, for example, originally represented a stormy, sultry heath. Day after  day the work transformed into an idyll. From a sunbaked field, the brushwood grew into trees and the  horizon line rose, setting up the mirage of a destination beyond the hills. The result is a peaceful  landscape, developing as though a time-lapse of an existing scene. 
+             <br> <br>
+           Displacing Francesco from his favorite places is like uprooting a tree with a deep  foundation. For him to adapt to new locations, he must find the right terrain. His residency in  Bassano in Teverina<sup>4</sup>, where these paintings were made, reconciled this perfectly. There,  Francesco confronted isolation and few distractions between a glass of red wine and the cold of winter exorcized by the fireplace. In the studio overlooking the Latium<sup>5</sup> hills, the paintings, <em>Plans for  the Winter, Rosso di Sera</em> and <em>Karakorum</em> were born. In these works, distinct qualities regarding process and composition become evident. Francesco developed a technique of scratching the  painted surface by which the removal of paint achieves more than its previous application. Additionally, a marked element of verticality can be found in the canvases, likely a result of the residency’s view  that develops distinctively in an upward manner. 
+             <br> <br>
+           One day, after modifying an element in the work, Cima concluded "Painting is like life: it changes.”
+            <br> <br>
+           — Beatrice Timillero
+            <br> 
+            <hr>
+           [1]  Stiava is an Italian village in Massarosa, Lucca in the Region of Tuscany.
+            <br>[2] The Lido, or Venice Lido, is an 11-kilometre-long barrier island in the Venetian Lagoon, northern Italy
+            <br>[3]  Calli, are the narrow streets of venice
+            <br>[4] Bassano in Teverina is a commune (municipality) in the Province of Viterbo in the Italian region Latium.
+            <br>[5] Latium (In Italian, Lazio) is the region of central western Italy in which the city of Rome was founded and grew to be the capital city of the Roman Empire.
+           </p>
+           
+<div class="seperator"></div>
+  <!-- for navbar -->
+  <script>
+    function toggleNavbar() {
+      var navbar = document.getElementById("hamburgerMenu");
+      navbar.classList.toggle("responsive");
+    }
+  </script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Everyone is a Genius</title>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="Exhibitionstyle.css">
+
+
+</head>
+<body>
+  <img src="../assets/burger-menu-svgrepo-com.svg" alt="hamburger icon" width="40px" onclick="toggleNavbar()" style="display: block;" />
+  <!-- hamburger menu -->
+  <nav class="hamburger-menu" id="hamburgerMenu">
+    <div class="cross-wrapper">
+      <svg onclick="toggleNavbar()" style="width: 30px;" viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg" fill="#fff">
+        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/>
+      </svg>      </div>
+      <a href="../Artists.html">Artists</a>
+      <a href="../exhibitions.html">Exhibitions</a>
+      <a href="../Press.html">Press</a>
+      <a href="../About.html">About</a>
+  </nav>
+
+    <div class="content">
+
+      <a href="../home.html">
+            <img class="placeholder-img" src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Amanita%20new%20logo.png" alt="Placeholder Image">
+          </a>
+
+        <h1 style="margin-bottom: 10px;">Everyone is a Genius</h1>
+        <h3>Ben Werther</h3>
+
+        <p>313 Bowery, New York, NY<br>
+            January 26, 2023 - March 4, 2023 <br>
+        </p>
+    </div>
+
+
+    <div class="seperator"></div>
+    <div class="seperator"></div>
+
+    <div class="slideshow-container">
+        <div class="slides">
+            <div class="slide">
+                <div class="slide-img">
+                    <img height=600px src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/21.%20Ben%20Werther/Images/Spazio%20Amanita-Ben%20Werther-Everyone%20is%20a%20Genius-01%2C23_0031.jpg" alt="WERT.15.2021">
+                </div>
+                <div class="caption">Ben Werther, <em>XOXO</em>, 2023, Crayon on Unprimed Canvas, 62 x 48 in 157.5 x 121.9 cm</div>
+              </div>
+        <div class="slide">
+             <div class="slide-img">
+                 <img height=600px src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/21.%20Ben%20Werther/Images/Spazio%20Amanita-Ben%20Werther-Everyone%20is%20a%20Genius-01%2C23_0120.jpg" alt="EG1">
+            </div>
+        <div class="caption"></div>
+        </div>
+         <div class="slide">
+            <div class="slide-img">
+                 <img height=600px src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/21.%20Ben%20Werther/Images/Spazio%20Amanita-Ben%20Werther-Everyone%20is%20a%20Genius-01%2C23_0029.jpg" alt="WERT.31.2023">
+            </div>
+            <div class="caption">Ben Werther, <em>Grumpy</em>, 2023, Crayon on unprimed Canvas, 62 x 48 in 157.5 x 121.9 cm</div>
+            </div>
+          <div class="slide">
+            <div class="slide-img">
+                <img height=600px src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/21.%20Ben%20Werther/Images/Spazio%20Amanita-Ben%20Werther-Everyone%20is%20a%20Genius-01%2C23_0021.jpg" alt="	WERT.14.2023">
+            </div>
+            <div class="caption">Ben Werther, <em>Clowns</em>, 2023, Crayon on Unprimed Canvas, 62 x 48 in 157.5 x 121.9 cm</div>
+          </div>
+          <div class="slide">
+            <div class="slide-img">
+                <img height=600px src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/21.%20Ben%20Werther/Images/Spazio%20Amanita-Ben%20Werther-Everyone%20is%20a%20Genius-01%2C23_0129.jpg" alt="EG2">
+            </div>
+            <div class="caption"></div>
+          </div>
+            <div class="slide">
+                <div class="slide-img">
+                    <img height=600px src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/21.%20Ben%20Werther/Images/Spazio%20Amanita-Ben%20Werther-Everyone%20is%20a%20Genius-01%2C23_0036.jpg" alt="WERT.5.2023">
+                </div>
+                <div class="caption">Ben Werther, <em>Spirit</em>, 2023, Crayon on Unprimed Canvas, 62 x 48 in 157.5 x 121.9 cm</div>
+          </div>
+          <!-- Add more slides as needed -->
+        </div>
+        <!-- Navigation arrows -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+      </div>
+    
+      <script src="script.js"></script>
+      <script>
+        let slideIndex = 1;
+    
+        function plusSlides(n) {
+          showSlides(slideIndex += n);
+        }
+    
+        function showSlides(n) {
+          let i;
+          let slides = document.getElementsByClassName("slide");
+    
+          if (n > slides.length) {
+            slideIndex = 1;
+          }
+          if (n < 1) {
+            slideIndex = slides.length;
+          }
+    
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+          }
+    
+          slides[slideIndex - 1].style.display = "block";
+        }
+    
+        showSlides(slideIndex);
+      </script>
+<div class="seperator"></div>
+<div class="content">
+ <h2>Overview</h2>
+</div>
+    <div class="text-container"> 
+        <p>Amanita is presents <em>Everyone is a Genius</em>, <a href="../Artists/BenWerther.html">Ben Werther</a>’s (b.1998) first solo exhibition with the gallery. Ben Werther was born in Nashville, Tennessee. He graduated from Cooper Union in 2020 with a BFA and lives and works in New York City.
+            <br><br><em>
+           “Everyone is a Genius” began when I started collecting notes that had been left on cars as a result of parking mishaps. Oftentimes these notes say things like “nice parking asshole”. As I amassed a collection, I became most interested in the notes that had specific references to contemporary media embedded in their narratives (such as a drawing of Stewie from Family Guy, Tinkerbell, a quote from the movie Taken, etc). I wanted to investigate whether or not the notes I had collected could become indexical of social anthropology in conjunction with one another. When I started working with the notes as art objects, I began by blowing them up and printing them out at kinkos. I then traced the blow ups into large pieces of foam using a soldering iron. I created rubbings of these engravings with crayons on unstretched canvas which I then stretched as paintings after the fact.
+           <br><br> 
+           For me, rubbings are memento and the process of creating one is directly linked to a form of memorialization. Creating a rubbing of a tombstone for example, is something one could do to continue the process of remembrance. I felt that placing the notes into the context of the rubbing was a critical perspective on the increasing loss of cultural tactility in contemporary media. I feel that the majority of contemporary media is presented to us in virtual and ‘not real’ spaces on social media, streaming services and the internet more generally. Given this increasingly pervasive relationship to contemporary media, one could begin to fetishize the experience of the analog as a sort of memento of the cultural transition into virtual spaces. It is through this lens that I am interested in the notes as the result of social interactions that manifest as physical ephemera. The notes become a sort of analog medium for the everyman to react to and express grievances over spatial relationships. Despite the fact that the notes are negative in tone, their tactility is important because it is an indicator of how our physical relationship to one another, and the spaces we inhabit, persists.
+           </em> <br><br>
+           — Ben Werther
+           </p>
+    </div>         
+<div class="seperator"></div>
+<h2>Press</h2>
+</div>
+    <div class="text-container"> 
+        <p><a href="https://www.artnews.com/art-news/news/hoard-ben-werther-collecting-habits-spazio-amanita-1234655907/" target="_blank">Artnews - Hoard: <em>How Artist Ben Werther’s collecting habits have influenced his work</em></a></p>
+           
+<div class="seperator"></div>
+        </div>
+  <!-- for navbar -->
+  <script>
+    function toggleNavbar() {
+      var navbar = document.getElementById("hamburgerMenu");
+      navbar.classList.toggle("responsive");
+    }
+  </script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+

@@ -153,7 +153,7 @@ select {
   right: 0;
   text-align: center;
   color: black;
-  font-size: 15px;
+  font-size: clamp(10px, 0.8vw, 14px);
 }
 
 body {
