@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Tutto</title>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="Exhibitionstyle.css">
+
+
+</head>
+<body>
+  <img src="../assets/burger-menu-svgrepo-com.svg" alt="hamburger icon" width="40px" onclick="toggleNavbar()" style="display: block;" />
+  <!-- hamburger menu -->
+  <nav class="hamburger-menu" id="hamburgerMenu">
+    <div class="cross-wrapper">
+      <svg onclick="toggleNavbar()" style="width: 30px;" viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg" fill="#fff">
+        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/>
+      </svg>      </div>
+      <a href="../Artists.html">Artists</a>
+      <a href="../exhibitions.html">Exhibitions</a>
+      <a href="../Press.html">Press</a>
+      <a href="../About.html">About</a>
+  </nav>
+
+    <div class="content">
+
+      <a href="../home.html">
+            <img class="placeholder-img" src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Amanita%20new%20logo.png" alt="Placeholder Image">
+          </a>
+
+        <h1 style="margin-bottom: 10px;">Tutto</h1>
+        <h3>Monsieur Zohore</h3>
+
+        <p>Via dei Sassetti 1, Florence, Italy<br>
+            June 30, 2023 - August 26, 2023 <br>
+        </p>
+    </div>
+
+
+    <div class="seperator"></div>
+    <div class="seperator"></div>
+
+    <div class="slideshow-container">
+        <div class="slides">
+        <div class="slide">
+             <div class="slide-img">
+                 <img height=600px src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/17.%20Monsieur%20Zohore/Monsieur%20Zohore%20Images/spazio-amanita-monsieur-zohore-tutto-230629-ph-stefano-casati-07069.jpg" alt="TT1">
+            </div>
+        <div class="caption"></div>
+        </div>
+        <div class="slide">
+            <div class="slide-img">
+                <img height=600px src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/17.%20Monsieur%20Zohore/Monsieur%20Zohore%20Images/spazio-amanita-monsieur-zohore-tutto-230629-ph-stefano-casati-07645.jpg" alt="TT2">
+            </div>
+            <div class="caption"></div>
+          </div>
+         <div class="slide">
+            <div class="slide-img">
+                 <img height=600px src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/17.%20Monsieur%20Zohore/Monsieur%20Zohore%20Images/spazio-amanita-monsieur-zohore-tutto-230629-ph-stefano-casati-07070.jpg" alt="ZOHO.3.2023">
+            </div>
+            <div class="caption">Monsieur Zohore, <em>...With Love (Opening)</em>, 2023, Mixed media on canvas, 153 9/16 x 110 1/4 in, 390 x 280 cm	</div>
+            </div>
+          <div class="slide">
+            <div class="slide-img">
+                <img height=600px src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/17.%20Monsieur%20Zohore/Monsieur%20Zohore%20Images/spazio-amanita-monsieur-zohore-tutto-230629-ph-stefano-casati-07020.jpg" alt="TT3">
+            </div>
+            <div class="caption"></div>
+          </div>
+          <div class="slide">
+            <div class="slide-img">
+                <img height=600px src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/17.%20Monsieur%20Zohore/Monsieur%20Zohore%20Images/spazio-amanita-monsieur-zohore-tutto-230629-ph-stefano-casati-06980.jpg" alt="ZOHO.15.2023">
+            </div>
+            <div class="caption">Monsieur Zohore, <em>Liabilities</em>, 2023, Mixed media on canvas, 102 3/8 x 70 7/8 in 260 x 180 cm</div>
+          </div>
+            <div class="slide">
+                <div class="slide-img">
+                    <img height=600px src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/17.%20Monsieur%20Zohore/Monsieur%20Zohore%20Images/spazio-amanita-monsieur-zohore-tutto-230629-ph-stefano-casati-06992.jpg" alt="ZOHO.17.2023">
+                </div>
+                <div class="caption">Monsieur Zohore, <em>Three Generations of Italian Americans</em>, 2023, Mixed media on canvas, 106 5/16 x 23 5/8 in 270 x 60 cm</div>
+          </div>
+          <!-- Add more slides as needed -->
+        </div>
+        <!-- Navigation arrows -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+      </div>
+    
+      <script src="script.js"></script>
+      <script>
+        let slideIndex = 1;
+    
+        function plusSlides(n) {
+          showSlides(slideIndex += n);
+        }
+    
+        function showSlides(n) {
+          let i;
+          let slides = document.getElementsByClassName("slide");
+    
+          if (n > slides.length) {
+            slideIndex = 1;
+          }
+          if (n < 1) {
+            slideIndex = slides.length;
+          }
+    
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+          }
+    
+          slides[slideIndex - 1].style.display = "block";
+        }
+    
+        showSlides(slideIndex);
+      </script>
+<div class="seperator"></div>
+<div class="content">
+ <h2>Overview</h2>
+</div>
+    <div class="text-container"> 
+        <p>For the artist’s debut solo show in Europe, as well as his first with the gallery, Monsieur Zohore presents <em>Tutto</em>, an installation of ten new, large-scale works that at once celebrate and interrogate Italian cultural icons drawn from the Renaissance to present day. For Amanita’s white, studio-like space strategically located above the former theater-turned-cinema Odeon and nestled amidst the luxurious artistic and commercial heart of Florence’s <em>centro storico</em>, the artist-turned-<em>arlecchino</em> has planned a lively group performance that re-enacts the commedia dell’arte tradition as part of the opening events scheduled for Friday, June 30, 18.00-20.00.
+            <br> <br>
+           For his latest series of signature “paper-towel” works—larger and more sculptural than earlier pieces—the artist has orchestrated a tour-de-force that juxtaposes recognizable iconic Italian figures drawn from Italy’s artistic, cinematic, political, and religious arsenal of cultural clowns and heroes. The artist’s chosen cast of characters that decorate his peculiar, collage-like surfaces includes not only images created by fourteenth- and fifteenth-century beloved painters and sculptors such as Giotto, Paolo Ucello, Raphael, and Michelangelo but also their belated progeny in the form of more controversial personalities, like Dario Argento and Pierpaolo Pasolini, who, fifty years ago in the 1970s, likewise articulated their own censorious cinematic critiques of Italy’s picture-perfect culture through works like <em>Sospiria</em> (1977) and <em>The Decameron</em> (1971), respectively. Just as Pasolini echoed Boccaccio’s own comedic literary exploration of ladies-in-love—including nuns who managed to “miraculously” bed their gardener in the first tale of the third day of <em>The Decameron</em>—Monsieur Zohore cleverly resurrects Italy’s beatified artistic ghosts—Giotto, Michelangelo, Raphael, and more—while perhaps tainting them with spectral reminders of more recent figures who reflect Italy’s current condition. In attendance too are playboy industrialist Lapo Edovard Elkann, recently deceased media tycoon and political personality Silvio Berlusconi, along with, on a lighter note, Andrea Boccelli, nuns playing soccer, and beloved Pope Francis. As such, MZ earns a spot for himself amongst artist-pranksters like Maurizio Cattelan—invited in by the pigeons perched on some of the works—Francesco Vezzoli, and even Jeff Koons (a fellow alumnus of the Maryland Institute College of Art where Monsieur Zohore earned his MFA).
+            <br><br>
+           Using a painterly technique that incorporates printing via a unique archival process onto paper towels that are then sutured to frames and configured into sculptural installations that at once allude to fragmentary altarpieces and stagesets, Monsieur Zohore injects life into this historical city by exposing (and conflating) the farcical and tragic sides of one of the most acclaimed cultural cornerstones of the Western World. Indeed, the artist underscores the irony of Italy as a repository of high and low culture, artistic majesty and commercial crooks by engaging a unique medium that is the environmentally flawed, indeed the very household tool used to wipe away every type of superficial dirt and detritus before being quickly discarded—and here the show’s title takes on force via the popular paper towel brand Tutto that promises to “do it all”. In the city that is home to art and architectural wonders that include Michelangelo’s <em>David</em>, Botticelli’s <em>Birth of Venus</em>, and Lorenzo Ghiberti’s Baptistry doors, Monsieur Zohore fulfills the gallery’s mission of injecting contemporary voices into a city whose cultural scene is dominated by the cult of its Renaissance luminaries, heroes playfully asking rigorous questions about the ramifications of a sexy society whose players have contributed to the country’s recent history. As if shrugging their own shoulders to say, “Well, what can be done,” these silly yet sardonic pictorial vignettes include quiet, reflective gray hues that await temporary activation by a camera flash, suddenly able to perform their own everyday dance moves to shake things up, echoing the image of a disco ball in <em>Please Baby, No More Parties in <s>LA</s> Firenze</em>, animated, if for an instant, like Pinocchio, another deeply flawed, if adored, Italian fairytale. Monsieur Zohore’s work will be on view through August 2023.
+            <br><br>
+           —Jennie Hirsh, PhD  <br><br>
+           <hr>
+           <br>
+           <b>Monsieur Zohore</b> (b. 1993, Potomac, MD) addresses the consumption and digestion of culture through the conflation of domestic quotidian labor and art production. Through performance, video, installation, and sculpture, his practices explore queer history alongside his Ivorian-American heritage through a multi-faceted lens of humor, economics, art history, and labor. Monsieur Zohore received an MFA from the Maryland Institute College of Art in 2020 and a BFA from The Cooper Union for the Advancement of Science and Art in New York in 2015. Zohore has exhibited his works at venues such as The Phillips Collection (D.C.), Jule Collins Smith Museum (Auburn), Art021 (Shanghai), Paris Internationale (Paris), Art Athina (Athens), Sculpture Center (New York), The Clarington Art Center (Canada), Pace (New York), Spurs (Beijing), Tick Tack (Belgium), The Baker Museum (Florida), Socrates Sculpture Park (New York), The Baltimore Museum of Art (Baltimore), Von Ammon Co (D.C.), The Washington Project for the Arts (D.C.), and The Columbus Museum (Ohio). His work is in the collections of the Baltimore Museum of Art, Baltimore, MD; The Bunker Collection, West Palm Beach, FL; Brookfield Collection, New York, NY; The Roux Collection Panama; Hammer Museum, Los Angeles, CA (promised gift); Walker Art Center, Minneapolis, MN (promised gift); The Zuzuem, Latvia; and The Hirshhorn Museum and Sculpture Garden. Monsieur Zohore lives and works between Richmond, VA, New York, NY, and Abidjan, CIV, and is the Assistant Professor of Painting and Printmaking at Virginia Commonwealth University.
+           <br>
+           </p>
+           
+<div class="seperator"></div>
+  <!-- for navbar -->
+  <script>
+    function toggleNavbar() {
+      var navbar = document.getElementById("hamburgerMenu");
+      navbar.classList.toggle("responsive");
+    }
+  </script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
