@@ -251,7 +251,9 @@ ul {
   }
   
   .slides img {
-    max-height: 220px;
+    height: auto;
+    max-width: 80vh;
+    max-height: 40vh;
   }
 
   .modal-body img {
@@ -262,7 +264,6 @@ ul {
 
   .slideshow-container {
     max-width: 100%;
-
     margin: unset;
   }
 
