@@ -62,7 +62,7 @@
         <p style="padding-left: clamp(0px, 1vw, 40px); padding-top: 10px;">
             Amanita 
             <br><br> 313 Bowery, New York, NY 10003
-            <br><br><a href="mailto:info@spazioamanita.com" target="_blank">info@spazioamanita.com</a>
+            <br><br><a href="https://mail.google.com/mail/?view=cm&fs=1&to=info@spazioamanita.com" target="_blank">info@spazioamanita.com</a>
             <br><br>Instagram: <a href="https://www.instagram.com/amanita.ny/" target="_blank">@amanita.ny</a>
             <br><br><a href="#" id="newsletterLink">Newsletter</a>
         </p>
@@ -102,11 +102,10 @@
         });
     
         // Close the modal if the user clicks outside of it or presses the escape key
-        window.addEventListener("click", function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        });
+        window.addEventListener("click", closeModalOnClick);
+        window.addEventListener("touchstart", closeModalOnTouch);
+
+
     
         document.addEventListener("keydown", function(event) {
             if (event.key === "Escape") {
