@@ -253,7 +253,8 @@ ul {
   .slides img {
     height: auto;
     max-width: 80vh;
-    max-height: 40vh;
+    max-height: 50vh;
+    object-fit: cover;
   }
 
   .modal-body img {
