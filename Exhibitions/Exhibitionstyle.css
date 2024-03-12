@@ -253,7 +253,6 @@ ul {
   .slides img {
     width: auto;
     max-height: 40vh;
-    object-fit: cover;
   }
 
   
