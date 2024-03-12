@@ -251,11 +251,12 @@ ul {
   }
   
   .slides img {
-    height: auto;
-    max-width: 80vh;
-    max-height: 50vh;
+    width: auto;
+    max-height: 40vh;
     object-fit: cover;
   }
+
+  
 
   .modal-body img {
     
