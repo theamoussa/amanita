@@ -28,7 +28,7 @@ body {
     margin-top: 20px;
     margin-left: 40px; /* Adjust the value as needed */
     margin-bottom: 60px;
-    margin-right: 80px;
+    margin-right: 40px;
 }
 
 /* Style links */
@@ -102,9 +102,9 @@ select, .newsletter-input {
 
 .text-container2 {
   font-family: "Montserrat", sans-serif;
-  width: 80%; 
+  width: 90%; 
   text-align: justify;
-  font-size: 18px;
+  font-size: clamp(16px, 1vw, 20px);
 }
 
 
@@ -296,7 +296,7 @@ hr {
   }
 
   .seperator {
-    margin: 0;
+    margin: 30px;
   }
 
   .keepinline-label, .keepinline a {
