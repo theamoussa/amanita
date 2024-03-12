@@ -33,49 +33,123 @@
             <a href="Press.html">Press</a>
             <a href="About.html">About</a>
             </nav>
+            <div class="seperator"></div>
         <div class="about-first">
-      
-            <div class="text-container2">
-            <div class="seperator"></div>
-            <div class="seperator"></div>
-                <div class="seperator"></div>
-                <p>
-                    Amanita, founded in 2021, prioritizes thought provocation and engaged exhibitions through honest and intimate collaboration with artists, collectors, vendors, and our greater audience. We provide multi-faceted support for early career artists, while fostering a program that includes more historically relevant artists and exhibitions. This dynamism is a crucial component to the gallery’s interests as a whole.
-                    <br><br>
-                    Our New York gallery features 3,500 square feet of exhibition space in the location formerly home to CBGB, the historic punk-rock nightclub. Situated on the Bowery in Manhattan’s East Village neighborhood, the gallery’s museum-quality finishes combined with the still-permeating energies of CBGB make for a singular viewing experience. Amanita New York also includes studios for artists to work in-situ, providing two studio spaces in the gallery’s basement.
-                    <br><br>
-                    The gallery’s artist first approach allows us to provide ample opportunities for artists both in the preparation, realization, and exhibition of their artistic practices.
-                    <br><br>
-                    The gallery is operated by its founders, Caio Twombly, Garrett Goldsmith, Jacob Hyman, and Tommaso Rositani Suckert, as well as its small team of directors and registrars between New York and Italy.  
-                </p> 
-            </div>          
-            <div class="seperator"></div>
             <img 
-                class="frontdoor" 
-                src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/DSCF5092.png" 
+            class="desktop-img" 
+            src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/DSCF5092.jpeg" 
+            alt="Amanita on Bowery">
+
+            <img 
+                class="mobile-img" 
+                src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/DSCF5092a.png" 
                 alt="Amanita on Bowery"
             >
-        </div>
-        <div class="seperator"></div>
-        <hr>
-        <div class="seperator"></div>
-        <div class="about-second" style="flex-direction: row;"> 
+            
         <iframe 
-            style="width:40%;" 
+            
+            style="width:50%;" 
             src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12094.708379015206!2d-73.991864!3d40.7251244!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a8fe0b978f%3A0x54122d2cf91300d4!2sAMANITA!5e0!3m2!1sen!2sit!4v1704736355321!5m2!1sen!2sit" 
-            width="600" 
-            height="450" st
+            width="700" 
+            height="500" st
             yle="border:0;" 
             allowfullscreen="" 
             loading="lazy" 
             referrerpolicy="no-referrer-when-downgrade"
         >
         </iframe>
+</div>
         <p style="padding-left: clamp(0px, 1vw, 40px); padding-top: 10px;">
             Amanita 
             <br><br> 313 Bowery, New York, NY 10003
-            <br><br>info@spazioamanita.com
-            <br><br>Instagram: <a href="https://www.instagram.com/amanita.ny/">@amanita.ny</a>
+            <br><br><a href="mailto:info@spazioamanita.com" target="_blank">info@spazioamanita.com</a>
+            <br><br>Instagram: <a href="https://www.instagram.com/amanita.ny/" target="_blank">@amanita.ny</a>
+            <br><br><a href="#" id="newsletterLink">Newsletter</a>
+        </p>
+        <div id="newsletterModal" class="modal">
+        <div class="modal-content">
+          <div id="alertMessage"></div> 
+          <!-- Your Mailchimp form code goes here -->
+<div id="mc_embed_shell">
+  <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+    #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; width: px;}
+    /* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
+       We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+</style>
+<div id="mc_embed_signup">
+<form action="https://spazioamanita.us5.list-manage.com/subscribe/post?u=1367afd01085a830c3dffa3cb&amp;id=eec6c38cd6&amp;f_id=003eb7e6f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_self" novalidate="">
+    <div id="mc_embed_signup_scroll"><h3>Join our mailing list</h3>
+        <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+        <div class="mc-field-group"><label for="mce-EMAIL">Email Address <span class="asterisk">*</span></label><input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required="" value=""></div><div class="mc-field-group"><label for="mce-FNAME">First Name </label><input type="text" name="FNAME" class=" text" id="mce-FNAME" value=""></div><div class="mc-field-group"><label for="mce-LNAME">Last Name </label><input type="text" name="LNAME" class=" text" id="mce-LNAME" value=""></div>
+    <div id="mce-responses" class="clear">
+        <div class="response" id="mce-error-response" style="display: none;"></div>
+        <div class="response" id="mce-success-response" style="display: none;"></div>
+    </div><div aria-hidden="true" style="position: absolute; left: -5000px;"><input type="text" name="b_1367afd01085a830c3dffa3cb_eec6c38cd6" tabindex="-1" value=""></div><div class="clear"><input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="Subscribe"></div>
+</div>
+</form>
+</div>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var newsletterLink = document.getElementById("newsletterLink");
+        var modal = document.getElementById("newsletterModal");
+        var subscribeForm = document.getElementById("mc-embedded-subscribe-form");
+    
+        newsletterLink.addEventListener("click", function(event) {
+            event.preventDefault();
+            modal.style.display = "block";
+        });
+    
+        // Close the modal if the user clicks outside of it or presses the escape key
+        window.addEventListener("click", function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        });
+    
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "Escape") {
+                modal.style.display = "none";
+            }
+        });
+    
+        // Handle form submission
+        subscribeForm.addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent the default form submission
+    
+            // Manually submit the form using JavaScript
+            submitForm(subscribeForm);
+    
+            // Optionally, close the modal after submission
+            setTimeout(function() {
+                modal.style.display = "none";
+            }, 2000); // Close the modal after 2 seconds
+    
+            // Display alert message within the popup
+            alertMessage.innerText = "Thank you for subscribing!";
+        });
+    
+        function submitForm(form) {
+            // Serialize form data
+            var formData = new FormData(form);
+    
+            // Create AJAX request to submit form data to Mailchimp
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", form.action, true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    // Form submitted successfully
+                    console.log("Form submitted successfully!");
+                }
+            };
+            xhr.send(new URLSearchParams(formData).toString());
+        }
+    });
+       
+        </script>
+        
         </p>
 
         <!-- for navbar -->
