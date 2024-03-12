@@ -177,10 +177,6 @@
     margin: 0 0 20px;
 }
 
-.press-images {
-    width: 100%; !important
-    min-height: 316px;
-}
 
 .content-wrap {
   padding-right: 40px;
@@ -198,6 +194,7 @@
     padding-right: 0;
     padding-top: 0;
   }
+}
 
   .hamburger-menu a {
     padding: 20px 16px;
@@ -227,7 +224,7 @@
   .keepinline-wrapper {
     margin-top: 120px !important;
   }
-}
+
   
 @media screen and (max-width: 600px) {
   .filter-forms {
