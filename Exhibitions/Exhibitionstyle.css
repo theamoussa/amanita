@@ -116,7 +116,6 @@ select {
 
 .slides img {
   height: auto; /* Ensure images fill the slide container */
-  width: 100%; /* Maintain aspect ratio */
   margin-bottom: 15px;
   max-width: 80vw;
   max-height: 80vh;
@@ -252,7 +251,6 @@ ul {
   }
   
   .slides img {
-    width: 100%;
     max-height: 220px;
   }
 
