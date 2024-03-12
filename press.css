@@ -26,30 +26,29 @@
 
 /* Navbar */
 .hamburger-menu {
-    background-color: rgba(0, 0, 0, 0.9);
-    position: fixed;
-    width: 100%;
-    left: 0;
-    top: 0;
-    z-index: 99999;
-    display: grid;
-    height: 100vh;
-    align-content: center;
-    justify-content: center;
-    padding: 20px 30px;
-  
+  background-color: rgba(0, 0, 0, 0.9);
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 99999;
+  display: grid;
+  height: 100vh;
+  align-content: center;
+  justify-content: center;
+  padding: 20px 30px;
+
 }
 .hamburger-menu a {
-    display: grid;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 40px 16px;
-    text-decoration: none;
-    color: #676767;
-    width: 120px;
-    height: 20px;
-}
-    
+  display: grid;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 40px 16px;
+  text-decoration: none;
+  color: #676767;
+  width: 120px;
+  height: 20px;
+}   
 .hamburger-menu a:hover {
     color: white;
 }
