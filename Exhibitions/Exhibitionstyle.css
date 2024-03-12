@@ -255,13 +255,14 @@ ul {
   }
 
   .modal-body img {
-    width: 100% !important;
+    
     height: auto !important;
     max-width: unset !important;
   }
 
   .slideshow-container {
     max-width: 100%;
+
     margin: unset;
   }
 
