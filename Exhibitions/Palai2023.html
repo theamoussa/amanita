@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Palai 2023</title>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="Exhibitionstyle.css">
+
+
+</head>
+<body>
+  <img src="../assets/burger-menu-svgrepo-com.svg" alt="hamburger icon" width="40px" onclick="toggleNavbar()" style="display: block;" />
+  <!-- hamburger menu -->
+  <nav class="hamburger-menu" id="hamburgerMenu">
+    <div class="cross-wrapper">
+      <svg onclick="toggleNavbar()" style="width: 30px;" viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg" fill="#fff">
+        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/>
+      </svg>      </div>
+      <a href="../Artists.html">Artists</a>
+      <a href="../exhibitions.html">Exhibitions</a>
+      <a href="../Press.html">Press</a>
+      <a href="../About.html">About</a>
+  </nav>
+
+    <div class="content">
+
+      <a href="../home.html">
+            <img class="placeholder-img" src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Amanita%20new%20logo.png" alt="Placeholder Image">
+          </a>
+
+        <h1 style="margin-bottom: 10px;">Palai 2023</h1>
+        <h3>Palazzo Tamborino Cezzi</h3>
+
+        <p>Via Guglielmo Paladini, 50, 73100 Lecce, Italy<br>
+            July 28, 2023 – August 26, 2023 <br>
+        </p>
+    </div>
+
+
+    <div class="seperator"></div>
+    <div class="seperator"></div>
+
+    <div class="slideshow-container">
+        <div class="slides">
+        <div class="slide">
+             <div class="slide-img">
+                 <img height=600px src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Palai%202023/58.Palai-2023-Leonardo-Meoni-Camille-Blatrix-Rafael-Domenech-Ana-Prata-Mostafa-Sarabi-Amanita-Delgosha-HUA-International-Isla-Flotante-Balice-Hertling-scaled.jpg" alt="P1">
+            </div>
+        <div class="caption"></div>
+        </div>
+        <div class="slide">
+            <div class="slide-img">
+                <img height=600px src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Palai%202023/MEON-76-2023-image.jpg" alt="MEON.76.2023">
+            </div>
+            <div class="caption">Leonardo Meoni, <em>Maelström I</em>, 2023, Mixed media on velvet, 86 5/8 x 70 7/8 in, 220 x 180 cm</div>
+          </div>
+         <div class="slide">
+            <div class="slide-img">
+                 <img height=600px src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Palai%202023/MEON-77-2023-image.jpg" alt="MEON.77.2023">
+            </div>
+            <div class="caption">Leonardo Meoni, <em>Maelström II</em>, 2023, Mixed media on velvet, 86 5/8 x 78 3/4 in, 220 x 200 cm</div>
+            </div>
+          <div class="slide">
+            <div class="slide-img">
+                <img height=600px src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Palai%202023/amanita-francesco-cima-tellus-2023.jpg" alt="CIMA.20.2023">
+            </div>
+            <div class="caption">Francesco Cima, <em>Tellus</em>, 2023, Oil on canvas, 70 7/8 x 55 1/8 in 180 x 140 cm</div>
+          </div>
+          <div class="slide">
+            <div class="slide-img">
+                <img height=600px src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Palai%202023/42.Palai-2023-Daniele-Milvio-Tolia-Astakhishvili-Amanita-LC-Queisser-scaled.jpg" alt="P2">
+            </div>
+            <div class="caption">Daniele Milvio, <em>Piace alla gente che piace</em>, 2018, Collage on wool, artist frame, 88 9/16 x 44 1/16 x 3 15/16 in, 225 x 112 x 10 cm</div>
+          </div>
+            <div class="slide">
+                <div class="slide-img">
+                    <img height=600px src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Palai%202023/20180917_0024.jpg" alt="MILV.1.2018">
+                </div>
+                <div class="caption">Daniele Milvio, <em>Come un portinaio si fa sotto alla cuoca</em>, 2018, Collage on wool, artist frame, 88 9/16 x 44 1/16 x 3 15/16 in, 225 x 112 x 10 cm</div>
+          </div>
+          <!-- Add more slides as needed -->
+        </div>
+        <!-- Navigation arrows -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+      </div>
+    
+      <script src="script.js"></script>
+      <script>
+        let slideIndex = 1;
+    
+        function plusSlides(n) {
+          showSlides(slideIndex += n);
+        }
+    
+        function showSlides(n) {
+          let i;
+          let slides = document.getElementsByClassName("slide");
+    
+          if (n > slides.length) {
+            slideIndex = 1;
+          }
+          if (n < 1) {
+            slideIndex = slides.length;
+          }
+    
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+          }
+    
+          slides[slideIndex - 1].style.display = "block";
+        }
+    
+        showSlides(slideIndex);
+      </script>
+<div class="seperator"></div>
+<div class="content">
+ <h2>Overview</h2>
+</div>
+    <div class="text-container"> 
+        <p> Amanita participated in the 2023 edition of Palai, exhibiting works by <a href="../Artists/FrancescoCima.html"><b>Francesco Cima</b></a>, <a href="../Artists/LeonardoMeoni.html"><b>Leonardo Meoni</b></a> and <b>Daniele Milvio.</b>
+            <br><br>
+           Palai opened July 28th at Palazzo Tamborini Cezzi in Lecce, Italy. The exhibition comprised over seventy works from a selection of international galleries and artists.
+            <br><br>
+           <b>Participating galleries:</b>
+           15 orient (New York), Amanita (New York), Barbara Weiss (Berlin), Balice Hertling (Paris), Bel Ami (Los Angeles), Delgosha (Tehran), Ermes Ermes (Rome), HUA International (Beijing / Berlin), Isla Flotante (Buenos Aires), LC Queisser (Tblisi), Tara Downs (New York)
+            <br><br>
+           <b>Participating artists:</b>
+           Alfredo Aceto, Yalda Afsah, Ali Ansari, Tolia Astakhishvili, Haydeh Ayazi, Cay Bahnmiller, Camille Blatrix, Ljiljana Blazevska, Vivian Caccuri, Jiang Cheng, Xinyi Cheng, Milano Chow, Francesco Cima, Enzo Cucchi, Chen Dandizi, Rafael Domench, Kim Farkas, Owen Fu, Thea Gvetadze, Nino Kapanadze, Behrang Karimi, Jannis Marwitz, Mina Masoumi, Leonardo Meoni, Daniele Milvio, Julien Monnerie, Kayode Ojo, Ana Prata, Puppies Puppies (Jade Guanaro Kuriki-Olivo), Mostafa Sarabi, Ser Serpas, Shabahang Tayyari, Zhi Wei, Tsai Yun-Ju, Jenkin Van Zyl
+           </p>           
+<div class="seperator"></div>
+  <!-- for navbar -->
+  <script>
+    function toggleNavbar() {
+      var navbar = document.getElementById("hamburgerMenu");
+      navbar.classList.toggle("responsive");
+    }
+  </script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+

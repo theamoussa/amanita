@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Artissima 2023</title>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="Exhibitionstyle.css">
+
+
+</head>
+<body>
+  <img src="../assets/burger-menu-svgrepo-com.svg" alt="hamburger icon" width="40px" onclick="toggleNavbar()" style="display: block;" />
+  <!-- hamburger menu -->
+  <nav class="hamburger-menu" id="hamburgerMenu">
+    <div class="cross-wrapper">
+      <svg onclick="toggleNavbar()" style="width: 30px;" viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg" fill="#fff">
+        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/>
+      </svg>      </div>
+      <a href="../Artists.html">Artists</a>
+      <a href="../exhibitions.html">Exhibitions</a>
+      <a href="../Press.html">Press</a>
+      <a href="../About.html">About</a>
+  </nav>
+
+    <div class="content">
+
+      <a href="../home.html">
+            <img class="placeholder-img" src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Amanita%20new%20logo.png" alt="Placeholder Image">
+          </a>
+
+        <h1 style="margin-bottom: 10px;">Artissima 2023</h1>
+        <h3>Leonardo Meoni</h3>
+
+        <p>OVAL Lingotto Fiere, via Giacomo Mattè Trucco, 70, Turin<br>
+            November 2, 2023 – November 5, 2023 <br>
+        </p>
+    </div>
+
+
+    <div class="seperator"></div>
+    <div class="seperator"></div>
+
+    <div class="slideshow-container">
+        <div class="slides">
+        <div class="slide">
+             <div class="slide-img">
+                 <img height=600px src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/31.%20Artissima%202023/Artissima%20Images/_DSC7267.jpg" alt="A1">
+            </div>
+        <div class="caption"></div>
+        </div>
+        <div class="slide">
+            <div class="slide-img">
+                <img height=600px src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/31.%20Artissima%202023/Artissima%20Images/_DSC7241%20copy%202.jpg" alt="MOEN.87.2023">
+            </div>
+            <div class="caption">Leonardo Meoni, <em>Maelström 3</em>, 2023, Mixed media on velvet, 86 5/8 x 70 7/8 in 220 x 180 cm</div>
+          </div>
+         <div class="slide">
+            <div class="slide-img">
+                 <img height=600px src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/31.%20Artissima%202023/Artissima%20Images/_DSC7241%20copy.jpg" alt="MOEN.88.2023">
+            </div>
+            <div class="caption">Leonardo Meoni, <em>Maelström 4</em>, 2023, Mixed media on velvet, 86 5/8 x 70 7/8 in 220 x 180 cm</div>
+            </div>
+          <div class="slide">
+            <div class="slide-img">
+                <img height=600px src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/31.%20Artissima%202023/Artissima%20Images/_DSC7240.jpeg" alt="A2">
+            </div>
+            <div class="caption"></div>
+          </div>
+          <div class="slide">
+            <div class="slide-img">
+                <img height=600px src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/31.%20Artissima%202023/Artissima%20Images/_DSC7239.jpg" alt="A3">
+            </div>
+            <div class="caption"></div>
+          </div>
+            <div class="slide">
+                <div class="slide-img">
+                    <img height=600px src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/31.%20Artissima%202023/Artissima%20Images/_DSC7238.jpg" alt="MEON.90.2023">
+                </div>
+                <div class="caption">Leonardo Meoni, <em></em>Nepenthes Attenboroughii</em>, 2023, Mixed media on velvet, 98 7/16 x 86 5/8 in 250 x 220 cm</div>
+          </div>
+          <!-- Add more slides as needed -->
+        </div>
+        <!-- Navigation arrows -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+      </div>
+    
+      <script src="script.js"></script>
+      <script>
+        let slideIndex = 1;
+    
+        function plusSlides(n) {
+          showSlides(slideIndex += n);
+        }
+    
+        function showSlides(n) {
+          let i;
+          let slides = document.getElementsByClassName("slide");
+    
+          if (n > slides.length) {
+            slideIndex = 1;
+          }
+          if (n < 1) {
+            slideIndex = slides.length;
+          }
+    
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+          }
+    
+          slides[slideIndex - 1].style.display = "block";
+        }
+    
+        showSlides(slideIndex);
+      </script>
+<div class="seperator"></div>
+<div class="content">
+ <h2>Overview</h2>
+</div>
+    <div class="text-container"> 
+      <p><em>Contemporaneo, osserva Agamben, è colui che, immerso nel tempo presente, riesce comunque a prenderne le distanze operando uno scarto: egli si trova al centro del vortice ma, a differenza degli altri, riesce al medesimo tempo – contemporaneamente – a uscirne, osservando l’accelerazione che altrimenti non potrebbe osservare. Lo sguardo è fisso sul proprio tempo e, insieme, è altrove: forse nel movimento stesso che ruota attorno al presente (che è tanto l’epoca, quanto letteralmente l’istante).
+        <br><br> 
+        Contemporaneo è colui che tiene fisso lo sguardo nel suo tempo, per percepirne non le luci, ma il buio. Percepire questo buio non è una forma di inerzia o di passività, ma implica un’attività e un’abilità particolare, che, nel nostro caso, equivalgono a neutralizzare le luci che provengono dall’epoca per scoprire la sua tenebra, il suo buio speciale, che non è, però, separabile da quelle luci. Può dirsi contemporaneo soltanto chi non si lascia accecare dalle luci del secolo e riesce a scorgere in esse la parte dell’ombra, la loro intima oscurità.Contemporaneo è colui che riceve in pieno viso il fascio di tenebra che proviene dal suo tempo.
+         <br><br> 
+        Edgar Allan Poe nel suo racconto Una discesa nel Maelström (1833) ci narra la vicenda di un gruppo di pescatori norvegesi che si imbatte in una terribile tempesta, finendo al centro di un vortice perenne e immenso detto appunto Maelström. Un marinaio, testimone, dice :
+         <br><br> 
+        “Mi accorsi che la nostra imbarcazione non era l’unico oggetto caduto nell’abbraccio del gorgo. Sia sopra che sotto di noi erano visibili frammenti di navi, ammassi di legname da costruzione, tronchi di albero, unitamente a molti altri oggetti più piccoli, mobili, casse infrante, barili, botti. Ho già accennato alla innaturale curiosità che aveva sostituito la mia originaria paura. Sembrava aumentare man mano che mi avvicinavo alla mia spaventosa fine; cominciai a osservare, con un curioso interesse, le tante cose che fluttuavano in nostra compagnia. Dovevo essere preda del delirio, perché trovavo persino un certo divertimento nel confrontare le relative velocità di discesa dei vari oggetti verso la spuma sottostante.”
+         <br><br> 
+        Ma cos’è questa, se non una descrizione dello sguardo contemporaneo e di quel gorgo iridescente che quotidianamente cattura i nostri sensi?</em>
+        <br><br>  
+        — Marco Magurno, <em>Contemporaneo: Maelström e il distacco</em>; Che Fare, 2016.
+        </p>        
+<div class="seperator"></div>
+  <!-- for navbar -->
+  <script>
+    function toggleNavbar() {
+      var navbar = document.getElementById("hamburgerMenu");
+      navbar.classList.toggle("responsive");
+    }
+  </script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
