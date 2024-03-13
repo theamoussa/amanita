@@ -188,21 +188,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    // Handle form submission
-    subscribeForm.addEventListener("submit", function(event) {
-        event.preventDefault(); // Prevent the default form submission
-
-        // Manually submit the form using JavaScript
-        submitForm(subscribeForm);
-
-        // Optionally, close the modal after submission
-        setTimeout(function() {
-            modal.style.display = "none";
-        }, 2000); // Close the modal after 2 seconds
-
-        // Display alert message within the popup
-        alertMessage.innerText = "Thank you for subscribing!";
-    });
 
     function submitForm(form) {
         // Serialize form data
