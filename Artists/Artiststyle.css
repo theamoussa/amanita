@@ -283,7 +283,7 @@ select {
 }
 
 .hamburger-menu.responsive {
-  display: grid;
+  display:flex;
 }
 
 .cross-wrapper {
