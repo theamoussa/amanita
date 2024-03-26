@@ -16,19 +16,21 @@
     <a href="index.html">
     <img class="placeholder-img" src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Amanita%20new%20logo.png" alt="Placeholder Image">
     </a>
-    <div class="content">
-      <img src="./assets/burger-menu-svgrepo-com.svg" alt="hamburger icon" width="40px" onclick="toggleNavbar()" style="display: block;" />
+   
+      <img src="./assets/burger-menu-svgrepo-com.svg" alt="hamburger icon" width="40px" onclick="toggleNavbar()" style="display: block;cursor: pointer;" />
       <!-- hamburger menu -->
       <nav class="hamburger-menu" id="hamburgerMenu">
-        <div class="cross-wrapper">
-          <svg onclick="toggleNavbar()" style="width: 30px;" viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg" fill="#fff">
-            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/>
-          </svg>        </div>
+          <div class="cross-wrapper">
+              <svg onclick="toggleNavbar()" style="width: 30px;" viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg" fill="#000000">
+                  <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/>
+                </svg>            </div>
           <a href="Artists.html">Artists</a>
           <a href="exhibitions.html">Exhibitions</a>
           <a href="Press.html">Press</a>
           <a href="About.html">About</a>
       </nav>
+
+      <div class="content">
       <div>
         <p style="margin-bottom: 10px;margin-top: 50px;" class="main-content-wrapper"> Amanita <br>
           313 Bowery <br>
@@ -39,7 +41,9 @@
       </div>
       <div class="keepinline-wrapper" style="margin-top:120px;">
         <div class="keepinline"> 
+          <p>
           <a class="keepinline-label" href="Artists.html">Artists</a>
+        </p>
           <form id="artistsForm" class="form-container filter-forms">
             <select id="myDropdown">
               <optgroup class="custom-typography" label="Select an artist">
@@ -57,6 +61,7 @@
             </select>
           </form>
         </div>
+        <br>
         <div class="keepinline"> 
           <p>
             <a class="keepinline-label" href="exhibitions.html">Exhibitions</a>
@@ -115,15 +120,15 @@
             </select>
             <input class="inputbutton" type="submit" value="Submit">
           </form>
-        </div>
+        </div><br>
         <p class="keepinline">
           <a href="Press.html">Press</a>
-        </p> 
-        <div class="seperator"></div> 
+        </p>
+        <br>
         <p class="keepinline">
           <a href="About.html">About</a>
         </p>
-        <div class="seperator"></div> 
+        <br>
         <p class="keepinline">
           <a href="#" id="newsletterLink">Newsletter</a>
         </p>
