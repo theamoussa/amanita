@@ -119,11 +119,12 @@ select {
 }
 
 .current {
-  position:absolute;
+  position: absolute;
   top: 80px;
   right: 30px;
-  width: 300px !important;
+  width: 300px !important
 }
+
 .hidden {
     display: none;
 }
