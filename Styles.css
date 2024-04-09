@@ -117,6 +117,13 @@ select {
     right: 30px;
     width: 150px;
 }
+
+.current {
+  position:absolute;
+  top: 80px;
+  right: 30px;
+  width: 300px;
+}
 .hidden {
     display: none;
 }
@@ -355,6 +362,10 @@ select {
 .placeholder-img{
     max-width: 100px;
     position: absolute;
+  }
+
+  .current {
+    display: none;
   }
 
   .seperator {
