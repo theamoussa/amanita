@@ -122,7 +122,7 @@ select {
   position:absolute;
   top: 80px;
   right: 30px;
-  width: 300px;
+  width: 300px !important;
 }
 .hidden {
     display: none;
