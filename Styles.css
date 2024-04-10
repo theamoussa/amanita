@@ -118,12 +118,6 @@ select {
     width: 150px;
 }
 
-.current {
-  position: absolute;
-  top: 80px;
-  right: 30px;
-  width: 300px !important
-}
 
 .hidden {
     display: none;
@@ -206,6 +200,7 @@ select {
 .container {
   display: flex
 }
+
 
 .text-container2 {
   font-family: "Montserrat", sans-serif;
@@ -365,9 +360,6 @@ select {
     position: absolute;
   }
 
-  .current {
-    display: none;
-  }
 
   .seperator {
     margin: 0;
