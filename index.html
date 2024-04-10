@@ -39,9 +39,19 @@
     <img class="landingpage" src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Amanita%20new%20logo.png">
     </a>
 
+    <style>
+      /* Fade animation */
+      @keyframes fadeOut {
+        from { opacity: 1; }
+        to { opacity: 0; }
+      }
+      body {
+        animation: fadeOut 2s forwards; /* 2-second fade out animation */
+      }
+    </style>
     <script>
       setTimeout(function() {
-        window.location.href = "home";
+        window.location.href = "home.html";
       }, 2000); // 2000 milliseconds = 2 seconds
     </script>
 </body>
