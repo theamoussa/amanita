@@ -30,6 +30,12 @@
     <a href="./">
     <img class="placeholder-img" src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Amanita%20new%20logo.png" alt="Placeholder Image">
     </a>
+    <a id="container-link" href="Exhibitions/ApplesandOranges.html">
+      <div id="image-container">
+        <img id="random-image" src="#" alt="Apples&Oranges">
+        <div id="caption">Caption</div>
+      </div>
+    </a>
 
       <img src="./assets/burger-menu-svgrepo-com.svg" alt="hamburger icon" width="40px" onclick="toggleNavbar()" style="display: block;cursor: pointer;" />
       <!-- hamburger menu -->
@@ -229,6 +235,35 @@ document.addEventListener("DOMContentLoaded", function() {
 });
    
     </script>
+
+<script>
+  // Array of image URLs and their respective captions
+  const images = [
+    { src: 'https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Apples%20and%20Oranges/Painting/SCHA.223.2024.jpg', caption: 'Adrian Schachter<br> <em>Birdscape study </em>, 2024<br> Acrylic, oil, and tempera on canvas<br>36 x 48 in<br>91.5 x 122 cm	' },
+    { src: 'https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Apples%20and%20Oranges/Painting/SCHA.195.2024.jpg', caption: 'Adrian Schachter<br> <em>After Bror Meyer’s skaters</em>, 2024<br> Acrylic, oil, tempera and glitter on canvas<br>6 x 12 in <br>15 x 30.5 cm' },
+    { src: 'https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Apples%20and%20Oranges/Painting/SCHA.226.2024.jpg', caption: 'Adrian Schachter<br> <em>After Gutmann’s diver, 1</em>, 2024<br> Acrylic, oil, and tempera on canvas<br>9 x 12 in <br>23 x 30.5 cm' },
+    { src: 'https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Apples%20and%20Oranges/Painting/SCHA.184.2024.jpg', caption:'Adrian Schachter<br> <em>Kimonos/Fellini’s Casanova</em>, 2024<br> Acrylic, oil, and tempera on canvas<br> 8 x 8 in <br>20.3 x 20.3 cm'},
+    { src:'https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Apples%20and%20Oranges/Painting/SCHA.258.2024.jpg', caption: 'Adrian Schachter<br> <em>Halcyon macaques</em>, 2024<br> Acrylic, oil, and tempera on canvas<br> 84 x 83 1/2 in <br>213.5 x 212 cm'}
+  ];
+
+  // Function to pick a random image from the array
+  function getRandomImage() {
+    const randomIndex = Math.floor(Math.random() * images.length);
+    return images[randomIndex];
+  }
+
+  // Function to update the image and caption
+  function updateImageAndCaption() {
+      const randomImage = getRandomImage();
+      const imageElement = document.getElementById('random-image');
+      const captionElement = document.getElementById('caption');
+      imageElement.src = randomImage.src;
+      // Set innerHTML instead of textContent to render HTML tags
+      captionElement.innerHTML = randomImage.caption;}
+
+  // Update image and caption when the page loads
+  updateImageAndCaption();
+</script>
     
 </div>
 </body>

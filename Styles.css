@@ -38,6 +38,29 @@ body {
     /* width: 80vw; */
 }
 
+#image-container {
+  position: fixed;
+  top: 120px;
+  right: 20px;
+  width: 25vw;
+  max-height: auto;
+  background-color: none;
+  padding: 10px;
+}
+
+#random-image {
+  max-width: 100%;
+  max-height: 250px;
+  align-items: right;
+}
+
+#caption {
+  margin-top: 10px;
+  font-size: 12px;
+  text-align: left;
+  
+}
+
 /* Style links */
 a {
     font-size: inherit;
@@ -359,6 +382,10 @@ select {
     max-width: 100px;
     position: absolute;
   }
+
+#image-container {
+  display: none;
+}
 
 
   .seperator {
