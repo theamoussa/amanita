@@ -266,29 +266,24 @@ document.addEventListener("DOMContentLoaded", function() {
   // Update image and caption when the page loads
   updateImageAndCaption();
 </script>
+
 <script>
-  // Define the Konami Code sequence
-  const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+
+  const konamiCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65]; // Arrow keys: up, up, down, down, left, right, left, right, B, A
   let konamiCodeIndex = 0;
   
-  // Function to check if the Konami Code was entered
   function checkKonamiCode(event) {
-    // Check if the pressed key matches the current position in the Konami Code sequence
-    if (event.key.toLowerCase() === konamiCode[konamiCodeIndex]) {
+    if (event.keyCode === konamiCode[konamiCodeIndex]) {
       konamiCodeIndex++;
-      // If the entire sequence was entered, trigger the Easter egg
       if (konamiCodeIndex === konamiCode.length) {
-        alert('You found the Easter egg! 🐰');
-        // Reset the index to allow the Konami Code to be entered again
+        alert('You found me! 🍄');
         konamiCodeIndex = 0;
       }
     } else {
-      // If the pressed key doesn't match the next key in the sequence, reset the index
       konamiCodeIndex = 0;
     }
   }
   
-  // Attach the event listener to the document to listen for key presses
   document.addEventListener('keydown', checkKonamiCode);
   </script>
     
