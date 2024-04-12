@@ -269,22 +269,27 @@ document.addEventListener("DOMContentLoaded", function() {
 
 <script>
 
-  const konamiCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65]; // Arrow keys: up, up, down, down, left, right, left, right, B, A
-  let konamiCodeIndex = 0;
-  
-  function checkKonamiCode(event) {
-    if (event.keyCode === konamiCode[konamiCodeIndex]) {
-      konamiCodeIndex++;
-      if (konamiCodeIndex === konamiCode.length) {
-        alert('You found me! 🍄');
-        konamiCodeIndex = 0;
-      }
-    } else {
+function invertColors() {
+  document.documentElement.style.filter = 'invert(100%)'; // Invert all colors
+}
+
+// When the user presses the Konami code, invert colors on the page
+const konamiCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65]; // Arrow keys: up, up, down, down, left, right, left, right, B, A
+let konamiCodeIndex = 0;
+
+function checkKonamiCode(event) {
+  if (event.keyCode === konamiCode[konamiCodeIndex]) {
+    konamiCodeIndex++;
+    if (konamiCodeIndex === konamiCode.length) {
+      invertColors();
       konamiCodeIndex = 0;
     }
+  } else {
+    konamiCodeIndex = 0;
   }
-  
-  document.addEventListener('keydown', checkKonamiCode);
+}
+
+document.addEventListener('keydown', checkKonamiCode);
   </script>
     
 </div>
