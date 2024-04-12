@@ -33,6 +33,10 @@ h2 {
   color: green; /* Set your desired color */
 }
 
+pre {
+  font-family: monospace;
+}
+
 body {
     font-family: "helvetica", sans-serif;
     background-color: rgb(251, 249, 249);
