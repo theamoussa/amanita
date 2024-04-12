@@ -26,6 +26,12 @@ h2 {
     line-height: 1.5;
 }
 
+.inspect::after {
+  content: attr(data-content);
+  display: block;
+  white-space: pre;
+  color: green; /* Set your desired color */
+}
 
 body {
     font-family: "helvetica", sans-serif;
