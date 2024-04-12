@@ -27,38 +27,10 @@
   
 </head>
 <body>
-<div class="hidden">
-  <pre>
-  .
-  (')
-  '|
-  |'
- [::]
- [::]   _......_
- [::].-'      _.-`.
- [:.'    .-. '-._.-`.
- [/ /\   |  \        `-..
- / / |   `-.'      .-.   `-.
-/  `-'            (   `.)    `.
-|           /\      `-._/      \
-'    .'\   /  `.           _.-'|
-/    /  /   \_.-'        _.':;:/
-.'     \_/             _.-':;_.-'
-/   .-.             _.-' \;.-'
-/   (   \       _..-'     |
-\    `._/  _..-'    .--.  |
-`-.....-'/  _ _  .'    '.|
-    | |_|_| |      | \  (o)
-(o)  | |_|_| |      | | (\'/)
-(\'/)/  ''''' |     o|  \;:;
-:;  |        |      |  |/)
-     ;: `-.._    /__..--'\.' ;:
-    :;  `--' :;   :;  
-  </pre></div>
 
-    <a href="./">
+    
     <img class="placeholder-img" src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Amanita%20new%20logo.png" alt="Placeholder Image">
-    </a>
+    
     
     <a id="container-link" href="Exhibitions/ApplesandOranges.html">
       <div id="image-container">
@@ -295,10 +267,48 @@ document.addEventListener("DOMContentLoaded", function() {
   updateImageAndCaption();
 </script>
 <script>
-document.querySelector('.hidden-image').classList.add('inspect');
-
-</script>
+  // Define the Konami Code sequence
+  const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+  let konamiCodeIndex = 0;
+  
+  // Function to check if the Konami Code was entered
+  function checkKonamiCode(event) {
+    // Check if the pressed key matches the current position in the Konami Code sequence
+    if (event.key.toLowerCase() === konamiCode[konamiCodeIndex]) {
+      konamiCodeIndex++;
+      // If the entire sequence was entered, trigger the Easter egg
+      if (konamiCodeIndex === konamiCode.length) {
+        alert('You found the Easter egg! 🐰');
+        // Reset the index to allow the Konami Code to be entered again
+        konamiCodeIndex = 0;
+      }
+    } else {
+      // If the pressed key doesn't match the next key in the sequence, reset the index
+      konamiCodeIndex = 0;
+    }
+  }
+  
+  // Attach the event listener to the document to listen for key presses
+  document.addEventListener('keydown', checkKonamiCode);
+  </script>
     
 </div>
 </body>
 </html>
+<!--
+        __.....__
+     .'" _  o    "`.
+   .' O (_)     () o`.
+  .           O       .
+ . ()   o__...__    O  .
+. _.--"""       """--._ .
+:"                     ";
+ `-.__    :   :    __.-'
+      """-:   :-"""
+         J     L
+         :     :
+        J       L
+        :       :
+        `._____.' 
+
+-->
