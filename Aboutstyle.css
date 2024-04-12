@@ -65,6 +65,9 @@ select, .newsletter-input {
   line-height: inherit;
 }
 
+.desktop-img {
+  object-fit: cover;
+}
 
 
 .keepinline {
