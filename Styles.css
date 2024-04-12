@@ -404,6 +404,7 @@ select {
   .main-content-wrapper {
     margin-top: 50px !important;
     margin-bottom: 30px !important;
+    font-size: clamp(12px, 1.3vw, 18px);
   }
 }
 
