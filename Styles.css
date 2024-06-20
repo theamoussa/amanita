@@ -140,7 +140,7 @@ select {
     color: #FFF;
     text-align: center;
 }
-.placeholder-img {
+.Amanita-img {
     position:absolute;
     top: 40px;
     right: 30px;
@@ -384,7 +384,7 @@ select {
     display: none;
   }
 
-.placeholder-img{
+.Amanita-img{
     max-width: 100px;
     position: absolute;
   }

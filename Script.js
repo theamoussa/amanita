@@ -54,7 +54,7 @@ document.getElementById('exhibitionForm').addEventListener('submit', function(ev
   });
 
   window.addEventListener('scroll', function() {
-    var image = document.getElementById('.placeholder-img');
+    var image = document.getElementById('.Amanita-img');
     var content = document.querySelector('.content');
     var threshold = content.getBoundingClientRect().bottom;
     

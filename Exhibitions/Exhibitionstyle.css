@@ -91,7 +91,7 @@ select {
 }
 
 
-.placeholder-img {
+.Amanita-img {
   position: absolute;
   top: 40px;
   right: 30px;
@@ -313,7 +313,7 @@ ul {
   .caption {
     font-size: 10px;
   }
-  .placeholder-img{
+  .Amanita-img{
     max-width: 100px;
     top: 40px;
     position: absolute;

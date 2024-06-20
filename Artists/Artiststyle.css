@@ -115,7 +115,7 @@ select {
     text-align: center;
     font-family: Montserrat, sans-serif;
 }
-.placeholder-img {
+.Amanita-img {
   position: absolute;
   top: 40px;
   right: 30px;
@@ -339,7 +339,7 @@ select {
     line-height: 3;
   }
   
-  .placeholder-img{
+  .Amanita-img{
     position: absolute;
     top: 30px;
     max-width: 100px;;

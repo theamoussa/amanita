@@ -80,7 +80,7 @@ select, .newsletter-input {
         margin-right: 8px;
 }
 
-.placeholder-img {
+.Amanita-img {
   position:absolute;
   top: 40px;
   right: 30px;
@@ -216,7 +216,7 @@ display:flex;
     width: 100% !important;
     max-height: 450px;
   }
-  .placeholder-img{
+  .Amanita-img{
     max-width: 100px;;
   }
 }
@@ -298,7 +298,7 @@ display:flex;
     display: none;
   }
 
-.placeholder-img{
+.Amanita-img{
     max-width: 100px;
     position: absolute;
   }
