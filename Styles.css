@@ -47,7 +47,7 @@ body {
 #image-container {
   position: fixed;
   top: 120px;
-  right: -40px;
+  right: -20px;
   width: 25vw;
   max-height: auto;
   background-color: none;
