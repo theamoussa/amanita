@@ -2,7 +2,19 @@
 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
 <svg width="800px" height="800px" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
     
-    <title>cross</title>
+    <title>cross </title>
+ <meta name="description" content="">
+  <meta name="keywords" content="Amanita, gallery, art, exhibitions, 313 Bowery, New York, Florence, art gallery">
+  
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Website",
+    "name": "Amanita",
+    "url": "https://www.spazioamanita.com",
+    "description": "Amanita was founded in 2021 with the primary mission of supporting and exhibiting artists at various stages of their careers. Since inception, we have mounted over two dozen exhibitions between our gallery spaces in Florence and New York as well as in non-permanent spaces in Milan, St. Moritz, Miami, and Los Angeles."
+  }
+</script>
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">

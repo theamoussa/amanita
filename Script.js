@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function() {
         event.preventDefault(); // Prevent the form from submitting
         var selectedValue = dropdown.value;
         if (selectedValue) {
-            window.location.href = selectedValue + ".html"; // Navigate to the selected option's link
+            window.location.href = selectedValue + ""; // Navigate to the selected option's link
         }
     });
 });
@@ -49,7 +49,7 @@ document.getElementById('exhibitionForm').addEventListener('submit', function(ev
     const selectedValue = document.getElementById('exhibitionDropdown').value;
 
     if (selectedValue) {
-      window.location.href = selectedValue + ".html"; // Redirect to the selected path
+      window.location.href = selectedValue + ""; // Redirect to the selected path
     }
   });
 

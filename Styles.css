@@ -384,6 +384,7 @@ select {
     display: none;
   }
 
+
 .Amanita-img{
     max-width: 100px;
     position: absolute;
@@ -430,7 +431,8 @@ select {
 
 /* .current-exhibition, */
 .upcoming-exhibition,
-.past-exhibition {
+.past-exhibition
+ {
   display: none;
 }
 
@@ -440,6 +442,26 @@ select {
   margin-top: 20px;
   text-decoration: none;
   color: inherit;
+}
+
+.shop-item {
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  margin-top: 20px;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  color: inherit;
+}
+
+.shop-description {
+  font-size: .8rem;
+  margin: 0 0 14px;
+  color: #585858;
+  font-weight: 500;
+  line-height: 2;
+  display: block;
+  text-align: center;
 }
 
 .press-card-date {
