@@ -127,12 +127,12 @@
             <select id="exhibitionDropdown">
               <optgroup class="custom-typography" label="Select an exhibition">
                 <option value="" disabled selected hidden>Select an exhibition</option>
-                <optgroup label="Upcoming exhibitions">
-                  <option value="Exhibitions/Artissima2024">Turin: Artissima 2024</option>
+                <optgroup label="Current exhibitions">
                   <option value="Exhibitions/Vedraivedrai">New York: Vedrai, vedrai</option>
                 </optgroup>
                 <optgroup label="Past Exhibitions">
                   <optgroup label="2024">
+                    <option value="Exhibitions/Artissima2024">Turin: Artissima 2024</option>
                     <option value="Exhibitions/TeSonePrimero">New York: Te Soñé Primero</option>
                     <option value="Exhibitions/GliAltriColori">Museo Stefano Bardini: Gli altri colori purtroppo, sono tutti caduti</option>
                     <option value="Exhibitions/Ahealthydoseofpoison">St. Moritz: A healthy dose of poison</option>
@@ -284,12 +284,10 @@ document.addEventListener("DOMContentLoaded", function() {
 <script>
   // Array of image URLs and their respective captions
   const images = [
-    { src: 'https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Te%20So%C3%B1%C3%A9%20Primero/240830_GX_Amanita_MercedesLlanos_12.jpg', caption: 'Mercedes Llanos<br>  <em>Esto ya no es mas una historia de amor</em>, 2024<br>  Oil on canvas<br>  95 1/2 x 72 1/2 in<br> 242.6 x 184.2 cm' },
-    { src: 'https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Te%20So%C3%B1%C3%A9%20Primero/240830_GX_Amanita_MercedesLlanos_07.jpg', caption: 'Mercedes Llanos<br> <em>Parto</em>, 2024<br> Oil and charcoal on canvas<br> 80 x 90 in<br> 203.2 x 228.6 cm' },
-    { src: 'https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Te%20So%C3%B1%C3%A9%20Primero/240830_GX_Amanita_MercedesLlanos_08.jpg', caption: 'Mercedes Llanos<br> <em>Teta</em>, 2024<br> Charcoal on paper<br> 24 1/2 x 35 1/2 in, 62.2 x 90.2 cm (unframed)<br> 29 x 38 in, 73.7 x 96.5 cm (framed)' },
-    { src: 'https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Gli%20altri%20colori/photos%20(2)/ROOM%205/Carnival.jpg', caption: 'Leonardo Meoni<br> <em>Carnival</em>, 2024<br> Mixed media on velvet, alluminum frame<br> 23 5/8 x 15 3/4 in<br> 60 x 40 cm' },
-    { src: 'https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Gli%20altri%20colori/photos%20(2)/ROOM%205/Puncture.jpg', caption: 'Leonardo Meoni<br> <em>Puncture</em>, 2024<br> Mixed media on velvet, alluminum frame<br> 23 5/8 x 15 3/4 in<br> 60 x 40 cm' },
-    { src: 'https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Gli%20altri%20colori/photos%20(2)/ROOM%205/Se%20chiudo%20gli%20occhi.jpg', caption: 'Leonardo Meoni<br> <em>Spengo il sole se chiudo gli occhi</em>, 2024<br> Mixed media on velvet, alluminum frame<br> 23 5/8 x 15 3/4 in<br> 60 x 40 cm' },
+    { src: 'https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Vedrai/Cima9.jpg', caption: 'Francesco Cima<br> <em>Lamina Rossa</em>, 2024<br> Oil on canvas<br> 70 7/8 x 55 1/8 in<br> 180 x 140 cm' },
+    { src: 'https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Vedrai/Cima17.jpg', caption: 'Francesco Cima<br> <em>Pinomugo</em>, 2024<br> Oil on canvas<br> 19 11/16 x 23 5/8 in<br> 50 x 60 cm' },
+    { src: 'https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Vedrai/Cima%206.jpg', caption: 'Francesco Cima<br> <em>Turandot</em>, 2024<br> Oil on canvas<br> 70 7/8 x 55 1/8 in<br> 180 x 140 cm' },
+    { src: 'https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Vedrai/Cima15.jpg', caption: 'Francesco Cima<br> <em>Echi di Tempesta</em>, 2024<br> Oil on canvas<br> 19 11/16 x 23 5/8 in<br> 50 x 60 cm' },
 
   ];
 
