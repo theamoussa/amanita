@@ -101,49 +101,70 @@ select {
 
 
  /* Styles for slideshow container */
- .slideshow-container {
+ /* Centering the slideshow on the screen */
+.slideshow-container {
+  height: 60vh;
+  width: auto;
+  margin: 0 auto; /* Center the slideshow */
   position: relative;
-  max-width: 80%; /* Set the maximum width of the slideshow */
-  margin: 0 auto; /* Center the slideshow horizontally */
+  text-align: center;
 }
 
+/* Styling the slides */
 .slides {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px; /* Space between slides */
+  height: 60vh;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory; 
 }
 
-.slides img {
-  height: auto; /* Ensure images fill the slide container */
-  margin-bottom: 15px;
-  max-width: 80vw;
-  max-height: 80vh;
+.slides::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for webkit browsers */
 }
 
-/* Styles for navigation arrows */
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: auto;
-  padding: 16px;
-  color: rgb(0, 0, 0);
-  font-weight: bold;
-  font-size: 20px;
-  transition: 0.6s ease;
-  background-color: transparent;
-  z-index: 1; /* Ensure arrows appear on top of the slideshow */
+.slide {
+  flex: 0 0 auto;
+  width: 100%; /* Adjust this based on the desired width of each slide */
+  text-align: center;
+  position: relative;
+  scroll-snap-align: center;
 }
 
-.prev {
-  left: 20px;
+.slide img {
+  object-fit: contain;
+  margin-bottom: 10px; /* Space between image and caption */
+  height: 55vh;
 }
 
-.next {
-  right: 20px;
+.caption {
+  font-size: 1rem;
+  color: #333;
+  padding: 10px 0;
 }
+
+/* Thumbnails below the slideshow */
+.thumbnails {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+  overflow-x: auto;
+}
+
+.thumbnail {
+  flex: 0 0 auto;
+  width: 80px;
+  height: 50px;
+  object-fit: cover;
+  border: 2px solid transparent;
+  transition: border-color 0.3s;
+}
+
+.thumbnail:hover {
+  border-color: #000;
+}
+
 
 
 .caption {
@@ -244,6 +265,9 @@ ul {
   cursor: pointer;
 }
 
+
+
+
 @media screen and (max-width: 600px) {
   .navbar a:not(:first-child) {display: none;}
   .navbar a.icon {
@@ -264,6 +288,7 @@ ul {
 
   .slideshow-container {
     margin: unset;
+    max-height: 45vh;
   }
 
   .hamburger-menu {
