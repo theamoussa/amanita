@@ -132,38 +132,6 @@
       </div>
       <!-- Add more slides as needed -->
     </div>
-    <!-- Navigation arrows -->
-    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-    <a class="next" onclick="plusSlides(1)">&#10095;</a>
-  </div>
-    
-  <script src="script.js"></script>
-  <script>
-    let slideIndex = 1;
-    function plusSlides(n) {
-      showSlides(slideIndex += n);
-    }
-
-    function showSlides(n) {
-      let i;
-      let slides = document.getElementsByClassName("slide");
-    
-      if (n > slides.length) {
-        slideIndex = 1;
-      }
-      if (n < 1) {
-        slideIndex = slides.length;
-      }
-    
-      for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-      }
-    
-      slides[slideIndex - 1].style.display = "block";
-    }
-    
-    showSlides(slideIndex);
-  </script>
   <div class="seperator"></div>
   <div class="content">
     <h2>Overview</h2>
@@ -345,18 +313,21 @@ document.addEventListener("DOMContentLoaded", () => {
   const slides = document.querySelector(".slides");
   const slideItems = document.querySelectorAll(".slide");
   const images = document.querySelectorAll(".slide img");
+  const captions = document.querySelectorAll(".caption");
 
-  // Calculate the height of the widest image
-  let maxImageHeight = 0;
-  images.forEach((img) => {
+  let maxCombinedHeight = 0;
+
+  // Calculate the maximum combined height of the image and caption
+  images.forEach((img, index) => {
     img.onload = () => {
-      if (img.naturalWidth > img.naturalHeight) {
-        maxImageHeight = Math.max(maxImageHeight, img.naturalHeight);
-      }
+      const imgHeight = img.naturalHeight * (slides.offsetWidth / img.naturalWidth); // Maintain aspect ratio
+      const captionHeight = captions[index].offsetHeight || 0; // Account for caption height
+      maxCombinedHeight = Math.max(maxCombinedHeight, imgHeight + captionHeight);
+
       // Apply the calculated height
-      slides.style.height = `${maxImageHeight}px`;
+      slides.style.height = `${maxCombinedHeight}px`;
       slideItems.forEach((slide) => {
-        slide.style.height = `${maxImageHeight}px`;
+        slide.style.height = `${maxCombinedHeight}px`;
       });
     };
   });
