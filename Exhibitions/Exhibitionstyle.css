@@ -265,7 +265,35 @@ ul {
   cursor: pointer;
 }
 
+@media screen and (max-width: 768px) {
+  .slideshow-container {
+    width: 100%; /* Full width for mobile */
+    height: auto; /* Height adjusts based on content */
+    margin: 0 auto; /* Center the container */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 
+  .slides {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    max-height: 55vh; /* Restrict to 75% of the viewport height */
+    align-items: center;
+  }
+
+
+
+  .slide img {
+    max-height: 50vh; /* Image fits within 65% of the viewport height */
+    max-width: 90%; /* Prevent images from exceeding the container width */
+    object-fit: contain; /* Preserve aspect ratio */
+  }
+
+  
+}
 
 
 @media screen and (max-width: 600px) {
@@ -288,7 +316,7 @@ ul {
 
   .slideshow-container {
     margin: unset;
-    max-height: 45vh;
+    max-height: auto;
   }
 
   .hamburger-menu {
