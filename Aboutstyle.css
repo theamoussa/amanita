@@ -1,29 +1,29 @@
 /* Set default typography styles */
 .thank-you-message, .content, select, input, button, select option, optgroup {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Arial", sans-serif;
     font-size: 18px;
     color: #000;
     line-height: 1.5;
 }
 /* Targeting h1 elements */
 h1 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Arial", sans-serif;
     font-size: 18px;
     font-style: bold;
     color: #000;
-    line-height: 1.5;
+    line-height: 1;
 }
 
 h2 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Arial", sans-serif;
     font-size: 15px;
     font-style: bold;
     color: #000;
-    line-height: 1.5;
+    line-height: 1;
 }
 
 body {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Arial", sans-serif;
     background-color: rgb(251, 249, 249);
     margin-top: 20px;
     margin-left: 40px; /* Adjust the value as needed */
@@ -91,7 +91,6 @@ select, .newsletter-input {
     display: none;
 }
 
-
 .frontdoor {
   position: flex;
   padding-top: 65px;
@@ -104,7 +103,7 @@ select, .newsletter-input {
 }
 
 .text-container2 {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Arial", sans-serif;
   width: 90%; 
   text-align: justify;
   font-size: clamp(16px, 1vw, 20px);
@@ -187,37 +186,57 @@ display:flex;
 
 .about-first {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  width: 100%;
 }
 
-.about-second {
+.image-row {
   display: flex;
+  width: 100%;
+  justify-content: space-between;
+  gap: 10px; /* Space between images */
 }
 
-@media screen and (max-width: 600px) {
-  .about-first {
-    display: block;
+.half-width-img {
+  width: calc(50% - 5px); /* Adjust width to fit with spacing */
+  height: 500px;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+.map-text-container {
+  display: flex;
+  flex-direction: column; /* Stack on all screens */
+  width: 100%;
+  margin-top: 20px; /* Space between image row and map-text row */
+}
+
+.full-width-map {
+  width: 100%; /* Full width map */
+  height: 400px; /* Adjust height if needed */
+  border: 0;
+  margin-bottom: 20px; /* Space between map and text */
+}
+
+.contact-info {
+  width: 100%; /* Full width text */
+  text-align: center; /* Center text */
+  padding: 0 20px; /* Add some padding */
+}
+
+/* 📱 Mobile View: Stack Everything */
+@media (max-width: 768px) {
+  .image-row {
+    flex-direction: column;
+    gap: 5px; /* Reduce spacing between stacked images */
   }
 
-  .text-container2 {
-    width: 100%;
+  .half-width-img {
+    width: 100%; /* Full width images */
   }
 
-  .frontdoor {
-    width: 100%;
-    height: auto;
-  }
-
-  .about-second {
-    display: block;
-  }
-
-  iframe {
-    width: 100% !important;
-    max-height: 450px;
-  }
-  .Amanita-img{
-    max-width: 100px;;
+  .contact-info {
+    text-align: center;
   }
 }
 @media screen and (max-width: 600px) {

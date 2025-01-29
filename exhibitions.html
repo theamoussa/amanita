@@ -53,17 +53,19 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
         <link rel="jscriptsheet" href="Script.js">
-        <link rel="stylesheet" href="Styles.css">
+        <link rel="stylesheet" href="style2.css">
 
         <!-- Bootstrap -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     </head>
+
     <body style="background-color: rgb(251, 249, 249);"> 
+   
         <a href="./">
             <img class="Amanita-img" src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Amanita%20new%20logo.png" alt="Amanita">
         </a>
 
-        <img src="./assets/burger-menu-svgrepo-com.svg" alt="hamburger icon" width="40px" onclick="toggleNavbar()" style="display: block;cursor: pointer;" />
+        <img src="./assets/burger-menu-svgrepo-com.svg" alt="hamburger icon" width="30px" onclick="toggleNavbar()" style="display: block;cursor: pointer; position: fixed;" />
         <!-- hamburger menu -->
         <nav class="hamburger-menu" id="hamburgerMenu">
             <div class="cross-wrapper">
@@ -75,594 +77,365 @@
             <a href="Press">Press</a>
             <a href="About">About</a>
         </nav>
-        
+
         <!-- Content -->
-        <div class="content">
-            <div class="row mt-5">
-                <div class="col-12 col-md-2">
-                    <h1 style="font-weight:normale;font-size: 20px;">Exhibitions</h1>
-                    <div class="mt-5">
-                        <p class="tabs tab-selected" onclick="showTab('current')">PRESENT</p>
-                        <p class="hidden" onclick="showTab('current')">FUTURE</p>
-                        <p class="tabs" onclick="showTab('past')">PAST</p>
-                    </div>
-                </div>
-                <div class="col-10">
-                    <div class="current-exhibition">
-                        <div class="row">
-                            <div class="col-12 col-md-6">
-                                <a href="Exhibitions/Sonder"><img 
-                                    src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Sonder/250113_GX_Amanita_BoweryInstall_A%20copy.jpg"
-                                    width="100%"
-                                    alt="Sonder"
-                                /></a>
-                                <div>
-                                    <h3> <a href="Exhibitions/Sonder" class="exhibition-title">Sonder</a></h3>
-                                    <p class="press-card-date">313 Bowery<br/>Opening January 16, 2025</p>
-                                </div>
-                            </div>
-
-                            <div class="col-12 col-md-6">
-                                <a href="Exhibitions/WorldHonoredOne.html"><img 
-                                    src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Campbell/250113_GX_Amanita_FreemanInstall_03%20A.jpg"
-                                    width="100%"
-                                    alt="World-Honored One"
-                                /></a>
-                                <div>
-                                    <h3> <a href="Exhibitions/WorldHonoredOne.html"  class="exhibition-title">Nicholas Campbell: World-Honored One</a></h3>
-                                    <p class="press-card-date">1 Freeman Alley<br />Opening January 17, 2025</p>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <!--Future EXHIBITIONS--> 
-                    <div class="upcoming-exhibition">
-                        <div class="row">
-                        
-                        </div>
-                    </div>
-                    <!--PAST EXHIBITIONS-->  
-                    <div class="past-exhibition">
-                        <div class="row">
-                            <div class="col-12 col-md-4">
-                                <a href="Exhibitions/Vedraivedrai"><img 
-                                    src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/241106_GX_Amanita_InstallViews_A.jpg"
-                                    width="100%"
-                                    alt="Vedrai, vedrai"
-                                /></a>
-                                <div>
-                                    <h3> <a href="Exhibitions/Vedraivedrai" class="exhibition-title">Vedrai, vedrai</a></h3>
-                                    <p class="press-card-date">Francesco Cima<br />Nov 7, 2024 - Jan 12, 2024</p>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <a href="Exhibitions/Artissima2024"><img 
-                                    src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Artissima2024/_DSC0937.jpg"
-                                    width="100%"
-                                    alt="Artissima2024"
-                                /></a>
-                                <div>
-                                    <h3> <a href="Exhibitions/Artissima2024.html" class="exhibition-title">Artissima 2024</a></h3>
-                                    <p class="press-card-date">Adrian Schachter, Francesco Cima, Leonardo Meoni and Marco Scarpi<br />31 Oct, 2024 - 3 Nov, 2024</p>
-                                </div>
-                            </div>
-
-                        <div class="col-12 col-md-4">
-                            <a href="Exhibitions/TeSonePrimero"><img 
-                                src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Te%20So%C3%B1%C3%A9%20Primero/240830_GX_Amanita_MercedesLlanos_Install01x.jpg"
-                                width="100%"
-                                alt="Te Soñé Primero"
-                            /></a>
-                            <div>
-                                <h3> <a href="Exhibitions/TeSonePrimero" class="exhibition-title">Te Soñé Primero</a></h3>
-                                <p class="press-card-date">Mercedes Llanos<br />5 Sep, 2024 - 20 Oct, 2024</p>
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-md-4">
-                            <a href="Exhibitions/GliAltriColori"><img 
-                                src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Gli%20altri%20colori/photos%20(2)/ROOM%206/101_MicheleMonasta_1M_05396.jpg"
-                                width="100%"
-                                alt="Museo Bardini"
-                            /></a>
-                            <div>
-                                <h3> <a href="Exhibitions/GliAltriColori" class="exhibition-title">Leonardo Meoni: <em>Gli altri colori purtroppo, sono tutti caduti</em></a></h3>
-                                <p class="press-card-date">Museo Stefano Bardini <br />17 Jun, 2024 - 10 Oct, 2024 </p>
-                            </div>
-                        </div>
-
-                            <div class="col-12 col-md-4">
-                                <a href="Exhibitions/Ahealthydoseofpoison"><img
-                                    src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/swisstransfer_2c6f86aa-b8a6-453e-9326-0101d1f43120%20copy/IMG_3098.jpg"
-                                    width="100%"
-                                    alt="A healthy dose of poison"
-                                /></a>
-                                <div>
-                                    <h3 <a href="Exhibitions/Ahealthydoseofpoison" class="exhibition-title">A healthy dose of poison</a></h3>
-                                    <p class="press-card-date">Adrian Schachter<br />5 Aug, 2024 - 1 Sep, 2024</p>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <a href="Exhibitions/SocialPractice"><img
-                                    src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Exhibitions%20covers/240623_Amanita_InstallView_01%20Large.jpg"
-                                    width="100%"
-                                    alt="Social Practice"
-                                /></a>
-                                <div>
-                                    <h3> <a href="Exhibitions/SocialPractice" class="exhibition-title">Social Practice</a></h3>
-                                    <p class="press-card-date">313 Bowery<br />27 Jun, 2024 - 10 Aug, 2024</p>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <a href="Exhibitions/EinRadler"><img 
-                                    src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Exhibitions%20covers/240623_Amanita_SCAR_InstallView_02.jpg"
-                                    width="100%"
-                                    alt="Ein Radler"
-                                /></a>
-                                <div>
-                                    <h3> <a href="Exhibitions/EinRadler" class="exhibition-title">Marco Scarpi: <em>Ein Radler</em></a></h3>
-                                    <p class="press-card-date">313 Bowery<br />29 Jun, 2024 - 10 Aug, 2024</p>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <a href="Exhibitions/MannaRain"><img 
-                                    src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Manna%20Rain/jpeg%20alta%20risoluzione/_GB10705.jpg"
-                                    width="100%"
-                                    alt="Rita Ackermann"
-                                /></a>
-                                <div>
-                                    <h3><a href="Exhibitions/MannaRain" class="exhibition-title">Rita Ackermann: <em>Manna Rain</em></a></h3>
-                                    <p class="press-card-date">Fondazione Iris<br />10 Jun, 2024 - 31 Jul, 2024</p>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <a href="Exhibitions/EtruscanPainting"><img 
-                                    src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Alessandro%20Twombly/240423_GX_Amanita_AlessandroTwombly_G.jpg"
-                                    width="100%"
-                                    alt="Alessandro Twombly"
-                                /> </a>
-                                <div>
-                                    <h3><a <a href="Exhibitions/EtruscanPainting" class="exhibition-title">Etruscan Painting</a></h3>
-                                    <p class="press-card-date">Alessandro Twombly <br />26 Apr, 2024 - 14 Jun, 2024</p>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <a href="Exhibitions/ApplesandOranges"><img 
-                                    <img
-                                        src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Exhibitions%20covers/SCHA_InstallView_01.jpg"
-                                        width="100%"
-                                        alt="Apples & Oranges"
-                                    /> </a>
-                                <div>
-                                    <h3><a href="Exhibitions/ApplesandOranges" class="exhibition-title" >Apples & Oranges</a></h3>
-                                    <p class="press-card-date">Adrian Schachter<br />15 Mar, 2024 - 19 Apr, 2024</p>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <a href="Exhibitions/DAF2024"><img 
-                                    src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/19.%20Andrew%20Piedilato/Amanita%20DAF-04%20cover.jpg"
-                                    width="100%"
-                                    alt="Dallas Art Fair 2024" 
-                                /> </a>
-                                <div>
-                                    <h3><a href="Exhibitions/DAF2024" class="exhibition-title" >Andrew Piedilato</a></h3>
-                                    <p class="press-card-date">Dallas Art Fair<br />4 Apr, 2024 - 7 Apr, 2024</p>
-                                <br>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <a href="Exhibitions/AGlimpseAlmost"><img 
-                                    src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Exhibitions%20covers/AGA%20Large.jpeg"
-                                    width="100%"
-                                    alt="A Glimpse, Almost" 
-                                /> </a>
-                                <div>
-                                    <h3><a href="Exhibitions/AGlimpseAlmost" class="exhibition-title" >A Glimpse, Almost</a></h3>
-                                    <p class="press-card-date">Leonardo Meoni<br />25 Feb, 2024 - 3 Mar, 2024</p>
-                                <br>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <a href="Exhibitions/RedHerring"><img 
-                                    src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Red%20Herring/Install%20Views/JPEG/MILV_InstallViews_01.jpg"
-                                    width="100%"
-                                    alt="Red Herring" 
-                                /> </a>
-                                <div>
-                                    <h3><a href="Exhibitions/RedHerring" class="exhibition-title" >Red Herring</a></h3>
-                                    <p class="press-card-date">Daniele Milvio<br />8 Feb, 2024 - 10 Mar, 2024</p>
-                                <br>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <a href="Exhibitions/WakingLife"><img 
-                                    src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Exhibitions%20covers/WL%20Large.jpeg"
-                                    width="100%"
-                                    alt="Waking Life" 
-                                /> </a>
-                                <div>
-                                    <h3><a href="Exhibitions/WakingLife" class="exhibition-title" >Waking Life</a></h3>
-                                    <p class="press-card-date">14 Dec, 2023 - 25 Jan, 2024</p>
-                                <br>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <a href="Exhibitions/TheBeginning"><img 
-                                    src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Exhibitions%20covers/TB%20Large.jpeg"
-                                    width="100%"
-                                    alt="The Beginning" 
-                                /> </a>
-                                <div>
-                                    <h3><a href="Exhibitions/TheBeginning" class="exhibition-title" >The Beginning</a></h3>
-                                    <p class="press-card-date">Taezoo Park<br />16 Nov, 2023 - 25 Jan, 2024</p>
-                                <br>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <a href="Exhibitions/Artissima2023"><img 
-                                    src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Exhibitions%20covers/Artissima23%20Large.jpeg"
-                                    width="100%"
-                                    alt="Artissima 2023" 
-                                /> </a>
-                                <div>
-                                    <h3><a href="Exhibitions/Artissima2023" class="exhibition-title" >Artissima 2023</a></h3>
-                                    <p class="press-card-date">Leonardo Meoni<br />2 Nov, 2023 - 5 Nov, 2023</p>
-                                <br>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <a href="Exhibitions/musicaparaunmurcielago"><img 
-                                    src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Exhibitions%20covers/MPM%20Large.jpeg"
-                                    width="100%"
-                                    alt="Música para un murciélago" 
-                                /> </a>
-                                <div>
-                                    <h3><a href="Exhibitions/musicaparaunmurcielago" class="exhibition-title" >Música para un murciélago</a></h3>
-                                    <p class="press-card-date">Cristina Lama<br />26 Oct, 2023 - 3 Dec, 2023</p>
-                                <br>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <a href="Exhibitions/ChiSeminaVento"><img 
-                                    src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Exhibitions%20covers/CSV%20Large.jpeg"
-                                    width="100%"
-                                    alt="Chi Semina Vento" 
-                                /> </a>
-                                <div>
-                                    <h3><a href="Exhibitions/ChiSeminaVento" class="exhibition-title" >Chi Semina Vento</a></h3>
-                                    <p class="press-card-date">Francesco Cima<br />13 Oct, 2023 - 14 Nov, 2023</p>
-                                <br>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <a href="Exhibitions/CharacterStudy"><img 
-                                    src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Exhibitions%20covers/AC.jpeg"
-                                    width="100%"
-                                    alt="Charachter Study" 
-                                /> </a>
-                                <div>
-                                    <h3><a href="Exhibitions/CharacterStudy" class="exhibition-title" >Charachter Study</a></h3>
-                                    <p class="press-card-date">Anthony Coleman<br />14 Sep, 2023 - 15 Oct, 2023</p>
-                                <br>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <a href="Exhibitions/Abrushwithfantasy"><img 
-                                    src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Exhibitions%20covers/JC.jpeg"
-                                    width="100%"
-                                    alt="A Brush with Fantasy" 
-                                /> </a>
-                                <div>
-                                    <h3><a href="Exhibitions/Abrushwithfantasy" class="exhibition-title" >A Brush With Fantasy</a></h3>
-                                    <p class="press-card-date">Jimmy Connelly<br />14 Sep, 2023 - 15 Oct, 2023</p>
-                                <br>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <a href="Exhibitions/Blueprint"><img 
-                                    src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Exhibitions%20covers/BP%20Large.jpeg"
-                                    width="100%"
-                                    alt="Blueprint" 
-                                /> </a>
-                                <div>
-                                    <h3><a href="Exhibitions/Blueprint" class="exhibition-title" >Blueprint</a></h3>
-                                    <p class="press-card-date">Yale Photography MFA 2023<br />3 Aug, 2023 - 27 Aug, 2023</p>
-                                <br>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <a href="Exhibitions/Palai2023"><img 
-                                    src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Palai%202023/58.Palai-2023-Leonardo-Meoni-Camille-Blatrix-Rafael-Domenech-Ana-Prata-Mostafa-Sarabi-Amanita-Delgosha-HUA-International-Isla-Flotante-Balice-Hertling-scaled.jpg"
-                                    width="100%"
-                                    alt="Palai 2023" 
-                                /> </a>
-                                <div>
-                                    <h3><a href="Exhibitions/Palai2023" class="exhibition-title" >Palai 2023</a></h3>
-                                    <p class="press-card-date">28 Jul, 2023 - 26 Aug, 2023</p>
-                                <br>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <a href="Exhibitions/IrisNava"><img 
-                                    src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Exhibitions%20covers/RN%20Large.jpeg"
-                                    width="100%"
-                                    alt="Fondazione Iris" 
-                                /> </a>
-                                <div>
-                                    <h3><a href="Exhibitions/IrisNava" class="exhibition-title" >Fondazione Iris</a></h3>
-                                    <p class="press-card-date">Robert Nava<br />5 Jul, 2023 - 3 Sep, 2023</p>
-                                <br>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <a href="Exhibitions/Tutto"><img 
-                                    src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Exhibitions%20covers/TUTTO%20Large.jpeg"
-                                    width="100%"
-                                    alt="Tutto" 
-                                /> </a>
-                                <div>
-                                    <h3><a href="Exhibitions/WorksonPaper" class="exhibition-title" >Tutto</a></h3>
-                                    <p class="press-card-date">Monieur Zohore<br />30 Jun, 2023 - 26 Aug, 2023</p>
-                                <br>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <a href="Exhibitions/WorksonPaper"><img 
-                                    src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Exhibitions%20covers/WOP%20Large.jpeg"
-                                    width="100%"
-                                    alt="Works on paper (100 years)" 
-                                /> </a>
-                                <div>
-                                    <h3><a href="Exhibitions/WorksonPaper" class="exhibition-title" >Works on paper (100 Years)</a></h3>
-                                    <p class="press-card-date">18 May, 2023 - 2 Jul, 2023</p>
-                                <br>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <a href="Exhibitions/StradeComodeEvidenti"><img 
-                                    src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Exhibitions%20covers/SCE%20Large.jpeg"
-                                    width="100%"
-                                    alt="Strade Comode ed Evidenti" 
-                                /> </a>
-                                <div>
-                                    <h3><a href="Exhibitions/StradeComodeEvidenti" class="exhibition-title" >Strade Comode ed Evidenti</a></h3>
-                                    <p class="press-card-date">Arianna Tosi<br />24 Mar, 2023 - 30 Apr, 2023</p>
-                                <br>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <a href="Exhibitions/RecordingArtists"><img 
-                                    src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Exhibitions%20covers/RA%20Large.jpeg"
-                                    width="100%"
-                                    alt="Recording Artists" 
-                                /> </a>
-                                <div>
-                                    <h3><a href="Exhibitions/RecordingArtists" class="exhibition-title" >Recording Artists</a></h3>
-                                    <p class="press-card-date">Louis Osmosis<br />11 Mar, 2023 - 7 May, 2023</p>
-                                    <br>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <a href="Exhibitions/LadraTerra"><img 
-                                    src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Exhibitions%20covers/LT%20Large.jpeg"
-                                    width="100%"
-                                    alt="Ladra Terra" 
-                                /> </a>
-                                <div>
-                                    <h3><a href="Exhibitions/LadraTerra" class="exhibition-title" >Ladra Terra</a></h3>
-                                    <p class="press-card-date">Francesco Cima<br/>15 Feb, 2023 - 5 Mar, 2023</p>
-                                    <br>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <a href="Exhibitions/EveryoneisaGenius"><img 
-                                    src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Exhibitions%20covers/EG%20Large.jpeg"
-                                    width="100%"
-                                    alt="Place Holder" 
-                                /> </a>
-                                <div>
-                                    <h3><a href="Exhibitions/EveryoneisaGenius" class="exhibition-title" >Everyone is a Genius</a></h3>
-                                    <p class="press-card-date">Ben Werther<br/>26 Jan, 2023 - 4 Mar, 2023</p>
-                                </br>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <a href="Exhibitions/NinePaintings"><img 
-                                    src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Exhibitions%20covers/9N%20Large.jpeg"
-                                    width="100%"
-                                    alt="Nine Paintings" 
-                                /> </a>
-                                <div>
-                                    <h3><a href="Exhibitions/NinePaintings" class="exhibition-title" >Nine Paintings (2009 - 2022)</a></h3>
-                                    <p class="press-card-date">Andrew Piedilato<br/>15 Dec, 2022 - 21 Jan, 2023</p>
-                                </br>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <a href="Exhibitions/FormandFormlessness"><img 
-                                    src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Exhibitions%20covers/FM%20Large.jpeg"
-                                    width="100%"
-                                    alt="Form and Formlessness" 
-                                /> </a>
-                                <div>
-                                    <h3><a href="Exhibitions/FormandFormlessness" class="exhibition-title" >Form and Formlessness</a></h3>
-                                    <p class="press-card-date">Felicidad Moreno<br/>27 Nov, 2022 - 12 Dec, 2022</p>
-                                </br>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <a href="Exhibitions/Aktenkundig"><img 
-                                    src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Exhibitions%20covers/AK%20Large.jpeg"
-                                    width="100%"
-                                    alt="Aktenkundig (On Record)" 
-                                /> </a>
-                                <div>
-                                    <h3><a href="Exhibitions/Aktenkundig" class="exhibition-title" >Aktenkundig (On Record)</a></h3>
-                                    <p class="press-card-date">Eva Beresin<br/>3 Nov, 2022 - 11 Dec, 2022</p>
-                                </br>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <a href="Exhibitions/PlaceHolder"><img 
-                                    src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Exhibitions%20covers/PH%20Large.jpeg"
-                                    width="100%"
-                                    alt="Place Holder" 
-                                /> </a>
-                                <div>
-                                    <h3><a href="Exhibitions/PlaceHolder" class="exhibition-title" >Place Holder</a></h3>
-                                    <p class="press-card-date">Leonardo Meoni<br/>29 Sep, 2022 - 30 Oct, 2022</p>
-                                </br>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <a href="Exhibitions/SplitEnds"><img 
-                                    src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Exhibitions%20covers/SE%20Large.jpeg"
-                                    width="100%"
-                                    alt="Split Ends" 
-                                /> </a>
-                                <div>
-                                    <h3><a href="Exhibitions/SplitEnds" class="exhibition-title" >Split Ends</a></h3>
-                                    <p class="press-card-date">Adrian Schachter<br/>16 Sep, 2022 - 29 Oct, 2022</p>
-                                </br>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <a href="Exhibitions/IlTempoSeMagnaTutto"><img 
-                                    src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Exhibitions%20covers/ITSMT%20Large.jpeg"
-                                    width="100%"
-                                    alt="Il Tempo Se Magna Tutto" 
-                                /> </a>
-                                <div>
-                                    <h3><a href="Exhibitions/IlTempoSeMagnaTutto" class="exhibition-title" >Il Tempo Se Magna Tutto</a></h3>
-                                    <p class="press-card-date">Marcelo Barchi<br/>13 May, 2022 - 14 Jun, 2022</p>
-                                </br>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <a href="Exhibitions/PunkTyrol"><img 
-                                    src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Exhibitions%20covers/PT%20Large.jpeg"
-                                    width="100%"
-                                    alt="Punk Tyröl" 
-                                /> </a>
-                                <div>
-                                    <h3><a href="Exhibitions/PunkTyrol" class="exhibition-title" >Punk Tyröl</a></h3>
-                                    <p class="press-card-date">3 Mar, 2022 - 17 Apr, 2022</p>
-                                </br>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <a href="Exhibitions/Idomyownstunts"><img 
-                                    src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Exhibitions%20covers/IDMOS%20Large.jpeg"
-                                    width="100%"
-                                    alt="I Do My Own Stunts" 
-                                /> </a>
-                                <div>
-                                    <h3><a href="Exhibitions/Idomyownstunts" class="exhibition-title" >I Do My Own Stunts</a></h3>
-                                    <p class="press-card-date">14 Feb, 2022 - 7 Mar, 2022</p>
-                                </br>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <a href="Exhibitions/CancellareSenzaPermesso"><img 
-                                    src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Exhibitions%20covers/CSP%20Large.jpeg"
-                                    width="100%"
-                                    alt="Cancellare Senza Peremsso" 
-                                /> </a>
-                                <div>
-                                    <h3><a href="Exhibitions/CancellareSenzaPermesso" class="exhibition-title" >Cancellare Senza Permesso</a></h3>
-                                    <p class="press-card-date">Leonardo Meoni<br/> 16 Dec, 2021 - 8 Feb, 2022</p>
-                                </br>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <a href="Exhibitions/Will-O-Wisp"> <img 
-                                    src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Exhibitions%20covers/WOW%20Large.jpeg"
-                                    width="100%"
-                                    alt="Will-O-Wisp"
-                                /> </a>
-                                <div>
-                                    <h3><a href="Exhibitions/Will-O-Wisp"class="exhibition-title">Will-O-Wisp</a></h3>
-                                    <p class="press-card-date">4 Nov, 2021 - 11 Dec, 2021</p>
-                                </br>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <a href="Exhibitions/TheLoneliestSport"> <img 
-                                    src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Exhibitions%20covers/TLS%20Large.jpeg"
-                                    width="100%"
-                                    alt="The Loneliest Sport"
-                                /> </a>
-                                <div>
-                                    <h3><a href="Exhibitions/TheLoneliestSport"class="exhibition-title">The Loneliest Sport</a></h3>
-                                    <p class="press-card-date">22 Oct, 2021 - 18 Nov, 2021</p>
-                                </br>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <a href="Exhibitions/PostFataResurgo"> <img 
-                                    src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Exhibitions%20covers/PFR%20Large.jpeg"
-                                    width="100%"
-                                    alt="Post Fata Resurgo"
-                                /> </a>
-                                <div>
-                                    <h3><a href="Exhibitions/PostFataResurgo"class="exhibition-title">Post Fata Resurgo</a></h3>
-                                    <p class="press-card-date">30 Sep, 2021 - 28 Nov, 2021</p>
-                                </br>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <a href="Exhibitions/SweetScience"> <img 
-                                    src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Exhibitions%20covers/SS%20Large.jpeg"
-                                    width="100%"
-                                    alt="Sweet Science"
-                                /> </a>
-                                <div>
-                                    <h3><a href="Exhibitions/SweetScience"class="exhibition-title">Sweet Science</a></h3>
-                                    <p class="press-card-date">Marco Scarpi<br/>4 Jun, 2021 - 31 Aug, 2021</p>
-                                </br>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <a href="Exhibitions/Sprezzatura"> <img 
-                                    src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Exhibitions%20covers/Sprezzatura%20Large.jpeg"
-                                    width="100%"
-                                    alt="Sprezzatura"
-                                /> </a>
-                                <div>
-                                    <h3><a href="Exhibitions/Sprezzatura"class="exhibition-title">Sprezzatura</a></h3>
-                                    <p class="press-card-date">19 Feb, 2021 - May 1, 2021</p>
-                                </br>
-                                </div>
-                            </div>
-                            </div>
-                    </div>
-                </div>
+          <div class="exhibitions-wrapper">
+            <!-- Sidebar -->
+            <div id="sidebar" class="sidebar">
+              <br><br>
+              <a href="#current" class="sidebar-link">Present</a>
+              <div id="past-container" class="past-container">
+                <a href="#past" class="sidebar-link">Past</a>
+                <ul id="year-list" class="year-list">
+                  <li><a href="#2025" class="sidebar-link">2025</a></li>
+                  <li><a href="#2024" class="sidebar-link">2024</a></li>
+                  <li><a href="#2023" class="sidebar-link">2023</a></li>
+                  <li><a href="#2022" class="sidebar-link">2022</a></li>
+                  <li><a href="#2021" class="sidebar-link">2021</a></li>
+                </ul>
+              </div>
             </div>
-        </div>
+          
+            <!-- Main Content -->
+            <div class="main-content">
+              <!-- Current Exhibitions -->
+              <div id="current" class="exhibitions-section">
+                <h2>Current</h2>
+                <div class="current-exhibition">
+                  <div class="exhibition-item">
+                    <div class="exhibition-img-container">
+                      <a href="Exhibitions/Sonder.html">
+                        <img
+                          src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Sonder/250113_GX_Amanita_BoweryInstall_A%20copy.jpg"
+                          alt="Sonder"
+                          class="exhibition-img"
+                        />
+                      </a>
+                    </div>
+                    <div class="exhibition-text">
+                      <h3>
+                        <a href="Exhibitions/WorldHonoredOne" class="exhibition-title">Sonder</a>
+                      </h3>
+                      <p class="press-card-date">
+                        313 Bowery <br>Jan 16, 2025 - Feb 23, 2025</span>
+                    </p>
+                    </div>
+                  </div>
+                
+                  <div class="exhibition-item">
+                    <div class="exhibition-img-container">
+                      <a href="Exhibitions/WorldHonoredOne.html">
+                        <img
+                          src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Campbell/250113_GX_Amanita_FreemanInstall_03%20A.jpg"
+                          alt="World-Honored One"
+                          class="exhibition-img"
+                        />
+                      </a>
+                    </div>
+                    <div class="exhibition-text">
+                      <h3>
+                        <a href="Exhibitions/WorldHonoredOne" class="exhibition-title">Nicholas Campbell: World-Honored One</a>
+                      </h3>
+                      <p class="press-card-date">1 Freeman Alley<br/>Jan 17, 2025 - Feb 23, 2025</p>
+                    </div>
+                  </div>
+                </div>
+              <!-- Past Exhibitions -->
+              <div id="past" class="exhibitions-section">
+                <h2>Past</h2>
+          
+                <!-- Year 2025 -->
 
 
+                <!-- Year 2024 -->
+                <div id="year-2024" class="year-section">
+                  <h3>2024</h3>
+                <div class="exhibition-item">
+                  <h3><a href="Exhibitions/Vedraivedrai" class="exhibition-title">Vedrai, vedrai</a></h3>
+                  <p class="press-card-date">Francesco Cima<br />Nov 7, 2024 - Jan 12, 2024</p>
+                </div>
+                <div class="exhibition-item">
+                  <h3><a href="Exhibitions/Artissima2024.html" class="exhibition-title">Artissima 2024</a></h3>
+                  <p class="press-card-date">Adrian Schachter, Francesco Cima, Leonardo Meoni and Marco Scarpi<br />31 Oct, 2024 - 3 Nov, 2024</p>
+                </div>
+                <div class="exhibition-item">
+                  <h3><a href="Exhibitions/TeSonePrimero" class="exhibition-title">Te Soñé Primero</a></h3>
+                  <p class="press-card-date">Mercedes Llanos<br />5 Sep, 2024 - 20 Oct, 2024</p>
+                </div>
+                <div class="exhibition-item">
+                  <h3><a href="Exhibitions/GliAltriColori" class="exhibition-title">Leonardo Meoni: <em>Gli altri colori purtroppo, sono tutti caduti</em></a></h3>
+                  <p class="press-card-date">Museo Stefano Bardini<br />17 Jun, 2024 - 10 Oct, 2024</p>
+                </div>
+                <div class="exhibition-item">
+                  <h3><a href="Exhibitions/Ahealthydoseofpoison" class="exhibition-title">A healthy dose of poison</a></h3>
+                  <p class="press-card-date">Adrian Schachter<br />5 Aug, 2024 - 1 Sep, 2024</p>
+                </div>
+                <div class="exhibition-item">
+                  <h3><a href="Exhibitions/SocialPractice" class="exhibition-title">Social Practice</a></h3>
+                  <p class="press-card-date">313 Bowery<br />27 Jun, 2024 - 10 Aug, 2024</p>
+                </div>
+                <div class="exhibition-item">
+                  <h3><a href="Exhibitions/EinRadler" class="exhibition-title">Marco Scarpi: <em>Ein Radler</em></a></h3>
+                  <p class="press-card-date">313 Bowery<br />29 Jun, 2024 - 10 Aug, 2024</p>
+                </div>
+                <div class="exhibition-item">
+                  <h3><a href="Exhibitions/MannaRain" class="exhibition-title">Rita Ackermann: <em>Manna Rain</em></a></h3>
+                  <p class="press-card-date">Fondazione Iris<br />10 Jun, 2024 - 31 Jul, 2024</p>
+                </div>
+                <div class="exhibition-item">
+                  <h3><a href="Exhibitions/EtruscanPainting" class="exhibition-title">Etruscan Painting</a></h3>
+                  <p class="press-card-date">Alessandro Twombly<br />26 Apr, 2024 - 14 Jun, 2024</p>
+                </div>
+                <div class="exhibition-item">
+                  <h3><a href="Exhibitions/ApplesandOranges" class="exhibition-title">Apples & Oranges</a></h3>
+                  <p class="press-card-date">Adrian Schachter<br />15 Mar, 2024 - 19 Apr, 2024</p>
+                </div>
+                <div class="exhibition-item">
+                  <h3><a href="Exhibitions/DAF2024" class="exhibition-title">Andrew Piedilato</a></h3>
+                  <p class="press-card-date">Dallas Art Fair<br />4 Apr, 2024 - 7 Apr, 2024</p>
+                </div>
+                <div class="exhibition-item">
+                  <h3><a href="Exhibitions/AGlimpseAlmost" class="exhibition-title">A Glimpse, Almost</a></h3>
+                  <p class="press-card-date">Leonardo Meoni<br />25 Feb, 2024 - 3 Mar, 2024</p>
+                </div>
+                <div class="exhibition-item">
+                  <h3><a href="Exhibitions/RedHerring" class="exhibition-title">Red Herring</a></h3>
+                  <p class="press-card-date">Daniele Milvio<br />8 Feb, 2024 - 10 Mar, 2024</p>
+                </div>
+                </div>
+
+
+                <!-- Year 2023 -->
+                <div id="year-2023" class="year-section">
+                  <h3>2023</h3>
+
+                <div class="exhibition-item">
+                  <h3><a href="Exhibitions/WakingLife" class="exhibition-title">Waking Life</a></h3>
+                  <p class="press-card-date">14 Dec, 2023 - 25 Jan, 2024</p>
+                </div>
+                <div class="exhibition-item">
+                  <h3><a href="Exhibitions/TheBeginning" class="exhibition-title">The Beginning</a></h3>
+                  <p class="press-card-date">Taezoo Park<br />16 Nov, 2023 - 25 Jan, 2024</p>
+                </div>
+                <div class="exhibition-item">
+                  <h3><a href="Exhibitions/Artissima2023" class="exhibition-title">Artissima 2023</a></h3>
+                  <p class="press-card-date">Leonardo Meoni<br />2 Nov, 2023 - 5 Nov, 2023</p>
+                </div>
+                <div class="exhibition-item">
+                  <h3><a href="Exhibitions/musicaparaunmurcielago" class="exhibition-title">Música para un murciélago</a></h3>
+                  <p class="press-card-date">Cristina Lama<br />26 Oct, 2023 - 3 Dec, 2023</p>
+                </div>
+                <div class="exhibition-item">
+                  <h3><a href="Exhibitions/ChiSeminaVento" class="exhibition-title">Chi Semina Vento</a></h3>
+                  <p class="press-card-date">Francesco Cima<br />13 Oct, 2023 - 14 Nov, 2023</p>
+                </div>
+                <div class="exhibition-item">
+                  <h3><a href="Exhibitions/CharacterStudy" class="exhibition-title">Character Study</a></h3>
+                  <p class="press-card-date">Anthony Coleman<br />14 Sep, 2023 - 15 Oct, 2023</p>
+                </div>
+                <div class="exhibition-item">
+                  <h3><a href="Exhibitions/Abrushwithfantasy" class="exhibition-title">A Brush With Fantasy</a></h3>
+                  <p class="press-card-date">Jimmy Connelly<br />14 Sep, 2023 - 15 Oct, 2023</p>
+                </div>
+                <div class="exhibition-item">
+                  <h3><a href="Exhibitions/Blueprint" class="exhibition-title">Blueprint</a></h3>
+                  <p class="press-card-date">Yale Photography MFA 2023<br />3 Aug, 2023 - 27 Aug, 2023</p>
+                </div>
+                <div class="exhibition-item">
+                  <h3><a href="Exhibitions/Palai2023" class="exhibition-title">Palai 2023</a></h3>
+                  <p class="press-card-date">28 Jul, 2023 - 26 Aug, 2023</p>
+                </div>
+                <div class="exhibition-item">
+                  <h3><a href="Exhibitions/IrisNava" class="exhibition-title">Fondazione Iris</a></h3>
+                  <p class="press-card-date">Robert Nava<br />5 Jul, 2023 - 3 Sep, 2023</p>
+                </div>
+                <div class="exhibition-item">
+                  <h3><a href="Exhibitions/Tutto" class="exhibition-title">Tutto</a></h3>
+                  <p class="press-card-date">Monieur Zohore<br />30 Jun, 2023 - 26 Aug, 2023</p>
+                </div>
+                <div class="exhibition-item">
+                  <h3><a href="Exhibitions/WorksonPaper" class="exhibition-title">Works on paper (100 Years)</a></h3>
+                  <p class="press-card-date">18 May, 2023 - 2 Jul, 2023</p>
+                </div>
+                <div class="exhibition-item">
+                  <h3><a href="Exhibitions/StradeComodeEvidenti" class="exhibition-title">Strade Comode ed Evidenti</a></h3>
+                  <p class="press-card-date">Arianna Tosi<br />24 Mar, 2023 - 30 Apr, 2023</p>
+                </div>
+                <div class="exhibition-item">
+                  <h3><a href="Exhibitions/RecordingArtists" class="exhibition-title">Recording Artists</a></h3>
+                  <p class="press-card-date">Louis Osmosis<br />11 Mar, 2023 - 7 May, 2023</p>
+                </div>
+                <div class="exhibition-item">
+                  <h3><a href="Exhibitions/LadraTerra" class="exhibition-title">Ladra Terra</a></h3>
+                  <p class="press-card-date">Francesco Cima<br/>15 Feb, 2023 - 5 Mar, 2023</p>
+                </div>
+                <div class="exhibition-item">
+                  <h3><a href="Exhibitions/EveryoneisaGenius" class="exhibition-title">Everyone is a Genius</a></h3>
+                  <p class="press-card-date">Ben Werther<br/>26 Jan, 2023 - 4 Mar, 2023</p>
+                </div>
+                </div>
+
+                <!-- Year 2022 -->
+                <div id="year-2022" class="year-section">
+                  <h3>2022</h3>
+
+                <div class="exhibition-item">
+                  <h3><a href="Exhibitions/NinePaintings" class="exhibition-title">Nine Paintings (2009 - 2022)</a></h3>
+                  <p class="press-card-date">Andrew Piedilato<br/>15 Dec, 2022 - 21 Jan, 2023</p>
+                </div>
+                <div class="exhibition-item">
+                  <h3><a href="Exhibitions/FormandFormlessness" class="exhibition-title">Form and Formlessness</a></h3>
+                  <p class="press-card-date">Felicidad Moreno<br/>27 Nov, 2022 - 12 Dec, 2022</p>
+                </div>
+                <div class="exhibition-item">
+                  <h3><a href="Exhibitions/Aktenkundig" class="exhibition-title">Aktenkundig (On Record)</a></h3>
+                  <p class="press-card-date">Eva Beresin<br/>3 Nov, 2022 - 11 Dec, 2022</p>
+                </div>
+                <div class="exhibition-item">
+                  <h3><a href="Exhibitions/PlaceHolder" class="exhibition-title">Place Holder</a></h3>
+                  <p class="press-card-date">Leonardo Meoni<br/>29 Sep, 2022 - 30 Oct, 2022</p>
+                </div>
+                <div class="exhibition-item">
+                  <h3><a href="Exhibitions/SplitEnds" class="exhibition-title">Split Ends</a></h3>
+                  <p class="press-card-date">Adrian Schachter<br/>16 Sep, 2022 - 29 Oct, 2022</p>
+                </div>
+                <div class="exhibition-item">
+                  <h3><a href="Exhibitions/IlTempoSeMagnaTutto" class="exhibition-title">Il Tempo Se Magna Tutto</a></h3>
+                  <p class="press-card-date">Marcelo Barchi<br/>13 May, 2022 - 14 Jun, 2022</p>
+                </div>
+                <div class="exhibition-item">
+                  <h3><a href="Exhibitions/PunkTyrol" class="exhibition-title">Punk Tyröl</a></h3>
+                  <p class="press-card-date">3 Mar, 2022 - 17 Apr, 2022</p>
+                </div>
+                <div class="exhibition-item">
+                  <h3><a href="Exhibitions/Idomyownstunts" class="exhibition-title">I Do My Own Stunts</a></h3>
+                  <p class="press-card-date">14 Feb, 2022 - 7 Mar, 2022</p>
+                </div>
+                <div class="exhibition-item">
+                  <h3><a href="Exhibitions/CancellareSenzaPermesso" class="exhibition-title">Cancellare Senza Permesso</a></h3>
+                  <p class="press-card-date">Leonardo Meoni<br/> 16 Dec, 2021 - 8 Feb, 2022</p>
+                </div>
+                </div>
+
+
+
+              <!-- Year 2021 -->
+                <div id="year-2021" class="year-section">
+                  <h3>2021</h3> 
+                <div class="exhibition-item">
+                  <h3><a href="Exhibitions/Will-O-Wisp" class="exhibition-title">Will-O-Wisp</a></h3>
+                  <p class="press-card-date">4 Nov, 2021 - 11 Dec, 2021</p>
+                </div>
+                <div class="exhibition-item">
+                  <h3><a href="Exhibitions/TheLoneliestSport" class="exhibition-title">The Loneliest Sport</a></h3>
+                  <p class="press-card-date">22 Oct, 2021 - 18 Nov, 2021</p>
+                </div>
+                <div class="exhibition-item">
+                  <h3><a href="Exhibitions/PostFataResurgo" class="exhibition-title">Post Fata Resurgo</a></h3>
+                  <p class="press-card-date">30 Sep, 2021 - 28 Nov, 2021</p>
+                </div>
+                <div class="exhibition-item">
+                  <h3><a href="Exhibitions/SweetScience" class="exhibition-title">Sweet Science</a></h3>
+                  <p class="press-card-date">Marco Scarpi<br/>4 Jun, 2021 - 31 Aug, 2021</p>
+                </div>
+                <div class="exhibition-item">
+                  <h3><a href="Exhibitions/Sprezzatura" class="exhibition-title">Sprezzatura</a></h3>
+                  <p class="press-card-date">19 Feb, 2021 - May 1, 2021</p>
+                </div>
+                </div>
+          
+              
+              </div>
+            </div>
+          </div>
+
+<script>
+
+// Select the Past container and year links
+const pastContainer = document.getElementById('past-container');
+const yearLinks = document.querySelectorAll('.year-list .sidebar-link');
+const sections = document.querySelectorAll('.exhibitions-section, .year-section');
+
+// Intersection Observer for scrolling effects
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.target.id === 'past') {
+        if (entry.isIntersecting) {
+          // Show Past container with slide-up animation
+          pastContainer.classList.add('visible');
+        } else {
+          // Hide Past container with slide-down animation
+          pastContainer.classList.remove('visible');
+        }
+      }
+    });
+  },
+  { threshold: 0.1 } // Trigger when 10% of the section is visible
+);
+
+// Observe the #past section
+const pastSection = document.getElementById('past');
+if (pastSection) {
+  observer.observe(pastSection);
+}
+
+// Smooth scroll when clicking a sidebar year link
+yearLinks.forEach((link) => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault(); // Prevent default anchor behavior
+    const targetId = link.getAttribute('href').substring(1); // Get target year (e.g., "2023")
+    const targetSection = document.getElementById(`year-${targetId}`); // Match section ID (e.g., "year-2023")
+
+    if (targetSection) {
+      targetSection.scrollIntoView({
+        behavior: 'smooth', // Smooth scrolling
+        block: 'start', // Align to the top of the viewport
+      });
+    }
+  });
+});
+
+// Optional: Add scroll spy effect to highlight the active year link in the sidebar
+const scrollSpyObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const activeYear = entry.target.id.replace('year-', ''); // Extract year from section ID
+        yearLinks.forEach((link) => {
+          if (link.getAttribute('href').substring(1) === activeYear) {
+            link.classList.add('active'); // Highlight active link
+          } else {
+            link.classList.remove('active');
+          }
+        });
+      }
+    });
+  },
+  { threshold: 0.5 } // Trigger when 50% of the section is visible
+);
+
+// Observe all year sections for scroll spy
+sections.forEach((section) => {
+  if (section.id.startsWith('year-')) {
+    scrollSpyObserver.observe(section);
+  }
+});
+
+</script>
          <!-- Bootstrap -->
          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
          <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
  
          <script>
-            function toggleNavbar() {
-               var navbar = document.getElementById("hamburgerMenu");
-               navbar.classList.toggle("responsive");
-            }
+          function toggleNavbar() {
+    const navbar = document.getElementById("hamburgerMenu");
+    navbar.classList.toggle("responsive");
+}
         </script>
-        <script>
-            function showTab(tabName) {
-            // Toggle visibility of exhibition divs based on the clicked tab
-            document.querySelectorAll('.current-exhibition, .upcoming-exhibition, .past-exhibition').forEach(div => div.style.display = 'none');
-            
-            // Set the selected tab and show the corresponding exhibition div
-            document.querySelector(`.${tabName}-exhibition`).style.display = 'block';
-            document.querySelectorAll('.tabs').forEach(tab => tab.classList.remove('tab-selected'));
-            event.currentTarget.classList.add('tab-selected');
-        }
-        </script>
-    </body>
+
+
+
+</body>
 </html>

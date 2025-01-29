@@ -89,7 +89,7 @@ display:flex;
 
 /* Set default typography styles */
 .thank-you-message, select, input, button, select option, optgroup {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Arial", sans-serif;
     font-size: 16px;
     color: #000;
     line-height: 1.5;
@@ -98,23 +98,23 @@ display:flex;
   }
   /* Targeting h1 elements */
   h1 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Arial", sans-serif;
     font-size: clamp(15px, 1.6vw, 20px);
     font-style: bold;
     color: #000;
-    line-height: 1.5;
+    line-height: 1;
   }
   
   h2 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Arial", sans-serif;
     font-size: clamp(12px, 1.3vw, 18px);
     font-style: normal;
     color: #000;
-    line-height: 1.5;
+    line-height: 1;
   }
   
   h3{
-    font-family: "Montserrat", sans-serif;
+    font-family: "Arial", sans-serif;
     font-size: clamp(15px, 1.6vw, 20px);
     font-style: normal;
     color: #5d5d5d;
@@ -126,7 +126,7 @@ display:flex;
   }
   
   body, p, h1, h2 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Arial", sans-serif;
   }
   
   body {

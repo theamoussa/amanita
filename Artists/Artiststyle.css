@@ -8,24 +8,24 @@
 }
 /* Targeting h1 elements */
 h1 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Arial", sans-serif;
     font-size: clamp(15px, 1.6vw, 22px);
     color: #000;
-    line-height: 1.5;
+    line-height: 1;
     margin-top: 20px;
     font-weight: 100;
 }
 
 h2 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Arial", sans-serif;
     font-size: clamp(12px, 1.3vw, 16px);
     font-weight: 600;
     color: #000;
-    line-height: 1.5;
+    line-height: 1;
 }
 
 body, p, h1, h2 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Arial", sans-serif;
     background-color: rgb(251, 249, 249);
     padding-left: 20px; /* Adjust the value as needed */
     padding-top: 10px;
@@ -113,7 +113,7 @@ select {
     background: #000;
     color: #FFF;
     text-align: center;
-    font-family: Montserrat, sans-serif;
+    font-family: Arial, sans-serif;
 }
 .Amanita-img {
   position: absolute;
@@ -133,7 +133,7 @@ select {
 }
 
 .text-container {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Arial", sans-serif;
     width: 90%; 
     text-align: justify;
     font-size: 18px;
@@ -184,9 +184,9 @@ select {
     right: 20px;
   }
 
-
   .caption {
     position: absolute;
+    bottom: -10px;
     left: 0;
     right: 0;
     text-align: center;
@@ -227,7 +227,7 @@ select {
     margin-bottom: 10px; /* Add margin between elements */
     cursor: pointer;
     display: block;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Arial", sans-serif;
     font-size: 18px;
     color: #000;
     text-decoration: none;
@@ -297,16 +297,15 @@ select {
 
 @media screen and (max-width: 600px) {
   .navbar a:not(:first-child) {display: none;}
+  
   .navbar a.icon {
     float: right;
     display: block;
   }
 
-  #slideshow-image, #slideshow-image2 {
-    width: 100%;
-    height: auto;
-  }
-
+.caption{
+  bottom: -15px;
+}
   .element-list {
     width: 100%;
   }

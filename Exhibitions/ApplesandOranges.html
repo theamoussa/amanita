@@ -42,7 +42,7 @@
 
 </head>
 <body>
-  <img src="../assets/burger-menu-svgrepo-com.svg" alt="hamburger icon" width="40px" onclick="toggleNavbar()" style="display: block;" />
+  <img src="../assets/burger-menu-svgrepo-com.svg" alt="hamburger icon" width="30px" onclick="toggleNavbar()" style="display: block;" />
   <!-- hamburger menu -->
   <nav class="hamburger-menu" id="hamburgerMenu">
     <div class="cross-wrapper">
@@ -239,7 +239,8 @@
 </div>
           <!-- Add more slides as needed -->
         </div>
-        <!-- Navigation arrows -->
+        <div class="dots-container"></div>   
+            <!-- Navigation arrows -->
       </div>
     
       <script src="script.js"></script>
@@ -278,128 +279,98 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
 <script>
-ddocument.addEventListener("DOMContentLoaded", () => {
-  const slides = document.querySelector(".slides");
-  const slideItems = document.querySelectorAll(".slide");
+  document.addEventListener("DOMContentLoaded", () => {
+  const slidesContainer = document.querySelector(".slides");
+  const slides = document.querySelectorAll(".slide");
+  const dotsContainer = document.querySelector(".dots-container");
+  let captionContainer = document.querySelector(".caption-container");
 
-  // Create the thumbnails dynamically
-  const thumbnailsContainer = document.createElement("div");
-  thumbnailsContainer.classList.add("thumbnails");
+  if (!slidesContainer || slides.length === 0 || !dotsContainer) return;
 
-  slideItems.forEach((slide, index) => {
-    const img = slide.querySelector("img").cloneNode(true);
-    img.classList.add("thumbnail");
-    img.dataset.index = index;
+  let currentIndex = 0;
+  const totalSlides = slides.length;
+  let startX = 0;
+  let endX = 0;
+  const swipeThreshold = 50;
 
-    thumbnailsContainer.appendChild(img);
+  // Remove any existing caption container and create a new one
+  if (captionContainer) {
+    captionContainer.remove();
+  }
+  captionContainer = document.createElement("div");
+  captionContainer.classList.add("caption-container");
+  slidesContainer.after(captionContainer);
+  updateCaption(currentIndex);
 
-    img.addEventListener("click", () => {
-      const slideWidth = slides.offsetWidth;
-      slides.scrollTo({
-        left: index * slideWidth,
-        behavior: "smooth",
-      });
+  // Create navigation dots
+  slides.forEach((slide, index) => {
+    const dot = document.createElement("span");
+    dot.classList.add("dot");
+    if (index === 0) dot.classList.add("active");
+
+    dot.addEventListener("click", () => {
+      scrollToSlide(index);
     });
+
+    dotsContainer.appendChild(dot);
+
+    // Hide in-slide captions so only the global caption appears
+    const inSlideCaption = slide.querySelector(".caption");
+    if (inSlideCaption) {
+      inSlideCaption.style.display = "none"; // Hide it instead of removing
+    }
   });
 
-  document.querySelector(".slideshow-container").appendChild(thumbnailsContainer);
+  const dots = document.querySelectorAll(".dot");
 
-  // Horizontal scrolling with mouse wheel
-  slides.addEventListener("wheel", (e) => {
-    e.preventDefault();
-    slides.scrollLeft += e.deltaY;
-  });
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  const slides = document.querySelector(".slides");
-  const slideItems = document.querySelectorAll(".slide");
-  
-  if (!slides || !slideItems.length) return; // Exit if slides or slideItems are missing
-  
-  const thumbnailsContainer = document.createElement("div");
-  thumbnailsContainer.classList.add("thumbnails");
-
-  slideItems.forEach((slide, index) => {
-    const img = slide.querySelector("img")?.cloneNode(true);
-    if (!img) return; // Skip if image is missing
-
-    img.classList.add("thumbnail");
-    img.dataset.index = index;
-
-    thumbnailsContainer.appendChild(img);
-
-    img.addEventListener("click", () => {
-      const slideWidth = slides.offsetWidth;
-      slides.scrollTo({
-        left: index * slideWidth,
-        behavior: "smooth",
-      });
+  function scrollToSlide(index) {
+    slidesContainer.scrollTo({
+      left: index * slidesContainer.clientWidth,
+      behavior: "smooth",
     });
-  });
 
-  document.querySelector(".slideshow-container").appendChild(thumbnailsContainer);
+    updateDots(index);
+    updateCaption(index);
+  }
 
-  slides.addEventListener("wheel", (e) => {
-    e.preventDefault();
-    slides.scrollLeft += e.deltaY;
-  });
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  const slides = document.querySelector(".slides");
-  const slideItems = document.querySelectorAll(".slide");
-
-  // Create the thumbnails container
-  const thumbnailsContainer = document.createElement("div");
-  thumbnailsContainer.classList.add("thumbnails");
-
-  slideItems.forEach((slide, index) => {
-    // Clone the image from the slide
-    const img = slide.querySelector("img").cloneNode(true);
-    img.classList.add("thumbnail");
-    img.dataset.index = index;
-
-    // Add the thumbnail to the container
-    thumbnailsContainer.appendChild(img);
-
-    // Add click event to scroll the slideshow
-    img.addEventListener("click", () => {
-      const slideWidth = slides.offsetWidth;
-      slides.scrollTo({
-        left: index * slideWidth,
-        behavior: "smooth",
-      });
+  function updateDots(index) {
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("active", i === index);
     });
+  }
+
+  function updateCaption(index) {
+    const caption = slides[index]?.querySelector(".caption");
+    captionContainer.innerHTML = caption ? caption.innerHTML : "";
+  }
+
+  // Swipe Detection for Touch Devices
+  slidesContainer.addEventListener("touchstart", (e) => {
+    startX = e.touches[0].clientX;
   });
 
-  // Append the thumbnails container below the slideshow
-  document.querySelector(".slideshow-container").appendChild(thumbnailsContainer);
+  slidesContainer.addEventListener("touchend", (e) => {
+    endX = e.changedTouches[0].clientX;
+    let swipeDistance = endX - startX;
 
-  // Add horizontal scrolling to slides using the mouse wheel
-  slides.addEventListener("wheel", (e) => {
-    e.preventDefault();
-    slides.scrollLeft += e.deltaY;
-  });
-});
-document.addEventListener("DOMContentLoaded", () => {
-  const slides = document.querySelector(".slides");
-  const slideItems = document.querySelectorAll(".slide");
-  const images = document.querySelectorAll(".slide img");
-
-  // Calculate the height of the widest image
-  let maxImageHeight = 0;
-  images.forEach((img) => {
-    img.onload = () => {
-      if (img.naturalWidth > img.naturalHeight) {
-        maxImageHeight = Math.max(maxImageHeight, img.naturalHeight);
+    if (Math.abs(swipeDistance) > swipeThreshold) {
+      if (swipeDistance > 0 && currentIndex > 0) {
+        currentIndex--; // Swipe left (previous slide)
+      } else if (swipeDistance < 0 && currentIndex < totalSlides - 1) {
+        currentIndex++; // Swipe right (next slide)
       }
-      // Apply the calculated height
-      slides.style.height = `${maxImageHeight}px`;
-      slideItems.forEach((slide) => {
-        slide.style.height = `${maxImageHeight}px`;
-      });
-    };
+      scrollToSlide(currentIndex);
+    }
+  });
+
+  // Ensure perfect snap after manual scrolling
+  slidesContainer.addEventListener("scrollend", () => {
+    const newIndex = Math.round(slidesContainer.scrollLeft / slidesContainer.clientWidth);
+    if (newIndex !== currentIndex) {
+      currentIndex = newIndex;
+      updateDots(currentIndex);
+      updateCaption(currentIndex);
+    }
   });
 });
 
