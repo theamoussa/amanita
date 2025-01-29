@@ -794,21 +794,28 @@ select {
 
 @media (max-width: 768px) {
   .slide-text {
+      position: absolute;
+      bottom: 35px; /* Keep it near the bottom */
       left: 50%;
       transform: translateX(-50%);
       text-align: center;
-      width: 100%;
-      bottom: 25px;
+      width: 90%;
+      font-size: 16px;
+      color: white;
+      padding: 10px;
+      border-radius: 5px;
+      z-index: 1000 !important; /* Ensure it's above everything */
   }
+
+  .slide img {
+      position: relative; /* Prevents stacking issues */
+      z-index: 0; /* Keeps the image behind */
+      height: 95%;
+  }
+
   .dot {
     height: 8px;
     width: 8px;
-    margin: 0 5px;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
-    cursor: pointer;
   }
-  
 }
 
