@@ -211,7 +211,7 @@ select {
   
   #slideshow-image {
     width: 600px; /* Ensure image fills the container */
-    max-height: 760px; /* Maintain aspect ratio */
+    max-height: 720px; /* Maintain aspect ratio */
   }
 
   #slideshow-image2 {
@@ -359,6 +359,8 @@ select {
     width: 75%;
     height: auto;
   }
+  
+
 }
   
 
@@ -393,5 +395,8 @@ select {
   .makeitblock {
     display: block;
     width: 100%;
+  }
+  .image-container {
+    display: none !important;
   }
 }
