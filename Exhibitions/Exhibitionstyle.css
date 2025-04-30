@@ -103,7 +103,7 @@ select {
  /* Styles for slideshow container */
  /* Centering the slideshow on the screen */
 .slideshow-container {
-  height: 60vh;
+  height: 75vh;
   width: auto;
   margin: 0 auto; /* Center the slideshow */
   position: relative;
@@ -140,7 +140,7 @@ select {
 
 .slide img {
   object-fit: contain;
-  max-height: 50vh;
+  max-height: 65vh;
   max-width: 90%;
 }
 
@@ -319,7 +319,7 @@ ul {
   
   .slides img {
     width: auto;
-    max-height: 40vh;
+    max-height: 45vh;
   }
 
   .modal-body img {
