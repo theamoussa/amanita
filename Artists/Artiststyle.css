@@ -134,14 +134,14 @@ select {
 
 .text-container {
     font-family: "Arial", sans-serif;
-    width: 90%; 
+    width: 100%; 
     text-align: justify;
     font-size: 18px;
 }
  /* Styles for slideshow container */
  .slideshow-container {
     position: relative;
-    max-width: 90%; /* Set the maximum width of the slideshow */
+    max-width: 100%; /* Set the maximum width of the slideshow */
     margin: 0 auto; /* Center the slideshow horizontally */
   }
 
@@ -156,7 +156,7 @@ select {
    height: 100%; /* Ensure images fill the slide container */
     width: 100%; /* Maintain aspect ratio */
     max-width: 80vw;
-    max-height: 80vh;
+    max-height: 70vh;
     margin-bottom: 15px;
     object-fit: cover;
   }
@@ -204,15 +204,16 @@ select {
   }
   
   .image-container {
-    width: 400; 
-    height: 0 auto;/* Set fixed height for image container */
+    width: 600px; 
+    height: 720px;/* Set fixed height for image container */
     margin-right: 50px; /* Add margin between image and element list */
     overflow: hidden; /* Hide overflow if images are larger */
   }
   
   #slideshow-image {
     width: 600px; /* Ensure image fills the container */
-    max-height: 720px; /* Maintain aspect ratio */
+    height: 0 auto;/* Set fixed height for image container */
+    overflow: hidden; /* Maintain aspect ratio */
   }
 
   #slideshow-image2 {
