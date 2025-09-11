@@ -83,6 +83,41 @@
       }
 
       .shop-note { color:#666; font-size:12px; }
+
+
+      @media (max-width: 576px){
+  .row.mt-5{ margin-top:20px !important; }
+
+  /* Tabs inline on mobile */
+  .tabs{ display:inline-block; margin:0 16px 10px 0; }
+  .tab-selected{ text-decoration: underline; }
+
+  /* Grid → 1 per row, tighter gutters */
+  .shopify-grid{ margin-left:-12px; }
+  .shopify-grid .product{
+    width: calc(100% - 12px);
+    max-width: none;
+    margin-left:12px;
+    margin-bottom:28px;
+  }
+
+  /* Card text sizing */
+  .product .title{ font-size:15px; }
+  .product .blurb{ font-size:12px; }
+  .product .price{ font-size:13px; }
+
+  /* Buttons */
+  .product .actions{ gap:8px; }
+  .product .btn-buy{ padding:10px 14px; }
+}
+
+/* Small tablets: 2 per row */
+@media (min-width:577px) and (max-width:899px){
+  .shopify-grid .product{
+    width: calc(50% - 20px);
+    max-width: calc(50% - 20px);
+  }
+}
     </style>
   </head>
 
