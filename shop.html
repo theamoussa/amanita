@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R2H2CGM4KH"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-R2H2CGM4KH');
+    </script>
+
+    <title>Amanita</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Fonts + your global stylesheet -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="jscriptsheet" href="Script.js" />
+    <link rel="stylesheet" href="Styles.css" />
+
+    <!-- Bootstrap CSS (optional; safe to keep) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+          crossorigin="anonymous" />
+
+    <!-- Scoped shop styles -->
+    <style>
+      /* Tabs */
+      .tabs { cursor: pointer; margin: 0 0 10px; }
+      .tab-selected { font-weight: 700; text-decoration: underline; }
+
+      /* Shopify-like grid */
+      .shopify-grid {
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: -20px; /* gutter */
+      }
+      .shopify-grid .product {
+        width: calc(50% - 20px);
+        max-width: calc(50% - 20px);
+        margin-left: 20px;
+        margin-bottom: 50px;
+      }
+      @media (min-width: 900px) {
+        .shopify-grid .product { width: calc(33.333% - 20px); max-width: calc(33.333% - 20px); }
+      }
+      @media (min-width: 1200px) {
+        .shopify-grid .product { width: calc(25% - 20px); max-width: calc(25% - 20px); }
+      }
+
+      /* Card */
+      .product .imgWrap{
+        display:block; aspect-ratio: 4 / 5; position:relative; overflow:hidden;
+        background:#fff; border:1px solid #eaeaea; border-radius:5px; min-height:1px; cursor:pointer;
+      }
+      .product .imgWrap img{
+        position:absolute; inset:0; width:100% !important; height:100% !important;
+        object-fit:cover; display:block; transition: transform .25s ease;
+      }
+      @supports not (aspect-ratio: 4 / 5){
+        .product .imgWrap{ height:0; padding-top:125% !important; }
+      }
+      .product:hover .imgWrap img{ transform: scale(1.03); }
+
+      .product .title { font-size: 16px; font-weight: 400; margin: 10px 0 6px; line-height: 1.35; height:40px }
+      .product .blurb { color: #666; font-size: 13px; margin-bottom: 6px; height:50px}
+      .product .price { font-size: 14px; font-weight: 400; margin-bottom: 10px; }
+
+      .product .actions { display: flex; gap: 10px; flex-wrap: wrap; }
+      .product .btn-buy{
+        display:inline-block; border-radius:999px; padding:10px 16px; font-size:14px;
+        text-decoration:none; border:1px solid #111; background:transparent; color:#000;
+      }
+
+      .shop-note { color:#666; font-size:12px; }
+    </style>
+  </head>
+
+  <body style="background-color: rgb(251, 249, 249);">
+    <!-- Header / logo (unchanged) -->
+    <a href="./">
+      <img class="Amanita-img"
+           src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Amanita%20new%20logo.png"
+           alt="Amanita">
+    </a>
+
+    <!-- Burger (unchanged) -->
+    <img src="./assets/burger-menu-svgrepo-com.svg" alt="hamburger icon" width="30px"
+         onclick="toggleNavbar()" style="display: block; cursor: pointer;" />
+    <nav class="hamburger-menu" id="hamburgerMenu">
+      <div class="cross-wrapper">
+        <svg onclick="toggleNavbar()" style="width: 30px;" viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg" fill="#000000">
+          <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/>
+        </svg>
+      </div>
+      <a href="Artists">Artists</a>
+      <a href="exhibitions">Exhibitions</a>
+      <a href="Press">Press</a>
+      <a href="About">About</a>
+    </nav>
+
+    <!-- Content -->
+    <div class="content">
+      <div class="row mt-5">
+        <!-- Left sidebar -->
+        <div class="col-12 col-md-2">
+          <h1 style="font-weight:normale; font-size: 20px;">Shop</h1>
+          <div class="mt-5">
+            <p class="tabs tab-selected" onclick="showTab('ALL', this)">ALL</p>
+            <p class="tabs" onclick="showTab('BOOKS', this)">BOOKS</p>
+            <p class="tabs" onclick="showTab('MERCH', this)">MERCH</p>
+          </div>
+        </div>
+
+        <!-- Right column -->
+        <div class="col-10">
+          <!-- BOOKS -->
+          <section class="BOOKS">
+            <div class="shopify-grid">
+
+              <!-- PRODUCT 1 -->
+              <article class="product">
+                <a class="imgWrap" href="shop/mannarainbook.html" aria-label="View Manna Rain — Rita Ackermann">
+                  <img src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/BOOKS/AMANITA-9-2-20260264.jpg"
+                       alt="Manna Rain — Rita Ackermann">
+                </a>
+                <div class="title">Rita Ackermann: <em>Manna Rain</em></div>
+                <div class="blurb"><em>Manna Rain</em> documents Rita Ackermann’s exhibition at Fondazione Iris, with wonderful introduction by Dr. Pamela Kort.</div>
+                <div class="price">$75.00</div>
+                <div class="actions">
+                  <a class="btn-buy" href="https://buy.stripe.com/8x2aEXdzm91tgOo1wGb7y00" target="_blank" rel="noopener">Buy</a>
+                </div>
+              </article>
+
+              <!-- PRODUCT 2 -->
+              <article class="product">
+                <a class="imgWrap" href="shop/etruscanpaintingbook.html" aria-label="View Etruscan Painting: Alessandro Twombly">
+                  <img src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/BOOKS/B-A.jpg"
+                       alt="Etruscan Painting: Alessandro Twombly">
+                </a>
+                <div class="title">Alessandro Twombly: <em>Etruscan Painting</em></div>
+                <div class="blurb">This publication documents Alessandro Twombly’s exhibition <em>Etruscan Painting</em>.</div>
+                <div class="price">$60.00</div>
+                <div class="actions">
+                  <a class="btn-buy" href="https://buy.stripe.com/14A28r1QE1z19lW0sCb7y01" target="_blank" rel="noopener">Buy</a>
+                </div>
+              </article>
+
+              <!-- PRODUCT 3 -->
+              <article class="product">
+                <a class="imgWrap" href="shop/benwertherbook.html" aria-label="View When You Can No Longer Speak, Sing Me a Song">
+                  <img src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/BOOKS/A-A.jpg"
+                       alt="When You Can No Longer Speak, Sing Me a Song">
+                </a>
+                <div class="title"><em>When You Can No Longer Speak, Sing Me a Song</em></div>
+                <div class="blurb">A photo mockumentary by Ben Werther exploring the subculture of military simulation.</div>
+                <div class="price">$45.00</div>
+                <div class="actions">
+                  <a class="btn-buy" href="https://buy.stripe.com/fZu9AT52Q1z1bu4dfob7y02" target="_blank" rel="noopener">Buy</a>
+                </div>
+              </article>
+
+              <!-- PRODUCT 4 -->
+              <article class="product">
+                <a class="imgWrap" href="shop/bardinibook.html" aria-label="View Gli altri colori purtroppo, sono tutti caduti">
+                  <img src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/BOOKS/AMANITA-9-2-20260252.jpg"
+                       alt="Gli altri colori purtroppo, sono tutti caduti — Leonardo Meoni">
+                </a>
+                <div class="title">Leonardo Meoni: <em>Gli altri colori purtroppo, sono tutti caduti</em></div>
+                <div class="blurb">This publication documents Leonardo Meoni’s exhibition at the Museo Stefano Bardini.</div>
+                <div class="price">$40.00</div>
+                <div class="actions">
+                  <a class="btn-buy" href="https://buy.stripe.com/bJeeVd66UfpRcy8b7gb7y03" target="_blank" rel="noopener">Buy</a>
+                </div>
+              </article>
+
+            </div>
+          </section>
+
+          <!-- MERCH -->
+          <section class="MERCH">
+            <div class="shopify-grid">
+
+              <!-- PRODUCT 5 (example merch) -->
+              <article class="product">
+                <a class="imgWrap" href="shop.html" aria-label="View Amanita T-shirt">
+                  <img src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/BOOKS/IMG_9662.jpg"
+                       alt="Amanita T-shirt">
+                </a>
+                <div class="title">Amanita T-shirt (S/M)</div>
+                <div class="blurb">Limited edition 100% cotton T-shirt.</div>
+                <div class="price">$60.00</div>
+                <div class="actions">
+                  <a class="btn-buy" href="https://buy.stripe.com/28E5kD0MAa5x69K5MWb7y04" target="_blank" rel="noopener">Buy</a>
+                </div>
+              </article>
+
+            </div>
+          </section>
+
+          <div class="shop-note mt-2">
+            <p class="shop-note">For international orders or special requests, <a class="shop-note" href="mailto:info@spazioamanita.com">inquire here</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Minimal JS: burger + tabs only -->
+    <script>
+      function toggleNavbar(){ document.getElementById("hamburgerMenu").classList.toggle("responsive"); }
+
+      function showTab(tabName, el){
+        const sections = document.querySelectorAll('.BOOKS, .MERCH');
+        if (tabName === 'ALL') sections.forEach(d => d.style.display = 'block');
+        else {
+          sections.forEach(d => d.style.display = 'none');
+          const s = document.querySelector('.' + tabName);
+          if (s) s.style.display = 'block';
+        }
+        document.querySelectorAll('.tabs').forEach(t => t.classList.remove('tab-selected'));
+        if (el) el.classList.add('tab-selected');
+      }
+
+      // default to ALL on load
+      document.addEventListener('DOMContentLoaded', () => showTab('ALL'));
+    </script>
+  </body>
+</html>

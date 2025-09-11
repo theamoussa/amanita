@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Leonardo Meoni | Museo Bardini</title>
+
+  <!-- Keep your site fonts + global styles so header/menu match -->
+  <link rel="stylesheet" href="Styles.css" />
+
+  <style>
+    /* Scoped so it won't fight your global CSS */
+  body {
+    font-family: "helvetica", sans-serif;
+    background-color: rgb(251, 249, 249);
+    padding-left: 20px; /* Adjust the value as needed */
+    padding-right: 80px;
+    /* display: flex; */
+    /* width: 80vw; */
+}
+.Amanita-img {
+    position:absolute;
+    top: 40px;
+    right: 30px;
+    width: 150px;
+}
+
+
+    .pd-wrap { max-width: 1200px; margin: 40px auto; padding: 0 18px; }
+    .pd-back { font-size: 14px; display:inline-block; margin-bottom: 18px; text-decoration: none; color:black;}
+    .pd-grid { display:grid; grid-template-columns: 0.9fr 0.9fr; gap: 40px; align-items:start; }
+    @media (max-width: 900px){ .pd-grid { grid-template-columns: 1fr; } }
+
+    .pd-hero { aspect-ratio: 4 / 5; border:1px solid #eaeaea; border-radius:6px; overflow:hidden; background:transparent; }
+    .pd-hero img { width:100%; height:100%; object-fit:contain; display:block; }
+    .pd-thumbs { margin-top:12px; display:flex; gap:10px; flex-wrap:wrap; }
+    .pd-thumb { width:80px; aspect-ratio:4/5; border:1px solid #eaeaea; border-radius:6px; overflow:hidden; background:#fff; padding:0; cursor:pointer; }
+    .pd-thumb img { width:100%; height:100%; object-fit:cover; display:block; }
+    .pd-thumb[aria-current="true"] { outline:2px solid #111; }
+
+    .pd-title { font-size:26px; font-weight:500; line-height:1.2; margin:0 0 8px; }
+    .pd-price { font-weight:600; margin:16px 0; }
+    .pd-buy { display:inline-block; border:1px solid #111; background:#111; color:#fff; border-radius:999px; padding:10px 16px; text-decoration:none; font-size:14px; }
+    .pd-desc { margin-top:18px; line-height:1.6; font-size:16px; }
+    .pd-desc p { margin:0 0 14px; }
+    .pd-note { color:#666; font-size:12px; margin-top:14px; }
+  </style>
+</head>
+<body>
+  <!-- (Optional) include your header/logo markup here if you want it on product pages -->
+    <a href="./">
+      <img class="Amanita-img"
+           src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Amanita%20new%20logo.png"
+           alt="Amanita">
+    </a>
+
+  <main class="pd-wrap">
+    <a class="pd-back" href="../shop.html">← Back to Shop</a>
+
+    <div class="pd-grid">
+      <!-- LEFT: media -->
+      <div>
+        <figure class="pd-hero" id="pd-hero"><img src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/BOOKS/AMANITA-9-2-20260252.jpg" alt="Product cover"></figure>
+        <div class="pd-thumbs" id="pd-thumbs">
+          <!-- Swap these URLs for your images -->
+          <button class="pd-thumb" aria-current="true"><img src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/BOOKS/AMANITA-9-2-20260252.jpg" alt="Thumb 1"></button>
+          <button class="pd-thumb"><img src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/BOOKS/AMANITA-9-2-20260256.jpg" alt="Thumb 2"></button>
+          <button class="pd-thumb"><img src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/BOOKS/AMANITA-9-2-20260263.jpg" alt="Thumb 3"></button>
+          <button class="pd-thumb"><img src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/BOOKS/AMANITA-9-2-20260258.jpg" alt="Thumb 3"></button>        
+        </div>
+      </div>
+
+      <!-- RIGHT: details -->
+      <div>
+        <h1 class="pd-title"><br>Leonardo Meoni: <em>Gli altri colori purtroppo, sono tutti caduti</em></h1>
+        <div class="pd-price">$40.00</div>
+        <div class="pd-desc">
+          <p>This volume presents <em>Gli altri colori purtroppo, sono tutti caduti,</em> Leonardo Meoni's first museum exhibition in Italy. Curated by Sergio Risaliti and organized by Museo Novecento, the exhibition featuresa selection of works conceived specifically for the spaces of Museo Stefano Bardini, engaging in a close dialogue with the collection of one Florence's most prestigious museums.</p>
+        </div>
+
+        <div class="pd-note">
+<p>Publisher: Amanita
+<br>
+Publication date: March 2025
+<br>
+Designer: Amanita
+<br>
+Format: Hardcover
+<br>
+Dimensions: 11 x 8 inches (28 × 20 cm)
+<br>
+Pages: 78
+<br>
+Language: English
+</p>
+
+        </div>
+        <br>
+        <a class="pd-buy" href="https://buy.stripe.com/bJeeVd66UfpRcy8b7gb7y03" target="_blank" rel="noopener">Buy</a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Simple thumbnail → hero swap
+    const heroImg = document.querySelector('#pd-hero img');
+    document.querySelectorAll('.pd-thumb').forEach((b) => {
+      b.addEventListener('click', () => {
+        heroImg.src = b.querySelector('img').src;
+        document.querySelectorAll('.pd-thumb').forEach(x => x.setAttribute('aria-current','false'));
+        b.setAttribute('aria-current','true');
+      });
+    });
+  </script>
+</body>
+</html>

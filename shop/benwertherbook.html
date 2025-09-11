@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ben Werther | When You Can No Longer Speak, Sing Me a Song</title>
+
+  <!-- Keep your site fonts + global styles so header/menu match -->
+  <link rel="stylesheet" href="Styles.css" />
+
+  <style>
+    /* Scoped so it won't fight your global CSS */
+  body {
+    font-family: "helvetica", sans-serif;
+    background-color: rgb(251, 249, 249);
+    padding-left: 20px; /* Adjust the value as needed */
+    padding-right: 80px;
+    /* display: flex; */
+    /* width: 80vw; */
+} 
+.Amanita-img {
+    position:absolute;
+    top: 40px;
+    right: 30px;
+    width: 150px;
+}
+
+
+    .pd-wrap { max-width: 1200px; margin: 40px auto; padding: 0 18px; }
+    .pd-back { font-size: 14px; display:inline-block; margin-bottom: 18px; text-decoration: none; color:black;}
+    .pd-grid { display:grid; grid-template-columns: 0.9fr 0.9fr; gap: 40px; align-items:start; }
+    @media (max-width: 900px){ .pd-grid { grid-template-columns: 1fr; } }
+
+    .pd-hero { aspect-ratio: 4 / 5; border:1px solid #eaeaea; border-radius:6px; overflow:hidden; background:transparent; }
+    .pd-hero img { width:100%; height:100%; object-fit:contain; display:block; }
+    .pd-thumbs { margin-top:12px; display:flex; gap:10px; flex-wrap:wrap; }
+    .pd-thumb { width:80px; aspect-ratio:4/5; border:1px solid #eaeaea; border-radius:6px; overflow:hidden; background:#fff; padding:0; cursor:pointer; }
+    .pd-thumb img { width:100%; height:100%; object-fit:cover; display:block; }
+    .pd-thumb[aria-current="true"] { outline:2px solid #111; }
+
+    .pd-title { font-size:26px; font-weight:500; line-height:1.2; margin:0 0 8px; }
+    .pd-price { font-weight:600; margin:16px 0; }
+    .pd-buy { display:inline-block; border:1px solid #111; background:#111; color:#fff; border-radius:999px; padding:10px 16px; text-decoration:none; font-size:14px; }
+    .pd-desc { margin-top:18px; line-height:1.6; font-size:16px; }
+    .pd-desc p { margin:0 0 14px; }
+    .pd-note { color:#666; font-size:12px; margin-top:14px; }
+  </style>
+</head>
+<body>
+  <!-- (Optional) include your header/logo markup here if you want it on product pages -->
+    <a href="./">
+      <img class="Amanita-img"
+           src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Amanita%20new%20logo.png"
+           alt="Amanita">
+    </a>
+
+  <main class="pd-wrap">
+    <a class="pd-back" href="../shop.html">← Back to Shop</a>
+
+    <div class="pd-grid">
+      <!-- LEFT: media -->
+      <div>
+        <figure class="pd-hero" id="pd-hero"><img src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/BOOKS/A-A.jpg" alt="Product cover"></figure>
+        <div class="pd-thumbs" id="pd-thumbs">
+          <!-- Swap these URLs for your images -->
+          <button class="pd-thumb" aria-current="true"><img src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/BOOKS/A-A.jpg" alt="Thumb 1"></button>
+          <button class="pd-thumb"><img src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/BOOKS/A-B.jpg" alt="Thumb 2"></button>
+          <button class="pd-thumb"><img src="https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/BOOKS/A-C.jpg" alt="Thumb 3"></button>
+        
+        </div>
+      </div>
+
+      <!-- RIGHT: details -->
+      <div>
+        <h1 class="pd-title"><br>Ben Werther: <em>When You Can No Longer Speak, Sing Me a Song</em></h1>
+        <div class="pd-price">$45.00</div>
+        <div class="pd-desc">
+            <em>When You Can No Longer Speak, Sing Me a Song</em> is a photo mockumentary project documenting the subculture of military simulation, airsoft,  and live action role play throughout the US.
+<br><br><b>Ben Werther</b>  is an American artist who received his BFA from Cooper Union in 2020 and has been developing his practice through an interdisciplinary approach that questions the nature of belief, knowledge, and memory. 
+
+
+        </div>
+
+        <div class="pd-note">
+<p>Publisher: Amanita
+<br>
+Publication date: April 2025
+<br>
+Author: Ben Werther
+<br>
+Format: Softcover
+<br>
+Dimensions: 11 3/4 x 8 3/4 inches (30 × 22.5 cm)
+<br>
+Pages: 160
+<br>
+Language: English
+</p>
+
+        </div>
+        <br>
+        <a class="pd-buy" href="https://buy.stripe.com/fZu9AT52Q1z1bu4dfob7y02" target="_blank" rel="noopener">Buy</a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Simple thumbnail → hero swap
+    const heroImg = document.querySelector('#pd-hero img');
+    document.querySelectorAll('.pd-thumb').forEach((b) => {
+      b.addEventListener('click', () => {
+        heroImg.src = b.querySelector('img').src;
+        document.querySelectorAll('.pd-thumb').forEach(x => x.setAttribute('aria-current','false'));
+        b.setAttribute('aria-current','true');
+      });
+    });
+  </script>
+</body>
+</html>
