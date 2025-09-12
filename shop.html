@@ -72,8 +72,8 @@
       }
       .product:hover .imgWrap img{ transform: scale(1.03); }
 
-      .product .title { font-size: 16px; font-weight: 400; margin: 10px 0 6px; line-height: 1.35; height:40px }
-      .product .blurb { color: #666; font-size: 13px; margin-bottom: 6px; height:50px}
+      .product .title { font-size: 16px; font-weight: 400; margin: 10px 0 6px; line-height: 1.35; height:40px;}
+      .product .blurb { color: #666; font-size: 13px; margin-bottom: 6px; height:50px; }
       .product .price { font-size: 14px; font-weight: 400; margin-bottom: 10px; }
 
       .product .actions { display: flex; gap: 10px; flex-wrap: wrap; }
@@ -118,6 +118,42 @@
     max-width: calc(50% - 20px);
   }
 }
+
+.product { display: flex; flex-direction: column; }
+
+.product .title,
+.product .blurb {
+  height: auto !important;   /* overrides the fixed 40px / 50px */
+  margin-bottom: 10px;       /* gap below each */
+  line-height: 1.35;
+}
+
+.product .price {
+  margin: 0 0 12px;          /* gap above the button */
+}
+
+/* Keep the Buy button from creeping up into text */
+.product .actions {
+  margin-top: 0;             /* or auto if you later give cards equal heights */
+  gap: 10px;
+}
+
+/* Optional (keeps rows tidy while still preventing overlap):
+   clamp the visible lines instead of fixed heights */
+.product .title{
+  display: -webkit-box;
+  -webkit-line-clamp: 2;     /* show up to 2 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.product .blurb{
+  display: -webkit-box;
+  -webkit-line-clamp: 3;     /* show up to 3 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
     </style>
   </head>
 
