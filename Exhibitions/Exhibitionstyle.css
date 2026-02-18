@@ -253,10 +253,7 @@ ul {
 }
 
   
-.content img {
-  float: left;
-  cursor: pointer;
-}
+
   
 .hamburger-menu.responsive {
   animation: slideIn 0.5s ease-out;
