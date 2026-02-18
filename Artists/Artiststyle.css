@@ -418,3 +418,11 @@ select {
   
   }
   
+  @media (max-width: 768px){
+  .element-list{
+    grid-auto-flow: row;
+    grid-template-rows: none;
+    row-gap: 12px;
+    grid-template-columns: 1fr;
+  }
+}
