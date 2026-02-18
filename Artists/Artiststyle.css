@@ -220,22 +220,7 @@ select {
     width: 100%;
   }
   
-  .element-list {
-    width: 400px;/* Fixed width for element list */
-  }
-  
-  .element {
-    padding: 10px;
-    margin-bottom: 10px; /* Add margin between elements */
-    cursor: pointer;
-    display: block;
-    font-family: "Arial", sans-serif;
-    font-size: 18px;
-    color: #000;
-    text-decoration: none;
-  
-  }
-  
+
   .mt-4 {
     margin-top: 2rem;
   }
@@ -402,3 +387,34 @@ select {
     display: none !important;
   }
 }
+.element-list{
+  display: grid;
+  grid-auto-flow: column;             /* fill DOWN, then next column */
+  grid-template-rows: repeat(12, auto); /* break after 8 rows */
+  column-width: auto;
+  row-gap: 1px;                       /* adjust */
+}
+
+.element-list .element{
+  display: block;
+  margin: 0;        /* kill margin */
+  padding: 0;       /* kill padding */
+  line-height: 1.5; /* tighten text */
+}
+
+  .element-list {
+    width: 500px;/* Fixed width for element list */
+  }
+  
+  .element {
+    padding: 5px;
+    margin-bottom: 5px; /* Add margin between elements */
+    cursor: pointer;
+    display: block;
+    font-family: "Arial", sans-serif;
+    font-size: 18px;
+    color: #000;
+    text-decoration: none;
+  
+  }
+  
