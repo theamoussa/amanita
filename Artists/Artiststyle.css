@@ -390,16 +390,16 @@ select {
 .element-list{
   display: grid;
   grid-auto-flow: column;             /* fill DOWN, then next column */
-  grid-template-rows: repeat(12, auto); /* break after 8 rows */
+  grid-template-rows: repeat(50, auto); /* break after 8 rows */
   column-width: auto;
-  row-gap: 1px;                       /* adjust */
+  row-gap: 0px;                       /* adjust */
 }
 
 .element-list .element{
   display: block;
-  margin: 0;        /* kill margin */
+  margin: 0px;        /* kill margin */
   padding: 0;       /* kill padding */
-  line-height: 1.5; /* tighten text */
+  line-height: 1; /* tighten text */
 }
 
   .element-list {
@@ -408,7 +408,7 @@ select {
   
   .element {
     padding: 5px;
-    margin-bottom: 5px; /* Add margin between elements */
+    margin-bottom: 0px; /* Add margin between elements */
     cursor: pointer;
     display: block;
     font-family: "Arial", sans-serif;
