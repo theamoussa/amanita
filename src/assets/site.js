@@ -62,7 +62,7 @@
     const links = [...list.querySelectorAll('a')];
     function show(a){
       links.forEach(l => l.classList.toggle('on', l === a));
-      if (a.dataset.img){ img.src = a.dataset.img; } else img.removeAttribute('src');
+      if (a.dataset.img){ if (a.dataset.srcset){ img.sizes = img.closest('.frame').offsetWidth + 'px'; img.srcset = a.dataset.srcset; } else img.removeAttribute('srcset'); img.src = a.dataset.img; } else { img.removeAttribute('srcset'); img.removeAttribute('src'); }
       cap.textContent = a.querySelector('.t').textContent.trim();
     }
     links.forEach(a => { a.addEventListener('mouseenter', () => show(a)); a.addEventListener('focus', () => show(a)); });
@@ -79,6 +79,38 @@
     };
     filters.querySelectorAll('[data-type]').forEach(b => b.addEventListener('click', () => { type = b.dataset.type; filters.querySelectorAll('[data-type]').forEach(x => x.setAttribute('aria-pressed', x === b)); apply(); }));
     filters.querySelectorAll('[data-place]').forEach(b => b.addEventListener('click', () => { place = b.dataset.place; filters.querySelectorAll('[data-place]').forEach(x => x.setAttribute('aria-pressed', x === b)); apply(); }));
+  });
+
+  /* ---------- home: rows that scroll sideways ----------
+     Trackpads and phones scroll them natively; the arrows (shown only when there is more to see) move one card,
+     and a mouse can drag them. */
+  document.querySelectorAll('.rail-wrap').forEach(wrap => {
+    const rail = wrap.querySelector('[data-rail]'), nav = wrap.querySelector('.railnav');
+    if (!rail || !nav) return;
+    const [prev, next] = nav.querySelectorAll('button');
+    const step = () => { const c = rail.querySelector('.card'); return c ? c.offsetWidth + parseFloat(getComputedStyle(rail).columnGap || 28) : rail.clientWidth * .8; };
+    const update = () => {
+      const max = rail.scrollWidth - rail.clientWidth;
+      nav.hidden = max < 4;
+      prev.disabled = rail.scrollLeft < 4;
+      next.disabled = rail.scrollLeft > max - 4;
+    };
+    nav.addEventListener('click', e => { const b = e.target.closest('button'); if (b) rail.scrollBy({ left: step() * +b.dataset.dir, behavior: 'smooth' }); });
+    rail.addEventListener('scroll', update, { passive: true });
+    addEventListener('resize', update);
+    update();
+    // drag with a mouse; a drag doesn't count as a click on the show
+    let down = null, moved = false;
+    rail.addEventListener('pointerdown', e => { if (e.pointerType !== 'mouse' || e.button) return; down = { x: e.clientX, left: rail.scrollLeft }; moved = false; });
+    addEventListener('pointermove', e => {
+      if (!down) return;
+      const dx = e.clientX - down.x;
+      if (!moved && Math.abs(dx) > 6){ moved = true; rail.classList.add('drag'); }
+      if (moved) rail.scrollLeft = down.left - dx;
+    });
+    addEventListener('pointerup', () => { if (!down) return; down = null; rail.classList.remove('drag'); });
+    rail.addEventListener('click', e => { if (moved){ e.preventDefault(); moved = false; } }, true);
+    rail.addEventListener('dragstart', e => e.preventDefault());
   });
 
   /* ---------- slideshows on exhibition and artist pages ----------

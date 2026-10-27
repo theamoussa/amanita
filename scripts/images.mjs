@@ -1,7 +1,9 @@
-// Makes small, fast copies of every picture the site uses: `npm run images`.
+// Makes web copies of every picture the site uses: `npm run images`.
 //
 // The originals stay where they are (Google Cloud Storage). For each one this downloads it once, writes two
-// web-sized WebP copies (800 and 1600 pixels wide) into images/, and records them in images/manifest.json.
+// high-quality WebP copies (1000 and 2400 pixels wide) into images/, and records them in images/manifest.json.
+// 2400 pixels covers a retina screen showing the slideshow at its largest; quality 88 keeps brushwork and
+// texture. If these settings change, the next run redoes every picture and removes the old copies.
 // The next `npm run build` uses those copies instead of the originals.
 //
 // It only does pictures it hasn't done yet, so it is safe to stop and run again, and to run after adding a show.
@@ -16,24 +18,29 @@ import sharp from 'sharp';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DATA = path.join(ROOT, 'data');
 const OUT = path.join(ROOT, 'images');
-const WIDTHS = [800, 1600];
-const QUALITY = 78;
+const WIDTHS = [1000, 2400];
+const QUALITY = 88;
+const SETTINGS = `${WIDTHS.join('/')}@${QUALITY}`;
 const PARALLEL = 4;
 
 fs.mkdirSync(OUT, { recursive: true });
 const manifestPath = path.join(OUT, 'manifest.json');
-const manifest = fs.existsSync(manifestPath) ? JSON.parse(fs.readFileSync(manifestPath, 'utf8')) : {};
+let manifest = fs.existsSync(manifestPath) ? JSON.parse(fs.readFileSync(manifestPath, 'utf8')) : {};
+if (manifest._settings !== SETTINGS) {
+  if (Object.keys(manifest).length) console.log(`Picture settings changed (now ${SETTINGS}): making every copy again.`);
+  manifest = { _settings: SETTINGS };
+}
 
 // every picture the site shows
 const urls = new Set();
 const read = f => JSON.parse(fs.readFileSync(f, 'utf8'));
 for (const f of fs.readdirSync(path.join(DATA, 'exhibitions'))) { const e = read(path.join(DATA, 'exhibitions', f)); e.images.forEach(i => urls.add(i.src)); if (e.cover) urls.add(e.cover); }
-for (const f of fs.readdirSync(path.join(DATA, 'artists'))) read(path.join(DATA, 'artists', f)).works.forEach(w => urls.add(w.src));
+for (const f of fs.readdirSync(path.join(DATA, 'artists'))) { const a = read(path.join(DATA, 'artists', f)); a.works.forEach(w => urls.add(w.src)); if (a.listImage) urls.add(a.listImage); }
 read(path.join(DATA, 'shop.json')).forEach(s => [s.image, ...(s.images || [])].forEach(u => urls.add(u)));
 read(path.join(DATA, 'site.json')).locations.forEach(l => urls.add(l.image));
 
 const todo = [...urls].filter(u => u && /^https?:/.test(u) && !manifest[u]);
-console.log(`${urls.size} pictures in the site, ${Object.keys(manifest).length} already done, ${todo.length} to do.`);
+console.log(`${urls.size} pictures in the site, ${Object.keys(manifest).length - 1} already done, ${todo.length} to do.`);
 
 let done = 0, failed = [];
 const save = () => fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 0));
@@ -50,7 +57,7 @@ async function one(url) {
   for (const w of WIDTHS) {
     const width = Math.min(w, w0);
     const file = `${id}-${w}.webp`;
-    await sharp(buf, { failOn: 'none' }).rotate().resize({ width, withoutEnlargement: true }).webp({ quality: QUALITY }).toFile(path.join(OUT, file));
+    await sharp(buf, { failOn: 'none' }).rotate().resize({ width, withoutEnlargement: true }).webp({ quality: QUALITY, smartSubsample: true, effort: 5 }).toFile(path.join(OUT, file));
     sizes.push({ file, w: width });
     if (width === w0) break;                    // the original is smaller than the next size
   }
@@ -68,7 +75,12 @@ await Promise.all([...Array(PARALLEL)].map(async () => {
   }
 }));
 save();
-console.log(`\nDone. ${Object.keys(manifest).length} pictures have web-sized copies.`);
+// remove copies nothing uses any more (old settings, removed pictures)
+const keep = new Set(Object.values(manifest).flatMap(m => m.sizes ? m.sizes.map(s => s.file) : []));
+let removed = 0;
+for (const f of fs.readdirSync(OUT)) if (f.endsWith('.webp') && !keep.has(f)) { fs.unlinkSync(path.join(OUT, f)); removed++; }
+if (removed) console.log(`\nRemoved ${removed} old copies.`);
+console.log(`\nDone. ${Object.keys(manifest).length - 1} pictures have web copies.`);
 if (failed.length) {
   console.log(`${failed.length} could not be downloaded (they keep using the original):`);
   failed.forEach(([u, m]) => console.log(`  ${m}  ${u}`));

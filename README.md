@@ -22,7 +22,7 @@ one command turns them into the pages in `dist/`. Amanita OS will later write th
 
 ```
 npm run preview     # build and open on your computer at http://localhost:4321
-npm run images      # make web-sized copies of any new pictures (needs `npm install` once)
+npm run images      # make web copies of any new pictures (needs `npm install` once)
 ```
 
 Publishing is automatic: every `git push` rebuilds and publishes the site, and it also rebuilds by itself every
@@ -42,6 +42,15 @@ Then `npm run images`, commit, push.
   `start` and `end` are needed; `images` can be `[]` and `text` can be `[]`. `note` is a good place for the opening
   reception ("Opening reception Thursday, November 12, 6–8 pm"). Give it a `cover` and it shows as a picture
   with the text beside it; without one it shows as a large typographic announcement.
+
+## Pictures
+
+`npm run images` makes two WebP copies of every picture: 1000 and 2400 pixels wide, at quality 88. The browser picks
+the one the screen needs; 2400 is sharp on a retina screen even when a slideshow picture fills the page. All copies
+together come to roughly 600 MB, inside GitHub Pages' 1 GB limit, with room for years of shows. If the settings in
+`scripts/images.mjs` change, the next run redoes every picture and removes the old copies.
+
+Artists: `listImage` in each artist's file is the detail shot shown when you hover the name on the Artists page.
 
 ## Marcel
 
