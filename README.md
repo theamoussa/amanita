@@ -34,6 +34,15 @@ Copy an existing file in `data/exhibitions/`, rename it (the file name becomes t
 Dates are `YYYY-MM-DD`. Captions may use `<em>` for titles. `kind` is `exhibition` or `fair`.
 Then `npm run images`, commit, push.
 
+- **`cover`** (optional): the picture that stands for the show on the home page, usually an installation view,
+  e.g. `"cover": "https://storage.googleapis.com/spazioamanita/EvaBeresin/_GBE0114.jpg"`. Without it the first
+  picture is used. The slideshow on the show's own page is not affected.
+- **Announcing an upcoming show**: a file with a `start` date in the future appears on the home page under
+  "Upcoming" until it opens, then moves to "Now on view" by itself. Only `title`, `artists`, `venue`, `city`,
+  `start` and `end` are needed; `images` can be `[]` and `text` can be `[]`. `note` is a good place for the opening
+  reception ("Opening reception Thursday, November 12, 6–8 pm"). Give it a `cover` and it shows as a picture
+  with the text beside it; without one it shows as a large typographic announcement.
+
 ## Marcel
 
 He appears on about one visit in three (`data/site.json` › `marcel.chance`), at most once per visit, and walks only along

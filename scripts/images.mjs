@@ -27,7 +27,7 @@ const manifest = fs.existsSync(manifestPath) ? JSON.parse(fs.readFileSync(manife
 // every picture the site shows
 const urls = new Set();
 const read = f => JSON.parse(fs.readFileSync(f, 'utf8'));
-for (const f of fs.readdirSync(path.join(DATA, 'exhibitions'))) read(path.join(DATA, 'exhibitions', f)).images.forEach(i => urls.add(i.src));
+for (const f of fs.readdirSync(path.join(DATA, 'exhibitions'))) { const e = read(path.join(DATA, 'exhibitions', f)); e.images.forEach(i => urls.add(i.src)); if (e.cover) urls.add(e.cover); }
 for (const f of fs.readdirSync(path.join(DATA, 'artists'))) read(path.join(DATA, 'artists', f)).works.forEach(w => urls.add(w.src));
 read(path.join(DATA, 'shop.json')).forEach(s => [s.image, ...(s.images || [])].forEach(u => urls.add(u)));
 read(path.join(DATA, 'site.json')).locations.forEach(l => urls.add(l.image));

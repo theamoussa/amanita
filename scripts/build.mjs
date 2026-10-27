@@ -82,6 +82,8 @@ function picture(src, alt, { sizes = '100vw', eager = false, cls = '' } = {}) {
   return `<img class="${cls}" src="${esc(src)}" alt="${esc(alt)}" ${load}>`;
 }
 const firstImage = e => (e.images || [])[0]?.src;
+// the picture that stands for a show on the home page: its `cover` (an installation view) if it has one
+const coverOf = e => e.cover || firstImage(e);
 
 // One picture at a time, caption and counter underneath, an index of all of them on request.
 // Without JavaScript the pictures simply follow one another.
@@ -183,7 +185,7 @@ const galleryLd = {
 };
 
 function card(e, { big = false, sizes } = {}) {
-  const img = firstImage(e);
+  const img = coverOf(e);
   const kicker = status(e) === 'now' ? `Now on view · ${placeLabel(e)}` : status(e) === 'upcoming' ? `Upcoming · ${placeLabel(e)}` : placeLabel(e);
   return `<article class="card${big ? ' big' : ''}">
   <a href="${u(`exhibitions/${e.slug}/`)}">
@@ -192,6 +194,26 @@ function card(e, { big = false, sizes } = {}) {
       ${big ? `<p class="kicker">${esc(kicker)}</p>` : ''}
       <${big ? 'h2' : 'h3'}>${showHeading(e)}</${big ? 'h2' : 'h3'}>
       <p class="meta">${esc(e.kind === 'fair' ? e.place : e.venue.replace(/,\s*(New York|NY).*$/i, ''))} · ${esc(dateRange(e.start, e.end))}</p>
+    </div>
+  </a>
+</article>`;
+}
+
+// An upcoming show on the home page: a wide announcement. It works with only a title and dates (shows are often
+// announced before there are pictures); a cover or first picture, the note (e.g. the opening reception) and the
+// first paragraph of text are added when they exist.
+function nextShow(e) {
+  const img = coverOf(e);
+  const s = d(e.start);
+  const lede = strip(e.text[0] || '');
+  return `<article class="next-show${img ? '' : ' noimg'}">
+  <a href="${u(`exhibitions/${e.slug}/`)}">
+    ${img ? `<div class="next-img">${picture(img, showName(e), { sizes: '(max-width:700px) 100vw, 58vw' })}</div>` : ''}
+    <div class="next-text">
+      <p class="kicker">Opens ${MONTHS[s.m - 1]} ${s.d} · ${esc(placeLabel(e))}</p>
+      <h3>${showHeading(e)}</h3>
+      <p class="meta">${esc(e.venue.replace(/,\s*(New York|NY).*$/i, ''))}<br>${esc(dateRange(e.start, e.end))}${e.note ? `<br>${esc(e.note)}` : ''}</p>
+      ${lede ? `<p class="lede">${esc(lede.length > 260 ? lede.slice(0, lede.lastIndexOf(' ', 250)) + '…' : lede)}</p>` : ''}
     </div>
   </a>
 </article>`;
@@ -208,9 +230,9 @@ function card(e, { big = false, sizes } = {}) {
 <section class="now${lead.length === 1 ? ' one' : ''}" aria-label="Now on view">
 ${lead.map(e => card(e, { big: true })).join('\n')}
 </section>
-${upcoming.length ? `<section class="row" data-perch aria-labelledby="h-up"><h2 class="sec" id="h-up">Upcoming</h2><div class="grid4">${upcoming.map(e => card(e)).join('\n')}</div></section>` : ''}
+${upcoming.length ? `<section class="next" data-perch aria-labelledby="h-up"><h2 class="sec" id="h-up">Upcoming</h2>${upcoming.map(nextShow).join('\n')}</section>` : ''}
 <section class="row" data-perch aria-labelledby="h-rec"><h2 class="sec" id="h-rec">Recently</h2><div class="grid4">${(now.length ? recent : recent.slice(2)).map(e => card(e)).join('\n')}</div></section>`;
-  page('index.html', () => layout({ title: '', canonical: '/', body, image: firstImage(lead[0] || {}), jsonld: galleryLd, pageClass: 'p-home' }));
+  page('index.html', () => layout({ title: '', canonical: '/', body, image: coverOf(lead[0] || {}), jsonld: galleryLd, pageClass: 'p-home' }));
 }
 
 // Exhibitions archive (and the Art Fairs view of it)
