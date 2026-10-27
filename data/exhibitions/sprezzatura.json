@@ -1,0 +1,44 @@
+{
+ "slug": "sprezzatura",
+ "old": "Sprezzatura",
+ "kind": "exhibition",
+ "title": "Sprezzatura",
+ "subtitle": null,
+ "artists": [],
+ "relatedArtists": [
+  "adrian-schachter",
+  "ben-werther",
+  "marco-scarpi"
+ ],
+ "venue": "Via dei Sassetti 1, Florence, Italy",
+ "address": [],
+ "note": null,
+ "city": "Florence",
+ "place": "Florence",
+ "start": "2021-02-19",
+ "end": "2021-05-01",
+ "images": [
+  {
+   "src": "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/1.%20Sprezzatura/5.%20Photos/Space/EW7A7261.jpg",
+   "caption": ""
+  },
+  {
+   "src": "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/1.%20Sprezzatura/5.%20Photos/Space/EW7A7280.jpg",
+   "caption": ""
+  },
+  {
+   "src": "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/1.%20Sprezzatura/5.%20Photos/Space/EW7A7155.jpg",
+   "caption": ""
+  },
+  {
+   "src": "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/1.%20Sprezzatura/5.%20Photos/Space/EW7A7134.jpg",
+   "caption": ""
+  }
+ ],
+ "text": [
+  "<em>Sprezzatura</em> marks Amanita's first ever exhibition and was inaugurated in Florence, Italy on February 19, 2021. The exhibition is the product of a collaboration with Avant Arte and presented works by 14 international artists.",
+  "Bora Akinciturk <br>Marcus Brutus <br>Bell Fulana <br>Rafik Greiss <br>Anders Lindseth <br>Haeji Min <br>India Neilson <br><a href=\"/artists/marco-scarpi/\">Marco Scarpi</a> <br>Ilona Rich <br><a href=\"/artists/adrian-schachter/\">Adrian Schachter</a> <br>Kenny Schachter <br>Sage Schachter <br>Lucien Smith <br><a href=\"/artists/ben-werther/\">Ben Werther</a>"
+ ],
+ "pressRelease": null,
+ "files": []
+}

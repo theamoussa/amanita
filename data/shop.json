@@ -1,0 +1,111 @@
+[
+ {
+  "slug": "rita-ackermann-manna-rain",
+  "title": "Rita Ackermann: <em>Manna Rain</em>",
+  "blurb": "<em>Manna Rain</em> documents Rita Ackermann’s exhibition at Fondazione Iris, with wonderful introduction by Dr. Pamela Kort.",
+  "price": "$75.00",
+  "buy": "https://buy.stripe.com/8x2aEXdzm91tgOo1wGb7y00",
+  "image": "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/BOOKS/AMANITA-9-2-20260264.jpg",
+  "images": [
+   "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/BOOKS/AMANITA-9-2-20260264.jpg",
+   "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/BOOKS/AMANITA-9-2-20260265.jpg",
+   "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/BOOKS/AMANITA-9-2-20260266.jpg",
+   "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/BOOKS/AMANITA-9-2-20260267.jpg",
+   "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/BOOKS/AMANITA-9-2-20260268.jpg"
+  ],
+  "specs": {
+   "Publisher": "Amanita",
+   "Publication date": "April 2025",
+   "Designer": "American Art Catalogues",
+   "Format": "Softcover",
+   "Dimensions": "11 3/4 × 9 3/4 inches (30 × 25 cm)",
+   "Pages": "194",
+   "Language": "English",
+   "ISBN": "979-8-89704-923-3"
+  }
+ },
+ {
+  "slug": "alessandro-twombly-etruscan-painting",
+  "title": "Alessandro Twombly: <em>Etruscan Painting</em>",
+  "blurb": "This publication documents Alessandro Twombly’s exhibition <em>Etruscan Painting</em>.",
+  "price": "$60.00",
+  "buy": "https://buy.stripe.com/14A28r1QE1z19lW0sCb7y01",
+  "image": "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/BOOKS/B-A.jpg",
+  "images": [
+   "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/BOOKS/B-A.jpg",
+   "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/BOOKS/B-B.jpg",
+   "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/BOOKS/B-C.jpg"
+  ],
+  "specs": {
+   "Publisher": "Amanita",
+   "Publication date": "May 2024",
+   "Designer": "American Art Catalogues",
+   "Format": "Hardcover",
+   "Dimensions": "12 × 9 inches (31 × 23 cm)",
+   "Pages": "42",
+   "Language": "English",
+   "ISBN": "979-8-89342-367-9"
+  }
+ },
+ {
+  "slug": "when-you-can-no-longer-speak-sing-me-a-song",
+  "title": "<em>When You Can No Longer Speak, Sing Me a Song</em>",
+  "blurb": "A photo mockumentary by Ben Werther exploring the subculture of military simulation.",
+  "price": "$45.00",
+  "buy": "https://buy.stripe.com/fZu9AT52Q1z1bu4dfob7y02",
+  "image": "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/BOOKS/A-A.jpg",
+  "images": [
+   "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/BOOKS/A-A.jpg",
+   "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/BOOKS/A-B.jpg",
+   "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/BOOKS/A-C.jpg"
+  ],
+  "specs": {
+   "Publisher": "Amanita",
+   "Publication date": "April 2025",
+   "Format": "Softcover",
+   "Dimensions": "11 3/4 × 8 3/4 inches (30 × 22.5 cm)",
+   "Pages": "160",
+   "Language": "English"
+  }
+ },
+ {
+  "slug": "leonardo-meoni-gli-altri-colori-purtroppo-sono-tutti-caduti",
+  "title": "Leonardo Meoni: <em>Gli altri colori purtroppo, sono tutti caduti</em>",
+  "blurb": "This publication documents Leonardo Meoni’s exhibition at the Museo Stefano Bardini.",
+  "price": "$40.00",
+  "buy": "https://buy.stripe.com/bJeeVd66UfpRcy8b7gb7y03",
+  "image": "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/BOOKS/AMANITA-9-2-20260252.jpg",
+  "images": [
+   "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/BOOKS/AMANITA-9-2-20260252.jpg",
+   "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/BOOKS/AMANITA-9-2-20260256.jpg",
+   "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/BOOKS/AMANITA-9-2-20260263.jpg",
+   "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/BOOKS/AMANITA-9-2-20260258.jpg"
+  ],
+  "specs": {
+   "Publisher": "Amanita",
+   "Publication date": "March 2025",
+   "Designer": "Amanita",
+   "Format": "Hardcover",
+   "Dimensions": "11 × 8 inches (28 × 20 cm)",
+   "Pages": "78",
+   "Language": "English"
+  }
+ },
+ {
+  "slug": "amanita-t-shirt-s-m",
+  "title": "Amanita T-shirt (S/M)",
+  "blurb": "Limited edition 100% cotton T-shirt.",
+  "price": "$60.00",
+  "buy": "https://buy.stripe.com/28E5kD0MAa5x69K5MWb7y04",
+  "image": "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/BOOKS/IMG_9662.jpg",
+  "images": [
+   "./assets/burger-menu-svgrepo-com.svg",
+   "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/BOOKS/AMANITA-9-2-20260264.jpg",
+   "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/BOOKS/B-A.jpg",
+   "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/BOOKS/A-A.jpg",
+   "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/BOOKS/AMANITA-9-2-20260252.jpg",
+   "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/BOOKS/IMG_9662.jpg"
+  ],
+  "specs": {}
+ }
+]

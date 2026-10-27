@@ -1,0 +1,176 @@
+{
+ "slug": "brick",
+ "old": "Brick",
+ "kind": "exhibition",
+ "title": "Brick!",
+ "subtitle": null,
+ "artists": [],
+ "relatedArtists": [],
+ "venue": "313 Bowery & 1 Freeman Alley, New York, NY",
+ "address": [],
+ "note": null,
+ "city": "New York",
+ "place": "New York",
+ "start": "2025-06-27",
+ "end": "2025-08-08",
+ "images": [
+  {
+   "src": "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Brick/250626_GX_Amanita-InstallViews_01.jpg",
+   "caption": ""
+  },
+  {
+   "src": "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Brick/JoelSternfeld.jpg",
+   "caption": "Joel Sternfeld, <em>Portage Glacier</em>, Alaska, July, 1984, Edition 5 of 10 +2 Aps, Archival Pigment Print, 41 1/2 x 52 in 105 x 132 cm (unframed) 49 1/2 x 60 in, 126 x 152 cm (framed)"
+  },
+  {
+   "src": "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Brick/IssenNishigaki_A.jpg",
+   "caption": "Issen Nishigaki, <em>Untitled</em>, 2025, Sumi acrylic on panel, 19 1/2 x 28 1/2 in 50 x 72 cm"
+  },
+  {
+   "src": "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Brick/250626_GX_Amanita-InstallViews_02.jpg",
+   "caption": ""
+  },
+  {
+   "src": "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Brick/KayodeOjo_01.jpg",
+   "caption": "Kayode Ojo, <em>Sorry I didnt get him (Nina Simone, Amanita)</em>, 2025, Hamilton Stands KB400 Classic American Folding Sheet Music Stand (Chrome), WANLIAN Women Luxury Cute Heart Shape Tassel Evening Clutch Bag Rhinestones Wedding Party Purse Handbag, WXJ13 Swivel Clasps Lanyard Snap Hook Lobster Claw Clasp and Keychain Rings, GOLDENHAITAl Teardrop Chandelier Crystals, Clear Replacement Parts, Hanging Pendants Connected Glass Octagon Beads for Chandelier Decoration, Heavy Duty Toy Metal Handcuffs with Keys - 6 PACK Stainless Steel Bulk Fake Hand Cuffs Accessories Supplies for Kids Police Pretend Role Play, Adult Party Favors, Akria ITS A PARTY SEQUIN CHAIN MINI DRESS, Denix Civil War Era M1851 Engraved Nonfiring Silver Revolver w. Faux Pearl Grips, 56 x 23 x 18 in 142 x 58 x 46 cm"
+  },
+  {
+   "src": "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Brick/TrevorShimizu.jpg",
+   "caption": "Trevor Shimizu, <em>Sunset (Winter 2025)</em>, 2025, Oil on canvas, 14 x 29 in 36 x 74 cm (unframed) 15 x 30 in 38 x 76 cm (framed)"
+  },
+  {
+   "src": "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Brick/TommyMalekoff_A.jpg",
+   "caption": "Tommy Malekoff, <em>Snow Dog</em>, 2025, Acrylic, spray paint and UV pigment on linen , 24 x 36 in 61 x 91 cm (unframed) 25 x 37 in 64 x 94 cm (framed)"
+  },
+  {
+   "src": "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Brick/250626_GX_Amanita-InstallViews_05.jpg",
+   "caption": ""
+  },
+  {
+   "src": "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Brick/FriedrichKunath.jpg",
+   "caption": "Friedrich Kunath, <em>Now It’s Just You and Me (study)</em>, 2021, Oil on canvas , 30 x 24 in 76 x 61 cm"
+  },
+  {
+   "src": "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Brick/GiangiacomoRossetti.jpg",
+   "caption": "Giangiacomo Rossetti, <em>Untitled (Winter in Fort Greene Park c. 1877)</em>, 2025, Monotype on Rives BFK paper, 28 1/2 x 22 1/2 in 72 x 57 cm (unframed) 30 x 24 1/2 in 76 x 62 cm (framed)"
+  },
+  {
+   "src": "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Brick/NeilJenney_A.jpg",
+   "caption": "Neil Jenney, <em>North America Vegetae</em>, 2015, Oil on wood, in artist frame, 8 x 95 in 20 x 241 cm (unframed) 25 1/2 x 113 in 65 x 287 cm (framed)"
+  },
+  {
+   "src": "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Brick/250626_GX_Amanita-InstallViews_03.jpg",
+   "caption": ""
+  },
+  {
+   "src": "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Brick/TinaBraeger.jpg",
+   "caption": "Tina Braegger, <em>Haha</em>, 2023, Acrylic on linen, 78 x 78 in 198 x 198 cm"
+  },
+  {
+   "src": "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Brick/LouisOsmosis_03.jpg",
+   "caption": "Louis Osmosis,<em>Centrifugal Pickle #3</em>, 2025, Galvanized steel. skis, ski poles, artificial flower, spray paint, hardware, photograph, 91 x 52 x 16 in 231 x 132 x 41 cm"
+  },
+  {
+   "src": "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Brick/YvesScherer_A.jpg",
+   "caption": "Yves Scherer, <em>Tempest</em>, 2025, Oil on linen, 80 x 74 in 203 x 188 cm"
+  },
+  {
+   "src": "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Brick/250626_GX_Amanita-InstallViews_04.jpg",
+   "caption": ""
+  },
+  {
+   "src": "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Brick/AdamAlessi.jpg",
+   "caption": "Adam Alessi, <em>The Blizzard</em>, 2025, Oil on linen, 24 1/2 x 16 1/2 in 62 x 42 cm (unframed) 27 1/2 x 19 1/2 in 70 x 50 cm (framed)"
+  },
+  {
+   "src": "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Brick/DamienHDing.jpg",
+   "caption": "Damien H. Ding, <em>Warm Cave</em>, 2025, Egg tempera on panel, 10 x 8 1/4 in 25 x 21 cm (unframed) 10 1/2 x 8 3/4 in 27 x 22 cm (framed)"
+  },
+  {
+   "src": "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Brick/JohnChae.jpg",
+   "caption": "John Hee Taek Chae, <em>February</em>, 2025, Oil on canvas, 42 x 57 in 107 x 145 cm"
+  },
+  {
+   "src": "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Brick/MarcusJahmal.jpg",
+   "caption": "Marcus Jahmal, <em>Snow angel</em>, 2025, Oil on linen , 60 x 60 in 152 x 152 cm"
+  },
+  {
+   "src": "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Brick/250626_GX_Amanita-InstallViews_07.jpg",
+   "caption": ""
+  },
+  {
+   "src": "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Brick/HannahTaurins.jpg",
+   "caption": "Hannah Taurins, <em>Iced Out</em>, 2025, Colored pencil and gouache on panel, 36 x 24 in 91 x 61 cm"
+  },
+  {
+   "src": "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Brick/YvesScherer_B.jpg",
+   "caption": "Yves Scherer, <em>Lucy with Dog</em>, 2025, Oil on linen in polished aluminum frame with glass, 16 x 20 in 41 x 56 cm (unframed) 19 x 23 in 48 x 59 cm (framed)"
+  },
+  {
+   "src": "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Brick/AndersLindseth_B.jpg",
+   "caption": "Anders Lindseth, Echo, 2025, Oil on panel, 11 x 13 1/2 in 28 x 34 cm (unframed) 14 1/2 x 18 in 37 x 46 cm (framed)"
+  },
+  {
+   "src": "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Brick/250626_GX_Amanita-InstallViews_06.jpg",
+   "caption": ""
+  },
+  {
+   "src": "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Brick/NeilJenney_B.jpg",
+   "caption": "Neil Jenney, <em>North America Depicted</em>, 2009-10, Oil on wood, in artist frame, 23 x 34 in 58 x 86 cm (unframed) 40 1/2 x 45 in 103 x 114 cm (framed)"
+  },
+  {
+   "src": "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Brick/TommyMalekoff_B_01.jpg",
+   "caption": "Tommy Malekoff, <em>Roadside VIII</em>, 2025, Wood, foam, plaster, plastic, paper, acrylic and LED light , 7 1/2 x 17 x 11 in 19 x 43 x 28 cm"
+  },
+  {
+   "src": "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Brick/250626_GX_Amanita-InstallViews_08.jpg",
+   "caption": ""
+  },
+  {
+   "src": "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Brick/GregoryCrewdson.jpg",
+   "caption": "Gregory Crewdson, <em>Cathedral of the Pines</em>, 2014, Ed. PP2/2, Digital pigment print, 37 x 50 1/2 in 94 x 128 cm (unframed) 45 x 57 1/2 in 114 x 146 cm (framed)"
+  },
+  {
+   "src": "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Brick/RichardDiebenkorn.jpg",
+   "caption": "Richard Diebenkorn, <em>Untitled</em>, 1938, Watercolor on paper, 11 x 8 in 28 x 20 cm (unframed) 23 x 20 in 58 x 51 cm (framed)"
+  },
+  {
+   "src": "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Brick/250626_GX_Amanita-InstallViews_09.jpg",
+   "caption": ""
+  },
+  {
+   "src": "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Brick/TitusMcbeth.jpg",
+   "caption": "Titus McBeath,<em>So much depends on a snowy red barn in a homemade cooling unit</em>, 2025, Oil on aluminum panel encased in custom peltier cooling unit, 18 x 20 x 9 in 46 x 51 x 23 cm"
+  },
+  {
+   "src": "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Brick/YvesScherer_C_01.jpg",
+   "caption": "Yves Scherer, <em>Imagine</em>, 2025, Sunset marble and hand sculpted glass , 67 3/4 x 50 3/8 x 38 in 172 x 128 x 97 cm"
+  }
+ ],
+ "text": [
+  "Amanita is pleased to present <em>Brick!</em>, a group exhibition that pays tribute to the winter months. Works by Adam Alessi, Tina Braegger, John Hee Taek Chae, Gregory Crewdson, Richard Diebenkorn, Damien H. Ding, Marcus Jahmal, Neil Jenney, Friedrich Kunath, Anders Lindseth, Tommy Malekoff, Titus McBeath, Issen Nishigaki, Kayode Ojo, Louis Osmosis, Giangiacomo Rossetti, Yves Scherer, Trevor Shimizu, Joel Sternfeld and Hannah Taurins.",
+  "<em> Cold shadows linger,<br> Summer breathes through painted snow,<br> Time bends, then unravels </em>",
+  "<strong>Adam Alessi</strong> (b. 1994, Los Angeles, CA) is a self-taught artist living and working in New York. His work blends figuration with surreal, cinematic imagery—featuring uncanny characters rendered in dusky, textural fields that evoke dream states, nostalgia, and private mythologies. Recent solo exhibitions include <em>Fields</em> at Barbati Gallery (Venice, 2024); <em>The Village</em> at CLEARING (New York, 2023); and <em>Cruiser’s Creek</em> at CLEARING (Brussels, 2022). Alessi’s work has also been shown at Morán Morán (Los Angeles), Smart Objects (Los Angeles), Mascota (Mexico City), Lo Brutto Stahl (Paris) and Public Gallery (London).",
+  "<strong>Tina Braegger</strong> (b. 1985, Switzerland) lives and works in Zurich. Her practice centers on the Grateful Dead’s “dancing bear” mascot, which she appropriates through painting to interrogate themes of subculture, mass reproduction, and the mythology of Americana. Recent solo exhibitions include Le Consortium, Dijon (2024); Tif Sigfrids, New York (2023); and House of Gaga, Mexico City (2022). Group exhibitions include Swiss Institute, New York (2023); Palais de Tokyo, Paris (2021); and Kunsthalle Zürich, Zurich (2020). She received her MFA from the University of the Arts, Berlin.",
+  "<strong>John Hee Taek Chae</strong> (b. 1988, Colorado) is an artist and educator whose work explores hybrid visual culture through the practice of painting. He received a BFA from Maryland Institute College of Art (2010) and an MFA in Painting and Printmaking from Virginia Commonwealth University (2020). Solo exhibitions include Hallucination at D.D.D.D. (New York), A Dark and Bloody Ground at Institute 193 (Lexington), Shed Your Eyes at MARCH (New York), and Make. Believe. at MOCA Jacksonville. He is a recipient of the MacDowell Fellowship (2021) and a Yaddo Fellowship (2022) and was the 2023 Cynthia Woods Mitchell Scholar in Residence at the University of Houston. Chae is currently Assistant Professor of Painting and Drawing at Alfred University.",
+  "<strong>Gregory Crewdson</strong> (b. 1962, Brooklyn, NY) is a photographer whose meticulously staged images examine the psychological landscapes of American life. Using the production methods of cinema—complete with lighting crews, actors, and constructed sets—he creates large-scale photographs that evoke tension, stillness, and narrative ambiguity. Crewdson earned a B.A. from SUNY Purchase in 1985 and an M.F.A. from Yale University in 1988, where he now serves as adjunct professor in Graduate Photography. Crewdson has exhibited widely in the United States and internationally, with work included in the collections of MoMA, the Metropolitan Museum of Art, the Whitney Museum, LACMA, and SFMOMA. He has exhibited widely in the U.S. and Europe, with retrospectives at institutions such as Kulturhuset in Stockholm and c/o Berlin. Crewdson has received numerous honors, including the Skowhegan Medal for Photography and fellowships from the NEA and the Aaron Siskind Foundation. He lives and works in western Massachusetts.",
+  "<strong>Richard Diebenkorn</strong> (1922–1993) was a defining voice in postwar American art, known for his movement between abstraction and figuration. Born in Portland, Oregon, and raised in San Francisco, he studied at Stanford and was deeply influenced by artists such as Matisse, Cézanne, and Hopper. After serving in the U.S. Marine Corps during World War II, he used the G.I. Bill to attend the California School of Fine Arts, joining a circle of artists who would shape the Bay Area’s modernist legacy. In the 1980s and early ’90s, Diebenkorn focused on small works on paper from his home in Healdsburg, California. Though increasingly private, his work remained formally inventive and deeply personal. He died in Berkeley in 1993, leaving behind a profoundly influential and distinctly American vision.",
+  "<strong>Damien H. Ding</strong> (b. 1992) received a BA in Art History from Swarthmore College and an MFA in Painting and Printmaking from the Virginia Commonwealth University School of the Arts. Recent solo exhibitions include, Precious Mirror (Island Gallery, NY) Simple Structures (Steven Zevitas Gallery, Boston), Private Paintings (Denny Gallery, NY). His work has been included in notable group exhibitions at Linseed Projects (Shanghai, China); Braverman Gallery (Tel Aviv), Eugster (Belgrade, Serbia), Kristin Hjellegjerde Gallery (Schloss Goerne, Germany), Galerie Marguo (Paris, France), Steven Zevitas Gallery (Boston, MA), Alexander Berggruen (NY), Denny Dimin Gallery (Hong Kong), Afternoon Projects (Vancouver, Canada), and Amanita (NY) among others. His work has been featured in publications such as Hyperallergic, The Brooklyn Rail, Whitewall, and Artsy.",
+  "<strong>Marcus Jahmal </strong>(b. 1990, Brooklyn, NY) is a self-taught painter and sculptor whose work draws from personal history, Creole heritage, and urban experience. His paintings combine figuration, still life, and abstraction, often weaving surreal narratives that reflect on Americana, class, and dreamlike memory. Recent solo exhibitions include Martyrdom at Spazio Sassetti (Florence, 2025); Higher Animals at the Allentown Art Museum (2024); Fragments at Almine Rech (Shanghai, 2024); and Interiors at Anton Kern Gallery (New York, 2023). Jahmal lives and works in New York.",
+  "<strong>Neil Jenney</strong> (b. 1945, Torrington, CT) is a painter and sculptor known for his “Bad Paintings” of the 1960s–70s, which challenged the aesthetics of minimalism with raw figuration and direct realism. He seeks to revive classical ideals of truth in art, integrating form and content. Recent solo exhibitions include Tobias Mueller Modern Art (Zurich), the Morris Museum (NJ), and the New Britain Museum of American Art (CT). His work is held in collections including the Met, MoMA, Whitney, LACMA, Tate, and Louisiana Museum. Last year, he was featured in a two-person show with Robert Lobe at Venus Over Manhattan.",
+  "<strong>Friedrich Kunath</strong> (b. 1974, Chemnitz, Germany) is a Los Angeles–based artist whose work blends romanticism and conceptualism, fusing poetic text with melancholic and humorous imagery. Drawing from his migration between Germany and California, Kunath’s visual language references German Romanticism, pop culture, and mass media. Kunath has been the subject of numerous solo exhibitions including <em>Coming Home Was As Beautiful As Going Away</em>, KINDL - Centre for Contemporary Art, Berlin, Germany (2023); There Must Be A Spanish Word For <em>This Feeling</em>, Centro de Arte Contemporáneo de Málaga, Spain (2023); <em>I’ll Try to Be More Romantic</em>, Kunstsammlung Jena, Jena, Germany (2021); <em>Juckreiz</em>, Sammlung Philara, Düsseldorf, Germany (2016); <em>A Plan to Follow Summer Around the World</em>, Centre d'art Contemporain d'Ivry - le Crédac, Ivry-sur-Seine, France (2014); <em>Raymond Moody's Blues</em>, Modern Art Oxford, Oxford, UK (2013); <em>Your Life is Not for You</em>, Sprengel Museum, Hannover, Germany (2012); <em>Lonely Are the Free</em>, Schinkel Pavillon, Berlin, Germany (2011); Hammer Museum, Los Angeles, CA (2010); Kunstsaele, Berlin, Germany (2010). His work is also featured in prominent public and private collections such as the Carnegie Museum of Art, Pittsburgh, PA; Centre Pompidou, Paris, France; DESTE Foundation for Contemporary Art, Athens, Greece; Hammer Museum, Los Angeles, CA; Hessel Museum of Art, Bard College, Annandale-on-Hudson, NY; Los Angeles County Museum of Art, Los Angeles, CA; Museum of Contemporary Art, Los Angeles, CA; Museum of Contemporary Art, San Diego, CA; Museum of Modern Art, New York, NY; Pinault Collection, Paris, France; and the Walker Art Center, Minneapolis, MN, among many more.",
+  "<strong>Anders Lindseth</strong> (b. 1990, Gates Mills, OH) is a multidisciplinary artist working in painting, drawing, and sculpture. Referencing Tibetan Buddhism, Romanticism, and the American West, his work explores themes of mortality, transformation, and landscape. He has exhibited internationally including exhibitions at Public Service Gallery, Stockholm, Sweden; Amanita, Florence, Italy; The Shophouse, Hong Kong; M+B, Los Angeles, CA; 4th Ward Project Space, Chicago, IL; and Island Gallery, New York, NY.",
+  "<strong>Tommy Malekoff</strong> (b. 1992, North Carolina) is a visual artist whose work spans video, photography, painting, and sculpture. His practice explores transitional and overlooked spaces in the American landscape. Recent solo exhibitions include ZERO… (Milan), Galerie Art Concept (Paris), and Moran Moran (Los Angeles). In 2022, his six-channel video installation Forever and Forever was presented in a vacant space beneath Rockefeller Center.",
+  "<strong>Titus McBeath</strong> (b. 1997, Findlay, Ohio) graduated from the School of Visual Arts in New York City. Drawing on his working-class roots in the American Midwest, McBeath’s practice explores the intersection of manufacturing and the poetics of consumer culture. His work often takes the form of serial objects that are 3D-printed, hand crafted, or robotic. His work evokes the industrial and agricultural landscapes of his upbringing, where corn and manufacturing dominate the economy. McBeath currently lives and works in New York City. Recent solo exhibitions include Be Back Soon at Will Shot Gallery (New York, 2024) and Wild Fire at Ateliers Courbet (New York, 2024). Recent group exhibitions include October Surprise at Shipton (New York, 2024); We’ll Be Outside and Delivery Included at U-Haul Gallery (New York, 2024); AND/OR at MARQUEE PROJECTS (Bellport, 2024); Whiplash at 191 Henry Street (New York, 2024); Growing Orbits at 24 West 23rd Street (New York, 2023); Christless Tree at Blade Study (New York, 2023); Collage Group at Will Shot Gallery (New York, 2023); and Amelia Tru Harrell × Holly Chang × Titus McBeath at Yiri Arts (Taipei, 2023). McBeath currently lives and works in New York City.",
+  "<strong>Issen Nishigaki</strong> (b. 1952, Usa City) is a Japanese calligrapher and five line poet. Her work has been featured in numerous exhibitions across Japan as well as internationally. She is the author of multiple poetry books, including the Issen 5-Line Poetry Collection: Inner Views. Over the course of her career, she has written more than 3,000 poems, centered on themes of love, nature, and sumi (ink). Nishigaki is the head of the MIZUKUKI Calligraphy Association and the Five-Line Poet Salon. In addition to her literary and calligraphic work, she is active as a designer.",
+  "<strong>Kayode Ojo</strong> (b. 1990, Cookeville, TN) is a New York–based artist whose multidisciplinary practice spans photography and sculpture, using high-gloss materials – such as mirrors, metal, and fashion articles – to explore the nature of desire, aspiration, and the performance of identity. Recent solo exhibitions include <em>Me &amp; U</em> at Sweetwater, Berlin (2024); <em>Eden</em> at 52 Walker, New York (2023); Could You Bare Your Torso?, Università Iuav di Venezia, Venice (2022); and <em>Call It What You Want</em> at Sweetwater, Berlin (2021). His work has also been included in exhibitions at MoMA PS1 in New York, the Studio Museum in Harlem, Kestner Gesellschaft in Hanover, and the Athens Biennale. His work is held in the permanent collections of the CCS Hessel Museum of Art, Museum Brandhorst, MoCA Los Angeles, and the Studio Museum in Harlem. He received a BFA from the School of Visual Arts in New York in 2012.",
+  "<strong>Louis Osmosis</strong> (b. 1996, Brooklyn, NY) is an interdisciplinary artist working primarily in sculpture, drawing, performance, and text. His practice revolves heavily around craft/manufacture, performative actions, and readymades, incorporating found objects and vernacular materials from popsicle sticks to graphic t-shirts, and hornet nests to violins. Equally invested in reenactment and artistic production, Osmosis’s speculative approach to form reflects his ongoing “investigation into affected modes of aspiration and lack.” Osmosis received his BFA from the Cooper Union in 2018.",
+  "<strong>Giangiacomo Rossetti</strong> (b. 1989, Milan) lives and works in New York. Recent solo exhibitions include Greene Naftali, New York (2024, 2020); The Power Station, Dallas (2023); Mendes Wood DM, São Paulo (2022); Galleria Federico Vavassori, Milan (2021, 2017); Fiorucci Art Trust, London (2021); Mendes Wood DM, Brussels (2019); Riverside, Bern (2018); Warm, São Paulo (2016); and GRGLT, Turin (2015). Notable group exhibitions include American Art Catalogues, New York (2024–25); Triennale Milano, Milan (2023); Castello di Rivoli Museo d’Arte Contemporanea, Rivoli (2022); Museum Bellpark, Kriens (2022); Aspen Art Museum (2020); Stuart Shave Modern Art, London (2020); Greene Naftali, New York (2019); Braunsfelder Family Collection, Cologne (2018); and the MAK Center for Art and Architecture, Los Angeles (2017).",
+  "<strong>Yves Scherer</strong> (b. 1987, Solothurn, Switzerland) is a visual artist based in NewYork City. Working in media spanning from figurative sculpture to oil painting and lenticular prints, he creates immersive environments that combine personal narratives with fan fiction and celebrity culture to offer the viewer an often romantic lens or perspective on the self, relationships and the everyday. His work has been shown extensively in galleries and institutions across the world, such as Swiss Institute New York, Kunsthalle Basel and the ICA London, and is part of the collection of The Portland Art Museum, The Farnsworth Museum, Kunstmuseum Olten and Kunsthaus Grenchen among others. He’s the recipient of a Förderpreis Bildende Kunstdes Kanton Solothurn 2012, a Swiss Art Award in 2015 and was listed on Forbes 30 under 30 “Art &amp; Design” in the class of 2016.",
+  "<strong>Trevor Shimizu</strong> (b. 1978, California) lives and works in New York. Recent solo exhibitions include “2007-2017,” Galerie Christine Mayer, München, Germany (2024); “Past/Future,’’ Modern Art, London (2024); “Trevor Shimizu: Land/Time,” The Ranch, Montauk, NY (2023); “Edvard Munch/ Trevor Shimizu,” Landscapes, VI, VII, Oslo (2023); “Cycles,” 47 Canal, New York (2023); La Maison de Rendez-Vous, Brussels (2022); and the Institute of Contemporary Art, Philadelphia (2020), among others. He has participated in group exhibitions at Greene Naftali, New York (2024); ICA Miami (2024); Stuart Shave Modern Art, London (2023); White Columns, New York (2015, 2011); the Whitney Biennial, New York (2014); and the Queens Museum of Art, New York (2012), among others. Shimizu’s work is also included in public collections such as the Whitney Museum of American Art, New York; Detroit Institute of Arts, Detroit; K11 Art Foundation, Hong Kong; and High Museum of Art, Atlanta.",
+  "<strong>Joel Sternfeld</strong> (b. 1944, New York, NY) is an artist-photographer whose work is concerned with utopic and dystopic possibilities of the American experience. Since the publication of his landmark study, American Prospects in 1987 his work has maintained conceptual and political aspects, while also being steeped in history, art history, landscape theory and attention to seasonal passage. It is a melancholic, spectacular, funny, and profound portrait of America. All his subsequent work has sought to expand the narrative possibilities of still photography primarily through an authored text. All of his books and bodies of work converse with each other and may be read as a collective whole. Sternfeld is the recipient of two Guggenheim Fellowships and spent a year in Italy on a Rome Prize. He teaches at Sarah Lawrence College.",
+  "<strong>Hannah Taurins</strong> (b. 1997, Houston, Texas) lives and works in New York. She received a BFA from Cooper Union, New York. Recent solo exhibitions include: Theta, New York (2025); Chateau Shatto, Los Angeles (2023); Brant-Timonier, Palm Beach (2023)’; and Theta, New York (2022). Select group exhibitions include High Art, Paris (2025); Amanita, New York, (2023); Shoot the Lobster, New York (2022); Venus Over Manhattan, New York (2022); In Lieu, Los Angeles (2022); and Entrance, New York (2022)."
+ ],
+ "pressRelease": null,
+ "files": []
+}

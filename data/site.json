@@ -1,0 +1,55 @@
+{
+  "name": "Amanita",
+  "description": "Amanita is a contemporary art gallery in New York and Rome.",
+  "url": "https://www.spazioamanita.com",
+  "email": "info@spazioamanita.com",
+  "instagram": "https://www.instagram.com/amanita.ny/",
+  "instagramHandle": "@amanita.ny",
+  "analytics": "G-R2H2CGM4KH",
+  "mailingList": {
+    "action": "https://spazioamanita.us5.list-manage.com/subscribe/post?u=1367afd01085a830c3dffa3cb&id=eec6c38cd6&f_id=003eb7e6f0",
+    "honeypot": "b_1367afd01085a830c3dffa3cb_eec6c38cd6"
+  },
+  "locations": [
+    {
+      "name": "313 Bowery",
+      "city": "New York",
+      "lines": ["New York, NY 10003"],
+      "street": "313 Bowery", "locality": "New York", "region": "NY", "postalCode": "10003", "country": "US",
+      "hours": "Tuesday – Saturday, 11 AM – 6 PM",
+      "hoursShort": "Tue–Sat, 11 AM–6 PM",
+      "openingHours": "Tu-Sa 11:00-18:00",
+      "phone": "+1 201-855-9481",
+      "image": "https://storage.googleapis.com/spazioamanita/Paradise/AMANITA-2-28-20263031.jpg",
+      "imageAlt": "Installation view at 313 Bowery",
+      "map": "https://maps.google.com/?q=313+Bowery,+New+York,+NY+10003"
+    },
+    {
+      "name": "1 Freeman Alley",
+      "city": "New York",
+      "lines": ["New York, NY 10002"],
+      "street": "1 Freeman Alley", "locality": "New York", "region": "NY", "postalCode": "10002", "country": "US",
+      "hours": "Tuesday – Saturday, 11 AM – 6 PM",
+      "hoursShort": "Tue–Sat, 11 AM–6 PM",
+      "openingHours": "Tu-Sa 11:00-18:00",
+      "phone": "+1 201-855-9481",
+      "image": "https://storage.googleapis.com/spazioamanita/BradenHollis/AMANITA-7-2-2026%2015.jpg",
+      "imageAlt": "Installation view at 1 Freeman Alley",
+      "map": "https://maps.google.com/?q=1+Freeman+Alley,+New+York,+NY+10002"
+    },
+    {
+      "name": "Via dei Banchi Vecchi 24",
+      "city": "Rome",
+      "lines": ["00186 Rome"],
+      "street": "Via dei Banchi Vecchi 24", "locality": "Roma", "region": "RM", "postalCode": "00186", "country": "IT",
+      "hours": "Tuesday – Saturday, 12 – 7 PM",
+      "hoursShort": "Tue–Sat, 12–7 PM",
+      "openingHours": "Tu-Sa 12:00-19:00",
+      "phone": "+39 351 970 0229",
+      "image": "https://storage.googleapis.com/spazioamanita/Cima/_GBE4455.jpg",
+      "imageAlt": "Installation view at Via dei Banchi Vecchi 24, Rome",
+      "map": "https://maps.google.com/?q=Via+dei+Banchi+Vecchi+24,+00186+Roma"
+    }
+  ],
+  "marcel": { "chance": 0.33, "minDelay": 6000, "maxDelay": 25000 }
+}

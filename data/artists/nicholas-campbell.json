@@ -1,0 +1,32 @@
+{
+ "slug": "nicholas-campbell",
+ "old": "Nicholas-Campbell",
+ "name": "Nicholas Campbell",
+ "bio": [
+  "<strong>Nicholas Campbell</strong> (b. 1995, Los Angeles) is an artist based in New York City. His work is an exploration of abstraction across multiple surfaces and mediums ranging from atmospheric compositions to direct gestural expressions.."
+ ],
+ "cv": null,
+ "works": [
+  {
+   "src": "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Campbell/CAMP32024jpg.jpg",
+   "caption": "Nicholas Campbell, <em>Ariadne</em>, 2024, Oil on canvas, 78 3/4 x 78.34 in 200 x 200 cm"
+  },
+  {
+   "src": "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Campbell/CAMP52024jpg.jpg",
+   "caption": "Nicholas Campbell, <em>Leader</em>, 2024, Oil on canvas, 84 x 72 in 213.36 x 182.88 cm"
+  },
+  {
+   "src": "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Campbell/CAMP62024jpg.jpg",
+   "caption": "Nicholas Campbell, <em>Nirvana</em>, 2024, Oil on canvas, 72 x 66 in 183 x 167.6 cm"
+  },
+  {
+   "src": "https://storage.googleapis.com/spazioamanita/Website%20Image%20Database/Campbell/CAMP42024jpg.jpg",
+   "caption": "Nicholas Campbell, <em>World Honored One</em>, 2024, Oil on canvas, 72 x 72 in 183 x 183 cm"
+  }
+ ],
+ "exhibitions": [
+  "nicholas-campbell-paradise",
+  "nicholas-campbell-world-honored-one",
+  "sonder"
+ ]
+}
