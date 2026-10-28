@@ -96,6 +96,8 @@ const firstImage = e => (e.images || [])[0]?.src;
 const linked = e => !(status(e) === 'upcoming' && !e.text.length && !e.pressRelease);
 // the picture that stands for a show on the home page: its `cover` (an installation view) if it has one
 const coverOf = e => e.cover || firstImage(e);
+// the slideshow opens on the same picture that stands for the show in the lists (its cover), then the rest in their order
+const slidesOf = e => { const i = e.images.findIndex(im => im.src === e.cover); return i > 0 ? [e.images[i], ...e.images.slice(0, i), ...e.images.slice(i + 1)] : e.images; };
 
 // One picture at a time, caption and counter underneath, an index of all of them on request.
 // Without JavaScript the pictures simply follow one another.
@@ -316,7 +318,7 @@ exhibitions.forEach((e, i) => {
     <h1>${showHeading(e)}</h1>
     ${e.subtitle ? `<p class="sub">${esc(e.subtitle)}</p>` : ''}
   </header>
-  ${slideshow(e.images.map(im => ({ src: im.src, caption: im.caption, alt: strip(im.caption) || `${showName(e)}, installation view` })), `Images of ${showName(e)}`)}
+  ${slideshow(slidesOf(e).map(im => ({ src: im.src, caption: im.caption, alt: strip(im.caption) || `${showName(e)}, installation view` })), `Images of ${showName(e)}`)}
   <div class="exinfo">
     <p class="meta">${[esc(e.venue), ...e.address.map(esc)].join('<br>')}<br>${esc(dateRange(e.start, e.end))}${e.note ? `<br>${esc(e.note)}` : ''}</p>
     <p class="actions"><a href="mailto:${SITE.email}?subject=${subject}">Inquire</a>${e.pressRelease ? ` <a href="${esc(e.pressRelease)}" target="_blank" rel="noopener">Press release</a>` : ''}${e.files.map(f => ` <a href="${esc(f.url)}" target="_blank" rel="noopener">${esc(f.label || 'Download')}</a>`).join('')}</p>
