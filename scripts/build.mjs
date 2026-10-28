@@ -73,13 +73,14 @@ function showHeading(e, tag = 'span') {
 function picture(src, alt, { sizes = '100vw', eager = false, cls = '' } = {}) {
   const m = manifest[src];
   const load = eager ? 'fetchpriority="high"' : 'loading="lazy" decoding="async"';
-  if (!m && BLANK_MISSING) return `<span class="ph ${cls}" role="img" aria-label="${esc(alt)}"></span>`;
+  if (!m && BLANK_MISSING && /^https?:/.test(src)) return `<span class="ph ${cls}" role="img" aria-label="${esc(alt)}"></span>`;
   if (m) {
     const set = m.sizes.map(s => `${u('images/' + s.file)} ${s.w}w`).join(', ');
     const fallback = m.sizes[m.sizes.length - 1];
     return `<img class="${cls}" src="${u('images/' + fallback.file)}" srcset="${set}" sizes="${sizes}" width="${m.w}" height="${m.h}" alt="${esc(alt)}" ${load}>`;
   }
-  return `<img class="${cls}" src="${esc(src)}" alt="${esc(alt)}" ${load}>`;
+  // a picture kept in the site itself (src/public/media/…) rather than on Google Cloud Storage
+  return `<img class="${cls}" src="${esc(/^https?:/.test(src) ? src : u(src))}" alt="${esc(alt)}" ${load}>`;
 }
 // attributes for the picture that appears when hovering a name in a list: the full set of sizes, so a retina
 // screen gets the sharp copy
@@ -122,7 +123,7 @@ const NAV = [
 function layout({ title, description, canonical, section = '', body, image, jsonld, letters = false, pageClass = '' }) {
   const fullTitle = title ? `${title} · Amanita` : 'Amanita';
   const desc = description || SITE.description;
-  const og = image ? (manifest[image] ? abs('images/' + manifest[image].sizes.at(-1).file) : image) : null;
+  const og = image ? (manifest[image] ? abs('images/' + manifest[image].sizes.at(-1).file) : /^https?:/.test(image) ? image : abs(image)) : null;
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -219,7 +220,7 @@ function nextShow(e) {
   <a href="${u(`exhibitions/${e.slug}/`)}">
     ${img ? `<div class="next-img">${picture(img, showName(e), { sizes: '(max-width:700px) 100vw, 58vw' })}</div>` : ''}
     <div class="next-text">
-      <p class="kicker">Opens ${MONTHS[s.m - 1]} ${s.d} · ${esc(placeLabel(e))}</p>
+      <p class="kicker">Opening ${MONTHS[s.m - 1]} ${s.d} · ${esc(placeLabel(e))}</p>
       <h3>${showHeading(e)}</h3>
       <p class="meta">${esc(e.venue.replace(/,\s*(New York|NY).*$/i, ''))}<br>${esc(dateRange(e.start, e.end))}${e.note ? `<br>${esc(e.note)}` : ''}</p>
       ${lede ? `<p class="lede">${esc(lede.length > 260 ? lede.slice(0, lede.lastIndexOf(' ', 250)) + '…' : lede)}</p>` : ''}

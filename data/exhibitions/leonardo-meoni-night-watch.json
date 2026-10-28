@@ -1,0 +1,30 @@
+{
+ "slug": "leonardo-meoni-night-watch",
+ "old": null,
+ "kind": "exhibition",
+ "title": "Night Watch",
+ "subtitle": null,
+ "artists": [
+  "Leonardo Meoni"
+ ],
+ "relatedArtists": [
+  "leonardo-meoni"
+ ],
+ "venue": "1 Freeman Alley, New York, NY",
+ "address": [],
+ "note": null,
+ "city": "New York",
+ "place": "New York",
+ "start": "2026-11-05",
+ "end": null,
+ "cover": "media/leonardo-meoni-night-watch-detail.webp",
+ "images": [
+  {
+   "src": "media/leonardo-meoni-night-watch-detail.webp",
+   "caption": "Leonardo Meoni, <em>Night Watch</em> (detail)"
+  }
+ ],
+ "text": [],
+ "pressRelease": null,
+ "files": []
+}
