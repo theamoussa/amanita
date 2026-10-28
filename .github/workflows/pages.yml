@@ -1,16 +1,24 @@
-# Builds the site from data/ and publishes it on GitHub Pages.
-# Runs on every push, by hand from the Actions tab, and once a day so "Now on view" / "Upcoming" stay current.
+# Builds the site and publishes it on GitHub Pages.
+# Runs on every push, by hand from the Actions tab, when Thea presses Publish in Amanita OS (the OS's
+# website-publish function dispatches it), and once a day so "Now on view" / "Upcoming" stay current.
+#
+# Where the content comes from: Amanita OS, when it is set up (three repository variables below) and
+# something has been published there; otherwise data/ in this repository, as before.
 name: Publish site
 
 on:
   push:
     branches: [main]
   workflow_dispatch:
+    inputs:
+      reason:
+        description: Why (filled in by Amanita OS)
+        required: false
   schedule:
     - cron: "17 5 * * *"   # every day around 06:17 in Rome
 
 permissions:
-  contents: read
+  contents: write   # to keep the web copies of new pictures (images/)
   pages: write
   id-token: write
 
@@ -26,6 +34,28 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - run: npm ci
+      # The content published from Amanita OS → .os-data/. Repository variables: OS_SUPABASE_URL,
+      # OS_SUPABASE_ANON_KEY (the public anon key), OS_GALLERY_ID. Missing, or the OS unreachable: data/.
+      - name: Content from Amanita OS
+        run: |
+          node scripts/fetch-data.mjs
+          if [ -f .os-data/site.json ]; then echo "SITE_DATA=.os-data" >> "$GITHUB_ENV"; fi
+        env:
+          OS_SUPABASE_URL: ${{ vars.OS_SUPABASE_URL }}
+          OS_SUPABASE_ANON_KEY: ${{ vars.OS_SUPABASE_ANON_KEY }}
+          OS_GALLERY_ID: ${{ vars.OS_GALLERY_ID }}
+      # Web copies of any new pictures, kept in the repository so they are made only once.
+      - name: Pictures
+        run: |
+          npm run images || echo "Some pictures could not be copied; they use the original."
+          if [ -n "$(git status --porcelain images)" ]; then
+            git config user.name "amanita-site"
+            git config user.email "actions@users.noreply.github.com"
+            git add images
+            git commit -m "Web copies of new pictures [skip ci]"
+            git push || echo "Could not keep the new picture copies; they will be made again next time."
+          fi
       # SITE_BASE and SITE_URL are repository variables (Settings › Secrets and variables › Actions › Variables).
       # Preview: leave them unset. At launch: SITE_BASE=/  SITE_URL=https://www.spazioamanita.com  CNAME=www.spazioamanita.com
       - run: node scripts/build.mjs

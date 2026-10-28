@@ -16,7 +16,7 @@ import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const DATA = path.join(ROOT, 'data');
+const DATA = process.env.SITE_DATA ? path.resolve(process.env.SITE_DATA) : path.join(ROOT, 'data');
 const OUT = path.join(ROOT, 'images');
 const WIDTHS = [1000, 2400];
 const QUALITY = 88;

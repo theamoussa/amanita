@@ -11,7 +11,9 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const DATA = path.join(ROOT, 'data');
+// The data: data/ in the repository, or — once the site is edited in Amanita OS — what scripts/fetch-data.mjs
+// downloaded from it (SITE_DATA points there).
+const DATA = process.env.SITE_DATA ? path.resolve(process.env.SITE_DATA) : path.join(ROOT, 'data');
 const OUT = path.join(ROOT, 'dist');
 const BASE = (process.env.SITE_BASE || '/').replace(/\/?$/, '/');
 const RELATIVE = BASE === './';                       // links relative to each page (for previews opened without a server)
@@ -151,9 +153,9 @@ ${og ? `<meta property="og:image" content="${esc(og)}">\n<meta name="twitter:car
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,300..700;1,300..700&display=swap">
 <link rel="stylesheet" href="${u('assets/site.css')}?v=${BUILD_ID}">
 ${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld)}</script>` : ''}
-<script async src="https://www.googletagmanager.com/gtag/js?id=${SITE.analytics}"></script>
+${/^[A-Z0-9-]+$/i.test(SITE.analytics || '') ? `<script async src="https://www.googletagmanager.com/gtag/js?id=${SITE.analytics}"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${SITE.analytics}');</script>
-</head>
+` : ''}</head>
 <body class="${pageClass}"${letters ? ' data-letters' : ''} data-base="${RELATIVE ? REL : BASE}" data-marcel='${JSON.stringify(SITE.marcel)}'>
 <a class="skip" href="#main">Skip to content</a>
 <header class="top">
@@ -245,7 +247,8 @@ ${items.map(e => card(e, { big, sizes: big ? (items.length === 1 ? '(max-width:7
 </section>`;
 }
 {
-  const now = exhibitions.filter(e => status(e) === 'now');
+  // Now on view: in the order set in the OS (homeOrder), then the most recent first.
+  const now = exhibitions.filter(e => status(e) === 'now').sort((a, b) => (a.homeOrder ?? 1e9) - (b.homeOrder ?? 1e9));
   const upcoming = exhibitions.filter(e => status(e) === 'upcoming').reverse();
   const past = exhibitions.filter(e => status(e) === 'past');
   const lead = now.length ? now : past.slice(0, 2);
@@ -362,7 +365,7 @@ ${artists.filter(a => a.listed !== false).map(a => `    <li><a href="${u(`artist
 }
 artists.forEach(a => {
   at(`artists/${a.slug}/index.html`);
-  const shows = a.exhibitions.map(s => exBySlug[s]).filter(Boolean);
+  const shows = a.exhibitions.map(s => exBySlug[s]).filter(Boolean).filter(linked).sort((x, y) => (y.start || '').localeCompare(x.start || ''));
   const ap = press.filter(p => p.artists.includes(a.slug));
   const body = `
 <article class="inner artist">
@@ -405,6 +408,8 @@ ${press.filter(p => (p.date || '').slice(0, 4) === y).map(p => `    <li><a href=
 }
 
 // Shop
+// a store item's details: a list of {label, value} (from the OS, which keeps their order) or an object (older data/)
+const specsOf = s => Array.isArray(s.specs) ? s.specs.filter(x => x && x.label).map(x => [x.label, x.value ?? '']) : Object.entries(s.specs || {});
 {
   at('shop/index.html');
   const body = `
@@ -415,7 +420,7 @@ ${shop.map(s => `    <article class="product" id="${s.slug}">
       ${picture(s.image, strip(s.title), { sizes: '(max-width:700px) 100vw, 33vw' })}
       <h2>${s.title}</h2>
       <p class="blurb">${s.blurb}</p>
-      ${Object.keys(s.specs || {}).length ? `<details><summary>Details</summary><dl>${Object.entries(s.specs).map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl></details>` : ''}
+      ${specsOf(s).length ? `<details><summary>Details</summary><dl>${specsOf(s).map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl></details>` : ''}
       <p class="buy"><span class="price">${esc(s.price)}</span>${s.buy ? `<a class="btn" href="${esc(s.buy)}" target="_blank" rel="noopener">Buy</a>` : ''}</p>
     </article>`).join('\n')}
   </div>
@@ -434,11 +439,11 @@ ${shop.map(s => `    <article class="product" id="${s.slug}">
   <div class="ab-grid">
     <div class="locs">
 ${SITE.locations.map(l => `      <section class="loc">
-        <figure>${picture(l.image, l.imageAlt, { sizes: '(max-width:760px) 100vw, 36vw' })}</figure>
+        ${l.image ? `<figure>${picture(l.image, l.imageAlt || '', { sizes: '(max-width:760px) 100vw, 36vw' })}</figure>` : ''}
         <div class="loc-text">
           <h2>${esc(l.name)}</h2>
-          <p class="meta">${esc(l.lines.join(', '))}<br>${esc(l.hours)}<br><a href="tel:${l.phone.replace(/[^+\d]/g, '')}">${esc(l.phone)}</a></p>
-          <a class="dir" href="${esc(l.map)}" target="_blank" rel="noopener">Directions</a>
+          <p class="meta">${[esc((l.lines || []).join(', ')), esc(l.hours || ''), l.phone ? `<a href="tel:${l.phone.replace(/[^+\d]/g, '')}">${esc(l.phone)}</a>` : ''].filter(Boolean).join('<br>')}</p>
+          ${l.map ? `<a class="dir" href="${esc(l.map)}" target="_blank" rel="noopener">Directions</a>` : ''}
         </div>
       </section>`).join('\n')}
     </div>
