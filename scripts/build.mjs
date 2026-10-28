@@ -284,9 +284,9 @@ function archive({ fairs }) {
   <div class="arc">
     <ol class="list" data-arc>
 ${groups.map(g => `      <li class="yr" data-group>${esc(g.label)}</li>
-${g.items.map(e => `      <li data-type="${e.kind}" data-place="${esc(e.city)}"><a href="${u(`exhibitions/${e.slug}/`)}"${hoverImg(firstImage(e))}>
+${g.items.map(e => `      <li data-type="${e.kind}" data-place="${esc(e.city)}"><a href="${u(`exhibitions/${e.slug}/`)}"${hoverImg(coverOf(e))} data-date="${esc(dateRange(e.start, e.end))}" data-cap="${esc(e.kind === 'fair' ? [e.place, dateRange(e.start, e.end)].filter(Boolean).join(' · ') : [e.venue.replace(/,\s*(New York|NY).*$/i, ''), dateRange(e.start, e.end)].filter(Boolean).join(' · '))}">
         <span class="t">${showHeading(e)}</span>
-        <span class="v">${esc(e.kind === 'fair' ? [e.place, dateRange(e.start, e.end)].filter(Boolean).join(' · ') : [e.venue.replace(/,\s*(New York|NY).*$/i, ''), dateRange(e.start, e.end)].filter(Boolean).join(' · '))}</span>
+        <span class="v">${esc(placeLabel(e))}</span>
       </a></li>`).join('\n')}`).join('\n')}
     </ol>
     <div class="view" aria-hidden="true"><figure class="frame"><img alt="" data-arc-img></figure><p class="arccap" data-arc-cap></p></div>

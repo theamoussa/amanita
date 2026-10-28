@@ -117,11 +117,12 @@ html{overflow-x:clip}
 .list .yr{font-size:11.5px;text-transform:uppercase;letter-spacing:.11em;color:var(--mute);padding:24px 0 6px;border-bottom:1px solid var(--hair)}
 .list .yr:first-child{padding-top:0}
 .list li[hidden]{display:none}
-.list a{display:grid;gap:2px;padding:8px 0;border-bottom:1px solid var(--hair);color:var(--mute);transition:color .2s}
+.list a{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:baseline;padding:7px 0;border-bottom:1px solid var(--hair);color:var(--mute);transition:color .2s}
 .list a:hover,.list a.on,.list a:focus-visible{color:var(--ink);text-decoration:none}
 .list .t{color:inherit}
 .list .t .who{color:inherit}
-.list .v{font-size:12.5px}
+.list .v{font-size:12.5px;white-space:nowrap}
+.list .t{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .names{font-size:clamp(16px,1.6vw,20px);line-height:1.25}
 .names a{padding:6px 0}
 .view{position:sticky;top:20px;align-self:start;display:grid;gap:12px}
@@ -135,6 +136,8 @@ html{overflow-x:clip}
 @media (max-width:760px){
   .arc{grid-template-columns:1fr}
   .view{display:none}
+  .list a{row-gap:2px}
+  .list a[data-date]::after{content:attr(data-date);grid-column:1/-1;font-size:12.5px}
 }
 
 /* exhibition and artist pages */

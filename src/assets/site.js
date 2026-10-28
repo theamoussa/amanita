@@ -64,6 +64,7 @@
       links.forEach(l => l.classList.toggle('on', l === a));
       if (a.dataset.img){ if (a.dataset.srcset){ img.sizes = img.closest('.frame').offsetWidth + 'px'; img.srcset = a.dataset.srcset; } else img.removeAttribute('srcset'); img.src = a.dataset.img; } else { img.removeAttribute('srcset'); img.removeAttribute('src'); }
       cap.textContent = a.querySelector('.t').textContent.trim();
+      if (a.dataset.cap){ const m = document.createElement('span'); m.className = 'meta'; m.textContent = a.dataset.cap; cap.append(document.createElement('br'), m); }
     }
     links.forEach(a => { a.addEventListener('mouseenter', () => show(a)); a.addEventListener('focus', () => show(a)); });
     const first = links.find(a => a.dataset.img); if (first) show(first);
