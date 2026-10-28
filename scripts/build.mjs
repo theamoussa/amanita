@@ -92,6 +92,8 @@ function hoverImg(src) {
   return ` data-img="${esc(u('images/' + m.sizes.at(-1).file))}" data-srcset="${esc(m.sizes.map(s => `${u('images/' + s.file)} ${s.w}w`).join(', '))}"`;
 }
 const firstImage = e => (e.images || [])[0]?.src;
+// an upcoming show announced before there is a text: shown, but not clickable until its page has something to read
+const linked = e => !(status(e) === 'upcoming' && !e.text.length && !e.pressRelease);
 // the picture that stands for a show on the home page: its `cover` (an installation view) if it has one
 const coverOf = e => e.cover || firstImage(e);
 
@@ -115,8 +117,8 @@ const NAV = [
   ['exhibitions', 'exhibitions', 'exhibitions/'],
   ['fairs', 'art fairs', 'art-fairs/'],
   ['artists', 'artists', 'artists/'],
-  ['press', 'press', 'press/'],
-  ['shop', 'shop', 'shop/'],
+  ...(SITE.pressPage ? [['press', 'press', 'press/']] : []),
+  ['shop', 'store', 'shop/'],
   ['about', 'about', 'about/'],
 ];
 
@@ -209,31 +211,32 @@ function card(e, { big = false, sizes } = {}) {
 </article>`;
 }
 
-// An upcoming show on the home page: a quiet strip under Now on view — picture, what and where, "View →".
+// An upcoming show on the home page: a quiet strip under Now on view — picture, what and where.
 // Works with only a title and dates (shows are often announced before there are pictures); the note (e.g. the
-// opening reception) is added when there is one.
+// opening reception) is added when there is one. It only links to its page once that page has a text.
 function nextShow(e) {
   const img = coverOf(e);
   const s = d(e.start);
   const where = e.venue.replace(/,\s*(New York|NY).*$/i, '') + (e.city && !e.venue.includes(e.city) ? `, ${e.city}` : '');
-  return `<article class="next-show${img ? '' : ' noimg'}">
-  <a href="${u(`exhibitions/${e.slug}/`)}">
+  const inside = `
     ${img ? `<div class="next-img">${picture(img, showName(e), { sizes: '(max-width:700px) 34vw, 360px' })}</div>` : ''}
     <div class="next-text">
       <p class="kicker">Upcoming · Opening ${MONTHS[s.m - 1]} ${s.d}</p>
       <h3>${showHeading(e)}</h3>
       <p class="meta">${esc(where)}${e.end ? ` · ${esc(dateRange(e.start, e.end))}` : ''}${e.note ? `<br>${esc(e.note)}` : ''}</p>
-    </div>
+    </div>`;
+  return `<article class="next-show${img ? '' : ' noimg'}">
+  ${linked(e) ? `<a href="${u(`exhibitions/${e.slug}/`)}">${inside}
     <span class="go" aria-hidden="true">View →</span>
-  </a>
+  </a>` : `<div class="next-in">${inside}</div>`}
 </article>`;
 }
 
 // Home: what's on now, what's next, then the most recent shows.
 // "Now on view" and "Recently" are rows that scroll sideways, so three or four shows at once stay large.
-function rail(id, label, items, { big = false } = {}) {
+function rail(id, label, items, { big = false, hideLabel = false } = {}) {
   return `<section class="rail-wrap${big ? ' big' : ''}${items.length === 1 ? ' single' : ''}" data-perch aria-labelledby="${id}">
-  <div class="railhead"><h2 class="sec" id="${id}">${esc(label)}</h2><div class="railnav" hidden><button type="button" data-dir="-1" aria-label="Previous">←</button><button type="button" data-dir="1" aria-label="Next">→</button></div></div>
+  <div class="railhead"><h2 class="sec${hideLabel ? ' vh' : ''}" id="${id}">${esc(label)}</h2><div class="railnav" hidden><button type="button" data-dir="-1" aria-label="Previous">←</button><button type="button" data-dir="1" aria-label="Next">→</button></div></div>
   <div class="rail" data-rail tabindex="-1">
 ${items.map(e => card(e, { big, sizes: big ? (items.length === 1 ? '(max-width:700px) 100vw, 1240px' : '(max-width:700px) 86vw, 780px') : '(max-width:700px) 62vw, 320px' })).join('\n')}
   </div>
@@ -247,9 +250,9 @@ ${items.map(e => card(e, { big, sizes: big ? (items.length === 1 ? '(max-width:7
   const recent = (now.length ? past : past.slice(2)).slice(0, 10);
   at('index.html');
   const body = `
-${rail('h-now', now.length ? 'Now on view' : 'Recent exhibitions', lead, { big: true })}
+${rail('h-now', now.length ? 'Now on view' : 'Recent exhibitions', lead, { big: true, hideLabel: true })}
 ${upcoming.length ? `<section class="next" data-perch aria-label="Upcoming">${upcoming.map(nextShow).join('\n')}</section>` : ''}
-${rail('h-rec', 'Recently', recent)}`;
+${rail('h-rec', 'Past', recent)}`;
   page('index.html', () => layout({ title: '', canonical: '/', body, image: coverOf(lead[0] || {}), jsonld: galleryLd, pageClass: 'p-home' }));
 }
 
@@ -272,7 +275,6 @@ function archive({ fairs }) {
       </div>
       <span class="sep" aria-hidden="true"></span>
       <div class="grp" role="group" aria-label="Place">
-        <button type="button" data-place="" aria-pressed="true">Everywhere</button>
         ${places.map(p => `<button type="button" data-place="${p}" aria-pressed="false">${p}</button>`).join('\n        ')}
       </div>
     </div>`;
@@ -284,10 +286,9 @@ function archive({ fairs }) {
   <div class="arc">
     <ol class="list" data-arc>
 ${groups.map(g => `      <li class="yr" data-group>${esc(g.label)}</li>
-${g.items.map(e => `      <li data-type="${e.kind}" data-place="${esc(e.city)}"><a href="${u(`exhibitions/${e.slug}/`)}"${hoverImg(coverOf(e))} data-date="${esc(dateRange(e.start, e.end))}" data-cap="${esc(e.kind === 'fair' ? [e.place, dateRange(e.start, e.end)].filter(Boolean).join(' · ') : [e.venue.replace(/,\s*(New York|NY).*$/i, ''), dateRange(e.start, e.end)].filter(Boolean).join(' · '))}">
+${g.items.map(e => `      <li data-type="${e.kind}" data-place="${esc(e.city)}"><${linked(e) ? `a href="${u(`exhibitions/${e.slug}/`)}"` : 'span class="row"'}${hoverImg(coverOf(e))} data-date="${esc(dateRange(e.start, e.end))}" data-cap="${esc(e.kind === 'fair' ? [e.place, dateRange(e.start, e.end)].filter(Boolean).join(' · ') : [e.venue.replace(/,\s*(New York|NY).*$/i, ''), dateRange(e.start, e.end)].filter(Boolean).join(' · '))}">
         <span class="t">${showHeading(e)}</span>
-        <span class="v">${esc(placeLabel(e))}</span>
-      </a></li>`).join('\n')}`).join('\n')}
+      </${linked(e) ? 'a' : 'span'}></li>`).join('\n')}`).join('\n')}
     </ol>
     <div class="view" aria-hidden="true"><figure class="frame"><img alt="" data-arc-img></figure><p class="arccap" data-arc-cap></p></div>
   </div>
@@ -305,15 +306,13 @@ const pressFor = (names, title) => press.filter(p => {
 exhibitions.forEach((e, i) => {
   at(`exhibitions/${e.slug}/index.html`);
   const st = status(e);
-  const kicker = e.kind === 'fair' ? 'Art fair' : st === 'now' ? 'Now on view' : st === 'upcoming' ? 'Upcoming' : yearOf(e);
   const related = e.relatedArtists.map(s => artistBySlug[s]).filter(Boolean);
   const subject = encodeURIComponent(`Inquiry | ${showName(e)}`);
-  const newer = exhibitions[i - 1], older = exhibitions[i + 1];
+  const newer = exhibitions.slice(0, i).reverse().find(linked), older = exhibitions.slice(i + 1).find(linked);
   const showPress = press.filter(p => p.title.toLowerCase().includes(e.title.toLowerCase()) && e.title.length > 5);
   const body = `
 <article class="inner ex">
   <header class="exhead">
-    <p class="kicker">${esc(kicker)}</p>
     <h1>${showHeading(e)}</h1>
     ${e.subtitle ? `<p class="sub">${esc(e.subtitle)}</p>` : ''}
     <p class="meta">${[esc(e.venue), ...e.address.map(esc)].join('<br>')}<br>${esc(dateRange(e.start, e.end))}${e.note ? `<br>${esc(e.note)}` : ''}</p>
@@ -351,12 +350,9 @@ exhibitions.forEach((e, i) => {
   const body = `
 <div class="inner">
   <div class="pagehead"><h1 class="vh">Artists</h1></div>
-  <div class="arc artists">
-    <ul class="list names" data-arc>
-${artists.map(a => `      <li><a href="${u(`artists/${a.slug}/`)}"${hoverImg(a.listImage || a.works[0]?.src)}><span class="t">${esc(a.name)}</span></a></li>`).join('\n')}
-    </ul>
-    <div class="view" aria-hidden="true"><figure class="frame"><img alt="" data-arc-img></figure><p class="arccap" data-arc-cap></p></div>
-  </div>
+  <ul class="list names">
+${artists.map(a => `    <li><a href="${u(`artists/${a.slug}/`)}"><span class="t">${esc(a.name)}</span></a></li>`).join('\n')}
+  </ul>
 </div>`;
   add('artists/index.html', layout({ title: 'Artists', canonical: '/artists/', section: 'artists', body, letters: true, pageClass: 'p-archive p-artists' }));
 }
@@ -385,6 +381,7 @@ artists.forEach(a => {
 
 // Press
 {
+  if (SITE.pressPage) {
   at('press/index.html');
   const years = [...new Set(press.map(p => (p.date || '').slice(0, 4)))];
   const body = `
@@ -400,6 +397,7 @@ ${press.filter(p => (p.date || '').slice(0, 4) === y).map(p => `    <li><a href=
   </ol>
 </div>`;
   add('press/index.html', layout({ title: 'Press', canonical: '/press/', section: 'press', body, letters: true, pageClass: 'p-press' }));
+  }
 }
 
 // Shop
@@ -407,7 +405,7 @@ ${press.filter(p => (p.date || '').slice(0, 4) === y).map(p => `    <li><a href=
   at('shop/index.html');
   const body = `
 <div class="inner">
-  <div class="pagehead"><h1 class="vh">Shop</h1></div>
+  <div class="pagehead"><h1 class="vh">Store</h1></div>
   <div class="shop">
 ${shop.map(s => `    <article class="product" id="${s.slug}">
       ${picture(s.image, strip(s.title), { sizes: '(max-width:700px) 100vw, 33vw' })}
@@ -417,9 +415,9 @@ ${shop.map(s => `    <article class="product" id="${s.slug}">
       <p class="buy"><span class="price">${esc(s.price)}</span>${s.buy ? `<a class="btn" href="${esc(s.buy)}" target="_blank" rel="noopener">Buy</a>` : ''}</p>
     </article>`).join('\n')}
   </div>
-  <p class="note" data-perch>For international orders or special requests, write to <a href="mailto:${SITE.email}?subject=Shop">${SITE.email}</a>.</p>
+  <p class="note" data-perch>For international orders or special requests, write to <a href="mailto:${SITE.email}?subject=Store">${SITE.email}</a>.</p>
 </div>`;
-  add('shop/index.html', layout({ title: 'Shop', canonical: '/shop/', section: 'shop', body, pageClass: 'p-shop' }));
+  add('shop/index.html', layout({ title: 'Store', canonical: '/shop/', section: 'shop', body, pageClass: 'p-shop' }));
 }
 
 // About
@@ -470,6 +468,7 @@ page('404.html', () => layout({
 const redirectPage = to => `<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Amanita</title><link rel="canonical" href="${abs(to)}"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url=${u(to)}"></head><body><p><a href="${u(to)}">This page has moved.</a></p></body></html>`;
 const oldShop = { 'shop/mannarainbook.html': 'shop/#rita-ackermann-manna-rain', 'shop/etruscanpaintingbook.html': 'shop/#alessandro-twombly-etruscan-painting', 'shop/benwertherbook.html': 'shop/#when-you-can-no-longer-speak-sing-me-a-song', 'shop/bardinibook.html': 'shop/#leonardo-meoni-gli-altri-colori-purtroppo-sono-tutti-caduti' };
 const moved = { ...redirects, ...oldShop };
+if (!SITE.pressPage) for (const k in moved) if (moved[k] === '/press/') moved[k] = '/';
 const generated = new Set(pages.map(([p]) => p.toLowerCase()));
 for (const [from, to] of Object.entries(moved)) {
   const file = /\.html$/.test(from) ? from : from + '.html';
@@ -480,7 +479,7 @@ for (const [from, to] of Object.entries(moved)) {
 {
   const idx = [];
   artists.forEach(a => idx.push({ g: 'Artists', t: a.name, s: 'Artist', u: `artists/${a.slug}/` }));
-  exhibitions.forEach(e => idx.push({ g: e.kind === 'fair' ? 'Art Fairs' : 'Exhibitions', t: showName(e), s: [placeLabel(e), yearOf(e)].filter(Boolean).join(', '), u: `exhibitions/${e.slug}/`, k: [e.venue, e.city, e.place, e.subtitle, dateRange(e.start, e.end)].filter(Boolean).join(' ') }));
+  exhibitions.filter(linked).forEach(e => idx.push({ g: e.kind === 'fair' ? 'Art Fairs' : 'Exhibitions', t: showName(e), s: [placeLabel(e), yearOf(e)].filter(Boolean).join(', '), u: `exhibitions/${e.slug}/`, k: [e.venue, e.city, e.place, e.subtitle, dateRange(e.start, e.end)].filter(Boolean).join(' ') }));
   const seenWork = new Set();
   const work = (cap, url, where) => {
     const t = strip(cap); if (!t) return;
@@ -491,13 +490,13 @@ for (const [from, to] of Object.entries(moved)) {
   };
   exhibitions.forEach(e => e.images.forEach(im => work(im.caption, `exhibitions/${e.slug}/`, e.title)));
   artists.forEach(a => a.works.forEach(w => work(w.caption, `artists/${a.slug}/`, a.name)));
-  press.forEach(p => idx.push({ g: 'Press', t: p.title, s: [p.outlet, (p.date || '').slice(0, 4)].filter(Boolean).join(', '), u: p.url, k: p.author }));
+  if (SITE.pressPage) press.forEach(p => idx.push({ g: 'Press', t: p.title, s: [p.outlet, (p.date || '').slice(0, 4)].filter(Boolean).join(', '), u: p.url, k: p.author }));
   fs.mkdirSync(OUT, { recursive: true });
   pages.push(['search-index.json', JSON.stringify(idx)]);
 }
 
 // sitemap & robots
-pages.push(['sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${['/', '/exhibitions/', '/art-fairs/', '/artists/', '/press/', '/shop/', '/about/', ...exhibitions.map(e => `/exhibitions/${e.slug}/`), ...artists.map(a => `/artists/${a.slug}/`)].map(p => `<url><loc>${abs(p)}</loc></url>`).join('\n')}\n</urlset>\n`]);
+pages.push(['sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${['/', '/exhibitions/', '/art-fairs/', '/artists/', ...(SITE.pressPage ? ['/press/'] : []), '/shop/', '/about/', ...exhibitions.filter(linked).map(e => `/exhibitions/${e.slug}/`), ...artists.map(a => `/artists/${a.slug}/`)].map(p => `<url><loc>${abs(p)}</loc></url>`).join('\n')}\n</urlset>\n`]);
 pages.push(['robots.txt', `User-agent: *\nAllow: /\nSitemap: ${abs('sitemap.xml')}\n`]);
 pages.push(['.nojekyll', '']);
 if (process.env.CNAME) pages.push(['CNAME', process.env.CNAME + '\n']);

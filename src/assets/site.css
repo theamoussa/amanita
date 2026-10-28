@@ -34,8 +34,8 @@ p{margin:0}
 .who{font-style:normal}
 
 /* header */
-.top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px 28px;padding-block:24px 22px;max-width:calc(var(--wide) + 0px);margin:0 auto}
-.wm{display:block;width:clamp(118px,11vw,150px);line-height:0;color:var(--ink)}
+.top{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:12px 28px;padding-block:24px 22px;max-width:calc(var(--wide) + 0px);margin:0 auto}
+.wm{display:block;width:94px;line-height:0;color:var(--ink)}   /* the wordmark's capitals the height of the menu's: it sits on the same line */
 .wm:hover{text-decoration:none}
 .logo{width:100%;height:auto;display:block;overflow:visible;fill:currentColor}
 .menu{display:flex;flex-wrap:wrap;gap:4px 20px;font-size:13.5px}
@@ -52,7 +52,7 @@ html{overflow-x:clip}
 .rail-wrap{max-width:var(--wide);margin:var(--gap) auto 0}
 .rail-wrap.big{margin-top:8px}
 .railhead{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:16px;min-height:28px}
-.railnav{display:flex;gap:6px}
+.railnav{display:flex;gap:6px;margin-left:auto}
 .railnav button{width:34px;height:28px;border:1px solid var(--hair);background:none;border-radius:999px;cursor:pointer;font-size:14px;line-height:1;padding:0}
 .railnav button:hover:not(:disabled){border-color:var(--ink)}
 .railnav button:disabled{opacity:.3;cursor:default}
@@ -84,9 +84,9 @@ html{overflow-x:clip}
 /* Upcoming on the home page: one wide announcement per show, picture optional */
 .next{max-width:var(--wide);margin:64px auto 0}
 .next+.rail-wrap{margin-top:64px}
-.next-show a{display:grid;grid-template-columns:minmax(0,360px) minmax(0,1fr) auto;gap:clamp(20px,3vw,40px);align-items:center;
+.next-show a,.next-show .next-in{display:grid;grid-template-columns:minmax(0,360px) minmax(0,1fr) auto;gap:clamp(20px,3vw,40px);align-items:center;
   border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);padding:18px 0}
-.next-show+.next-show a{border-top:0}
+.next-show+.next-show a,.next-show+.next-show .next-in{border-top:0}
 .next-show a:hover{text-decoration:none}
 .next-show a:hover h3,.next-show a:hover .go{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
 .next-img img,.next-img .ph{width:100%;aspect-ratio:3/2;object-fit:cover;background:var(--shade);display:block}
@@ -94,9 +94,11 @@ html{overflow-x:clip}
 .next-text h3{font-size:clamp(19px,1.8vw,24px);line-height:1.12;font-weight:500}
 .next-show .go{font-size:13.5px;white-space:nowrap}
 .next-show.noimg a{grid-template-columns:minmax(0,1fr) auto}
+.next-show .next-in{grid-template-columns:minmax(0,360px) minmax(0,1fr)}
+.next-show.noimg .next-in{grid-template-columns:1fr}
 @media (max-width:700px){
   .next,.next+.rail-wrap{margin-top:48px}
-  .next-show a{grid-template-columns:minmax(0,34%) minmax(0,1fr);gap:16px;padding:14px 0}
+  .next-show a,.next-show .next-in{grid-template-columns:minmax(0,34%) minmax(0,1fr);gap:16px;padding:14px 0}
   .next-show.noimg a{grid-template-columns:1fr}
   .next-show .go{display:none}
   .next-text h3{font-size:17px}
@@ -117,13 +119,16 @@ html{overflow-x:clip}
 .list .yr{font-size:11.5px;text-transform:uppercase;letter-spacing:.11em;color:var(--mute);padding:24px 0 6px;border-bottom:1px solid var(--hair)}
 .list .yr:first-child{padding-top:0}
 .list li[hidden]{display:none}
-.list a{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:baseline;padding:7px 0;border-bottom:1px solid var(--hair);color:var(--mute);transition:color .2s}
-.list a:hover,.list a.on,.list a:focus-visible{color:var(--ink);text-decoration:none}
+.list a,.list .row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:baseline;padding:7px 0;border-bottom:1px solid var(--hair);color:var(--mute);transition:color .2s}
+.list a:hover,.list a.on,.list a:focus-visible,.list .row:hover,.list .row.on{color:var(--ink);text-decoration:none}
+.list .row{cursor:default}
 .list .t{color:inherit}
 .list .t .who{color:inherit}
 .list .v{font-size:12.5px;white-space:nowrap}
 .list .t{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .names{font-size:clamp(16px,1.6vw,20px);line-height:1.25}
+.p-artists .names{max-width:544px}
+.p-artists .names a{border-bottom:0;padding:4px 0}
 .names a{padding:6px 0}
 .view{position:sticky;top:20px;align-self:start;display:grid;gap:12px}
 .frame{margin:0;aspect-ratio:4/3;background:var(--shade);overflow:hidden}
@@ -136,8 +141,8 @@ html{overflow-x:clip}
 @media (max-width:760px){
   .arc{grid-template-columns:1fr}
   .view{display:none}
-  .list a{row-gap:2px}
-  .list a[data-date]::after{content:attr(data-date);grid-column:1/-1;font-size:12.5px}
+  .list a,.list .row{row-gap:2px}
+  .list [data-date]::after{content:attr(data-date);grid-column:1/-1;font-size:12.5px}
 }
 
 /* exhibition and artist pages */

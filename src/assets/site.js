@@ -59,7 +59,7 @@
   document.querySelectorAll('.arc').forEach(arc => {
     const list = arc.querySelector('[data-arc]'), img = arc.querySelector('[data-arc-img]'), cap = arc.querySelector('[data-arc-cap]');
     if (!list || !img) return;
-    const links = [...list.querySelectorAll('a')];
+    const links = [...list.querySelectorAll('a, .row')];
     function show(a){
       links.forEach(l => l.classList.toggle('on', l === a));
       if (a.dataset.img){ if (a.dataset.srcset){ img.sizes = img.closest('.frame').offsetWidth + 'px'; img.srcset = a.dataset.srcset; } else img.removeAttribute('srcset'); img.src = a.dataset.img; } else { img.removeAttribute('srcset'); img.removeAttribute('src'); }
@@ -76,10 +76,16 @@
       const rows = [...list.children];
       rows.forEach(li => { if (li.dataset.group === undefined) li.hidden = (type !== 'all' && li.dataset.type !== type) || (place && li.dataset.place !== place); });
       rows.forEach((li, i) => { if (li.dataset.group !== undefined){ let j = i + 1, any = false; while (j < rows.length && rows[j].dataset.group === undefined){ if (!rows[j].hidden) any = true; j++; } li.hidden = !any; } });
+      const vis = links.find(l => !l.closest('li').hidden && l.dataset.img); if (vis) show(vis);
       Fly.refresh();
     };
-    filters.querySelectorAll('[data-type]').forEach(b => b.addEventListener('click', () => { type = b.dataset.type; filters.querySelectorAll('[data-type]').forEach(x => x.setAttribute('aria-pressed', x === b)); apply(); }));
-    filters.querySelectorAll('[data-place]').forEach(b => b.addEventListener('click', () => { place = b.dataset.place; filters.querySelectorAll('[data-place]').forEach(x => x.setAttribute('aria-pressed', x === b)); apply(); }));
+    const mark = () => {
+      filters.querySelectorAll('[data-type]').forEach(x => x.setAttribute('aria-pressed', x.dataset.type === type && (type !== 'all' || !place)));
+      filters.querySelectorAll('[data-place]').forEach(x => x.setAttribute('aria-pressed', x.dataset.place === place));
+    };
+    // "All" clears every filter; a place is chosen by clicking it and cleared by clicking it again
+    filters.querySelectorAll('[data-type]').forEach(b => b.addEventListener('click', () => { type = b.dataset.type; if (type === 'all') place = ''; mark(); apply(); }));
+    filters.querySelectorAll('[data-place]').forEach(b => b.addEventListener('click', () => { place = place === b.dataset.place ? '' : b.dataset.place; mark(); apply(); }));
   });
 
   /* ---------- home: rows that scroll sideways ----------
@@ -116,7 +122,7 @@
 
   /* ---------- slideshows on exhibition and artist pages ----------
      One picture at a time. Click the right part of the picture (or →, or swipe left) for the next one,
-     the left part for the previous one. "Index" shows every picture at once. */
+     the left part for the previous one. "Grid" shows every picture at once. */
   document.querySelectorAll('[data-slideshow]').forEach(show => {
     const stage = show.querySelector('.ss-stage');
     const slides = [...stage.querySelectorAll('.ss-slide')];
@@ -124,7 +130,7 @@
     show.classList.add('on');
     const n = slides.length;
     const bar = document.createElement('div'); bar.className = 'ss-bar';
-    bar.innerHTML = `<p class="ss-cap" aria-live="polite"></p><div class="ss-nav">${n > 1 ? `<span class="ss-count"></span><button type="button" data-go="-1">Previous</button><button type="button" data-go="1">Next</button><button type="button" data-index aria-pressed="false">Index</button>` : ''}</div>`;
+    bar.innerHTML = `<p class="ss-cap" aria-live="polite"></p><div class="ss-nav">${n > 1 ? `<span class="ss-count"></span><button type="button" data-go="-1">Previous</button><button type="button" data-go="1">Next</button><button type="button" data-index aria-pressed="false">Grid</button>` : ''}</div>`;
     const index = document.createElement('div'); index.className = 'ss-index'; index.hidden = true;
     show.append(bar, index);
     const cap = bar.querySelector('.ss-cap'), count = bar.querySelector('.ss-count'), idxBtn = bar.querySelector('[data-index]');

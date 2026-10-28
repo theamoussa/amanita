@@ -51,5 +51,6 @@
       "map": "https://maps.google.com/?q=Via+dei+Banchi+Vecchi+24,+00186+Roma"
     }
   ],
-  "marcel": { "chance": 0.33, "minDelay": 6000, "maxDelay": 25000 }
+  "marcel": { "chance": 0.33, "minDelay": 6000, "maxDelay": 25000 },
+  "pressPage": false
 }
