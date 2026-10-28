@@ -355,7 +355,7 @@ exhibitions.forEach((e, i) => {
 <div class="inner">
   <div class="pagehead"><h1 class="vh">Artists</h1></div>
   <ul class="list names">
-${artists.map(a => `    <li><a href="${u(`artists/${a.slug}/`)}"><span class="t">${esc(a.name)}</span></a></li>`).join('\n')}
+${artists.filter(a => a.listed !== false).map(a => `    <li><a href="${u(`artists/${a.slug}/`)}"><span class="t">${esc(a.name)}</span></a></li>`).join('\n')}
   </ul>
 </div>`;
   add('artists/index.html', layout({ title: 'Artists', canonical: '/artists/', section: 'artists', body, letters: true, pageClass: 'p-archive p-artists' }));
@@ -482,7 +482,7 @@ for (const [from, to] of Object.entries(moved)) {
 // Search index
 {
   const idx = [];
-  artists.forEach(a => idx.push({ g: 'Artists', t: a.name, s: 'Artist', u: `artists/${a.slug}/` }));
+  artists.filter(a => a.listed !== false).forEach(a => idx.push({ g: 'Artists', t: a.name, s: 'Artist', u: `artists/${a.slug}/` }));
   exhibitions.filter(linked).forEach(e => idx.push({ g: e.kind === 'fair' ? 'Fairs' : 'Exhibitions', t: showName(e), s: [placeLabel(e), yearOf(e)].filter(Boolean).join(', '), u: `exhibitions/${e.slug}/`, k: [e.venue, e.city, e.place, e.subtitle, dateRange(e.start, e.end)].filter(Boolean).join(' ') }));
   const seenWork = new Set();
   const work = (cap, url, where) => {
