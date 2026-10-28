@@ -40,8 +40,8 @@ Then `npm run images`, commit, push.
 - **Announcing an upcoming show**: a file with a `start` date in the future appears on the home page under
   "Upcoming" until it opens, then moves to "Now on view" by itself. Only `title`, `artists`, `venue`, `city`,
   `start` and `end` are needed; `images` can be `[]` and `text` can be `[]`. `note` is a good place for the opening
-  reception ("Opening reception Thursday, November 12, 6–8 pm"). Give it a `cover` and it shows as a picture
-  with the text beside it; without one it shows as a large typographic announcement.
+  reception ("Opening reception Thursday, November 12, 6–8 pm"). It shows as a strip under "Now on view":
+  its `cover` (or first picture) on the left, title and venue beside it; without a picture, just the text.
 
 ## Pictures
 

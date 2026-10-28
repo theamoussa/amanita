@@ -209,22 +209,22 @@ function card(e, { big = false, sizes } = {}) {
 </article>`;
 }
 
-// An upcoming show on the home page: a wide announcement. It works with only a title and dates (shows are often
-// announced before there are pictures); a cover or first picture, the note (e.g. the opening reception) and the
-// first paragraph of text are added when they exist.
+// An upcoming show on the home page: a quiet strip under Now on view — picture, what and where, "View →".
+// Works with only a title and dates (shows are often announced before there are pictures); the note (e.g. the
+// opening reception) is added when there is one.
 function nextShow(e) {
   const img = coverOf(e);
   const s = d(e.start);
-  const lede = strip(e.text[0] || '');
+  const where = e.venue.replace(/,\s*(New York|NY).*$/i, '') + (e.city && !e.venue.includes(e.city) ? `, ${e.city}` : '');
   return `<article class="next-show${img ? '' : ' noimg'}">
   <a href="${u(`exhibitions/${e.slug}/`)}">
-    ${img ? `<div class="next-img">${picture(img, showName(e), { sizes: '(max-width:700px) 100vw, 58vw' })}</div>` : ''}
+    ${img ? `<div class="next-img">${picture(img, showName(e), { sizes: '(max-width:700px) 34vw, 360px' })}</div>` : ''}
     <div class="next-text">
-      <p class="kicker">Opening ${MONTHS[s.m - 1]} ${s.d} · ${esc(placeLabel(e))}</p>
+      <p class="kicker">Upcoming · Opening ${MONTHS[s.m - 1]} ${s.d}</p>
       <h3>${showHeading(e)}</h3>
-      <p class="meta">${esc(e.venue.replace(/,\s*(New York|NY).*$/i, ''))}<br>${esc(dateRange(e.start, e.end))}${e.note ? `<br>${esc(e.note)}` : ''}</p>
-      ${lede ? `<p class="lede">${esc(lede.length > 260 ? lede.slice(0, lede.lastIndexOf(' ', 250)) + '…' : lede)}</p>` : ''}
+      <p class="meta">${esc(where)}${e.end ? ` · ${esc(dateRange(e.start, e.end))}` : ''}${e.note ? `<br>${esc(e.note)}` : ''}</p>
     </div>
+    <span class="go" aria-hidden="true">View →</span>
   </a>
 </article>`;
 }
@@ -248,7 +248,7 @@ ${items.map(e => card(e, { big, sizes: big ? (items.length === 1 ? '(max-width:7
   at('index.html');
   const body = `
 ${rail('h-now', now.length ? 'Now on view' : 'Recent exhibitions', lead, { big: true })}
-${upcoming.length ? `<section class="next" data-perch aria-labelledby="h-up"><h2 class="sec" id="h-up">Upcoming</h2>${upcoming.map(nextShow).join('\n')}</section>` : ''}
+${upcoming.length ? `<section class="next" data-perch aria-label="Upcoming">${upcoming.map(nextShow).join('\n')}</section>` : ''}
 ${rail('h-rec', 'Recently', recent)}`;
   page('index.html', () => layout({ title: '', canonical: '/', body, image: coverOf(lead[0] || {}), jsonld: galleryLd, pageClass: 'p-home' }));
 }
