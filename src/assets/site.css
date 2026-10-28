@@ -119,9 +119,9 @@ html{overflow-x:clip}
 .list .yr{font-size:11.5px;text-transform:uppercase;letter-spacing:.11em;color:var(--mute);padding:24px 0 6px;border-bottom:1px solid var(--hair)}
 .list .yr:first-child{padding-top:0}
 .list li[hidden]{display:none}
-.list a,.list .row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:baseline;padding:7px 0;border-bottom:1px solid var(--hair);color:var(--mute);transition:color .2s}
-.list a:hover,.list a.on,.list a:focus-visible,.list .row:hover,.list .row.on{color:var(--ink);text-decoration:none}
-.list .row{cursor:default}
+.list a,.list .nolink{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:baseline;padding:7px 0;border-bottom:1px solid var(--hair);color:var(--mute);transition:color .2s}
+.list a:hover,.list a.on,.list a:focus-visible,.list .nolink:hover,.list .nolink.on{color:var(--ink);text-decoration:none}
+.list .nolink{cursor:default}
 .list .t{color:inherit}
 .list .t .who{color:inherit}
 .list .v{font-size:12.5px;white-space:nowrap}
@@ -141,15 +141,19 @@ html{overflow-x:clip}
 @media (max-width:760px){
   .arc{grid-template-columns:1fr}
   .view{display:none}
-  .list a,.list .row{row-gap:2px}
+  .list a,.list .nolink{row-gap:2px}
   .list [data-date]::after{content:attr(data-date);grid-column:1/-1;font-size:12.5px}
 }
 
 /* exhibition and artist pages */
-.exhead{display:grid;gap:8px;max-width:760px;margin:8px 0 36px}
+.exhead{display:grid;gap:8px;max-width:760px;margin:8px 0 28px}
 .exhead h1{font-size:clamp(21px,2.2vw,30px);line-height:1.08}
 .exhead .sub{font-size:16px}
 .exhead .meta{margin-top:6px;line-height:1.55}
+/* exhibition pages: the title above the pictures; place, dates and Inquire under them, before the text */
+.exinfo{display:grid;gap:8px;margin-top:40px;line-height:1.55}
+.exinfo .actions{margin-top:6px}
+.exinfo + .text{margin-top:44px}
 .actions{display:flex;flex-wrap:wrap;gap:4px 22px;margin-top:10px;font-size:14px}
 .actions a{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
 figcaption{font-size:13px;color:var(--mute);max-width:70ch}

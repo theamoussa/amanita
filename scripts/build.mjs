@@ -286,7 +286,7 @@ function archive({ fairs }) {
   <div class="arc">
     <ol class="list" data-arc>
 ${groups.map(g => `      <li class="yr" data-group>${esc(g.label)}</li>
-${g.items.map(e => `      <li data-type="${e.kind}" data-place="${esc(e.city)}"><${linked(e) ? `a href="${u(`exhibitions/${e.slug}/`)}"` : 'span class="row"'}${hoverImg(coverOf(e))} data-date="${esc(dateRange(e.start, e.end))}" data-cap="${esc(e.kind === 'fair' ? [e.place, dateRange(e.start, e.end)].filter(Boolean).join(' · ') : [e.venue.replace(/,\s*(New York|NY).*$/i, ''), dateRange(e.start, e.end)].filter(Boolean).join(' · '))}">
+${g.items.map(e => `      <li data-type="${e.kind}" data-place="${esc(e.city)}"><${linked(e) ? `a href="${u(`exhibitions/${e.slug}/`)}"` : 'span class="nolink"'}${hoverImg(coverOf(e))} data-date="${esc(dateRange(e.start, e.end))}" data-cap="${esc(e.kind === 'fair' ? [e.place, dateRange(e.start, e.end)].filter(Boolean).join(' · ') : [e.venue.replace(/,\s*(New York|NY).*$/i, ''), dateRange(e.start, e.end)].filter(Boolean).join(' · '))}">
         <span class="t">${showHeading(e)}</span>
       </${linked(e) ? 'a' : 'span'}></li>`).join('\n')}`).join('\n')}
     </ol>
@@ -315,10 +315,12 @@ exhibitions.forEach((e, i) => {
   <header class="exhead">
     <h1>${showHeading(e)}</h1>
     ${e.subtitle ? `<p class="sub">${esc(e.subtitle)}</p>` : ''}
-    <p class="meta">${[esc(e.venue), ...e.address.map(esc)].join('<br>')}<br>${esc(dateRange(e.start, e.end))}${e.note ? `<br>${esc(e.note)}` : ''}</p>
-    <p class="actions"><a href="mailto:${SITE.email}?subject=${subject}">Inquire</a>${e.pressRelease ? ` <a href="${esc(e.pressRelease)}" target="_blank" rel="noopener">Press release</a>` : ''}${e.files.map(f => ` <a href="${esc(f.url)}" target="_blank" rel="noopener">${esc(f.label || 'Download')}</a>`).join('')}</p>
   </header>
   ${slideshow(e.images.map(im => ({ src: im.src, caption: im.caption, alt: strip(im.caption) || `${showName(e)}, installation view` })), `Images of ${showName(e)}`)}
+  <div class="exinfo">
+    <p class="meta">${[esc(e.venue), ...e.address.map(esc)].join('<br>')}<br>${esc(dateRange(e.start, e.end))}${e.note ? `<br>${esc(e.note)}` : ''}</p>
+    <p class="actions"><a href="mailto:${SITE.email}?subject=${subject}">Inquire</a>${e.pressRelease ? ` <a href="${esc(e.pressRelease)}" target="_blank" rel="noopener">Press release</a>` : ''}${e.files.map(f => ` <a href="${esc(f.url)}" target="_blank" rel="noopener">${esc(f.label || 'Download')}</a>`).join('')}</p>
+  </div>
   ${e.text.length ? `<div class="text" data-perch>${e.text.map(p => `<p>${rich(p)}</p>`).join('\n')}</div>` : ''}
   ${related.length || showPress.length ? `<aside class="more" data-perch>
     ${related.length ? `<div><h2 class="sec">Artists</h2><ul>${related.map(a => `<li><a href="${u(`artists/${a.slug}/`)}">${esc(a.name)}</a></li>`).join('')}</ul></div>` : ''}
@@ -362,7 +364,7 @@ artists.forEach(a => {
   const ap = press.filter(p => p.artists.includes(a.slug));
   const body = `
 <article class="inner artist">
-  <header class="exhead"><p class="kicker">Artist</p><h1>${esc(a.name)}</h1>
+  <header class="exhead"><h1>${esc(a.name)}</h1>
     <p class="actions"><a href="mailto:${SITE.email}?subject=${encodeURIComponent('Inquiry | ' + a.name)}">Inquire</a>${a.cv ? ` <a href="${esc(a.cv)}" target="_blank" rel="noopener">CV</a>` : ''}</p>
   </header>
   ${slideshow(a.works.map(w => ({ src: w.src, caption: w.caption, alt: strip(w.caption) || a.name })), `Works by ${a.name}`)}

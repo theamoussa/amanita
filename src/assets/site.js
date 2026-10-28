@@ -59,7 +59,7 @@
   document.querySelectorAll('.arc').forEach(arc => {
     const list = arc.querySelector('[data-arc]'), img = arc.querySelector('[data-arc-img]'), cap = arc.querySelector('[data-arc-cap]');
     if (!list || !img) return;
-    const links = [...list.querySelectorAll('a, .row')];
+    const links = [...list.querySelectorAll('a, .nolink')];
     function show(a){
       links.forEach(l => l.classList.toggle('on', l === a));
       if (a.dataset.img){ if (a.dataset.srcset){ img.sizes = img.closest('.frame').offsetWidth + 'px'; img.srcset = a.dataset.srcset; } else img.removeAttribute('srcset'); img.src = a.dataset.img; } else { img.removeAttribute('srcset'); img.removeAttribute('src'); }
@@ -130,7 +130,7 @@
     show.classList.add('on');
     const n = slides.length;
     const bar = document.createElement('div'); bar.className = 'ss-bar';
-    bar.innerHTML = `<p class="ss-cap" aria-live="polite"></p><div class="ss-nav">${n > 1 ? `<span class="ss-count"></span><button type="button" data-go="-1">Previous</button><button type="button" data-go="1">Next</button><button type="button" data-index aria-pressed="false">Grid</button>` : ''}</div>`;
+    bar.innerHTML = `<p class="ss-cap" aria-live="polite"></p><div class="ss-nav">${n > 1 ? `<span class="ss-count"></span><button type="button" data-go="-1">previous</button><button type="button" data-go="1">next</button><button type="button" data-index aria-pressed="false">grid</button>` : ''}</div>`;
     const index = document.createElement('div'); index.className = 'ss-index'; index.hidden = true;
     show.append(bar, index);
     const cap = bar.querySelector('.ss-cap'), count = bar.querySelector('.ss-count'), idxBtn = bar.querySelector('[data-index]');
