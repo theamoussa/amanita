@@ -65,7 +65,7 @@ const yearOf = e => (e.start || '').slice(0, 4);
 const placeLabel = e => e.kind === 'fair' ? (e.place || '') : (e.city === 'Fondazione Iris' ? 'Fondazione Iris' : e.city || e.place || '');
 const showName = e => e.artists.length ? `${e.artists.join(' & ')}: ${e.title}` : e.title;
 function showHeading(e, tag = 'span') {
-  const who = e.artists.length && !e.artists.includes(e.title) ? `<${tag} class="who">${esc(e.artists.join(' & '))}</${tag}> ` : '';
+  const who = e.artists.length && !e.artists.includes(e.title) ? `<${tag} class="who">${esc(e.artists.join(' & '))}:</${tag}> ` : '';
   return `${who}<em>${esc(e.title)}</em>`;
 }
 
