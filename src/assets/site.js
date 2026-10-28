@@ -33,7 +33,7 @@
     const hits = idx.filter(o => terms.every(t => o.hay.includes(t)));
     if (!hits.length){ out.innerHTML = `<p class="hint">Nothing matches “${esc(raw)}”. Try an artist’s surname, a city or a year.</p>`; return; }
     const shown = raw.split(/\s+/);
-    out.innerHTML = ['Artists', 'Exhibitions', 'Art Fairs', 'Works', 'Press'].map(g => {
+    out.innerHTML = ['Artists', 'Exhibitions', 'Fairs', 'Works', 'Press'].map(g => {
       const items = hits.filter(h => h.g === g).slice(0, g === 'Works' ? 8 : 12);
       if (!items.length) return '';
       return `<section><h2>${g}</h2><ul>${items.map(h => `<li><a href="${esc(href(h.u))}"${/^https?:/.test(h.u) ? ' target="_blank" rel="noopener"' : ''}><span>${mark(h.t, shown)}</span><span>${esc(h.s || '')}</span></a></li>`).join('')}</ul></section>`;

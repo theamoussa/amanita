@@ -115,7 +115,7 @@ const logoSvg = `<svg class="logo" viewBox="0 0 ${LOGO.w} ${LOGO.h}" role="img" 
 // ---------- page shell ----------
 const NAV = [
   ['exhibitions', 'exhibitions', 'exhibitions/'],
-  ['fairs', 'art fairs', 'art-fairs/'],
+  ['fairs', 'fairs', 'art-fairs/'],
   ['artists', 'artists', 'artists/'],
   ...(SITE.pressPage ? [['press', 'press', 'press/']] : []),
   ['shop', 'store', 'shop/'],
@@ -271,7 +271,7 @@ function archive({ fairs }) {
       <div class="grp" role="group" aria-label="Type">
         <button type="button" data-type="all" aria-pressed="true">All</button>
         <button type="button" data-type="exhibition" aria-pressed="false">Exhibitions</button>
-        <a href="${u('art-fairs/')}">Art Fairs</a>
+        <a href="${u('art-fairs/')}">Fairs</a>
       </div>
       <span class="sep" aria-hidden="true"></span>
       <div class="grp" role="group" aria-label="Place">
@@ -281,7 +281,7 @@ function archive({ fairs }) {
   const body = `
 <div class="inner">
   <div class="pagehead">
-    <h1 class="vh">${fairs ? 'Art Fairs' : 'Exhibitions'}</h1>${filters}
+    <h1 class="vh">${fairs ? 'Fairs' : 'Exhibitions'}</h1>${filters}
   </div>
   <div class="arc">
     <ol class="list" data-arc>
@@ -293,7 +293,7 @@ ${g.items.map(e => `      <li data-type="${e.kind}" data-place="${esc(e.city)}">
     <div class="view" aria-hidden="true"><figure class="frame"><img alt="" data-arc-img></figure><p class="arccap" data-arc-cap></p></div>
   </div>
 </div>`;
-  return layout({ title: fairs ? 'Art Fairs' : 'Exhibitions', canonical: fairs ? '/art-fairs/' : '/exhibitions/', section: fairs ? 'fairs' : 'exhibitions', body, letters: true, pageClass: 'p-archive' });
+  return layout({ title: fairs ? 'Fairs' : 'Exhibitions', canonical: fairs ? '/art-fairs/' : '/exhibitions/', section: fairs ? 'fairs' : 'exhibitions', body, letters: true, pageClass: 'p-archive' });
 }
 page('exhibitions/index.html', () => archive({ fairs: false }));
 page('art-fairs/index.html', () => archive({ fairs: true }));
@@ -479,7 +479,7 @@ for (const [from, to] of Object.entries(moved)) {
 {
   const idx = [];
   artists.forEach(a => idx.push({ g: 'Artists', t: a.name, s: 'Artist', u: `artists/${a.slug}/` }));
-  exhibitions.filter(linked).forEach(e => idx.push({ g: e.kind === 'fair' ? 'Art Fairs' : 'Exhibitions', t: showName(e), s: [placeLabel(e), yearOf(e)].filter(Boolean).join(', '), u: `exhibitions/${e.slug}/`, k: [e.venue, e.city, e.place, e.subtitle, dateRange(e.start, e.end)].filter(Boolean).join(' ') }));
+  exhibitions.filter(linked).forEach(e => idx.push({ g: e.kind === 'fair' ? 'Fairs' : 'Exhibitions', t: showName(e), s: [placeLabel(e), yearOf(e)].filter(Boolean).join(', '), u: `exhibitions/${e.slug}/`, k: [e.venue, e.city, e.place, e.subtitle, dateRange(e.start, e.end)].filter(Boolean).join(' ') }));
   const seenWork = new Set();
   const work = (cap, url, where) => {
     const t = strip(cap); if (!t) return;
