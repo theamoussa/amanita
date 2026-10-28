@@ -45,7 +45,10 @@ p{margin:0}
 .menu .s{color:var(--mute)}
 .menu .s::before{content:"";display:inline-block;width:9px;height:9px;border:1.3px solid currentColor;border-radius:50%;margin-right:6px;vertical-align:-1px}
 
-main{display:block;min-height:50vh}
+/* the footer sits at the bottom of the window even when a page is short */
+body{display:flex;flex-direction:column;min-height:100vh;min-height:100svh}
+.top,main,.foot{width:100%}
+main{display:block;flex:1 0 auto}
 .inner{max-width:var(--wide);margin:0 auto}
 
 /* home */
