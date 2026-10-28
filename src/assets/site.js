@@ -132,7 +132,7 @@
     const bar = document.createElement('div'); bar.className = 'ss-bar';
     bar.innerHTML = `<p class="ss-cap" aria-live="polite"></p><div class="ss-nav">${n > 1 ? `<span class="ss-count"></span><button type="button" data-go="-1">previous</button><button type="button" data-go="1">next</button><button type="button" class="ss-grid" data-index aria-pressed="false" aria-label="See all pictures" title="See all pictures"><svg viewBox="0 0 15 15" width="11" height="11" aria-hidden="true"><rect class="b" x="4.5" y=".5" width="10" height="10" rx="2"/><rect class="f" x=".5" y="4.5" width="10" height="10" rx="2"/></svg></button>` : ''}</div>`;
     const index = document.createElement('div'); index.className = 'ss-index'; index.hidden = true;
-    show.append(bar, index);
+    show.append(index, bar);   // the grid (when open) sits above the controls, so previous / next / grid stay underneath the pictures
     const cap = bar.querySelector('.ss-cap'), count = bar.querySelector('.ss-count'), idxBtn = bar.querySelector('[data-index]');
     let cur = 0;
     const eager = i => { const img = slides[(i + n) % n].querySelector('img'); if (img && img.loading === 'lazy') img.loading = 'eager'; };
