@@ -173,6 +173,10 @@ figcaption{font-size:13px;color:var(--mute);max-width:70ch}
 .slideshow.on .ss-slide img{width:100%;height:100%;max-height:none;object-fit:contain;object-position:center}
 .slideshow.on .ss-slide .ph{height:100%;aspect-ratio:auto}
 .slideshow.on figcaption{display:none}
+.ss-grid{display:inline-flex;align-items:center;align-self:center;padding:2px 0 2px 2px!important;line-height:0}
+.ss-grid svg{fill:none;stroke:currentColor;stroke-width:.9;opacity:.7}
+.ss-grid svg .f{fill:var(--paper)}
+.ss-grid:hover svg,.ss-grid[aria-pressed="true"] svg{opacity:1}
 .ss-bar{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 28px;align-items:start;margin-top:14px;font-size:13px}
 .ss-cap{color:var(--mute);min-height:2.7em;max-width:80ch}
 .ss-cap em{color:var(--ink)}

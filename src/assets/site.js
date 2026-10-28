@@ -122,7 +122,7 @@
 
   /* ---------- slideshows on exhibition and artist pages ----------
      One picture at a time. Click the right part of the picture (or →, or swipe left) for the next one,
-     the left part for the previous one. "Grid" shows every picture at once. */
+     the left part for the previous one. The grid button shows every picture at once. */
   document.querySelectorAll('[data-slideshow]').forEach(show => {
     const stage = show.querySelector('.ss-stage');
     const slides = [...stage.querySelectorAll('.ss-slide')];
@@ -130,7 +130,7 @@
     show.classList.add('on');
     const n = slides.length;
     const bar = document.createElement('div'); bar.className = 'ss-bar';
-    bar.innerHTML = `<p class="ss-cap" aria-live="polite"></p><div class="ss-nav">${n > 1 ? `<span class="ss-count"></span><button type="button" data-go="-1">previous</button><button type="button" data-go="1">next</button><button type="button" data-index aria-pressed="false">grid</button>` : ''}</div>`;
+    bar.innerHTML = `<p class="ss-cap" aria-live="polite"></p><div class="ss-nav">${n > 1 ? `<span class="ss-count"></span><button type="button" data-go="-1">previous</button><button type="button" data-go="1">next</button><button type="button" class="ss-grid" data-index aria-pressed="false" aria-label="See all pictures" title="See all pictures"><svg viewBox="0 0 15 15" width="11" height="11" aria-hidden="true"><rect class="b" x="4.5" y=".5" width="10" height="10" rx="2"/><rect class="f" x=".5" y="4.5" width="10" height="10" rx="2"/></svg></button>` : ''}</div>`;
     const index = document.createElement('div'); index.className = 'ss-index'; index.hidden = true;
     show.append(bar, index);
     const cap = bar.querySelector('.ss-cap'), count = bar.querySelector('.ss-count'), idxBtn = bar.querySelector('[data-index]');
