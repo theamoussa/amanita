@@ -37,6 +37,8 @@ p{margin:0}
 .top{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:12px 28px;padding-block:24px 22px;max-width:calc(var(--wide) + 0px);margin:0 auto}
 .wm{display:block;width:94px;line-height:0;color:var(--ink)}   /* the wordmark's capitals the height of the menu's: it sits on the same line */
 .wm:hover{text-decoration:none}
+/* inside an exhibition or an artist: a hairline under the logo and menu */
+.p-ex .top,.p-artist .top{border-bottom:1px solid var(--hair);margin-bottom:28px}
 .logo{width:100%;height:auto;display:block;overflow:visible;fill:currentColor}
 .menu{display:flex;flex-wrap:wrap;gap:4px 20px;font-size:13.5px}
 .menu a[aria-current="page"]{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
@@ -147,7 +149,7 @@ html{overflow-x:clip}
 
 /* exhibition and artist pages */
 .exhead{display:grid;gap:8px;max-width:760px;margin:8px 0 28px}
-.exhead h1{font-size:clamp(21px,2.2vw,30px);line-height:1.08}
+.exhead h1{font-size:clamp(19px,1.8vw,25px);line-height:1.1}
 .exhead .sub{font-size:16px}
 .exhead .meta{margin-top:6px;line-height:1.55}
 /* exhibition pages: the title above the pictures; place, dates and Inquire under them, before the text */
