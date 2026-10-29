@@ -238,6 +238,11 @@ figcaption{font-size:13px;color:var(--mute);max-width:70ch}
 .price{font-variant-numeric:tabular-nums}
 .btn{border:1px solid var(--ink);padding:5px 16px;border-radius:2px}
 .btn:hover{background:var(--ink);color:var(--paper);text-decoration:none}
+.btn.off{border-color:var(--hair);color:var(--mute);cursor:default;text-decoration:line-through}
+.btn.off:hover{background:none;color:var(--mute)}
+.btn.off.whole{text-decoration:none}
+.variants{display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end}
+.variants .btn{padding:5px 12px}
 .note{margin-top:var(--gap);color:var(--mute)}
 .note a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
 @media (max-width:900px){.shop{grid-template-columns:repeat(2,minmax(0,1fr))}}

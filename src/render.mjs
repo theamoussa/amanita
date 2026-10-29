@@ -397,6 +397,25 @@ ${press.filter(p => (p.date || '').slice(0, 4) === y).map(p => `    <li><a href=
 }
 
 // Shop
+// What can be bought. From Amanita OS a store item has variants (sizes, editions — Store ›
+// Products), each with its own price, Stripe link and stock: one variant is one Buy button; several
+// are one button each, named; a variant at 0 is "Sold out", and so is the item when all of them are.
+// Items without variants (data/ in the repository) keep their own price and link, as before.
+const buyLink = (href, label) => `<a class="btn" href="${esc(href)}" target="_blank" rel="noopener">${esc(label)}</a>`;
+const soldOut = (variant) => variant
+  ? `<span class="btn off" aria-disabled="true" title="${esc(variant)}: sold out">${esc(variant)}</span>`
+  : '<span class="btn off whole" aria-disabled="true">Sold out</span>';
+function buyLine(s) {
+  const vs = Array.isArray(s.variants) ? s.variants : null;
+  if (!vs || !vs.length) return `<p class="buy"><span class="price">${esc(s.price)}</span>${s.buy ? buyLink(s.buy, 'Buy') : ''}</p>`;
+  if (vs.length === 1) {
+    const v = vs[0];
+    return `<p class="buy"><span class="price">${esc(v.price || s.price)}</span>${v.soldOut ? soldOut() : v.buy ? buyLink(v.buy, 'Buy') : ''}</p>`;
+  }
+  const prices = [...new Set(vs.map(v => v.price || s.price).filter(Boolean))];
+  const all = vs.every(v => v.soldOut);
+  return `<p class="buy"><span class="price">${esc(prices.length === 1 ? prices[0] : prices.join(' / '))}</span>${all ? soldOut() : `<span class="variants">${vs.map(v => v.soldOut ? soldOut(v.name) : v.buy ? buyLink(v.buy, v.name) : '').join('')}</span>`}</p>`;
+}
 // a store item's details: a list of {label, value} (from the OS, which keeps their order) or an object (older data/)
 const specsOf = s => Array.isArray(s.specs) ? s.specs.filter(x => x && x.label).map(x => [x.label, x.value ?? '']) : Object.entries(s.specs || {});
 {
@@ -410,7 +429,7 @@ ${shop.map(s => `    <article class="product" id="${s.slug}">
       <h2>${s.title}</h2>
       <p class="blurb">${s.blurb}</p>
       ${specsOf(s).length ? `<details><summary>Details</summary><dl>${specsOf(s).map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl></details>` : ''}
-      <p class="buy"><span class="price">${esc(s.price)}</span>${s.buy ? `<a class="btn" href="${esc(s.buy)}" target="_blank" rel="noopener">Buy</a>` : ''}</p>
+      ${buyLine(s)}
     </article>`).join('\n')}
   </div>
   <p class="note" data-perch>For international orders or special requests, write to <a href="mailto:${SITE.email}?subject=Store">${SITE.email}</a>.</p>
