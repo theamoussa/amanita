@@ -16,6 +16,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { fromOsExport } from '../src/fromOs.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = path.join(ROOT, '.os-data');
@@ -40,41 +41,19 @@ exp = await res.json();
 }
 if (!exp?.settings || !exp.items?.length) bail('nothing has been published from the OS yet');
 
-const strip = ({ section, sortOrder, ...rest }) => rest;
-const SHOW_KIND = { exhibition: 'exhibition', fair: 'fair', event: 'event' };
-const by = s => exp.items.filter(i => i.section === s);
+const data = fromOsExport(exp);
 
 fs.rmSync(OUT, { recursive: true, force: true });
 fs.mkdirSync(path.join(OUT, 'exhibitions'), { recursive: true });
 fs.mkdirSync(path.join(OUT, 'artists'), { recursive: true });
 const write = (f, v) => fs.writeFileSync(path.join(OUT, f), JSON.stringify(v, null, 1) + '\n');
 
-// Shows, fairs and events: one file each, as data/exhibitions/ has them.
-const shows = exp.items.filter(i => SHOW_KIND[i.section]);
-for (const i of shows) {
-  write(`exhibitions/${i.slug}.json`, {
-    old: null, subtitle: null, artists: [], relatedArtists: [], venue: '', address: [], note: null, city: '', place: '',
-    start: null, end: null, images: [], text: [], pressRelease: null, files: [],
-    ...strip(i), kind: SHOW_KIND[i.section],
-  });
-}
-
-// Artists: their shows with the gallery are the ones that name them, plus any listed by hand.
-for (const a of by('artist')) {
-  const named = shows.filter(s => (s.relatedArtists || []).includes(a.slug)).map(s => s.slug);
-  write(`artists/${a.slug}.json`, {
-    old: null, bio: [], cv: null, works: [], ...strip(a),
-    exhibitions: [...new Set([...(a.exhibitions || []), ...named])].filter(s => shows.some(x => x.slug === s)),
-  });
-}
-
-write('press.json', by('press').sort((a, b) => (b.date || '').localeCompare(a.date || '') || (a.sortOrder ?? 0) - (b.sortOrder ?? 0)).map(strip).map(({ slug, ...p }) => p));
-// Store pictures are {src} in the OS (so they can be dragged into order) and addresses on the site.
-const srcOf = (i) => (typeof i === 'string' ? i : i?.src);
-write('shop.json', by('store').sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0)).map(strip)
-  .map((s) => { const images = (s.images || []).map(srcOf).filter(Boolean); return { ...s, images, image: s.image || images[0] || null }; }));
-write('site.json', exp.settings);
+for (const e of data.exhibitions) write(`exhibitions/${e.slug}.json`, e);
+for (const a of data.artists) write(`artists/${a.slug}.json`, a);
+write('press.json', data.press);
+write('shop.json', data.shop);
+write('site.json', data.site);
 // Old addresses are not edited in the OS: they come from the repository.
 fs.copyFileSync(path.join(ROOT, 'data', 'redirects.json'), path.join(OUT, 'redirects.json'));
 
-console.log(`fetch-data: ${shows.length} shows, ${by('artist').length} artists, ${by('press').length} press, ${by('store').length} store items (published ${exp.generatedAt}).`);
+console.log(`fetch-data: ${data.exhibitions.length} shows, ${data.artists.length} artists, ${data.press.length} press, ${data.shop.length} store items (published ${exp.generatedAt}).`);

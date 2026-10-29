@@ -65,3 +65,11 @@ the empty space between sections. Add `#marcel` to any address to call him strai
 3. Point the domain at this repository instead of the old one (the same DNS records the old site uses, at SiteGround),
    and remove the custom domain from the old `amanita` repository.
 4. Old links keep working through the forwarding pages.
+
+## Preview from Amanita OS
+
+The pages are written by `src/render.mjs` (pure: data in, pages out) and Amanita OS's export is
+turned into that data by `src/fromOs.mjs`. The build uses both, and publishes both under
+`/assets/` so that `/preview/` — opened by the Preview button in Amanita OS — renders unpublished
+changes with exactly the same templates. Change a template in `src/render.mjs` and the preview
+follows on the next deploy.

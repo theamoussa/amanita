@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Preview · Amanita</title>
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<style>
+  html, body { margin: 0; height: 100%; background: #fbf9f9; color: #151313; font: 13px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif; }
+  body { display: flex; flex-direction: column; }
+  .bar { display: flex; align-items: center; gap: 12px; padding: 8px 16px; background: #151313; color: #fbf9f9; flex: 0 0 auto; }
+  .bar b { font-weight: 600; letter-spacing: .02em; }
+  .bar .where { opacity: .7; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; min-width: 0; }
+  .bar button { font: inherit; color: inherit; background: none; border: 1px solid rgba(251,249,249,.35); border-radius: 3px; padding: 4px 10px; cursor: pointer; }
+  .bar button:hover { border-color: #fbf9f9; }
+  iframe { flex: 1; width: 100%; border: 0; background: #fbf9f9; }
+  .wait { margin: auto; max-width: 420px; padding: 24px; text-align: center; color: #7d7675; }
+</style>
+</head>
+<body>
+<div class="bar" role="status">
+  <b>Preview</b>
+  <span class="where" id="where">Not published — what the site will look like with the changes in Amanita OS.</span>
+  <button type="button" id="refresh" hidden>Refresh</button>
+</div>
+<p class="wait" id="wait">Waiting for Amanita OS…<br><br>Open a preview from the Website section of Amanita OS.</p>
+<iframe id="page" title="Preview of the page" hidden></iframe>
+<script type="module" src="../assets/preview.js"></script>
+</body>
+</html>
