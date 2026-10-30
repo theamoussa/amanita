@@ -17,8 +17,26 @@
 // each variant's id, the browser asks for the live numbers. Without JavaScript a product page
 // still says its price and the email address to order by.
 
-export function shopPages({ shop, store, cart, esc, strip, rich, u, at, picture, slideshow, layout, abs, thumbOf = (x) => x, SITE }) {
+export function shopPages({ shop, store, cart, comingSoon = false, esc, strip, rich, u, at, picture, slideshow, layout, abs, thumbOf = (x) => x, SITE }) {
   const pages = [];
+  // Coming soon (Store › Settings, 30 Oct 2026): one quiet page; the product pages, the cart and the
+  // thank-you page forward to it, so old links and bookmarks land somewhere.
+  if (comingSoon) {
+    at('shop/index.html');
+    const text = store?.comingSoonText || 'Our online store is coming soon.';
+    const email = store?.email || SITE.email;
+    const body = `
+<div class="inner nf soon" data-perch>
+  <h1 class="vh">Store</h1>
+  <p class="soon-text">${esc(text).replace(esc(email), `<a href="mailto:${esc(email)}?subject=${encodeURIComponent('Store')}">${esc(email)}</a>`)}</p>
+</div>`;
+    pages.push(['shop/index.html', layout({ title: 'Store', canonical: '/shop/', section: 'shop', body, pageClass: 'p-shop p-soon' })]);
+    const forward = (file) => { at(file); pages.push([file, `<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Amanita</title><link rel="canonical" href="${abs('shop/')}"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url=${u('shop/')}"></head><body><p><a href="${u('shop/')}">The store is coming soon.</a></p></body></html>`]); };
+    for (const s of shop) forward(`shop/${s.slug}/index.html`);
+    forward('shop/cart/index.html');
+    forward('shop/thanks/index.html');
+    return pages;
+  }
   const on = !!cart;                                  // the cart and checkout are live on this build
   const email = store?.email || SITE.email;
   const intl = store?.international || 'For international orders, write to us.';

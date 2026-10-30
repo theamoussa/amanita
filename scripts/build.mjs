@@ -61,5 +61,5 @@ if (fs.existsSync(path.join(ROOT, 'images'))) {
   fs.mkdirSync(path.join(OUT, 'images'), { recursive: true });
   for (const f of fs.readdirSync(path.join(ROOT, 'images'))) if (f.endsWith('.webp') || f.endsWith('.jpg')) fs.copyFileSync(path.join(ROOT, 'images', f), path.join(OUT, 'images', f));
 }
-console.log(`Built ${pages.length} files into dist/ (base ${BASE}, as of ${TODAY}, store ${store?.checkout && shopApi ? 'with cart and checkout' : 'with Buy links'}${Object.keys(manifest).length ? `, ${Object.keys(manifest).length} web-sized images` : ', original images'}).`);
+console.log(`Built ${pages.length} files into dist/ (base ${BASE}, as of ${TODAY}, store ${store?.comingSoon ? 'coming soon' : store?.checkout && shopApi ? 'with cart and checkout' : 'with Buy links'}${Object.keys(manifest).length ? `, ${Object.keys(manifest).length} web-sized images` : ', original images'}).`);
 

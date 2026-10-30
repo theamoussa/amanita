@@ -224,6 +224,8 @@ figcaption{font-size:13px;color:var(--mute);max-width:70ch}
 @media (max-width:600px){.presslist a{grid-template-columns:1fr}.presslist .dt{grid-column:1;grid-row:auto}}
 
 /* shop: the list, a product, the cart (30 Oct 2026) */
+.soon .soon-text{font-size:clamp(17px,1.8vw,21px);line-height:1.45;max-width:34ch}
+.soon .soon-text a{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
 .shop{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:48px 28px}
 .product{display:grid;gap:10px;align-content:start}
 .product .plink{display:grid;gap:10px}

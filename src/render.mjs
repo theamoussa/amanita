@@ -36,7 +36,9 @@ export function render({
   const exBySlug = Object.fromEntries(exhibitions.map(e => [e.slug, e]));
   const artistBySlug = Object.fromEntries(artists.map(a => [a.slug, a]));
   // The cart: on when Amanita OS says online checkout is on, and the build knows where to ask.
-  const CART = !!store?.checkout && (!!shopApi?.url || shopApi?.preview === true);
+  // "Coming soon" (Store › Settings): one page for the store, nothing to buy, no cart.
+  const COMING = !!store?.comingSoon;
+  const CART = !COMING && !!store?.checkout && (!!shopApi?.url || shopApi?.preview === true);
   const SHOP_DATA = CART && shopApi?.url ? JSON.stringify({ api: shopApi.url, gallery: shopApi.gallery }) : '';
 
   // (The body below is not indented: much of it is template text, and indentation would be output.)
@@ -410,7 +412,7 @@ ${press.filter(p => (p.date || '').slice(0, 4) === y).map(p => `    <li><a href=
 }
 
 // Store: the list, a page per product, the cart and the thank-you page (src/shop.mjs)
-for (const p of shopPages({ shop, store, cart: CART, esc, strip, rich, u, at, picture, slideshow, layout, abs, thumbOf, SITE })) pages.push(p);
+for (const p of shopPages({ shop, store, cart: CART, comingSoon: COMING, esc, strip, rich, u, at, picture, slideshow, layout, abs, thumbOf, SITE })) pages.push(p);
 
 // About
 {
@@ -459,7 +461,7 @@ page('404.html', () => layout({
 // Old addresses keep working
 const redirectPage = to => `<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Amanita</title><link rel="canonical" href="${abs(to)}"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url=${u(to)}"></head><body><p><a href="${u(to)}">This page has moved.</a></p></body></html>`;
 const oldShop = Object.fromEntries(Object.entries({ 'shop/mannarainbook.html': 'rita-ackermann-manna-rain', 'shop/etruscanpaintingbook.html': 'alessandro-twombly-etruscan-painting', 'shop/benwertherbook.html': 'when-you-can-no-longer-speak-sing-me-a-song', 'shop/bardinibook.html': 'leonardo-meoni-gli-altri-colori-purtroppo-sono-tutti-caduti' })
-  .map(([from, slug]) => [from, shop.some(s => s.slug === slug) ? `shop/${slug}/` : `shop/#${slug}`]));
+  .map(([from, slug]) => [from, !COMING && shop.some(s => s.slug === slug) ? `shop/${slug}/` : 'shop/']));
 const moved = { ...redirects, ...oldShop };
 if (!SITE.pressPage) for (const k in moved) if (moved[k] === '/press/') moved[k] = '/';
 const generated = new Set(pages.map(([p]) => p.toLowerCase()));
@@ -483,13 +485,13 @@ for (const [from, to] of Object.entries(moved)) {
   };
   exhibitions.forEach(e => e.images.forEach(im => work(im.caption, `exhibitions/${e.slug}/`, e.title)));
   artists.forEach(a => a.works.forEach(w => work(w.caption, `artists/${a.slug}/`, a.name)));
-  shop.forEach(p => idx.push({ g: 'Store', t: strip(p.title), s: 'Store', u: `shop/${p.slug}/`, k: strip(p.blurb) }));
+  if (!COMING) shop.forEach(p => idx.push({ g: 'Store', t: strip(p.title), s: 'Store', u: `shop/${p.slug}/`, k: strip(p.blurb) }));
   if (SITE.pressPage) press.forEach(p => idx.push({ g: 'Press', t: p.title, s: [p.outlet, (p.date || '').slice(0, 4)].filter(Boolean).join(', '), u: p.url, k: p.author }));
   pages.push(['search-index.json', JSON.stringify(idx)]);
 }
 
 // sitemap & robots
-pages.push(['sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${['/', '/exhibitions/', '/art-fairs/', '/artists/', ...(SITE.pressPage ? ['/press/'] : []), '/shop/', ...shopPaths(shop), '/about/', ...exhibitions.filter(linked).map(e => `/exhibitions/${e.slug}/`), ...artists.map(a => `/artists/${a.slug}/`)].map(p => `<url><loc>${abs(p)}</loc></url>`).join('\n')}\n</urlset>\n`]);
+pages.push(['sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${['/', '/exhibitions/', '/art-fairs/', '/artists/', ...(SITE.pressPage ? ['/press/'] : []), '/shop/', ...(COMING ? [] : shopPaths(shop)), '/about/', ...exhibitions.filter(linked).map(e => `/exhibitions/${e.slug}/`), ...artists.map(a => `/artists/${a.slug}/`)].map(p => `<url><loc>${abs(p)}</loc></url>`).join('\n')}\n</urlset>\n`]);
 pages.push(['robots.txt', `User-agent: *\nAllow: /\nSitemap: ${abs('sitemap.xml')}\n`]);
 pages.push(['.nojekyll', '']);
 if (cname) pages.push(['CNAME', cname + '\n']);
