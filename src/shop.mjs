@@ -141,7 +141,11 @@ ${shop.map(s => `    <article class="product" id="${s.slug}">
         <label class="fld"><span>Phone <i class="meta">(optional)</i></span><input name="phone" type="tel" autocomplete="tel"></label>
         <div class="addr" data-addr>
           <p class="kicker">Shipping address</p>
-          <label class="fld"><span>Address</span><input name="line1" autocomplete="address-line1" required></label>
+          <div class="fld ac" data-ac>
+            <label for="ac-line1"><span>Address</span></label>
+            <input id="ac-line1" name="line1" autocomplete="off" placeholder="Start typing your address" required role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="ac-list">
+            <ul class="ac-list" id="ac-list" role="listbox" hidden></ul>
+          </div>
           <label class="fld"><span>Apartment, suite <i class="meta">(optional)</i></span><input name="line2" autocomplete="address-line2"></label>
           <label class="fld"><span>City</span><input name="city" autocomplete="address-level2" required></label>
           <div class="fld2">

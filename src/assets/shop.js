@@ -107,6 +107,57 @@
     const intl = page.querySelector('[data-intl]');
     const PROBLEM = { gone: 'No longer available', sold_out: 'Sold out', not_enough: 'Fewer left', no_price: 'Not available online' };
     const STATES = [['AL','Alabama'],['AK','Alaska'],['AZ','Arizona'],['AR','Arkansas'],['CA','California'],['CO','Colorado'],['CT','Connecticut'],['DE','Delaware'],['DC','District of Columbia'],['FL','Florida'],['GA','Georgia'],['HI','Hawaii'],['ID','Idaho'],['IL','Illinois'],['IN','Indiana'],['IA','Iowa'],['KS','Kansas'],['KY','Kentucky'],['LA','Louisiana'],['ME','Maine'],['MD','Maryland'],['MA','Massachusetts'],['MI','Michigan'],['MN','Minnesota'],['MS','Mississippi'],['MO','Missouri'],['MT','Montana'],['NE','Nebraska'],['NV','Nevada'],['NH','New Hampshire'],['NJ','New Jersey'],['NM','New Mexico'],['NY','New York'],['NC','North Carolina'],['ND','North Dakota'],['OH','Ohio'],['OK','Oklahoma'],['OR','Oregon'],['PA','Pennsylvania'],['PR','Puerto Rico'],['RI','Rhode Island'],['SC','South Carolina'],['SD','South Dakota'],['TN','Tennessee'],['TX','Texas'],['UT','Utah'],['VT','Vermont'],['VA','Virginia'],['WA','Washington'],['WV','West Virginia'],['WI','Wisconsin'],['WY','Wyoming']];
+    // The address field looks the address up as it is typed (Thea, 30 Oct 2026: "a proper address field that
+    // then fills out the rest"): OpenStreetMap's Photon search — free, no key. Picking one fills street,
+    // city, state and ZIP (all still editable); an address it does not know is simply typed in full.
+    function addressLookup(input, fill){
+      const list = input.parentElement.querySelector('.ac-list');
+      let items = [], active = -1, timer = 0, last = '', ctl = null;
+      const code = name => (STATES.find(([c, n]) => n.toLowerCase() === String(name || '').toLowerCase()) || [])[0] || '';
+      const close = () => { list.hidden = true; input.setAttribute('aria-expanded', 'false'); active = -1; };
+      const open = () => { list.hidden = false; input.setAttribute('aria-expanded', 'true'); };
+      function toAddress(p, typed){
+        const lead = (typed.match(/^\s*(\d+[A-Za-z-]*)\s/) || [])[1];
+        const number = p.housenumber || (p.type === 'street' && lead) || '';
+        const street = p.street || (p.type === 'street' ? p.name : '') || '';
+        const boroughs = ['Brooklyn', 'Bronx', 'Staten Island'];
+        const city = boroughs.includes(p.district) ? p.district : (p.city || p.town || p.village || p.district || p.county || '');
+        return { line1: [number, street].filter(Boolean).join(' ') || p.name || '', city, state: code(p.state), postal_code: (p.postcode || '').split(/[;,]/)[0].trim() };
+      }
+      function render(){
+        list.innerHTML = items.map((a, i) => `<li role="option" id="ac-o${i}" data-i="${i}" aria-selected="${i === active}">${esc(a.line1)}<span class="meta">${esc([a.city, [a.state, a.postal_code].filter(Boolean).join(' ')].filter(Boolean).join(', '))}</span></li>`).join('')
+          + '<li class="ac-note" aria-hidden="true">Not listed? Type it in full and fill in the fields below.</li>';
+        input.setAttribute('aria-activedescendant', active >= 0 ? `ac-o${active}` : '');
+        items.length ? open() : close();
+      }
+      async function search(q){
+        ctl?.abort(); ctl = new AbortController();
+        try {
+          const r = await fetch(`https://photon.komoot.io/api/?q=${encodeURIComponent(q)}&limit=6&lang=en&bbox=-171,18,-66,72`, { signal: ctl.signal });
+          const j = await r.json();
+          if (input.value.trim() !== q) return;
+          const seen = new Set();
+          items = (j.features || []).map(f => f.properties).filter(p => p.countrycode === 'US' && (p.housenumber || p.type === 'street'))
+            .map(p => toAddress(p, q)).filter(a => a.line1 && a.state && !seen.has(a.line1 + a.postal_code) && seen.add(a.line1 + a.postal_code));
+          active = -1; render();
+        } catch { /* offline or slow: they type it in */ }
+      }
+      function pick(i){ const a = items[i]; if (!a) return; close(); fill(a); }
+      input.addEventListener('input', () => {
+        const q = input.value.trim();
+        clearTimeout(timer);
+        if (q.length < 4 || q === last){ if (q.length < 4) close(); return; }
+        timer = setTimeout(() => { last = q; search(q); }, 250);
+      });
+      input.addEventListener('keydown', e => {
+        if (list.hidden || !items.length) return;
+        if (e.key === 'ArrowDown' || e.key === 'ArrowUp'){ e.preventDefault(); active = (active + (e.key === 'ArrowDown' ? 1 : -1) + items.length) % items.length; render(); }
+        else if (e.key === 'Enter' && active >= 0){ e.preventDefault(); pick(active); }
+        else if (e.key === 'Escape') close();
+      });
+      list.addEventListener('mousedown', e => { const li = e.target.closest('[data-i]'); if (li){ e.preventDefault(); pick(+li.dataset.i); } });
+      input.addEventListener('blur', () => setTimeout(close, 120));
+    }
     const DKEY = 'amanita-details';
     let quote = null, seq = 0, step = 'cart';
 
@@ -182,6 +233,12 @@
       write(c); draw(); requote();
     });
     page.querySelectorAll('input[name=delivery]').forEach(r => r.addEventListener('change', () => { addr.hidden = delivery() !== 'ship'; requote(); }));
+    addressLookup(form.elements.line1, a => {
+      for (const k of ['line1', 'city', 'state', 'postal_code']) if (a[k]) { form.elements[k].value = a[k]; form.elements[k].closest('.fld')?.classList.remove('bad'); }
+      if (!form.querySelector('.fld.bad') && /highlighted|ZIP/.test(err.textContent)) err.textContent = '';
+      saveDetails(); requote();
+      form.elements.line2.focus();
+    });
     form.elements.state.addEventListener('change', () => { form.elements.state.closest('.fld').classList.remove('bad'); if (!form.querySelector('.fld.bad') && /highlighted|ZIP/.test(err.textContent)) err.textContent = ''; saveDetails(); requote(); });
     form.addEventListener('input', e => { e.target.closest('.fld')?.classList.remove('bad'); if (!form.querySelector('.fld.bad') && /highlighted|ZIP/.test(err.textContent)) err.textContent = ''; saveDetails(); });
     form.addEventListener('submit', e => { e.preventDefault(); go.click(); });

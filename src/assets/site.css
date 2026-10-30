@@ -315,6 +315,15 @@ figcaption{font-size:13px;color:var(--mute);max-width:70ch}
 .fld input:focus,.fld select:focus{outline:none;border-color:var(--ink)}
 .fld.bad input,.fld.bad select{border-color:#9a3b2b}
 .fld2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.fld.ac{position:relative}
+.fld.ac label span{color:var(--mute)}
+.ac-list{position:absolute;left:0;right:0;top:100%;z-index:20;margin:2px 0 0;padding:4px 0;list-style:none;background:var(--paper);border:1px solid var(--ink);border-radius:2px;box-shadow:0 8px 24px rgba(21,19,19,.10)}
+.ac-list[hidden]{display:none}
+.ac-list li{padding:8px 10px;cursor:pointer;font-size:14px;line-height:1.35}
+.ac-list li .meta{display:block;font-size:12.5px}
+.ac-list li[aria-selected="true"],.ac-list li:hover{background:var(--shade)}
+.ac-list .ac-note{cursor:default;font-size:12px;color:var(--mute);padding-top:6px}
+.ac-list .ac-note:hover{background:none}
 .addr{display:grid;gap:12px}
 .details[hidden],.addr[hidden],.back[hidden],[data-taxnote][hidden]{display:none}
 .back{border:0;background:none;padding:0;font:inherit;font-size:13.5px;color:var(--mute);cursor:pointer;text-decoration:underline;text-underline-offset:3px;justify-self:start}
