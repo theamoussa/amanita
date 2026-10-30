@@ -95,26 +95,49 @@
     a.href = `mailto:${to}?subject=${encodeURIComponent('Store — international order')}&body=${encodeURIComponent(`Hello,\n\nI would like to order:\n\n${list}\n\nPlease send me a shipping quote to:\n[your address]\n\nThank you,\n`)}`;
   }
 
-  /* ---------- the cart page ---------- */
+  /* ---------- the cart page: the cart, then their details and address, then Stripe ----------
+     Check out opens the details form (Thea, 30 Oct 2026: "check out should take you to a form where you
+     fill out your address. if the shipping address is in NY it should add 8.875% NY sales tax"): the
+     tax shows as soon as the state is chosen; Stripe's page only takes the payment. */
   const page = document.querySelector('[data-cart-page]');
   if (page) {
     const linesEl = page.querySelector('[data-lines]'), totals = page.querySelector('[data-totals]'), toFree = page.querySelector('[data-tofree]');
-    const go = page.querySelector('[data-checkout]'), err = page.querySelector('[data-error]');
+    const go = page.querySelector('[data-checkout]'), err = page.querySelector('[data-error]'), back = page.querySelector('[data-back]');
+    const form = page.querySelector('[data-details]'), addr = page.querySelector('[data-addr]'), taxNote = page.querySelector('[data-taxnote]');
     const intl = page.querySelector('[data-intl]');
     const PROBLEM = { gone: 'No longer available', sold_out: 'Sold out', not_enough: 'Fewer left', no_price: 'Not available online' };
-    let quote = null, seq = 0;
+    const STATES = [['AL','Alabama'],['AK','Alaska'],['AZ','Arizona'],['AR','Arkansas'],['CA','California'],['CO','Colorado'],['CT','Connecticut'],['DE','Delaware'],['DC','District of Columbia'],['FL','Florida'],['GA','Georgia'],['HI','Hawaii'],['ID','Idaho'],['IL','Illinois'],['IN','Indiana'],['IA','Iowa'],['KS','Kansas'],['KY','Kentucky'],['LA','Louisiana'],['ME','Maine'],['MD','Maryland'],['MA','Massachusetts'],['MI','Michigan'],['MN','Minnesota'],['MS','Mississippi'],['MO','Missouri'],['MT','Montana'],['NE','Nebraska'],['NV','Nevada'],['NH','New Hampshire'],['NJ','New Jersey'],['NM','New Mexico'],['NY','New York'],['NC','North Carolina'],['ND','North Dakota'],['OH','Ohio'],['OK','Oklahoma'],['OR','Oregon'],['PA','Pennsylvania'],['PR','Puerto Rico'],['RI','Rhode Island'],['SC','South Carolina'],['SD','South Dakota'],['TN','Tennessee'],['TX','Texas'],['UT','Utah'],['VT','Vermont'],['VA','Virginia'],['WA','Washington'],['WV','West Virginia'],['WI','Wisconsin'],['WY','Wyoming']];
+    const DKEY = 'amanita-details';
+    let quote = null, seq = 0, step = 'cart';
+
+    const sel = form.querySelector('[data-states]');
+    sel.innerHTML = '<option value="">Choose…</option>' + STATES.map(([c, n]) => `<option value="${c}">${n}</option>`).join('');
+    try { const d = JSON.parse(localStorage.getItem(DKEY) || '{}'); for (const [k, v] of Object.entries(d)) if (form.elements[k]) form.elements[k].value = v; } catch { /* nothing saved */ }
+    const details = () => Object.fromEntries(['name', 'email', 'phone', 'line1', 'line2', 'city', 'state', 'postal_code'].map(k => [k, (form.elements[k].value || '').trim()]));
+    const saveDetails = () => { try { localStorage.setItem(DKEY, JSON.stringify(details())); } catch { /* fine */ } };
 
     const c0 = read();
     const radio = page.querySelector(`input[name=delivery][value="${c0.delivery}"]`) || page.querySelector('input[name=delivery]');
     if (radio) radio.checked = true;
     const delivery = () => page.querySelector('input[name=delivery]:checked')?.value || 'ship';
 
+    function setStep(s){
+      step = s;
+      form.hidden = s !== 'details';
+      back.hidden = s !== 'details';
+      addr.hidden = delivery() !== 'ship';
+      if (taxNote) taxNote.hidden = s === 'details';
+      go.textContent = s === 'details' ? 'Continue to payment' : 'Check out';
+      if (s === 'details') (form.querySelector('input:invalid, select:invalid') || form.elements.name).focus({ preventScroll: true });
+      draw();
+    }
+
     function draw(){
       const c = read();
       if (intl) intlMail(intl, c.lines);
       if (!c.lines.length){
         linesEl.innerHTML = `<p class="empty">Your cart is empty. <a href="${url('shop/')}">Go to the store</a></p>`;
-        totals.innerHTML = ''; toFree.textContent = ''; go.disabled = true; return;
+        totals.innerHTML = ''; toFree.textContent = ''; go.disabled = true; form.hidden = true; back.hidden = true; return;
       }
       const byV = Object.fromEntries((quote?.lines || []).map(l => [l.variant_id, l]));
       linesEl.innerHTML = `<ul class="clines">${c.lines.map(l => {
@@ -130,10 +153,13 @@
         </li>`; }).join('')}</ul>`;
       if (quote && !quote.error){
         const shipLabel = delivery() === 'pickup' ? 'Pick-up' : 'Shipping';
-        totals.innerHTML = `<dt>Subtotal</dt><dd>${money(quote.subtotal)}</dd><dt>${shipLabel}</dt><dd>${Number(quote.shipping) > 0 ? money(quote.shipping) : 'Free'}</dd><dt class="t">Total</dt><dd class="t">${money(quote.total)}</dd>`;
+        const taxRow = Number(quote.tax) > 0 ? `<dt>Sales tax (${esc(String(quote.tax_rate).replace(/\.?0+$/, ''))}%)</dt><dd>${money(quote.tax)}</dd>`
+          : step === 'details' && delivery() === 'ship' && !form.elements.state.value ? '<dt class="meta">Sales tax</dt><dd class="meta">for New York addresses</dd>' : '';
+        totals.innerHTML = `<dt>Subtotal</dt><dd>${money(quote.subtotal)}</dd><dt>${shipLabel}</dt><dd>${Number(quote.shipping) > 0 ? money(quote.shipping) : 'Free'}</dd>${taxRow}<dt class="t">Total</dt><dd class="t">${money(quote.total)}</dd>`;
         toFree.textContent = quote.to_free > 0 ? `Add ${money(quote.to_free)} more for free shipping.` : '';
         go.disabled = !quote.ok;
-        err.textContent = quote.ok ? '' : 'Some items have changed — adjust your cart to continue.';
+        if (!quote.ok) err.textContent = 'Some items have changed — adjust your cart to continue.';
+        else if (/changed/.test(err.textContent)) err.textContent = '';
       }
     }
     async function requote(){
@@ -141,8 +167,10 @@
       c.delivery = delivery(); write(c);
       if (!c.lines.length){ quote = null; draw(); return; }
       go.disabled = true;
-      try { const q = await post({ action: 'quote', delivery: c.delivery, lines: c.lines.map(l => ({ variant_id: l.v, quantity: l.q })) }); if (mine === seq) quote = q; }
-      catch (e) { if (mine === seq){ quote = { error: true }; err.textContent = e.message; } }
+      try {
+        const q = await post({ action: 'quote', delivery: c.delivery, address: { state: delivery() === 'ship' ? form.elements.state.value : '' }, lines: c.lines.map(l => ({ variant_id: l.v, quantity: l.q })) });
+        if (mine === seq) quote = q;
+      } catch (e) { if (mine === seq){ quote = { error: true }; err.textContent = e.message; } }
       if (mine === seq) draw();
     }
     linesEl.addEventListener('click', e => {
@@ -153,19 +181,44 @@
       else return;
       write(c); draw(); requote();
     });
-    page.querySelectorAll('input[name=delivery]').forEach(r => r.addEventListener('change', requote));
+    page.querySelectorAll('input[name=delivery]').forEach(r => r.addEventListener('change', () => { addr.hidden = delivery() !== 'ship'; requote(); }));
+    form.elements.state.addEventListener('change', () => { form.elements.state.closest('.fld').classList.remove('bad'); if (!form.querySelector('.fld.bad') && /highlighted|ZIP/.test(err.textContent)) err.textContent = ''; saveDetails(); requote(); });
+    form.addEventListener('input', e => { e.target.closest('.fld')?.classList.remove('bad'); if (!form.querySelector('.fld.bad') && /highlighted|ZIP/.test(err.textContent)) err.textContent = ''; saveDetails(); });
+    form.addEventListener('submit', e => { e.preventDefault(); go.click(); });
+    back.addEventListener('click', () => { err.textContent = ''; setStep('cart'); });
+
+    function check(){
+      const ship = delivery() === 'ship', d = details();
+      const need = ['name', 'email', ...(ship ? ['line1', 'city', 'state', 'postal_code'] : [])];
+      const bad = need.filter(k => !d[k] || (k === 'email' && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(d[k])) || (k === 'postal_code' && !/^\d{5}(-\d{4})?$/.test(d[k])));
+      mark(bad);
+      return bad.length === 0;
+    }
+    function mark(keys){
+      form.querySelectorAll('.fld').forEach(f => f.classList.remove('bad'));
+      keys.forEach(k => form.elements[k]?.closest('.fld')?.classList.add('bad'));
+      if (keys.length){ err.textContent = keys.includes('postal_code') && keys.length === 1 ? 'Please check the ZIP code.' : 'Please fill in the highlighted fields.'; form.elements[keys[0]]?.focus(); }
+    }
+
     go.addEventListener('click', async () => {
-      const c = read();
-      go.disabled = true; go.textContent = 'Opening checkout…'; err.textContent = '';
+      if (step === 'cart'){ err.textContent = ''; setStep('details'); requote(); return; }
+      if (!check()) return;
+      const c = read(), d = details();
+      go.disabled = true; go.textContent = 'Opening payment…'; err.textContent = '';
       try {
-        const r = await post({ action: 'checkout', delivery: delivery(), replace: c.checkout, return_url: new URL(BASE, location.href).href, lines: c.lines.map(l => ({ variant_id: l.v, quantity: l.q })) });
+        const r = await post({
+          action: 'checkout', delivery: delivery(), replace: c.checkout, return_url: new URL(BASE, location.href).href,
+          customer: { name: d.name, email: d.email, phone: d.phone },
+          address: delivery() === 'ship' ? { line1: d.line1, line2: d.line2, city: d.city, state: d.state, postal_code: d.postal_code } : null,
+          lines: c.lines.map(l => ({ variant_id: l.v, quantity: l.q })),
+        });
         if (r.url){ c.checkout = r.checkout_id; write(c); location.href = r.url; return; }
-        quote = r.quote || quote; draw();
-        err.textContent = (r.quote?.problems || []).some(p => typeof p === 'string' && p.length > 12) ? r.quote.problems[0] : 'Some items have changed — adjust your cart to continue.';
+        if (r.quote?.missing?.length) mark(r.quote.missing.filter(k => k !== 'country'));
+        else { if (r.quote?.lines) quote = r.quote; draw(); err.textContent = 'Some items have changed — adjust your cart to continue.'; }
       } catch (e) { err.textContent = e.message; }
-      go.textContent = 'Check out'; go.disabled = !quote?.ok;
+      go.textContent = 'Continue to payment'; go.disabled = !quote?.ok;
     });
-    draw(); requote();
+    setStep('cart'); requote();
   } else {
     // product pages and the store: the "contact us" email lists what is in the cart, if anything
     const c = read();

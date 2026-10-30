@@ -8,7 +8,8 @@
 //                     (size…), how many, Add to cart — or, while online checkout is off, the old
 //                     Stripe Buy links
 //   /shop/cart/       the cart: lines, US shipping or free pick-up in New York, the line for
-//                     international buyers with "Email us", Check out → Stripe
+//                     international buyers with "Email us"; Check out → their details and US address
+//                     (NY sales tax added when the state is New York) → Stripe takes the payment
 //   /shop/thanks/     where Stripe sends buyers back: the order number
 //
 // Everything a buyer can change (the cart, what is left, the price of the cart) is done by
@@ -133,11 +134,29 @@ ${shop.map(s => `    <article class="product" id="${s.slug}">
         ${ship ? `<label><input type="radio" name="delivery" value="ship" checked> <span><b>${esc(ship.label)}</b> · US addresses<br><span class="meta">$${esc(ship.first)} for the first item, $${esc(ship.extra)} for each more${ship.freeFrom != null ? `. Free from $${esc(ship.freeFrom)}` : ''}.</span></span></label>` : ''}
         ${pickup ? `<label><input type="radio" name="delivery" value="pickup"${ship ? '' : ' checked'}> <span><b>${esc(pickup.label)}</b><br><span class="meta" data-pickup>${esc(pickup.address || '')}${pickup.note ? `. ${esc(pickup.note)}` : ''}</span></span></label>` : ''}
       </fieldset>
+      <form class="details" data-details hidden novalidate>
+        <p class="kicker">Your details</p>
+        <label class="fld"><span>Full name</span><input name="name" autocomplete="name" required></label>
+        <label class="fld"><span>Email</span><input name="email" type="email" autocomplete="email" required></label>
+        <label class="fld"><span>Phone <i class="meta">(optional)</i></span><input name="phone" type="tel" autocomplete="tel"></label>
+        <div class="addr" data-addr>
+          <p class="kicker">Shipping address</p>
+          <label class="fld"><span>Address</span><input name="line1" autocomplete="address-line1" required></label>
+          <label class="fld"><span>Apartment, suite <i class="meta">(optional)</i></span><input name="line2" autocomplete="address-line2"></label>
+          <label class="fld"><span>City</span><input name="city" autocomplete="address-level2" required></label>
+          <div class="fld2">
+            <label class="fld"><span>State</span><select name="state" autocomplete="address-level1" required data-states></select></label>
+            <label class="fld"><span>ZIP code</span><input name="postal_code" autocomplete="postal-code" inputmode="numeric" required></label>
+          </div>
+          <p class="meta">Country: United States</p>
+        </div>
+      </form>
       <dl class="totals" data-totals></dl>
       <p class="meta free" data-tofree></p>
       <button type="button" class="btn solid wide" data-checkout disabled>Check out</button>
+      <button type="button" class="back" data-back hidden>Back to cart</button>
       <p class="meta err" data-error aria-live="polite"></p>
-      ${store.taxNote ? `<p class="meta">${esc(store.taxNote)}</p>` : ''}
+      ${store.taxNote ? `<p class="meta" data-taxnote>${esc(store.taxNote)}</p>` : ''}
       <p class="intl meta">${intlLine('Store — international order')}</p>
     </aside>
   </div>
