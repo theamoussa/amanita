@@ -152,7 +152,8 @@ ${shop.map(s => `    <article class="product" id="${s.slug}">
             <label class="fld"><span>State</span><select name="state" autocomplete="address-level1" required data-states></select></label>
             <label class="fld"><span>ZIP code</span><input name="postal_code" autocomplete="postal-code" inputmode="numeric" required></label>
           </div>
-          <p class="meta">Country: United States</p>
+          <p class="meta">Country: United States — we ship to US addresses only.</p>
+          <p class="intl meta">${intlLine('Store — international order')}</p>
         </div>
       </form>
       <dl class="totals" data-totals></dl>
@@ -161,7 +162,7 @@ ${shop.map(s => `    <article class="product" id="${s.slug}">
       <button type="button" class="back" data-back hidden>Back to cart</button>
       <p class="meta err" data-error aria-live="polite"></p>
       ${store.taxNote ? `<p class="meta" data-taxnote>${esc(store.taxNote)}</p>` : ''}
-      <p class="intl meta">${intlLine('Store — international order')}</p>
+      <p class="intl meta" data-intl-cart>${intlLine('Store — international order')}</p>
     </aside>
   </div>
 </div>`;

@@ -104,7 +104,7 @@
     const linesEl = page.querySelector('[data-lines]'), totals = page.querySelector('[data-totals]'), toFree = page.querySelector('[data-tofree]');
     const go = page.querySelector('[data-checkout]'), err = page.querySelector('[data-error]'), back = page.querySelector('[data-back]');
     const form = page.querySelector('[data-details]'), addr = page.querySelector('[data-addr]'), taxNote = page.querySelector('[data-taxnote]');
-    const intl = page.querySelector('[data-intl]');
+    const intl = page.querySelector('[data-intl-cart] [data-intl]');
     const PROBLEM = { gone: 'No longer available', sold_out: 'Sold out', not_enough: 'Fewer left', no_price: 'Not available online' };
     const STATES = [['AL','Alabama'],['AK','Alaska'],['AZ','Arizona'],['AR','Arkansas'],['CA','California'],['CO','Colorado'],['CT','Connecticut'],['DE','Delaware'],['DC','District of Columbia'],['FL','Florida'],['GA','Georgia'],['HI','Hawaii'],['ID','Idaho'],['IL','Illinois'],['IN','Indiana'],['IA','Iowa'],['KS','Kansas'],['KY','Kentucky'],['LA','Louisiana'],['ME','Maine'],['MD','Maryland'],['MA','Massachusetts'],['MI','Michigan'],['MN','Minnesota'],['MS','Mississippi'],['MO','Missouri'],['MT','Montana'],['NE','Nebraska'],['NV','Nevada'],['NH','New Hampshire'],['NJ','New Jersey'],['NM','New Mexico'],['NY','New York'],['NC','North Carolina'],['ND','North Dakota'],['OH','Ohio'],['OK','Oklahoma'],['OR','Oregon'],['PA','Pennsylvania'],['PR','Puerto Rico'],['RI','Rhode Island'],['SC','South Carolina'],['SD','South Dakota'],['TN','Tennessee'],['TX','Texas'],['UT','Utah'],['VT','Vermont'],['VA','Virginia'],['WA','Washington'],['WV','West Virginia'],['WI','Wisconsin'],['WY','Wyoming']];
     // The address field looks the address up as it is typed (Thea, 30 Oct 2026: "a proper address field that
@@ -178,6 +178,8 @@
       back.hidden = s !== 'details';
       addr.hidden = delivery() !== 'ship';
       if (taxNote) taxNote.hidden = s === 'details';
+      const cartIntl = page.querySelector('[data-intl-cart]');
+      if (cartIntl) cartIntl.hidden = s === 'details' && delivery() === 'ship';   // shown beside the address instead
       go.textContent = s === 'details' ? 'Continue to payment' : 'Check out';
       if (s === 'details') (form.querySelector('input:invalid, select:invalid') || form.elements.name).focus({ preventScroll: true });
       draw();
@@ -186,6 +188,7 @@
     function draw(){
       const c = read();
       if (intl) intlMail(intl, c.lines);
+      const addrIntl = form.querySelector('[data-intl]'); if (addrIntl) intlMail(addrIntl, c.lines);
       if (!c.lines.length){
         linesEl.innerHTML = `<p class="empty">Your cart is empty. <a href="${url('shop/')}">Go to the store</a></p>`;
         totals.innerHTML = ''; toFree.textContent = ''; go.disabled = true; form.hidden = true; back.hidden = true; return;
