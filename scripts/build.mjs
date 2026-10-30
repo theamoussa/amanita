@@ -40,6 +40,7 @@ const pages = render({
   site: SITE, exhibitions: readDir('exhibitions'), artists: readDir('artists'), press: read('press.json'), shop: read('shop.json'), store, shopApi,
   redirects, manifest, logo, today: TODAY, base: BASE, siteUrl: process.env.SITE_URL || SITE.url,
   cname: process.env.CNAME || '', previewMissing: process.env.PREVIEW_MISSING === 'blank',
+  ...(process.env.BUILD_ID ? { buildId: process.env.BUILD_ID } : {}),   // a fixed id, to compare two builds
 });
 
 // ---------- write ----------

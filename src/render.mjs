@@ -24,7 +24,7 @@ export function surname(n) { const p = n.trim().split(/\s+/); return (p.length >
 
 export function render({
   site: SITE, exhibitions: exhibitionsIn, artists: artistsIn, press, shop, store = null, shopApi = null, redirects = {}, manifest = {}, logo: LOGO,
-  today: TODAY, base = '/', siteUrl, cname = '', buildId: BUILD_ID = process.env.BUILD_ID || Date.now().toString(36), previewMissing = false,
+  today: TODAY, base = '/', siteUrl, cname = '', buildId: BUILD_ID = Date.now().toString(36), previewMissing = false,
 }) {
   const BASE = String(base || '/').replace(/\/?$/, '/');
   const RELATIVE = BASE === './';                       // links relative to each page (for previews opened without a server)
