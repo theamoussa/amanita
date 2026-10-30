@@ -2,7 +2,8 @@
 // site's data, in exactly the shape data/ has. Pure: scripts/fetch-data.mjs writes the result out
 // as files for the build; Amanita OS's preview (/preview/) hands it straight to render().
 //
-//   fromOsExport(exp) → { site, exhibitions: [...], artists: [...], press: [...], shop: [...] }
+//   fromOsExport(exp) → { site, exhibitions: [...], artists: [...], press: [...], shop: [...], store }
+//   store: the store's rules (online checkout on/off, shipping, pick-up, the international line)
 
 const strip = ({ section, sortOrder, ...rest }) => rest;
 const SHOW_KIND = { exhibition: 'exhibition', fair: 'fair', event: 'event' };
@@ -34,5 +35,5 @@ export function fromOsExport(exp) {
   const shop = by('store').sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0)).map(strip)
     .map((s) => { const images = (s.images || []).map(srcOf).filter(Boolean); return { ...s, images, image: s.image || images[0] || null }; });
 
-  return { site: exp?.settings ?? null, exhibitions, artists, press, shop };
+  return { site: exp?.settings ?? null, exhibitions, artists, press, shop, store: exp?.store ?? null };
 }

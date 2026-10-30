@@ -53,6 +53,7 @@ for (const a of data.artists) write(`artists/${a.slug}.json`, a);
 write('press.json', data.press);
 write('shop.json', data.shop);
 write('site.json', data.site);
+if (data.store) write('store.json', data.store);
 // Old addresses are not edited in the OS: they come from the repository.
 fs.copyFileSync(path.join(ROOT, 'data', 'redirects.json'), path.join(OUT, 'redirects.json'));
 

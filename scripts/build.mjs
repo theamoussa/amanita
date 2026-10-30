@@ -28,10 +28,16 @@ const manifestPath = path.join(ROOT, 'images', 'manifest.json');
 const manifest = fs.existsSync(manifestPath) ? JSON.parse(fs.readFileSync(manifestPath, 'utf8')) : {};
 const logo = JSON.parse(fs.readFileSync(path.join(ROOT, 'src', 'logo.json'), 'utf8'));
 const redirects = read('redirects.json');
+// The store's rules, from Amanita OS (absent in data/: the store then keeps its Buy links). The cart
+// asks the OS's `store` function for stock and checkout — its address from the same two variables
+// fetch-data uses.
+const store = fs.existsSync(path.join(DATA, 'store.json')) ? read('store.json') : null;
+const { OS_SUPABASE_URL, OS_GALLERY_ID } = process.env;
+const shopApi = OS_SUPABASE_URL && OS_GALLERY_ID ? { url: `${OS_SUPABASE_URL.replace(/\/$/, '')}/functions/v1/store`, gallery: OS_GALLERY_ID } : null;
 
 // ---------- pages: src/render.mjs, the same templates Amanita OS previews with ----------
 const pages = render({
-  site: SITE, exhibitions: readDir('exhibitions'), artists: readDir('artists'), press: read('press.json'), shop: read('shop.json'),
+  site: SITE, exhibitions: readDir('exhibitions'), artists: readDir('artists'), press: read('press.json'), shop: read('shop.json'), store, shopApi,
   redirects, manifest, logo, today: TODAY, base: BASE, siteUrl: process.env.SITE_URL || SITE.url,
   cname: process.env.CNAME || '', previewMissing: process.env.PREVIEW_MISSING === 'blank',
 });
@@ -49,10 +55,11 @@ copy(path.join(ROOT, 'src', 'public'), OUT);
 // The preview of unpublished changes (/preview/, opened from Amanita OS) renders with these very files.
 fs.copyFileSync(path.join(ROOT, 'src', 'render.mjs'), path.join(OUT, 'assets', 'render.mjs'));
 fs.copyFileSync(path.join(ROOT, 'src', 'fromOs.mjs'), path.join(OUT, 'assets', 'fromOs.mjs'));
+fs.copyFileSync(path.join(ROOT, 'src', 'shop.mjs'), path.join(OUT, 'assets', 'shop.mjs'));
 fs.writeFileSync(path.join(OUT, 'assets', 'preview-data.json'), JSON.stringify({ manifest, logo }));
 if (fs.existsSync(path.join(ROOT, 'images'))) {
   fs.mkdirSync(path.join(OUT, 'images'), { recursive: true });
   for (const f of fs.readdirSync(path.join(ROOT, 'images'))) if (f.endsWith('.webp') || f.endsWith('.jpg')) fs.copyFileSync(path.join(ROOT, 'images', f), path.join(OUT, 'images', f));
 }
-console.log(`Built ${pages.length} files into dist/ (base ${BASE}, as of ${TODAY}${Object.keys(manifest).length ? `, ${Object.keys(manifest).length} web-sized images` : ', original images'}).`);
+console.log(`Built ${pages.length} files into dist/ (base ${BASE}, as of ${TODAY}, store ${store?.checkout && shopApi ? 'with cart and checkout' : 'with Buy links'}${Object.keys(manifest).length ? `, ${Object.keys(manifest).length} web-sized images` : ', original images'}).`);
 

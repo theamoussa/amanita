@@ -58,8 +58,11 @@ jobs:
           fi
       # SITE_BASE and SITE_URL are repository variables (Settings › Secrets and variables › Actions › Variables).
       # Preview: leave them unset. At launch: SITE_BASE=/  SITE_URL=https://www.spazioamanita.com  CNAME=www.spazioamanita.com
+      # OS_SUPABASE_URL / OS_GALLERY_ID again: the store's cart asks Amanita OS for stock and checkout.
       - run: node scripts/build.mjs
         env:
+          OS_SUPABASE_URL: ${{ vars.OS_SUPABASE_URL }}
+          OS_GALLERY_ID: ${{ vars.OS_GALLERY_ID }}
           SITE_BASE: ${{ vars.SITE_BASE || format('/{0}/', github.event.repository.name) }}
           SITE_URL: ${{ vars.SITE_URL || format('https://{0}.github.io/{1}', github.repository_owner, github.event.repository.name) }}
           CNAME: ${{ vars.CNAME }}

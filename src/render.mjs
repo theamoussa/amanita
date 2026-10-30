@@ -5,18 +5,26 @@
 // Amanita OS can preview unpublished changes with exactly these templates (/preview/, 29 Oct 2026):
 // a preview can never look different from the page it becomes.
 //
-//   render({ site, exhibitions, artists, press, shop, redirects, manifest, logo,
+//   render({ site, exhibitions, artists, press, shop, store, shopApi, redirects, manifest, logo,
 //            today, base, siteUrl, cname, buildId, previewMissing }) → [[path, contents], …]
+//
+//   store    the store's rules from Amanita OS (checkout on/off, shipping, pick-up, the
+//            international line) — null for a build from data/
+//   shopApi  { url, gallery }: where the cart asks for stock and checkout (Amanita OS's `store`
+//            function). The cart is built only when the OS says checkout is on AND this is set
+//            (or { preview: true } for the OS's preview, which shows it without running it).
 //
 //   base     path the site lives under ("/"), or "./" for pages opened without a server
 //   siteUrl  full address used in links Google and social media read
 //   today    YYYY-MM-DD — what counts as now on view / upcoming
 
+import { shopPages, shopPaths } from './shop.mjs';
+
 export function surname(n) { const p = n.trim().split(/\s+/); return (p.length > 1 ? p[p.length - 1] : p[0]) + ' ' + n; }
 
 export function render({
-  site: SITE, exhibitions: exhibitionsIn, artists: artistsIn, press, shop, redirects = {}, manifest = {}, logo: LOGO,
-  today: TODAY, base = '/', siteUrl, cname = '', buildId: BUILD_ID = Date.now().toString(36), previewMissing = false,
+  site: SITE, exhibitions: exhibitionsIn, artists: artistsIn, press, shop, store = null, shopApi = null, redirects = {}, manifest = {}, logo: LOGO,
+  today: TODAY, base = '/', siteUrl, cname = '', buildId: BUILD_ID = process.env.BUILD_ID || Date.now().toString(36), previewMissing = false,
 }) {
   const BASE = String(base || '/').replace(/\/?$/, '/');
   const RELATIVE = BASE === './';                       // links relative to each page (for previews opened without a server)
@@ -27,6 +35,9 @@ export function render({
   const artists = [...artistsIn].sort((a, b) => surname(a.name).localeCompare(surname(b.name)));
   const exBySlug = Object.fromEntries(exhibitions.map(e => [e.slug, e]));
   const artistBySlug = Object.fromEntries(artists.map(a => [a.slug, a]));
+  // The cart: on when Amanita OS says online checkout is on, and the build knows where to ask.
+  const CART = !!store?.checkout && (!!shopApi?.url || shopApi?.preview === true);
+  const SHOP_DATA = CART && shopApi?.url ? JSON.stringify({ api: shopApi.url, gallery: shopApi.gallery }) : '';
 
   // (The body below is not indented: much of it is template text, and indentation would be output.)
 // ---------- helpers ----------
@@ -85,6 +96,8 @@ function hoverImg(src) {
   return ` data-img="${esc(u('images/' + m.sizes.at(-1).file))}" data-srcset="${esc(m.sizes.map(s => `${u('images/' + s.file)} ${s.w}w`).join(', '))}"`;
 }
 const firstImage = e => (e.images || [])[0]?.src;
+// the small web copy of a picture, as an address from the site's root (the cart shows it on another page)
+const thumbOf = src => { const m = manifest[src]; return m && !RELATIVE ? BASE + 'images/' + m.sizes[0].file : src; };
 // an upcoming show announced before there is a text: shown, but not clickable until its page has something to read
 const linked = e => !(status(e) === 'upcoming' && !e.text.length && !e.pressRelease);
 // the picture that stands for a show on the home page: its `cover` (an installation view) if it has one
@@ -116,7 +129,7 @@ const NAV = [
   ['about', 'about', 'about/'],
 ];
 
-function layout({ title, description, canonical, section = '', body, image, jsonld, letters = false, pageClass = '' }) {
+function layout({ title, description, canonical, section = '', body, image, jsonld, letters = false, pageClass = '', noindex = false }) {
   const fullTitle = title ? `${title} · Amanita` : 'Amanita';
   const desc = description || SITE.description;
   const og = image ? (manifest[image] ? abs('images/' + manifest[image].sizes.at(-1).file) : /^https?:/.test(image) ? image : abs(image)) : null;
@@ -127,7 +140,7 @@ function layout({ title, description, canonical, section = '', body, image, json
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(fullTitle)}</title>
 <meta name="description" content="${esc(desc)}">
-<link rel="canonical" href="${abs(canonical)}">
+<link rel="canonical" href="${abs(canonical)}">${noindex ? '\n<meta name="robots" content="noindex">' : ''}
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Amanita">
 <meta property="og:title" content="${esc(title || 'Amanita')}">
@@ -146,13 +159,13 @@ ${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld)}</script
 ${/^[A-Z0-9-]+$/i.test(SITE.analytics || '') ? `<script async src="https://www.googletagmanager.com/gtag/js?id=${SITE.analytics}"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${SITE.analytics}');</script>
 ` : ''}</head>
-<body class="${pageClass}"${letters ? ' data-letters' : ''} data-base="${RELATIVE ? REL : BASE}" data-marcel='${JSON.stringify(SITE.marcel)}'>
+<body class="${pageClass}"${letters ? ' data-letters' : ''} data-base="${RELATIVE ? REL : BASE}" data-marcel='${JSON.stringify(SITE.marcel)}'${SHOP_DATA ? ` data-shop="${esc(SHOP_DATA)}"` : ''}>
 <a class="skip" href="#main">Skip to content</a>
 <header class="top">
   <a class="wm" href="${u('')}" aria-label="Amanita, home">${logoSvg}</a>
   <nav class="menu" aria-label="Main">
     ${NAV.map(([key, label, href]) => `<a href="${u(href)}"${section === key ? ' aria-current="page"' : ''}>${label}</a>`).join('\n    ')}
-    <a class="s" href="${u('search/')}" data-search>search</a>
+    <a class="s" href="${u('search/')}" data-search>search</a>${CART ? `\n    <a class="cartlink" href="${u('shop/cart/')}" data-cartlink hidden>cart <span data-cartcount></span></a>` : ''}
   </nav>
 </header>
 <main id="main">
@@ -169,7 +182,7 @@ ${SITE.locations.map(l => `  <div><b>${esc(l.name)}</b>${esc(l.lines.join(', '))
   </div>
   <div class="results" id="results" aria-live="polite"></div>
 </div>
-<script src="${u('assets/site.js')}?v=${BUILD_ID}" defer></script>
+<script src="${u('assets/site.js')}?v=${BUILD_ID}" defer></script>${SHOP_DATA ? `\n<script src="${u('assets/shop.js')}?v=${BUILD_ID}" defer></script>` : ''}
 </body>
 </html>
 `;
@@ -396,46 +409,8 @@ ${press.filter(p => (p.date || '').slice(0, 4) === y).map(p => `    <li><a href=
   }
 }
 
-// Shop
-// What can be bought. From Amanita OS a store item has variants (sizes, editions — Store ›
-// Products), each with its own price, Stripe link and stock: one variant is one Buy button; several
-// are one button each, named; a variant at 0 is "Sold out", and so is the item when all of them are.
-// Items without variants (data/ in the repository) keep their own price and link, as before.
-const buyLink = (href, label) => `<a class="btn" href="${esc(href)}" target="_blank" rel="noopener">${esc(label)}</a>`;
-const soldOut = (variant) => variant
-  ? `<span class="btn off" aria-disabled="true" title="${esc(variant)}: sold out">${esc(variant)}</span>`
-  : '<span class="btn off whole" aria-disabled="true">Sold out</span>';
-function buyLine(s) {
-  const vs = Array.isArray(s.variants) ? s.variants : null;
-  if (!vs || !vs.length) return `<p class="buy"><span class="price">${esc(s.price)}</span>${s.buy ? buyLink(s.buy, 'Buy') : ''}</p>`;
-  if (vs.length === 1) {
-    const v = vs[0];
-    return `<p class="buy"><span class="price">${esc(v.price || s.price)}</span>${v.soldOut ? soldOut() : v.buy ? buyLink(v.buy, 'Buy') : ''}</p>`;
-  }
-  const prices = [...new Set(vs.map(v => v.price || s.price).filter(Boolean))];
-  const all = vs.every(v => v.soldOut);
-  return `<p class="buy"><span class="price">${esc(prices.length === 1 ? prices[0] : prices.join(' / '))}</span>${all ? soldOut() : `<span class="variants">${vs.map(v => v.soldOut ? soldOut(v.name) : v.buy ? buyLink(v.buy, v.name) : '').join('')}</span>`}</p>`;
-}
-// a store item's details: a list of {label, value} (from the OS, which keeps their order) or an object (older data/)
-const specsOf = s => Array.isArray(s.specs) ? s.specs.filter(x => x && x.label).map(x => [x.label, x.value ?? '']) : Object.entries(s.specs || {});
-{
-  at('shop/index.html');
-  const body = `
-<div class="inner">
-  <div class="pagehead"><h1 class="vh">Store</h1></div>
-  <div class="shop">
-${shop.map(s => `    <article class="product" id="${s.slug}">
-      ${picture(s.image, strip(s.title), { sizes: '(max-width:700px) 100vw, 33vw' })}
-      <h2>${s.title}</h2>
-      <p class="blurb">${s.blurb}</p>
-      ${specsOf(s).length ? `<details><summary>Details</summary><dl>${specsOf(s).map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl></details>` : ''}
-      ${buyLine(s)}
-    </article>`).join('\n')}
-  </div>
-  <p class="note" data-perch>For international orders or special requests, write to <a href="mailto:${SITE.email}?subject=Store">${SITE.email}</a>.</p>
-</div>`;
-  add('shop/index.html', layout({ title: 'Store', canonical: '/shop/', section: 'shop', body, pageClass: 'p-shop' }));
-}
+// Store: the list, a page per product, the cart and the thank-you page (src/shop.mjs)
+for (const p of shopPages({ shop, store, cart: CART, esc, strip, rich, u, at, picture, slideshow, layout, abs, thumbOf, SITE })) pages.push(p);
 
 // About
 {
@@ -483,7 +458,8 @@ page('404.html', () => layout({
 
 // Old addresses keep working
 const redirectPage = to => `<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Amanita</title><link rel="canonical" href="${abs(to)}"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url=${u(to)}"></head><body><p><a href="${u(to)}">This page has moved.</a></p></body></html>`;
-const oldShop = { 'shop/mannarainbook.html': 'shop/#rita-ackermann-manna-rain', 'shop/etruscanpaintingbook.html': 'shop/#alessandro-twombly-etruscan-painting', 'shop/benwertherbook.html': 'shop/#when-you-can-no-longer-speak-sing-me-a-song', 'shop/bardinibook.html': 'shop/#leonardo-meoni-gli-altri-colori-purtroppo-sono-tutti-caduti' };
+const oldShop = Object.fromEntries(Object.entries({ 'shop/mannarainbook.html': 'rita-ackermann-manna-rain', 'shop/etruscanpaintingbook.html': 'alessandro-twombly-etruscan-painting', 'shop/benwertherbook.html': 'when-you-can-no-longer-speak-sing-me-a-song', 'shop/bardinibook.html': 'leonardo-meoni-gli-altri-colori-purtroppo-sono-tutti-caduti' })
+  .map(([from, slug]) => [from, shop.some(s => s.slug === slug) ? `shop/${slug}/` : `shop/#${slug}`]));
 const moved = { ...redirects, ...oldShop };
 if (!SITE.pressPage) for (const k in moved) if (moved[k] === '/press/') moved[k] = '/';
 const generated = new Set(pages.map(([p]) => p.toLowerCase()));
@@ -507,12 +483,13 @@ for (const [from, to] of Object.entries(moved)) {
   };
   exhibitions.forEach(e => e.images.forEach(im => work(im.caption, `exhibitions/${e.slug}/`, e.title)));
   artists.forEach(a => a.works.forEach(w => work(w.caption, `artists/${a.slug}/`, a.name)));
+  shop.forEach(p => idx.push({ g: 'Store', t: strip(p.title), s: 'Store', u: `shop/${p.slug}/`, k: strip(p.blurb) }));
   if (SITE.pressPage) press.forEach(p => idx.push({ g: 'Press', t: p.title, s: [p.outlet, (p.date || '').slice(0, 4)].filter(Boolean).join(', '), u: p.url, k: p.author }));
   pages.push(['search-index.json', JSON.stringify(idx)]);
 }
 
 // sitemap & robots
-pages.push(['sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${['/', '/exhibitions/', '/art-fairs/', '/artists/', ...(SITE.pressPage ? ['/press/'] : []), '/shop/', '/about/', ...exhibitions.filter(linked).map(e => `/exhibitions/${e.slug}/`), ...artists.map(a => `/artists/${a.slug}/`)].map(p => `<url><loc>${abs(p)}</loc></url>`).join('\n')}\n</urlset>\n`]);
+pages.push(['sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${['/', '/exhibitions/', '/art-fairs/', '/artists/', ...(SITE.pressPage ? ['/press/'] : []), '/shop/', ...shopPaths(shop), '/about/', ...exhibitions.filter(linked).map(e => `/exhibitions/${e.slug}/`), ...artists.map(a => `/artists/${a.slug}/`)].map(p => `<url><loc>${abs(p)}</loc></url>`).join('\n')}\n</urlset>\n`]);
 pages.push(['robots.txt', `User-agent: *\nAllow: /\nSitemap: ${abs('sitemap.xml')}\n`]);
 pages.push(['.nojekyll', '']);
 if (cname) pages.push(['CNAME', cname + '\n']);

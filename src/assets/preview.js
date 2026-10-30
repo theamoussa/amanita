@@ -61,7 +61,7 @@ window.addEventListener('message', async (e) => {
     const { manifest, logo } = await sharedData();
     const data = fromOsExport(e.data.exp);
     if (!data.site) throw new Error('The site settings did not come through.');
-    const built = render({ ...data, manifest, logo, redirects: {}, today: todayNY(), base: SITE_BASE, siteUrl: location.origin });
+    const built = render({ ...data, shopApi: { preview: true }, manifest, logo, redirects: {}, today: todayNY(), base: SITE_BASE, siteUrl: location.origin });
     pages = new Map(built.filter(([p]) => p.endsWith('.html')));
     refresh.hidden = false;
     show(e.data.path ?? current);

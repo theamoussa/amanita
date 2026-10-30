@@ -10,7 +10,7 @@ one command turns them into the pages in `dist/`. Amanita OS will later write th
 | `data/exhibitions/*.json` | one file per exhibition or art fair: title, artists, venue, dates, pictures with captions, text, press release |
 | `data/artists/*.json` | one file per artist: works with captions, bio, CV link, exhibitions |
 | `data/press.json` | press articles |
-| `data/shop.json` | shop items with their Stripe Buy links |
+| `data/shop.json` | store items (from Amanita OS: with their variants — sizes — each with an id and price) |
 | `data/site.json` | locations, opening hours, email, Instagram, mailing list, how often Marcel appears |
 | `data/redirects.json` | old addresses (`/Exhibitions/tostandbare.html` …) and the new page each one forwards to |
 | `src/assets/` | the one stylesheet, the one script, Marcel's sprites |
@@ -73,3 +73,22 @@ turned into that data by `src/fromOs.mjs`. The build uses both, and publishes bo
 `/assets/` so that `/preview/` — opened by the Preview button in Amanita OS — renders unpublished
 changes with exactly the same templates. Change a template in `src/render.mjs` and the preview
 follows on the next deploy.
+
+
+## The store (30 Oct 2026)
+
+`src/shop.mjs` writes the store's pages: `/shop/` (the list), `/shop/<item>/` (a page per product, its pictures in
+the site's slideshow), `/shop/cart/` and `/shop/thanks/`. `src/assets/shop.js` runs the cart in the browser.
+
+- **Two ways the store can be built.** When Amanita OS says online checkout is on (Store › Settings) *and* the
+  build knows where the OS is (`OS_SUPABASE_URL`, `OS_GALLERY_ID` — the same repository variables fetch-data
+  uses), products get **Add to cart** and the menu gets **cart (n)**. Otherwise — checkout off, or a build from
+  `data/` — each product keeps its old Stripe **Buy** link. Switching it on or off in the OS rebuilds the site.
+- **Nothing that costs money is decided in the browser.** The cart (kept in the browser, `localStorage`) asks the OS's
+  `store` function for what is left of each variant, what the cart comes to and the shipping ($15 for the first
+  item, $5 for each more, free from $120; free pick-up in New York), and Check out asks it for a Stripe Checkout
+  page. Stripe sends the buyer back to `/shop/thanks/`, which shows the order number.
+- **International buyers:** the line "Online checkout is available for US orders. For international shipping,
+  please contact us for a quote." is under every product and in the cart; "contact us" opens an email listing
+  what is in their cart. The OS records those orders and makes their payment link.
+- The old addresses (`/shop/mannarainbook.html` …) now forward to the product pages.
