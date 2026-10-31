@@ -170,7 +170,7 @@ figcaption{font-size:13px;color:var(--mute);max-width:70ch}
 .ss-slide{margin:0;display:grid;gap:10px}
 .ss-slide img,.ss-slide .ph{width:100%;max-height:80vh;object-fit:contain;object-position:left center}
 .slideshow.on .ss-stage{display:block;position:relative;height:clamp(320px,74vh,880px);cursor:e-resize;user-select:none;-webkit-user-select:none;touch-action:pan-y}
-.slideshow.on .ss-stage.back{cursor:w-resize}
+.slideshow.on .ss-stage.ss-back{cursor:w-resize}
 .slideshow.on .ss-slide{display:block;position:absolute;inset:0;overflow:hidden;opacity:0;visibility:hidden;transition:opacity .35s ease,visibility 0s linear .35s}
 .slideshow.on .ss-slide.on{opacity:1;visibility:visible;transition:opacity .35s ease}
 .slideshow.on .ss-slide img{width:100%;height:100%;max-height:none;object-fit:contain;object-position:center}

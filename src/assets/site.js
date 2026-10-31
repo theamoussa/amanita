@@ -161,7 +161,7 @@
     if (idxBtn) idxBtn.addEventListener('click', () => setIndex(!show.classList.contains('indexing')));
     // click zones: left third goes back, the rest goes forward
     const zone = e => { const r = stage.getBoundingClientRect(); return (e.clientX - r.left) < r.width / 3 ? -1 : 1; };
-    stage.addEventListener('mousemove', e => stage.classList.toggle('back', zone(e) < 0));
+    stage.addEventListener('mousemove', e => stage.classList.toggle('ss-back', zone(e) < 0));
     stage.addEventListener('click', e => { if (n > 1) go(cur + zone(e)); });
     // swipe
     let sx = null, sy = null;
