@@ -43,6 +43,17 @@ Then `npm run images`, commit, push.
   reception ("Opening reception Thursday, November 12, 6–8 pm"). It shows as a strip under "Now on view":
   its `cover` (or first picture) on the left, title and venue beside it; without a picture, just the text.
 
+## Events
+
+Announcements that are not Amanita exhibitions — an artist's museum show, a talk, a book launch (added 5 Nov 2026).
+Edited in Amanita OS › Website › Events; in data/ they would be `events.json` (a list). Each has `title`,
+`artists` (names), `place`, `start`, `end` (empty for one day), `image`, `text` (a sentence or two, `<em>` allowed) and
+`url` (shown as "More ↗"). They have no page of their own.
+
+On the home page they appear under the shows, in a section called Events, until their last day (soonest first); an
+event with no dates stays until it is hidden. Once over they move to `/events/` ("Past events"), which is linked from
+the Events section and is not in the menu.
+
 ## Pictures
 
 `npm run images` makes two WebP copies of every picture: 1000 and 2400 pixels wide, at quality 88. The browser picks

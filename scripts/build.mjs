@@ -32,12 +32,13 @@ const redirects = read('redirects.json');
 // asks the OS's `store` function for stock and checkout — its address from the same two variables
 // fetch-data uses.
 const store = fs.existsSync(path.join(DATA, 'store.json')) ? read('store.json') : null;
+const events = fs.existsSync(path.join(DATA, 'events.json')) ? read('events.json') : [];
 const { OS_SUPABASE_URL, OS_GALLERY_ID } = process.env;
 const shopApi = OS_SUPABASE_URL && OS_GALLERY_ID ? { url: `${OS_SUPABASE_URL.replace(/\/$/, '')}/functions/v1/store`, gallery: OS_GALLERY_ID } : null;
 
 // ---------- pages: src/render.mjs, the same templates Amanita OS previews with ----------
 const pages = render({
-  site: SITE, exhibitions: readDir('exhibitions'), artists: readDir('artists'), press: read('press.json'), shop: read('shop.json'), store, shopApi,
+  site: SITE, exhibitions: readDir('exhibitions'), events, artists: readDir('artists'), press: read('press.json'), shop: read('shop.json'), store, shopApi,
   redirects, manifest, logo, today: TODAY, base: BASE, siteUrl: process.env.SITE_URL || SITE.url,
   cname: process.env.CNAME || '', previewMissing: process.env.PREVIEW_MISSING === 'blank',
   ...(process.env.BUILD_ID ? { buildId: process.env.BUILD_ID } : {}),   // a fixed id, to compare two builds

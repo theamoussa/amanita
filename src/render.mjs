@@ -5,7 +5,7 @@
 // Amanita OS can preview unpublished changes with exactly these templates (/preview/, 29 Oct 2026):
 // a preview can never look different from the page it becomes.
 //
-//   render({ site, exhibitions, artists, press, shop, store, shopApi, redirects, manifest, logo,
+//   render({ site, exhibitions, events, artists, press, shop, store, shopApi, redirects, manifest, logo,
 //            today, base, siteUrl, cname, buildId, previewMissing }) → [[path, contents], …]
 //
 //   store    the store's rules from Amanita OS (checkout on/off, shipping, pick-up, the
@@ -23,7 +23,7 @@ import { shopPages, shopPaths } from './shop.mjs';
 export function surname(n) { const p = n.trim().split(/\s+/); return (p.length > 1 ? p[p.length - 1] : p[0]) + ' ' + n; }
 
 export function render({
-  site: SITE, exhibitions: exhibitionsIn, artists: artistsIn, press, shop, store = null, shopApi = null, redirects = {}, manifest = {}, logo: LOGO,
+  site: SITE, exhibitions: exhibitionsIn, events: eventsIn = [], artists: artistsIn, press, shop, store = null, shopApi = null, redirects = {}, manifest = {}, logo: LOGO,
   today: TODAY, base = '/', siteUrl, cname = '', buildId: BUILD_ID = Date.now().toString(36), previewMissing = false,
 }) {
   const BASE = String(base || '/').replace(/\/?$/, '/');
@@ -240,6 +240,31 @@ function nextShow(e) {
 </article>`;
 }
 
+// Events (Thea, 5 Nov 2026): things to announce that are not Amanita exhibitions — an artist's museum show, a
+// talk, a book launch. On the home page under Upcoming while they are on or ahead; once over (the last day has
+// passed), on /events/, which is linked from there and not from the menu. A picture, a short text, dates, a place,
+// and a link out if there is one. No page of their own. An event with no dates stays on the home page until it is
+// hidden or taken off in the OS.
+const evLast = e => e.end || e.start || '';
+const evPast = e => !!evLast(e) && evLast(e) < TODAY;
+const eventsAll = eventsIn.map(e => ({ artists: [], place: '', text: '', url: '', image: null, start: null, end: null, ...e }));
+const eventsNow = eventsAll.filter(e => !evPast(e)).sort((a, b) => (a.start || '').localeCompare(b.start || ''));
+const eventsPast = eventsAll.filter(evPast).sort((a, b) => evLast(b).localeCompare(evLast(a)));
+function eventItem(e) {
+  const img = e.image;
+  const name = showName(e);
+  return `<article class="event${img ? '' : ' noimg'}">
+  ${img ? `<div class="event-img">${picture(img, name, { sizes: '(max-width:700px) 34vw, 360px' })}</div>` : ''}
+  <div class="event-text">
+    ${e.start ? `<p class="kicker">${esc(dateRange(e.start, e.end))}</p>` : ''}
+    <h3>${showHeading(e)}</h3>
+    ${e.place ? `<p class="meta">${esc(e.place)}</p>` : ''}
+    ${e.text ? `<p class="event-blurb">${rich(e.text)}</p>` : ''}
+    ${e.url ? `<p class="event-more"><a href="${esc(e.url)}" target="_blank" rel="noopener">More ↗</a></p>` : ''}
+  </div>
+</article>`;
+}
+
 // Home: what's on now, what's next, then the most recent shows.
 // "Now on view" and "Recently" are rows that scroll sideways, so three or four shows at once stay large.
 function rail(id, label, items, { big = false, hideLabel = false } = {}) {
@@ -261,6 +286,11 @@ ${items.map(e => card(e, { big, sizes: big ? (items.length === 1 ? '(max-width:7
   const body = `
 ${rail('h-now', now.length ? 'Now on view' : 'Recent exhibitions', lead, { big: true, hideLabel: true })}
 ${upcoming.length ? `<section class="next" data-perch aria-label="Upcoming">${upcoming.map(nextShow).join('\n')}</section>` : ''}
+${eventsNow.length ? `<section class="events" data-perch aria-labelledby="h-events">
+  <h2 class="sec" id="h-events">Events</h2>
+${eventsNow.map(eventItem).join('\n')}
+  ${eventsPast.length ? `<p class="events-past"><a href="${u('events/')}">Past events →</a></p>` : ''}
+</section>` : ''}
 ${rail('h-rec', 'Past', recent)}`;
   page('index.html', () => layout({ title: '', canonical: '/', body, image: coverOf(lead[0] || {}), jsonld: galleryLd, pageClass: 'p-home' }));
 }
@@ -390,6 +420,20 @@ artists.forEach(a => {
   }));
 });
 
+// Past events: linked from the home page only (not in the menu). Made whenever there are past events, so the
+// address keeps working when nothing is on.
+if (eventsPast.length) {
+  at('events/index.html');
+  const body = `
+<div class="inner">
+  <div class="pagehead"><h1>Past events</h1></div>
+  <section class="events events-page" data-perch>
+${eventsPast.map(eventItem).join('\n')}
+  </section>
+</div>`;
+  add('events/index.html', layout({ title: 'Past events', canonical: '/events/', body, pageClass: 'p-events' }));
+}
+
 // Press
 {
   if (SITE.pressPage) {
@@ -491,7 +535,7 @@ for (const [from, to] of Object.entries(moved)) {
 }
 
 // sitemap & robots
-pages.push(['sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${['/', '/exhibitions/', '/art-fairs/', '/artists/', ...(SITE.pressPage ? ['/press/'] : []), '/shop/', ...(COMING ? [] : shopPaths(shop)), '/about/', ...exhibitions.filter(linked).map(e => `/exhibitions/${e.slug}/`), ...artists.map(a => `/artists/${a.slug}/`)].map(p => `<url><loc>${abs(p)}</loc></url>`).join('\n')}\n</urlset>\n`]);
+pages.push(['sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${['/', '/exhibitions/', '/art-fairs/', '/artists/', ...(SITE.pressPage ? ['/press/'] : []), '/shop/', ...(COMING ? [] : shopPaths(shop)), '/about/', ...(eventsPast.length ? ['/events/'] : []), ...exhibitions.filter(linked).map(e => `/exhibitions/${e.slug}/`), ...artists.map(a => `/artists/${a.slug}/`)].map(p => `<url><loc>${abs(p)}</loc></url>`).join('\n')}\n</urlset>\n`]);
 pages.push(['robots.txt', `User-agent: *\nAllow: /\nSitemap: ${abs('sitemap.xml')}\n`]);
 pages.push(['.nojekyll', '']);
 if (cname) pages.push(['CNAME', cname + '\n']);

@@ -51,10 +51,11 @@ const write = (f, v) => fs.writeFileSync(path.join(OUT, f), JSON.stringify(v, nu
 for (const e of data.exhibitions) write(`exhibitions/${e.slug}.json`, e);
 for (const a of data.artists) write(`artists/${a.slug}.json`, a);
 write('press.json', data.press);
+write('events.json', data.events);
 write('shop.json', data.shop);
 write('site.json', data.site);
 if (data.store) write('store.json', data.store);
 // Old addresses are not edited in the OS: they come from the repository.
 fs.copyFileSync(path.join(ROOT, 'data', 'redirects.json'), path.join(OUT, 'redirects.json'));
 
-console.log(`fetch-data: ${data.exhibitions.length} shows, ${data.artists.length} artists, ${data.press.length} press, ${data.shop.length} store items (published ${exp.generatedAt}).`);
+console.log(`fetch-data: ${data.exhibitions.length} shows, ${data.events.length} events, ${data.artists.length} artists, ${data.press.length} press, ${data.shop.length} store items (published ${exp.generatedAt}).`);
