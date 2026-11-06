@@ -432,3 +432,4 @@ body[data-letters] .inner{padding-right:clamp(34px,5vw,72px)}
   .event-text h3{font-size:17px}
   .event-blurb{font-size:14px}
 }
+.ext{width:.75em;height:.75em;margin-left:.25em;vertical-align:-.02em;display:inline-block}

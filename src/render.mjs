@@ -245,6 +245,8 @@ function nextShow(e) {
 // passed), on /events/, which is linked from there and not from the menu. A picture, a short text, dates, a place,
 // and a link out if there is one. No page of their own. An event with no dates stays on the home page until it is
 // hidden or taken off in the OS.
+// The "opens elsewhere" arrow, drawn rather than typed: phones show the ↗ character as a blue emoji (Thea, 5 Nov 2026).
+const EXT = '<svg class="ext" viewBox="0 0 10 10" aria-hidden="true"><path d="M2.5 7.5 7.5 2.5M3.5 2.5h4v4" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="square"/></svg>';
 const evLast = e => e.end || e.start || '';
 const evPast = e => !!evLast(e) && evLast(e) < TODAY;
 const eventsAll = eventsIn.map(e => ({ artists: [], place: '', text: '', url: '', image: null, start: null, end: null, ...e }));
@@ -260,7 +262,7 @@ function eventItem(e) {
     <h3>${showHeading(e)}</h3>
     ${e.place ? `<p class="meta">${esc(e.place)}</p>` : ''}
     ${e.text ? `<p class="event-blurb">${rich(e.text)}</p>` : ''}
-    ${e.url ? `<p class="event-more"><a href="${esc(e.url)}" target="_blank" rel="noopener">More ↗</a></p>` : ''}
+    ${e.url ? `<p class="event-more"><a href="${esc(e.url)}" target="_blank" rel="noopener">More${EXT}</a></p>` : ''}
   </div>
 </article>`;
 }
