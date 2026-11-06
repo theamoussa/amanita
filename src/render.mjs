@@ -299,7 +299,11 @@ ${rail('h-rec', 'Past', recent)}`;
 
 // Exhibitions archive (and the Art Fairs view of it)
 function archive({ fairs }) {
-  const list = exhibitions.filter(e => fairs ? e.kind === 'fair' : true);
+  // Upcoming, then Now on view, then each past year — whatever the opening dates. Sorted by opening date alone, a show
+  // that opened after two current shows but has already closed (a fair) split "Now on view" in two (Thea, 6 Nov 2026).
+  // Within a group: newest first, as before (the sort is stable).
+  const rank = { upcoming: 0, now: 1, past: 2 };
+  const list = exhibitions.filter(e => fairs ? e.kind === 'fair' : true).sort((a, b) => rank[status(a)] - rank[status(b)]);
   const groups = [];
   for (const e of list) {
     const g = status(e) === 'now' ? 'Now on view' : status(e) === 'upcoming' ? 'Upcoming' : yearOf(e);
